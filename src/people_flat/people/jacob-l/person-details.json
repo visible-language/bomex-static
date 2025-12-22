@@ -1,0 +1,119 @@
+{
+  "person_id": "jacob-l",
+  "tier": "major",
+  "group": "Jacob",
+  "display_name": "Jacob Son of Lehi",
+  "year": "592 B.C.-544+ B.C.",
+  "word_count": 8503,
+  "image": "./main.jpg",
+  "description": "Jacob was Lehi’s fifth son and was born during the family’s difficult wilderness journey to the land of promise. When the family separated after the death of Lehi, Jacob followed his brother Nephi and was consecrated as a priest over Nephi’s people. Nephi recorded some of Jacob’s prophecies on the small plates, and following Nephi’s death, Jacob and his descendants continued to keep the record.",
+  "pages": [
+    {
+      "slug": "jacob-l",
+      "title": "Jacob Son of Lehi",
+      "year": "592 B.C.-544+ B.C.",
+      "word_count": 8503,
+      "description": "Jacob was Lehi’s fifth son and was born during the family’s difficult wilderness journey to the land of promise. When the family separated after the death of Lehi, Jacob followed his brother Nephi and was consecrated as a priest over Nephi’s people. Nephi recorded some of Jacob’s prophecies on the small plates, and following Nephi’s death, Jacob and his descendants continued to keep the record.",
+      "image": "./main.jpg",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that Jacob�s words often reflect his calling as a priest in the temple?  His words also show an ability to paint vivid images and suggest that his emotions may have been close to the surface at times.",
+          "analysis_id": "jacob-l",
+          "html": "./jacob-l.html"
+        },
+        {
+          "order": 2,
+          "heading": "Chronology",
+          "analysis_id": "jacob-l2",
+          "html": "./jacob-l2.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Major speakers/Jacob/jacob-l.json"
+      }
+    },
+    {
+      "slug": "jacob-l-greatness",
+      "title": "Jacob and the Greatness of God",
+      "year": "",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that Jacob uses the words \"great\" and \"greatness\" to refer to God and His works more often than any other Book of Mormon speaker?",
+          "analysis_id": "jacob-l-greatness",
+          "html": "./jacob-l-greatness.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Major speakers/Jacob/jacob-l-greatness.json"
+      }
+    },
+    {
+      "slug": "jacob-l-temple",
+      "title": "Jacob and the Temple",
+      "year": "",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that Jacob often uses words that reflect his calling as a priest in the temple?",
+          "analysis_id": "jacob-l-temple",
+          "html": "./jacob-l-temple.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Major speakers/Jacob/jacob-l-temple.json"
+      }
+    },
+    {
+      "slug": "jacob-l-isaiah",
+      "title": "Jacob�s Use of Isaiah in 2 Nephi 9-10",
+      "year": "",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that Jacob uses key words from Isaiah to teach the principles of the plan of salvation?",
+          "analysis_id": "jacob-l-isaiah",
+          "html": "./jacob-l-isaiah.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Major speakers/Jacob/jacob-l-isaiah.json"
+      }
+    },
+    {
+      "slug": "jacob-isaiah",
+      "title": "Jacob�s Use of Isaiah, 2 Nephi 9-10 (Organized by Theme)",
+      "year": "",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "",
+          "analysis_id": "jacob-isaiah",
+          "html": "./jacob-isaiah.html"
+        },
+        {
+          "order": 2,
+          "heading": "",
+          "analysis_id": "jacob-isaiah2",
+          "html": "./jacob-isaiah2.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Major speakers/Jacob/jacob-isaiah-chart.json"
+      }
+    }
+  ]
+}

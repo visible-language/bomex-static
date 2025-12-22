@@ -1,0 +1,31 @@
+{
+  "item_id": "overcome",
+  "category": "influences",
+  "group": "overcome",
+  "display_name": "Overcome and Carried Away",
+  "year": "",
+  "word_count": 0,
+  "image": "",
+  "description": "",
+  "pages": [
+    {
+      "slug": "overcome",
+      "title": "Overcome and Carried Away",
+      "year": "",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that when King Lamoni was converted, he had an experience similar to that of his ancestor Lehi?",
+          "analysis_id": "overcome",
+          "html": "./overcome.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Influences/overcome.json"
+      }
+    }
+  ]
+}

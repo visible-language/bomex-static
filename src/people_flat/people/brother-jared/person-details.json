@@ -1,0 +1,31 @@
+{
+  "person_id": "brother-jared",
+  "tier": "major",
+  "group": "brother-of-jared",
+  "display_name": "The Brother of Jared",
+  "year": "",
+  "word_count": 460,
+  "image": "./main.jpg",
+  "description": "The Brother of Jared was a prophet-leader of the Jaredites during their departure from ancient Mesopotamia at the time of the great tower, when languages were confounded (Ether 1:33-40). Under divine guidance, he helped lead a group through the wilderness (Ether 1:41-42; 2:1-13) and eventually across the ocean to a land of promise in the New World (Ether 6:1-12).\n\n He was a man of great faith (Ether 12:29-30). In preparation for their ocean journey, he received a marvelous vision of the Lord’s premortal spirit body and was blessed with a vision of the future, which he was commanded to record and hide up to be revealed to a future generation (Ether 3:6-28). We only have a small selection of his actual words in the book of Ether; they come primarily from his petitions to God in preparation for his journey (Ether 2:18-22; 3:2-12).",
+  "pages": [
+    {
+      "slug": "brother-jared",
+      "title": "The Brother of Jared",
+      "year": "",
+      "word_count": 460,
+      "description": "The Brother of Jared was a prophet-leader of the Jaredites during their departure from ancient Mesopotamia at the time of the great tower, when languages were confounded (Ether 1:33-40). Under divine guidance, he helped lead a group through the wilderness (Ether 1:41-42; 2:1-13) and eventually across the ocean to a land of promise in the New World (Ether 6:1-12).\n\n He was a man of great faith (Ether 12:29-30). In preparation for their ocean journey, he received a marvelous vision of the Lord’s premortal spirit body and was blessed with a vision of the future, which he was commanded to record and hide up to be revealed to a future generation (Ether 3:6-28). We only have a small selection of his actual words in the book of Ether; they come primarily from his petitions to God in preparation for his journey (Ether 2:18-22; 3:2-12).",
+      "image": "./main.jpg",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that the Brother of Jared viewed himself as being like Noah?",
+          "analysis_id": "brother-jared",
+          "html": "./brother-jared.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Major speakers/brother-of-jared.json"
+      }
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "person_id": "enos",
+  "tier": "minor",
+  "group": "enos",
+  "display_name": "Enos",
+  "year": "circa 420 B.C.",
+  "word_count": 997,
+  "image": "./main.jpg",
+  "description": "The prophet Enos was the son of Jacob, the brother of Nephi. After the death of his father, he continued the record on the small plates of Nephi. In his brief account, he wrote of how he sought and received forgiveness of his sins and the promise of future blessings for his own people and his enemies, the Lamanites.",
+  "pages": [
+    {
+      "slug": "enos",
+      "title": "Enos",
+      "year": "circa 420 B.C.",
+      "word_count": 997,
+      "description": "The prophet Enos was the son of Jacob, the brother of Nephi. After the death of his father, he continued the record on the small plates of Nephi. In his brief account, he wrote of how he sought and received forgiveness of his sins and the promise of future blessings for his own people and his enemies, the Lamanites.",
+      "image": "./main.jpg",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that Enos, the son of Jacob, frames his life story in the language of the biblical patriarch Jacob and his brother Esau?",
+          "analysis_id": "enos",
+          "html": "./enos.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Minor speakers/enos.json"
+      }
+    }
+  ]
+}

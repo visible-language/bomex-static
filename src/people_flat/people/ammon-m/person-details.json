@@ -1,0 +1,56 @@
+{
+  "person_id": "ammon-m",
+  "tier": "major",
+  "group": "Ammon-m",
+  "display_name": "Ammon Son of Mosiah",
+  "year": "circa 90-77 B.C.",
+  "word_count": 2430,
+  "image": "./main.jpg",
+  "description": "Ammon was one of the sons of King Mosiah. He, his brothers, and Alma had once been part of a faction that sought to destroy the Church of God. He and his brothers converted after the miraculous intervention of an angel (Mosiah 27:8-37). He spent the remainder of his life in the service of God. He led his brethren on a fourteen-year mission to the land of Nephi, resulting in the conversion of thousands of Lamanites (Alma 17:1-4). His example among that people was a model of faith, selfless service, and love, which had a lasting impact on the people of Nephi for generations.",
+  "pages": [
+    {
+      "slug": "ammon-m",
+      "title": "Ammon Son of Mosiah",
+      "year": "circa 90-77 B.C.",
+      "word_count": 2430,
+      "description": "Ammon was one of the sons of King Mosiah. He, his brothers, and Alma had once been part of a faction that sought to destroy the Church of God. He and his brothers converted after the miraculous intervention of an angel (Mosiah 27:8-37). He spent the remainder of his life in the service of God. He led his brethren on a fourteen-year mission to the land of Nephi, resulting in the conversion of thousands of Lamanites (Alma 17:1-4). His example among that people was a model of faith, selfless service, and love, which had a lasting impact on the people of Nephi for generations.",
+      "image": "./main.jpg",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that the Lamanites� dramatic conversion reminded Ammon of his own?",
+          "analysis_id": "ammon-m",
+          "html": "./ammon-m.html"
+        },
+        {
+          "order": 2,
+          "heading": "Ammon and the sons of Mosiah were with Alma at the time the angel appeared.",
+          "analysis_id": "ammon-m2",
+          "html": "./ammon-m2.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Major speakers/Ammon-m/ammon-m.json"
+      }
+    },
+    {
+      "slug": "ammon-m-ag",
+      "title": "Ammon and Agriculture",
+      "year": "circa 90-77 B.C.",
+      "word_count": 0,
+      "description": "Ammon’s use of imagery of the harvest is particularly meaningful. He is the only Book of Mormon prophet to refer to God as \"Lord of the harvest\" (Alma 26:7). He is the only Lehite prophet to use the words \"sheaves,\" \"sickle,\" and \"garner.\" The words \"reap,\" \"ripe,\" and \"field\" are used by other Book of Mormon speakers, but Ammon uses those words at a higher rate than anyone else in the Nephite record. The harvest theme is used by many prophets in scripture, but Ammon’s description of the Lord’s preservation of the sheaves sets him apart from others.",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that Ammon son of Mosiah II uses words associated with agriculture to describe the Lord�s tender care of His people?",
+          "analysis_id": "ammon-m-ag",
+          "html": "./ammon-m-ag.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Major speakers/Ammon-m/ammon-m-ag.json"
+      }
+    }
+  ]
+}

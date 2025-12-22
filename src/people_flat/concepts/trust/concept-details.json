@@ -1,0 +1,31 @@
+{
+  "item_id": "trust",
+  "category": "concepts",
+  "group": "trust",
+  "display_name": "Trust",
+  "year": "",
+  "word_count": 0,
+  "image": "",
+  "description": "",
+  "pages": [
+    {
+      "slug": "trust",
+      "title": "Trust",
+      "year": "",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that the majority of references to �trust� in the Book of Mormon denote having faith in God?",
+          "analysis_id": "trust",
+          "html": "./trust.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Concepts/trust.json"
+      }
+    }
+  ]
+}

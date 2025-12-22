@@ -1,0 +1,31 @@
+{
+  "person_id": "nephite-judges",
+  "tier": "minor",
+  "group": "nephite-judges",
+  "display_name": "Wicked Nephite Judges",
+  "year": "circa 23 B.C.-21 B.C.",
+  "word_count": 0,
+  "image": "",
+  "description": "",
+  "pages": [
+    {
+      "slug": "nephite-judges",
+      "title": "Wicked Nephite Judges",
+      "year": "circa 23 B.C.-21 B.C.",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that the wicked Nephite judges are the only New World speakers in the Book of Mormon to use the word \"confederate\"?",
+          "analysis_id": "nephite-judges",
+          "html": "./nephite-judges.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Minor speakers/nephite-judges.json"
+      }
+    }
+  ]
+}

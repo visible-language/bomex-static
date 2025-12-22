@@ -1,0 +1,31 @@
+{
+  "person_id": "ammoron",
+  "tier": "minor",
+  "group": "ammoron",
+  "display_name": "Ammoron",
+  "year": "circa 63 B.C.",
+  "word_count": 323,
+  "image": "",
+  "description": "Ammoron was a Zoramite dissenter and the brother of Amalickiah during a twelve-year war between the Nephites and Lamanites. After the death of his brother, he became king of the Lamanites. He continued the war until he was killed by Teancum at the city of Moroni (Alma 62:36). He was the father of Tubaloth, who became king after his death (Helaman 1:16).",
+  "pages": [
+    {
+      "slug": "ammoron",
+      "title": "Ammoron",
+      "year": "circa 63 B.C.",
+      "word_count": 323,
+      "description": "Ammoron was a Zoramite dissenter and the brother of Amalickiah during a twelve-year war between the Nephites and Lamanites. After the death of his brother, he became king of the Lamanites. He continued the war until he was killed by Teancum at the city of Moroni (Alma 62:36). He was the father of Tubaloth, who became king after his death (Helaman 1:16).",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that only Ammoron uses the words \"extinction\" and \"hinted\"?",
+          "analysis_id": "ammoron",
+          "html": "./ammoron.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Minor speakers/ammoron.json"
+      }
+    }
+  ]
+}

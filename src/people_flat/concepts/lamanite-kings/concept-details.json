@@ -1,0 +1,125 @@
+{
+  "item_id": "lamanite-kings",
+  "category": "concepts",
+  "group": "Lamanite kings",
+  "display_name": "Lamanite Kings: Lamoni, His Father, and Anti-Nephi-Lehi",
+  "year": "90-77 B.C.",
+  "word_count": 0,
+  "image": "./Images/Lamoni.jpg",
+  "description": "The Book of Mormon contains words from three Lamanite kings, who were miraculously converted through the examples and teachings of Ammon, Aaron, and their fellow missionaries. These include King Lamoni, his father, and King Anti-Nephi-Lehi. Lamoni was king over the people in the land of Ishmael and a descendant of Ishmael (Alma 17:19, 21). At this time, Lamoni's father was king over all the Lamanites in the land of Nephi. When Lamoni's father died, his son Anti-Nephi-Lehi became king.",
+  "pages": [
+    {
+      "slug": "lk-portion-spirit",
+      "title": "A Portion of His Spirit",
+      "year": "90-77 B.C.",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that King Anti-Lehi-Nephi's understanding that a portion of God's Spirit could dwell with the righteous reflects the words and teachings of Nephite missionaries?",
+          "analysis_id": "lk-portion-spirit",
+          "html": "./lk-portion-spirit.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Concepts/Lamanite kings/lk-portion-spirit.json"
+      }
+    },
+    {
+      "slug": "lk-bow-down",
+      "title": "Bowing Down Before God",
+      "year": "90-77 B.C.",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that when the Lamanite king bowed down before God, he was doing the very thing Nephi had taught, but which Laman and Lemuel had refused to do?",
+          "analysis_id": "lk-bow-down",
+          "html": "./lk-bow-down.html"
+        },
+        {
+          "order": 2,
+          "heading": "",
+          "analysis_id": "lk-bow-down2",
+          "html": "./lk-bow-down2.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Concepts/Lamanite kings/lk-bow-down.json"
+      }
+    },
+    {
+      "slug": "lk-great-spirit",
+      "title": "Great Spirit",
+      "year": "90-77 B.C.",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that the Lamanite idea of Deity as the \"great God\" and \"true God\" shows the influence of Nephite missionaries who equated the Nephite God with the Lamanite \"Great Spirit\"?",
+          "analysis_id": "lk-great-spirit",
+          "html": "./lk-great-spirit.html"
+        },
+        {
+          "order": 2,
+          "heading": "",
+          "analysis_id": "lk-great-spirit2",
+          "html": "./lk-great-spirit2.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Concepts/Lamanite kings/lk-great-spirit.json"
+      }
+    },
+    {
+      "slug": "lamanite-kings",
+      "title": "Lamanite Kings: Lamoni, His Father, and Anti-Nephi-Lehi",
+      "year": "90-77 B.C.",
+      "word_count": 0,
+      "description": "The Book of Mormon contains words from three Lamanite kings, who were miraculously converted through the examples and teachings of Ammon, Aaron, and their fellow missionaries. These include King Lamoni, his father, and King Anti-Nephi-Lehi. Lamoni was king over the people in the land of Ishmael and a descendant of Ishmael (Alma 17:19, 21). At this time, Lamoni's father was king over all the Lamanites in the land of Nephi. When Lamoni's father died, his son Anti-Nephi-Lehi became king.",
+      "image": "./Images/Lamoni.jpg",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that the converted Lamanite kings adopted the words of Nephite prophets?",
+          "analysis_id": "lamanite-kings",
+          "html": "./lamanite-kings.html"
+        },
+        {
+          "order": 2,
+          "heading": "",
+          "analysis_id": "lamanite-kings2",
+          "html": "./lamanite-kings2.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Concepts/Lamanite kings/lamanite-kings.json"
+      }
+    },
+    {
+      "slug": "lk-merits-christ",
+      "title": "The Merits of the Messiah or the Son of God",
+      "year": "90-77 B.C.",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that the teaching that we can find redemption by looking to Christ, rather than by our own personal merits, was a powerful incentive in the conversion of the Lamanites?",
+          "analysis_id": "lk-merits-christ",
+          "html": "./lk-merits-christ.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Concepts/Lamanite kings/lk-merits-christ.json"
+      }
+    }
+  ]
+}

@@ -1,0 +1,436 @@
+:root {
+    --primary-color: #2C4B55;
+    --secondary-color: #E0E0E0;
+    --text-color: #333;
+    --white: #fff;
+    --light-bg: #f9f9f9;
+    --card-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--white);
+}
+
+h1, h2, h3, h4 {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: normal;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Header */
+header {
+    background-color: var(--light-bg);
+    padding: 0.8rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ddd;
+    width: 100%;
+    position: relative;
+    z-index: 1001;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: Georgia, serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.menu-icon {
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Simple inner pages */
+.page-titlebar {
+    background-color: var(--primary-color);
+    color: var(--white);
+    text-align: center;
+    padding: 1.2rem 1rem;
+    box-shadow: var(--card-shadow);
+}
+
+.page-titlebar h1 {
+    font-size: 2.2rem;
+    line-height: 1.1;
+}
+
+.page-content {
+    padding: 1.5rem 1rem 2rem;
+    max-width: 46rem;
+    margin: 0 auto;
+}
+
+.page-content h2 {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    margin: 1.25rem 0 0.75rem;
+}
+
+.page-content p {
+    margin-bottom: 1rem;
+}
+
+.page-content a {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+/* Spotlight Section */
+.spotlight {
+    background-color: #555; /* Fallback */
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(44, 75, 85, 0.9)), url('../img/book_glasses_type.png');
+    background-size: cover;
+    background-position: center;
+    color: var(--white);
+    padding: 4rem 1rem 1rem;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    min-height: 300px;
+}
+
+.spotlight-content {
+    background: transparent;
+    padding: 1rem;
+    width: 100%;
+}
+
+.spotlight-label {
+    font-family: Georgia, serif;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    display: block;
+    line-height: 1.2;
+}
+
+.spotlight h2 {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--white);
+    font-weight: normal;
+}
+
+.read-more {
+    display: block;
+    text-align: right;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+/* Understand Section */
+.understand-section {
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+.understand-section h2 {
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+}
+
+.nav-button {
+    background-color: #E8E8E8;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.nav-button:hover {
+    background-color: #dcdcdc;
+}
+
+.nav-button i {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    width: 24px;
+    text-align: center;
+}
+
+.nav-button span {
+    font-size: 1.1rem;
+    color: #555;
+}
+
+/* Explore Section */
+.explore-section {
+    background-color: var(--primary-color);
+    padding: 2rem 1rem;
+    color: var(--white);
+}
+
+.explore-section h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.4rem;
+}
+
+.tool-card {
+    background-color: var(--white);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+}
+
+.card-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.help-icon {
+    color: #999;
+    cursor: pointer;
+}
+
+.select-input, .text-input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: var(--white);
+    font-size: 1rem;
+    color: #777;
+    appearance: none; /* Remove default arrow */
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007CB2%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    background-position: right .7em top 50%;
+    background-size: .65em auto;
+}
+
+.search-row {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.text-input {
+    background-image: none; /* Reset for text input */
+    flex-grow: 1;
+}
+
+.search-icon-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.input-wrapper {
+    position: relative;
+    flex-grow: 1;
+}
+
+.book-btn {
+    background-color: var(--white);
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 0 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+/* Image Links Section */
+.image-link-section {
+    position: relative;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--white);
+    background-size: cover;
+    background-position: center;
+    padding: 1rem;
+}
+
+.bg-read {
+    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../img/bom-on-leaves.png');
+}
+
+.bg-learn {
+    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../img/nauvoo-temple.png');
+}
+
+.image-link-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.action-btn {
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #333;
+    padding: 0.8rem 1.5rem;
+    border-radius: 50px;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+
+/* Footer */
+footer {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 3rem 1rem;
+    text-align: center;
+}
+
+.footer-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.footer-section {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+}
+
+.footer-section:last-of-type {
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-bottom: 1rem;
+}
+
+.footer-link {
+    color: #81C3D7; /* Light blue accent */
+    text-decoration: none;
+}
+
+.back-to-top {
+    display: block;
+    margin-top: 2rem;
+    font-size: 0.9rem;
+    color: var(--white);
+}
+
+.copyright {
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+/* Mobile Menu */
+.mobile-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: rgba(176, 196, 205, 0.95); /* Light blue-ish overlay */
+    z-index: 1000;
+    padding: 1rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border-top: 1px solid rgba(255,255,255,0.3);
+}
+
+.mobile-menu.active {
+    display: block;
+}
+
+.menu-section {
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    padding-bottom: 0.5rem;
+}
+
+.menu-section:last-child {
+    border-bottom: none;
+}
+
+.menu-section h3 {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 1rem;
+    color: #2C4B55;
+    margin-bottom: 0.5rem;
+    padding-left: 0.5rem;
+}
+
+.mobile-menu a.menu-item,
+.mobile-menu .menu-item > a {
+    display: flex;
+    align-items: center;
+    padding: 0.8rem 0.5rem;
+    color: #2C4B55;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: background-color 0.2s;
+    border-radius: 4px;
+}
+
+.mobile-menu a.menu-item:hover,
+.mobile-menu .menu-item > a:hover {
+    background-color: rgba(255,255,255,0.3);
+}
+
+.menu-item i {
+    width: 30px;
+    text-align: center;
+    margin-right: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+}
+
+.menu-item:last-child a {
+    border-bottom: none;
+}
+
+.menu-item .arrow {
+    margin-left: auto;
+    font-size: 0.9rem;
+    opacity: 0.6;
+}
+
+.home-link {
+    margin-bottom: 1rem;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    padding-bottom: 0.5rem;
+}
+
+/* Header adjustments */
+/* Removed redundant header block */

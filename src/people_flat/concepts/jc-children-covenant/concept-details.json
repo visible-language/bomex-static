@@ -1,0 +1,31 @@
+{
+  "item_id": "jc-children-covenant",
+  "category": "concepts",
+  "group": "jc-children-covenant",
+  "display_name": "Children of the Covenant",
+  "year": "A. D. 34",
+  "word_count": 0,
+  "image": "",
+  "description": "",
+  "pages": [
+    {
+      "slug": "jc-children-covenant",
+      "title": "Children of the Covenant",
+      "year": "A. D. 34",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that as children of the covenant, we have the right to receive the blessings of the atonement of our Savior and the gifts of the Spirit, and to carry those blessings to all the families of the earth?",
+          "analysis_id": "jc-children-covenant",
+          "html": "./jc-children-covenant.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Concepts/jc-children-covenant.json"
+      }
+    }
+  ]
+}

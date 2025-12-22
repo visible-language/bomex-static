@@ -1,0 +1,37 @@
+{
+  "person_id": "amaleki",
+  "tier": "minor",
+  "group": "amaleki",
+  "display_name": "Amaleki",
+  "year": "circa 130 B.C.",
+  "word_count": 921,
+  "image": "",
+  "description": "Amaleki was a descendant of Jacob, the brother of Nephi, and the last writer on the small plates. He wrote of the Nephite flight from the land of Nephi under the leadership of King Mosiah I, their re-settlement in the land of Zarahemla, and the unification of the Nephites with the people of that land (Omni 1:12-19). He wrote of Mosiah's translation of a stone inscription giving an account of Coriantumr and his people (Omni 1:20-22), and the early reign of King Benjamin (Omni 1:23-24). He concluded the record with an invitation for us to believe in spiritual gifts and come unto Christ (Omni 1:25-26). Amaleki, who did not have children, entrusted the plates to King Benjamin (Omni 1:25).",
+  "pages": [
+    {
+      "slug": "amaleki",
+      "title": "Amaleki",
+      "year": "circa 130 B.C.",
+      "word_count": 921,
+      "description": "Amaleki was a descendant of Jacob, the brother of Nephi, and the last writer on the small plates. He wrote of the Nephite flight from the land of Nephi under the leadership of King Mosiah I, their re-settlement in the land of Zarahemla, and the unification of the Nephites with the people of that land (Omni 1:12-19). He wrote of Mosiah's translation of a stone inscription giving an account of Coriantumr and his people (Omni 1:20-22), and the early reign of King Benjamin (Omni 1:23-24). He concluded the record with an invitation for us to believe in spiritual gifts and come unto Christ (Omni 1:25-26). Amaleki, who did not have children, entrusted the plates to King Benjamin (Omni 1:25).",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that Amaleki compared Mosiah to Nephi to show that Mosiah was inspired?",
+          "analysis_id": "amaleki",
+          "html": "./amaleki.html"
+        },
+        {
+          "order": 2,
+          "heading": "Some of Amaleki's words recall things that Nephi wrote.",
+          "analysis_id": "amaleki2",
+          "html": "./amaleki2.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Minor speakers/amaleki.json"
+      }
+    }
+  ]
+}

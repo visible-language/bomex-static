@@ -1,0 +1,37 @@
+{
+  "person_id": "laman-lemuel",
+  "tier": "minor",
+  "group": "laman-lemuel",
+  "display_name": "Laman and Lemuel",
+  "year": "circa 600 B.C.-550 B.C.",
+  "word_count": 0,
+  "image": "./main.jpg",
+  "description": "Laman and Lemuel were the two oldest sons of Lehi. They lived in Jerusalem at the time their father received visions, warning of the destruction of the city. They accompanied their family into the wilderness, but frequently murmured against Lehi’s prophetic leadership and the teachings of their brother Nephi. Each married a daughter of Ishmael.\n\n On several occasions, they tried unsuccessfully to kill Nephi. After being chastened by God, they assisted Nephi in building a ship. During the sea voyage, they rebelled against Lehi and Nephi, nearly resulting in the destruction of the ship and their family. Following the death of their father, they planned to kill Nephi, but were unable to do so because the Lord warned their brother to flee into the wilderness. After the separation of the Nephites and the Lamanites, they taught their children and their followers to hate and make war against Nephi and his people.",
+  "pages": [
+    {
+      "slug": "laman-lemuel",
+      "title": "Laman and Lemuel",
+      "year": "circa 600 B.C.-550 B.C.",
+      "word_count": 0,
+      "description": "Laman and Lemuel were the two oldest sons of Lehi. They lived in Jerusalem at the time their father received visions, warning of the destruction of the city. They accompanied their family into the wilderness, but frequently murmured against Lehi’s prophetic leadership and the teachings of their brother Nephi. Each married a daughter of Ishmael.\n\n On several occasions, they tried unsuccessfully to kill Nephi. After being chastened by God, they assisted Nephi in building a ship. During the sea voyage, they rebelled against Lehi and Nephi, nearly resulting in the destruction of the ship and their family. Following the death of their father, they planned to kill Nephi, but were unable to do so because the Lord warned their brother to flee into the wilderness. After the separation of the Nephites and the Lamanites, they taught their children and their followers to hate and make war against Nephi and his people.",
+      "image": "./main.jpg",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that when Laman and Lemuel said Lehi had been led away by the foolish imaginations of his heart, they were calling him a false prophet?",
+          "analysis_id": "laman-lemuel",
+          "html": "./laman-lemuel.html"
+        },
+        {
+          "order": 2,
+          "heading": "Chronology",
+          "analysis_id": "laman-lemuel2",
+          "html": "./laman-lemuel2.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Minor speakers/laman-lemuel.json"
+      }
+    }
+  ]
+}

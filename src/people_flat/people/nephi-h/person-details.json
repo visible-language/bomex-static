@@ -1,0 +1,50 @@
+{
+  "person_id": "nephi-h",
+  "tier": "major",
+  "group": "Nephi-h",
+  "display_name": "Nephi Son of Helaman",
+  "year": "75 B.C.-1 B.C.",
+  "word_count": 2256,
+  "image": "./main.jpg",
+  "description": "Nephi was the son of Helaman II and the great-grandson of the prophet Alma II. He became the chief judge over the people of Nephi following the death of his father (Helaman 3:37). During his reign, there was a serious war with the Lamanites, in which the Nephites lost the land of Zarahemla and most of their possessions in the land southward (Helaman 4:5-10). They had, at this time, fallen into a state of serious apostasy (Helaman 4:11-26). Like his great-grandfather Alma, Nephi yielded up his office as chief judge and devoted the remainder of his life to the ministry (Helaman 5:1-3).",
+  "pages": [
+    {
+      "slug": "nephi-h",
+      "title": "Nephi Son of Helaman",
+      "year": "75 B.C.-1 B.C.",
+      "word_count": 2256,
+      "description": "Nephi was the son of Helaman II and the great-grandson of the prophet Alma II. He became the chief judge over the people of Nephi following the death of his father (Helaman 3:37). During his reign, there was a serious war with the Lamanites, in which the Nephites lost the land of Zarahemla and most of their possessions in the land southward (Helaman 4:5-10). They had, at this time, fallen into a state of serious apostasy (Helaman 4:11-26). Like his great-grandfather Alma, Nephi yielded up his office as chief judge and devoted the remainder of his life to the ministry (Helaman 5:1-3).",
+      "image": "./main.jpg",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that Nephi cites more prophets from the brass plates in a single discourse than any other Book of Mormon speaker?",
+          "analysis_id": "nephi-h",
+          "html": "./nephi-h.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Major speakers/Nephi-h/nephi-h.json"
+      }
+    },
+    {
+      "slug": "nephi-h-teacher",
+      "title": "Nephi: A Skilled Teacher",
+      "year": "",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that Nephi the son of Helaman uses the circumstances of his preaching as teaching tools to called his people to repentance?",
+          "analysis_id": "nephi-h-teacher",
+          "html": "./nephi-h-teacher.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Major speakers/Nephi-h/nephi-h-teacher.json"
+      }
+    }
+  ]
+}

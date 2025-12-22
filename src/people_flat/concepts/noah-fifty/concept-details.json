@@ -1,0 +1,37 @@
+{
+  "item_id": "noah-fifty",
+  "category": "concepts",
+  "group": "noah-fifty",
+  "display_name": "Noah and His Fifty",
+  "year": "circa 150 B.C.",
+  "word_count": 0,
+  "image": "",
+  "description": "",
+  "pages": [
+    {
+      "slug": "noah-fifty",
+      "title": "Noah and His Fifty",
+      "year": "circa 150 B.C.",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that Mormon compares the wicked king Noah and his fifty to Laban and his fifty?",
+          "analysis_id": "noah-fifty",
+          "html": "./noah-fifty.html"
+        },
+        {
+          "order": 2,
+          "heading": "",
+          "analysis_id": "noah-fifty2",
+          "html": "./noah-fifty2.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Concepts/noah-fifty.json"
+      }
+    }
+  ]
+}

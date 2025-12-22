@@ -1,0 +1,31 @@
+{
+  "item_id": "pleasing",
+  "category": "concepts",
+  "group": "pleasing",
+  "display_name": "To Please",
+  "year": "",
+  "word_count": 0,
+  "image": "",
+  "description": "",
+  "pages": [
+    {
+      "slug": "pleasing",
+      "title": "To Please",
+      "year": "",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that variants of \"to please\" in the Book of Mormon can help us to examine our desires and bring them into line with what is pleasing to God?",
+          "analysis_id": "pleasing",
+          "html": "./pleasing.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Concepts/pleasing.json"
+      }
+    }
+  ]
+}

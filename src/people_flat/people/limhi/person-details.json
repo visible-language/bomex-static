@@ -1,0 +1,31 @@
+{
+  "person_id": "limhi",
+  "tier": "minor",
+  "group": "limhi",
+  "display_name": "King Limhi",
+  "year": "circa 145 B.C.",
+  "word_count": 1385,
+  "image": "./main.jpg",
+  "description": "Limhi was one of the sons of King Noah, the grandson of Zeniff, and the last king of his people before their reunification with the people of Mosiah II. Limhi was made king over his people after his father was killed and the Lamanites subjected his people to bondage. As king, he was forced to accept a treaty with the Lamanites that required him and his people to pay half of everything they possessed. \n\nLimhi was also forced to defend against a Lamanite attack caused by the abduction of the Lamanite daughters by the fugitive priests of King Noah, an act which the Lamanites wrongly attributed to Limhi’s people. After a series of subsequent Lamanite abuses, the king reluctantly agreed to allow his people to go out to battle, resulting in the death of many of his men. Limhi’s people were eventually delivered by Ammon and his brethren, and settled in the land of Zarahemla.",
+  "pages": [
+    {
+      "slug": "limhi",
+      "title": "King Limhi",
+      "year": "circa 145 B.C.",
+      "word_count": 1385,
+      "description": "Limhi was one of the sons of King Noah, the grandson of Zeniff, and the last king of his people before their reunification with the people of Mosiah II. Limhi was made king over his people after his father was killed and the Lamanites subjected his people to bondage. As king, he was forced to accept a treaty with the Lamanites that required him and his people to pay half of everything they possessed. \n\nLimhi was also forced to defend against a Lamanite attack caused by the abduction of the Lamanite daughters by the fugitive priests of King Noah, an act which the Lamanites wrongly attributed to Limhi’s people. After a series of subsequent Lamanite abuses, the king reluctantly agreed to allow his people to go out to battle, resulting in the death of many of his men. Limhi’s people were eventually delivered by Ammon and his brethren, and settled in the land of Zarahemla.",
+      "image": "./main.jpg",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that Limhi might have been more interested in the scriptures than in being a king?",
+          "analysis_id": "limhi",
+          "html": "./limhi.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Minor speakers/limhi.json"
+      }
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "person_id": "zeniff",
+  "tier": "minor",
+  "group": "zeniff",
+  "display_name": "Zeniff",
+  "year": "circa 200 B.C.",
+  "word_count": 1818,
+  "image": "./main.jpg",
+  "description": "Zeniff, the father of King Noah, and the grandfather of King Limhi, led a colony from Zarahemla to re-inherit their former homeland in the land of Nephi. Zeniff’s record, written toward the end of his life, gives an account of the history of the Nephite colony (Mosiah 9’10). Zeniff’s knowledge of that land suggests that he had previously lived there and that he, as a younger man, might have accompanied Mosiah I to the land of Zarahemla. \n\nDuring the early reign of King Benjamin, Zeniff was part of a failed expedition to return to the land of Nephi, which ended in bloodshed. Undeterred, he led a second expedition, in which he successfully negotiated a treaty with the Lamanite king, allowing the Nephite colony to settle in the cities of Nephi-Lehi and Shilom. After twelve years, his people suffered a surprise attack by the Lamanites that killed 279 of his people, before it was successfully repulsed. Toward the end of his life, Zeniff, better prepared, successfully defended his people against a second attack by the Lamanites.",
+  "pages": [
+    {
+      "slug": "zeniff",
+      "title": "Zeniff",
+      "year": "circa 200 B.C.",
+      "word_count": 1818,
+      "description": "Zeniff, the father of King Noah, and the grandfather of King Limhi, led a colony from Zarahemla to re-inherit their former homeland in the land of Nephi. Zeniff’s record, written toward the end of his life, gives an account of the history of the Nephite colony (Mosiah 9’10). Zeniff’s knowledge of that land suggests that he had previously lived there and that he, as a younger man, might have accompanied Mosiah I to the land of Zarahemla. \n\nDuring the early reign of King Benjamin, Zeniff was part of a failed expedition to return to the land of Nephi, which ended in bloodshed. Undeterred, he led a second expedition, in which he successfully negotiated a treaty with the Lamanite king, allowing the Nephite colony to settle in the cities of Nephi-Lehi and Shilom. After twelve years, his people suffered a surprise attack by the Lamanites that killed 279 of his people, before it was successfully repulsed. Toward the end of his life, Zeniff, better prepared, successfully defended his people against a second attack by the Lamanites.",
+      "image": "./main.jpg",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that Zeniff compares himself to Nephi to show that he made a mistake in leaving the land of Zarahemla?",
+          "analysis_id": "zeniff",
+          "html": "./zeniff.html"
+        },
+        {
+          "order": 2,
+          "heading": "Nephi and Zeniff",
+          "analysis_id": "zeniff2",
+          "html": "./zeniff2.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Minor speakers/zeniff.json"
+      }
+    }
+  ]
+}

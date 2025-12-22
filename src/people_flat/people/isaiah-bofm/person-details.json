@@ -1,0 +1,37 @@
+{
+  "person_id": "isaiah-bofm",
+  "tier": "major",
+  "group": "isaiah-bofm",
+  "display_name": "Isaiah in the Book of Mormon",
+  "year": "circa 739 B.C.-695 B.C.",
+  "word_count": 12925,
+  "image": "./main.jpg",
+  "description": "Isaiah received his call as a prophet the year the Israelite king Uzziah died. He prophesied during the reigns of Jotham, Ahaz, and Hezekiah. He lived during a time of significant transition in the history of Israel and Judah. He is believed to have been one of the most poetic of Israel’s prophets. Due to the people’s wickedness and unbelief, his teachings were not always heeded or well received.\n\n During the reign of Hezekiah, the northern kingdom of Israel was destroyed by Assyria and much of the southern kingdom of Judah (Isaiah’s native land) was destroyed as well. Survivors from the Assyrian invasion were carried away into captivity or found refuge at Jerusalem during that time. It was within this environment that Isaiah prophesied concerning the judgments of God upon Israel and other nations and the future gathering of Israel. Later Jewish tradition holds that Isaiah eventually suffered a martyr’s death at the hands of King Manasseh.",
+  "pages": [
+    {
+      "slug": "isaiah-bofm",
+      "title": "Isaiah in the Book of Mormon",
+      "year": "circa 739 B.C.-695 B.C.",
+      "word_count": 12925,
+      "description": "Isaiah received his call as a prophet the year the Israelite king Uzziah died. He prophesied during the reigns of Jotham, Ahaz, and Hezekiah. He lived during a time of significant transition in the history of Israel and Judah. He is believed to have been one of the most poetic of Israel’s prophets. Due to the people’s wickedness and unbelief, his teachings were not always heeded or well received.\n\n During the reign of Hezekiah, the northern kingdom of Israel was destroyed by Assyria and much of the southern kingdom of Judah (Isaiah’s native land) was destroyed as well. Survivors from the Assyrian invasion were carried away into captivity or found refuge at Jerusalem during that time. It was within this environment that Isaiah prophesied concerning the judgments of God upon Israel and other nations and the future gathering of Israel. Later Jewish tradition holds that Isaiah eventually suffered a martyr’s death at the hands of King Manasseh.",
+      "image": "./main.jpg",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that Isaiah has more unique words than any other speaker in the Book of Mormon?",
+          "analysis_id": "isaiah-bofm",
+          "html": "./isaiah-bofm.html"
+        },
+        {
+          "order": 2,
+          "heading": "Chronology",
+          "analysis_id": "isaiah-bofm2",
+          "html": "./isaiah-bofm2.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Major speakers/isaiah-bofm.json"
+      }
+    }
+  ]
+}

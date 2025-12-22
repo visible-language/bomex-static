@@ -1,0 +1,31 @@
+{
+  "person_id": "gideon",
+  "tier": "minor",
+  "group": "gideon",
+  "display_name": "Gideon",
+  "year": "circa 145 B.C.",
+  "word_count": 405,
+  "image": "./main.jpg",
+  "description": "",
+  "pages": [
+    {
+      "slug": "gideon",
+      "title": "Gideon",
+      "year": "circa 145 B.C.",
+      "word_count": 405,
+      "description": "",
+      "image": "./main.jpg",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that Gideon uses the word \"pacify\" two out of the three times it appears in the entire Book of Mormon?",
+          "analysis_id": "gideon",
+          "html": "./gideon.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Minor speakers/gideon.json"
+      }
+    }
+  ]
+}

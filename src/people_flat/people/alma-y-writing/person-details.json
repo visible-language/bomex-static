@@ -1,0 +1,69 @@
+{
+  "person_id": "alma-y-writing",
+  "tier": "major",
+  "group": "Alma II",
+  "display_name": "Alma the Younger",
+  "year": "144 B.C.-73 B.C.",
+  "word_count": 20005,
+  "image": "./main.jpg",
+  "description": "Alma II was the son of Alma I who organized the Church of Christ among the people of King Noah in the land of Nephi. In his earlier life Alma had been a wicked man but was converted to Christ after the miraculous intervention of an angel of God (Mosiah 27:8-37). King Mosiah entrusted him with the sacred archive of Nephite records (Mosiah 28:20). Following the death of his father Alma became High Priest over the Church. Alma also served as the first Chief Judge over the people of Nephi for eight years after which he voluntarily gave up the judgment seat to spend the remainder of his life preaching the Gospel (Alma 4:16-19).",
+  "pages": [
+    {
+      "slug": "alma-y-writing",
+      "title": "Alma the Younger",
+      "year": "144 B.C.-73 B.C.",
+      "word_count": 20005,
+      "description": "Alma II was the son of Alma I who organized the Church of Christ among the people of King Noah in the land of Nephi. In his earlier life Alma had been a wicked man but was converted to Christ after the miraculous intervention of an angel of God (Mosiah 27:8-37). King Mosiah entrusted him with the sacred archive of Nephite records (Mosiah 28:20). Following the death of his father Alma became High Priest over the Church. Alma also served as the first Chief Judge over the people of Nephi for eight years after which he voluntarily gave up the judgment seat to spend the remainder of his life preaching the Gospel (Alma 4:16-19).",
+      "image": "./main.jpg",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that Alma II refers to spiritual rebirth more than any other speaker in the Book of Mormon?",
+          "analysis_id": "alma-y-writing",
+          "html": "./alma-y-writing.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Major speakers/Alma II/alma-y-writing.json"
+      }
+    },
+    {
+      "slug": "alma-y-cast-out",
+      "title": "Alma�s Use of the Phrase \"Cast Out\"",
+      "year": "144 B.C.-73 B.C.",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that Alma II uses the unpleasant experience of being \"cast out\" to help the Zoramite poor appreciate the value of the word of Christ in their lives?",
+          "analysis_id": "alma-y-cast-out",
+          "html": "./alma-y-cast-out.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Major speakers/Alma II/alma-y-cast-out.json"
+      }
+    },
+    {
+      "slug": "alma-y-state",
+      "title": "Alma�s Use of the Term \"State\"",
+      "year": "144 B.C.-73 B.C.",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that Alma II�s use of the term \"state\" distinguishes him from other Book of Mormon speakers?",
+          "analysis_id": "alma-y-state",
+          "html": "./alma-y-state.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Major speakers/Alma II/alma-y-state.json"
+      }
+    }
+  ]
+}

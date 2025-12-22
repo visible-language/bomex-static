@@ -1,0 +1,137 @@
+{
+  "item_id": "alma-y-pride",
+  "category": "influences",
+  "group": "Alma II",
+  "display_name": "Alma and the Words of Jacob on the Dangers of Pride and Riches",
+  "year": "144 B.C.-73 B.C.",
+  "word_count": 0,
+  "image": "",
+  "description": "",
+  "pages": [
+    {
+      "slug": "alma-y-plan",
+      "title": "Alma and Lehi�s Words about the Plan of Happiness",
+      "year": "144 B.C.-73 B.C.",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that Lehi�s counsel on the plates of Nephi about the divine plan of happiness was helpful to Alma II as he counseled his son Corianton?",
+          "analysis_id": "alma-y-plan",
+          "html": "./alma-y-plan.html"
+        },
+        {
+          "order": 2,
+          "heading": "Alma and the Small Plates",
+          "analysis_id": "alma-y-plan2",
+          "html": "./alma-y-plan2.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Influences/Alma II/alma-y-plan.json"
+      }
+    },
+    {
+      "slug": "alma-y-plates",
+      "title": "Alma and Nephi�s Teachings about the Plates and the Liahona",
+      "year": "144 B.C.-73 B.C.",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that Alma II drew upon Nephi�s teachings about the plates and the Liahona to explain important gospel principles to his son Helaman?",
+          "analysis_id": "alma-y-plates",
+          "html": "./alma-y-plates.html"
+        },
+        {
+          "order": 2,
+          "heading": "Alma and the Small Plates",
+          "analysis_id": "alma-y-plates2",
+          "html": "./alma-y-plates2.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Influences/Alma II/alma-y-plates.json"
+      }
+    },
+    {
+      "slug": "alma-y-pride",
+      "title": "Alma and the Words of Jacob on the Dangers of Pride and Riches",
+      "year": "144 B.C.-73 B.C.",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that Alma II drew upon the teachings of Jacob in the plates of Nephi to warn the Nephites in Zarahemla of the dangers of riches and pride?",
+          "analysis_id": "alma-y-pride",
+          "html": "./alma-y-pride.html"
+        },
+        {
+          "order": 2,
+          "heading": "Alma and the Words of Jacob",
+          "analysis_id": "alma-y-pride2",
+          "html": "./alma-y-pride2.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Influences/Alma II/alma-y-pride.json"
+      }
+    },
+    {
+      "slug": "alma-y-abinadi",
+      "title": "Alma�s Counsel to His Son and the Words of Abinadi",
+      "year": "144 B.C.-73 B.C.",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that Alma II used the teachings of Abinadi to counsel his son, Corianton?",
+          "analysis_id": "alma-y-abinadi",
+          "html": "./alma-y-abinadi.html"
+        },
+        {
+          "order": 2,
+          "heading": "Comparison of Abinadi's and Alma's words",
+          "analysis_id": "alma-y-abinadi2",
+          "html": "./alma-y-abinadi2.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Influences/Alma II/alma-y-abinadi.json"
+      }
+    },
+    {
+      "slug": "alma-y-lehi",
+      "title": "Alma�s Words and Lehi�s Visions",
+      "year": "144 B.C.-73 B.C.",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that Alma II�s words reflect the accounts of the visions of his ancestor Lehi?",
+          "analysis_id": "alma-y-lehi",
+          "html": "./alma-y-lehi.html"
+        },
+        {
+          "order": 2,
+          "heading": "Alma and the Small Plates",
+          "analysis_id": "alma-y-lehi2",
+          "html": "./alma-y-lehi2.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Influences/Alma II/alma-y-lehi.json"
+      }
+    }
+  ]
+}

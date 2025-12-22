@@ -1,0 +1,31 @@
+{
+  "item_id": "came-to-pass",
+  "category": "concepts",
+  "group": "came-to-pass",
+  "display_name": "\"It Came to Pass\" and \"It Shall Come to Pass\"",
+  "year": "",
+  "word_count": 0,
+  "image": "",
+  "description": "The witty writer Mark Twain once quipped, \"If you took out `it came to pass’ from the Book of Mormon, it would be only a pamphlet.\" An analysis of this phrase, however, shows that it only constitutes 0.5% of the words in the entire text. A study of the use of the phrases \"it came to pass\" and \"it shall come to pass\" shows significant differences in the way prominent Book of Mormon writers and speakers use the phrase, highlighting distinctions of style.",
+  "pages": [
+    {
+      "slug": "came-to-pass",
+      "title": "\"It Came to Pass\" and \"It Shall Come to Pass\"",
+      "year": "",
+      "word_count": 0,
+      "description": "The witty writer Mark Twain once quipped, \"If you took out `it came to pass’ from the Book of Mormon, it would be only a pamphlet.\" An analysis of this phrase, however, shows that it only constitutes 0.5% of the words in the entire text. A study of the use of the phrases \"it came to pass\" and \"it shall come to pass\" shows significant differences in the way prominent Book of Mormon writers and speakers use the phrase, highlighting distinctions of style.",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that when Heavenly Father, Jesus, the Holy Ghost, or heavenly messengers speak in the Book of Mormon, they never use the past-tense phrase \"it came to pass,\" but only the future \"it shall come to pass\"?",
+          "analysis_id": "came-to-pass",
+          "html": "./came-to-pass.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Concepts/came-to-pass.json"
+      }
+    }
+  ]
+}

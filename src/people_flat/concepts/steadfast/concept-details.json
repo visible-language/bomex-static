@@ -1,0 +1,31 @@
+{
+  "item_id": "steadfast",
+  "category": "concepts",
+  "group": "steadfast",
+  "display_name": "Steadfast and Immovable",
+  "year": "",
+  "word_count": 0,
+  "image": "",
+  "description": "",
+  "pages": [
+    {
+      "slug": "steadfast",
+      "title": "Steadfast and Immovable",
+      "year": "",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that Lehi�s hopes for Laman and Lemuel, which were not fulfilled in his lifetime, were realized hundreds of years later in the lives of their descendants?",
+          "analysis_id": "steadfast",
+          "html": "./steadfast.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Concepts/steadfast.json"
+      }
+    }
+  ]
+}

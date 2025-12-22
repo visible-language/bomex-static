@@ -1,0 +1,75 @@
+{
+  "person_id": "lehi",
+  "tier": "major",
+  "group": "Lehi",
+  "display_name": "Lehi",
+  "year": "circa 600 B.C.-585 B.C.",
+  "word_count": 4665,
+  "image": "./main.jpg",
+  "description": "The prophet Lehi was a contemporary of Jeremiah and called to preach repentance to the people of Jerusalem during the first year of the reign of Zedekiah, King of Judah (600 B.C.). After his message was rejected, his life was in danger, and the Lord commanded him to flee from his homeland. He led his family on a journey through the wilderness to a new land of promise in the Americas. \n\nSome of his revelations and teachings were recorded by his son Nephi in the Book of Mormon. These include his divine call, his vision of the tree of life, teachings about the coming of the Messiah, and prophecies about his children and their descendants. His family was greatly blessed by God, but often experienced conflict, stemming from the rebellion of his oldest sons, who were jealous of their brother Nephi and did not believe his prophetic teachings or those of their father.",
+  "pages": [
+    {
+      "slug": "lehi",
+      "title": "Lehi",
+      "year": "circa 600 B.C.-585 B.C.",
+      "word_count": 4665,
+      "description": "The prophet Lehi was a contemporary of Jeremiah and called to preach repentance to the people of Jerusalem during the first year of the reign of Zedekiah, King of Judah (600 B.C.). After his message was rejected, his life was in danger, and the Lord commanded him to flee from his homeland. He led his family on a journey through the wilderness to a new land of promise in the Americas. \n\nSome of his revelations and teachings were recorded by his son Nephi in the Book of Mormon. These include his divine call, his vision of the tree of life, teachings about the coming of the Messiah, and prophecies about his children and their descendants. His family was greatly blessed by God, but often experienced conflict, stemming from the rebellion of his oldest sons, who were jealous of their brother Nephi and did not believe his prophetic teachings or those of their father.",
+      "image": "./main.jpg",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that Lehi is the only Book of Mormon speaker who uses the word \"opposition?\"",
+          "analysis_id": "lehi",
+          "html": "./lehi.html"
+        },
+        {
+          "order": 2,
+          "heading": "Chronology",
+          "analysis_id": "lehi2",
+          "html": "./lehi2.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Major speakers/Lehi/lehi.json"
+      }
+    },
+    {
+      "slug": "lehi-messiah",
+      "title": "Lehi and the Messiah",
+      "year": "",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that Lehi is the only Book of Mormon prophet to refer to the Savior as the \"Holy Messiah\"?",
+          "analysis_id": "lehi-messiah",
+          "html": "./lehi-messiah.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Major speakers/Lehi/lehi-messiah.json"
+      }
+    },
+    {
+      "slug": "lehi-mediator",
+      "title": "The Great Mediator",
+      "year": "",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that Lehi is the only Book of Mormon prophet to use the word \"Mediator\"?",
+          "analysis_id": "lehi-mediator",
+          "html": "./lehi-mediator.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Major speakers/Lehi/lehi-mediator.json"
+      }
+    }
+  ]
+}

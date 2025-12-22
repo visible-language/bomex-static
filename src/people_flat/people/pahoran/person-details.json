@@ -1,0 +1,50 @@
+{
+  "person_id": "pahoran",
+  "tier": "minor",
+  "group": "Pahoran",
+  "display_name": "Pahoran Son of Nephihah",
+  "year": "125 B.C.-52 B.C.",
+  "word_count": 817,
+  "image": "./main.jpg",
+  "description": "Pahoran was the son of Nephihah and was the third chief judge over the Nephites (Alma 50:39-40). He reigned during a significant period of war between the Nephites and the Lamanites. Based upon the text, he appears to have been a righteous man.",
+  "pages": [
+    {
+      "slug": "pahoran",
+      "title": "Pahoran Son of Nephihah",
+      "year": "125 B.C.-52 B.C.",
+      "word_count": 817,
+      "description": "Pahoran was the son of Nephihah and was the third chief judge over the Nephites (Alma 50:39-40). He reigned during a significant period of war between the Nephites and the Lamanites. Based upon the text, he appears to have been a righteous man.",
+      "image": "./main.jpg",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that Pahoran was humble enough to not become angry when he was falsely accused of being a traitor?",
+          "analysis_id": "pahoran",
+          "html": "./pahoran.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Minor speakers/Pahoran/pahoran.json"
+      }
+    },
+    {
+      "slug": "pahoran-stand-fast",
+      "title": "Stand Fast in Liberty",
+      "year": "125 B.C.-52 B.C.",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that Pahoran was as committed to freedom from sin as he was to freedom from kings?",
+          "analysis_id": "pahoran-stand-fast",
+          "html": "./pahoran-stand-fast.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Minor speakers/Pahoran/pahoran-stand-fast.json"
+      }
+    }
+  ]
+}

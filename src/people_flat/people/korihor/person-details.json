@@ -1,0 +1,56 @@
+{
+  "person_id": "korihor",
+  "tier": "minor",
+  "group": "Korihor",
+  "display_name": "Korihor",
+  "year": "circa 74 B.C.",
+  "word_count": 0,
+  "image": "./main.jpg",
+  "description": "Korihor was a false but influential teacher, during the reign of Chief Judge Nephihah, who preached against the Church and the doctrine of Christ. He declared that there was no God and claimed that a man prospered only according to his abilities, that \"whatever a man did was no crime\" (Alma 30:17), and that \"when a man was dead, that was the end thereof\" (Alma 30:18).\n\n According to Korihor, there was no such thing as sin, and therefore, no need for an atonement. He claimed that beliefs, actions, and ordinances based upon the teachings of Christ were foolishness. Joy from repentance, spiritual gifts, and personal revelation, he claimed, were fantasies based upon a deranged mind (Alma 30:13-16). He was brought before Alma, questioned, and demanded a sign from God. As the sign, he was struck dumb. Unable to speak, he was forced to beg for food. When he went among the Zoramites, he was trampled to death.",
+  "pages": [
+    {
+      "slug": "korihor",
+      "title": "Korihor",
+      "year": "circa 74 B.C.",
+      "word_count": 0,
+      "description": "Korihor was a false but influential teacher, during the reign of Chief Judge Nephihah, who preached against the Church and the doctrine of Christ. He declared that there was no God and claimed that a man prospered only according to his abilities, that \"whatever a man did was no crime\" (Alma 30:17), and that \"when a man was dead, that was the end thereof\" (Alma 30:18).\n\n According to Korihor, there was no such thing as sin, and therefore, no need for an atonement. He claimed that beliefs, actions, and ordinances based upon the teachings of Christ were foolishness. Joy from repentance, spiritual gifts, and personal revelation, he claimed, were fantasies based upon a deranged mind (Alma 30:13-16). He was brought before Alma, questioned, and demanded a sign from God. As the sign, he was struck dumb. Unable to speak, he was forced to beg for food. When he went among the Zoramites, he was trampled to death.",
+      "image": "./main.jpg",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that Korihor is the only Book of Mormon speaker to use the phrase, \"the foolish traditions of your fathers\"?",
+          "analysis_id": "korihor",
+          "html": "./korihor.html"
+        },
+        {
+          "order": 2,
+          "heading": "Chronology",
+          "analysis_id": "korihor2",
+          "html": "./korihor2.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Minor speakers/Korihor/korihor.json"
+      }
+    },
+    {
+      "slug": "korihor-partial",
+      "title": "Korihor and Deception by Partial Truth",
+      "year": "circa 74 B.C.",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that Korihor deceived the people by presenting only a part of the truth and then making it seem foolish?",
+          "analysis_id": "korihor-partial",
+          "html": "./korihor-partial.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Minor speakers/Korihor/korihor-partial.json"
+      }
+    }
+  ]
+}
