@@ -1,0 +1,112 @@
+{
+  "person_id": "christ-america",
+  "tier": "major",
+  "group": "Jesus",
+  "display_name": "Christ in America",
+  "year": "A. D. 34",
+  "word_count": 9820,
+  "image": "./main.jpg",
+  "description": "For the people of Nephi in the land of promise, the Savior’s manifestation to them, after His death and His appearance in glory following His resurrection from the dead, was a transformative event. At the beginning of the thirty-fourth year after the sign of Jesus’ birth had been given, there was great destruction among the wicked, followed by three days of darkness. It was during this time of darkness that Jesus Christ announced the scope of the destruction that had occurred, identified Himself as the Creator and Redeemer, and invited those who had not been destroyed to repent and receive Him (3 Nephi 9:1-22; 10:3-7). \n\nLater, at the end of that same year, while the people were gathered at a temple in the land of Bountiful, Jesus descended from heaven and taught the people for a period of three days (3 Nephi 11-26). He continued to visit them from time to time thereafter during this time of righteousness (3 Nephi 26-28). Many of the words He spoke to the people during this visitation were recorded, including those that Mormon was permitted to inscribe in the Book of Mormon (3 Nephi 26:6-11).",
+  "pages": [
+    {
+      "slug": "christ-america",
+      "title": "Christ in America",
+      "year": "A. D. 34",
+      "word_count": 9820,
+      "description": "For the people of Nephi in the land of promise, the Savior’s manifestation to them, after His death and His appearance in glory following His resurrection from the dead, was a transformative event. At the beginning of the thirty-fourth year after the sign of Jesus’ birth had been given, there was great destruction among the wicked, followed by three days of darkness. It was during this time of darkness that Jesus Christ announced the scope of the destruction that had occurred, identified Himself as the Creator and Redeemer, and invited those who had not been destroyed to repent and receive Him (3 Nephi 9:1-22; 10:3-7). \n\nLater, at the end of that same year, while the people were gathered at a temple in the land of Bountiful, Jesus descended from heaven and taught the people for a period of three days (3 Nephi 11-26). He continued to visit them from time to time thereafter during this time of righteousness (3 Nephi 26-28). Many of the words He spoke to the people during this visitation were recorded, including those that Mormon was permitted to inscribe in the Book of Mormon (3 Nephi 26:6-11).",
+      "image": "./main.jpg",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that Jesus’ favorite noun is \"Father\"?",
+          "analysis_id": "christ-america",
+          "html": "./christ-america.html"
+        },
+        {
+          "order": 2,
+          "heading": "Chronology",
+          "analysis_id": "christ-america2",
+          "html": "./christ-america2.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Major speakers/Jesus/christ-america.json"
+      }
+    },
+    {
+      "slug": "jc-mormon",
+      "title": "Mormon and Additional Teachings of Jesus",
+      "year": "",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that, while Mormon quotes only \"a lesser part\" of the teachings of the resurrected Savior in his abridgment, we receive some of the \"greater part\" of those words indirectly through Moroni, who included one of his father’s sermons?",
+          "analysis_id": "jc-mormon",
+          "html": "./jc-mormon.html"
+        },
+        {
+          "order": 2,
+          "heading": "",
+          "analysis_id": "jc-mormon2",
+          "html": "./jc-mormon2.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Major speakers/Jesus/jc-mormon.json"
+      }
+    },
+    {
+      "slug": "jc-moroni",
+      "title": "Moroni and Additional Teachings of Jesus",
+      "year": "",
+      "word_count": 0,
+      "description": "In a previous piece, we saw how additional teachings of Jesus, which are not quoted by Mormon in his abridgment, come to us indirectly through Moroni’s inclusion of a sermon by his father. Here, we will examine examples of additional teachings of the resurrected Jesus to the Nephites, found in Moroni’s writings in Mormon 9, his commentary on the Book of Ether, and his concluding words in the last book of the Book of Mormon.",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that the teachings of the resurrected Jesus to the Nephites cited by Moroni help increase our faith in the words of Jesus found in the Bible?",
+          "analysis_id": "jc-moroni",
+          "html": "./jc-moroni.html"
+        },
+        {
+          "order": 2,
+          "heading": "",
+          "analysis_id": "jc-moroni2",
+          "html": "./jc-moroni2.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Major speakers/Jesus/jc-moroni.json"
+      }
+    },
+    {
+      "slug": "jc-bowing-down",
+      "title": "Ye Must Bow Down",
+      "year": "A. D. 34",
+      "word_count": 0,
+      "description": "Shortly before his death, the prophet Nephi, the son of Lehi, taught his people to believe in and worship Jesus Christ. He explained that \"the right way is to believe in Christ, and deny him not; and Christ is the Holy One of Israel; wherefore ye must bow down before him, and worship him with all your might, mind, and strength, and your whole soul; and if ye do this ye shall in nowise be cast out\" (2 Nephi 25:29).\n\n He then prophesied that Jesus would appear to His people after His resurrection from the dead, and they should prepare themselves to receive and obey the teachings He would give them at that time (2 Nephi 26:1).",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that when the people bowed down before the resurrected Jesus at the time of his visit to the Nephites, they were following the instructions given by Nephi hundreds of years before?",
+          "analysis_id": "jc-bowing-down",
+          "html": "./jc-bowing-down.html"
+        },
+        {
+          "order": 2,
+          "heading": "",
+          "analysis_id": "jc-bowing-down2",
+          "html": "./jc-bowing-down2.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Major speakers/Jesus/jc-bowing-down.json"
+      }
+    }
+  ]
+}

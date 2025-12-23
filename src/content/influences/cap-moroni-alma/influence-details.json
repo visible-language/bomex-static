@@ -1,0 +1,31 @@
+{
+  "item_id": "cap-moroni-alma",
+  "category": "influences",
+  "group": "cap-moroni-alma",
+  "display_name": "Captain Moroni and Alma",
+  "year": "100 B.C.-56 B.C.",
+  "word_count": 0,
+  "image": "",
+  "description": "",
+  "pages": [
+    {
+      "slug": "cap-moroni-alma",
+      "title": "Captain Moroni and Alma",
+      "year": "100 B.C.-56 B.C.",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that Moroni’s words show that he was influenced by the teachings of the prophet Alma?",
+          "analysis_id": "cap-moroni-alma",
+          "html": "./cap-moroni-alma.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Influences/cap-moroni-alma.json"
+      }
+    }
+  ]
+}

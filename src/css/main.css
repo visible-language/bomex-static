@@ -356,6 +356,194 @@ footer {
     opacity: 0.7;
 }
 
+/* Generated content pages */
+.page-hero {
+    height: 160px;
+    background-size: cover;
+    background-position: center;
+}
+
+.page-hero--people {
+    background-image: url('../img/book_glasses_type.png');
+}
+
+.page-hero--influences {
+    background-image: url('../img/bom-on-leaves.png');
+}
+
+.page-hero--concepts {
+    background-image: url('../img/book_glasses_type.png');
+}
+
+.page-content--wide {
+    max-width: 62rem;
+}
+
+.content-title {
+    font-size: 2.4rem;
+    line-height: 1.15;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.content-subtitle {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1.5rem;
+    line-height: 1.25;
+    color: var(--primary-color);
+    margin-bottom: 1.75rem;
+}
+
+.people-search {
+    margin-bottom: 1rem;
+}
+
+.people-search .text-input {
+    background-color: var(--secondary-color);
+    border: none;
+    border-radius: 999px;
+    padding: 0.65rem 2.5rem 0.65rem 1rem;
+    color: var(--primary-color);
+}
+
+.people-search .text-input::placeholder {
+    color: rgba(44, 75, 85, 0.55);
+}
+
+.people-search .search-icon-btn {
+    right: 14px;
+}
+
+.people-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.person-card {
+    display: block;
+    text-align: center;
+    padding: 0;
+}
+
+.person-thumb {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 4px;
+    display: block;
+    background-color: var(--secondary-color);
+}
+
+.person-thumb--empty {
+    background-color: var(--secondary-color);
+}
+
+.person-name {
+    margin-top: 0.5rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 0.8rem;
+    line-height: 1.15;
+    color: var(--primary-color);
+}
+
+.list {
+    background-color: var(--white);
+}
+
+.list-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid rgba(44, 75, 85, 0.25);
+    color: var(--primary-color);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1.25rem;
+    text-decoration: none;
+}
+
+.page-content a.list-row,
+.page-content a.list-row:hover,
+.page-content a.list-row:focus {
+    text-decoration: none;
+}
+
+.list-row i {
+    opacity: 0.65;
+    margin-left: 1rem;
+}
+
+.detail-hero {
+    height: 160px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.detail-hero-title {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(224, 224, 224, 0.75);
+    padding: 0.75rem 1rem;
+    text-align: center;
+}
+
+.detail-hero-title h1 {
+    color: var(--primary-color);
+    font-size: 2.2rem;
+}
+
+.accordion {
+    background-color: #eee;
+    border-radius: 6px;
+    margin: 0.75rem 0;
+    overflow: hidden;
+}
+
+.accordion summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 0.9rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--primary-color);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1.3rem;
+}
+
+.accordion summary::-webkit-details-marker {
+    display: none;
+}
+
+.accordion[open] summary i {
+    transform: rotate(180deg);
+}
+
+.accordion summary i {
+    transition: transform 0.15s;
+}
+
+.accordion-body {
+    background-color: var(--white);
+    padding: 1rem;
+}
+
+.subheading {
+    margin-top: 1rem;
+    font-size: 1rem;
+    color: var(--primary-color);
+}
+
+@media (max-width: 340px) {
+    .people-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
 /* Mobile Menu */
 .mobile-menu {
     display: none;

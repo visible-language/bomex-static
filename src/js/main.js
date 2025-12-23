@@ -1,20 +1,33 @@
 document.addEventListener("DOMContentLoaded", function() {
+    const rootPrefix = document.documentElement.getAttribute('data-root') || '';
+
     // Load Header
-    fetch('header.html')
+    fetch(rootPrefix + 'header.html')
         .then(response => response.text())
         .then(data => {
             document.querySelector('header').innerHTML = data;
+            applyRootLinks(rootPrefix);
             initMenu();
         })
         .catch(error => console.error('Error loading header:', error));
 
     // Load Footer
-    fetch('footer.html')
+    fetch(rootPrefix + 'footer.html')
         .then(response => response.text())
         .then(data => {
             document.querySelector('footer').innerHTML = data;
+            applyRootLinks(rootPrefix);
         })
         .catch(error => console.error('Error loading footer:', error));
+
+    function applyRootLinks(prefix) {
+        document.querySelectorAll('[data-root-href]').forEach(el => {
+            const href = el.getAttribute('data-root-href');
+            if (href) {
+                el.setAttribute('href', prefix + href);
+            }
+        });
+    }
 
     function initMenu() {
         const menuToggle = document.getElementById('menu-toggle');

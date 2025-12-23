@@ -1,0 +1,225 @@
+{
+  "person_id": "zenos",
+  "tier": "minor",
+  "group": "Zenos",
+  "display_name": "The Prophet Zenos",
+  "year": "",
+  "word_count": 4283,
+  "image": "./main.jpg",
+  "description": "Zenos was an Israelite prophet whose writings were recorded on the plates of brass. Selections of his words are found in a prophecy cited by Nephi (1 Nephi 19:11-17), his olive allegory reproduced by Jacob (Jacob 5:2-77), and a prayer quoted by Alma to the Zoramites (Alma 33:4-11). Only the resurrected Jesus and Isaiah are cited more than Zenos by Book of Mormon speakers.",
+  "pages": [
+    {
+      "slug": "zenos",
+      "title": "The Prophet Zenos",
+      "year": "",
+      "word_count": 4283,
+      "description": "Zenos was an Israelite prophet whose writings were recorded on the plates of brass. Selections of his words are found in a prophecy cited by Nephi (1 Nephi 19:11-17), his olive allegory reproduced by Jacob (Jacob 5:2-77), and a prayer quoted by Alma to the Zoramites (Alma 33:4-11). Only the resurrected Jesus and Isaiah are cited more than Zenos by Book of Mormon speakers.",
+      "image": "./main.jpg",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that Book of Mormon speakers quote Zenos more than any other prophet, except for Jesus and Isaiah?",
+          "analysis_id": "zenos",
+          "html": "./zenos.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Minor speakers/Zenos/zenos.json"
+      }
+    },
+    {
+      "slug": "zenos-prophecy-mountains",
+      "title": "Mountains Carried Up",
+      "year": "",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that the sign Zenos gives in his prophecy about mountains draws upon the Exodus story?",
+          "analysis_id": "zenos-prophecy-mountains",
+          "html": "./zenos-prophecy-mountains.html"
+        },
+        {
+          "order": 2,
+          "heading": "When Mountains Move",
+          "analysis_id": "zenos-prophecy-mountains2",
+          "html": "./zenos-prophecy-mountains2.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Minor speakers/Zenos/prophecy/zenos-prophecy-mountains.json"
+      }
+    },
+    {
+      "slug": "zenos-prophecy-opening",
+      "title": "Opening of the Earth",
+      "year": "",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that one of the signs given by Zenos of the Lord’s death, the opening of the earth, closely resembles the destruction of the followers of Korah?",
+          "analysis_id": "zenos-prophecy-opening",
+          "html": "./zenos-prophecy-opening.html"
+        },
+        {
+          "order": 2,
+          "heading": "Zenos and the Korah Rebellion",
+          "analysis_id": "zenos-prophecy-opening2",
+          "html": "./zenos-prophecy-opening2.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Minor speakers/Zenos/prophecy/zenos-prophecy-opening.json"
+      }
+    },
+    {
+      "slug": "zenos-prophecy-rejecting",
+      "title": "Rejecting the Holy One of Israel",
+      "year": "",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that Zenos likens the rejection of the Son of God by the Jews to Israel’s apostasy in the wilderness?",
+          "analysis_id": "zenos-prophecy-rejecting",
+          "html": "./zenos-prophecy-rejecting.html"
+        },
+        {
+          "order": 2,
+          "heading": "Israel’s Apostasy",
+          "analysis_id": "zenos-prophecy-rejecting2",
+          "html": "./zenos-prophecy-rejecting2.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Minor speakers/Zenos/prophecy/zenos-prophecy-rejecting.json"
+      }
+    },
+    {
+      "slug": "zenos-prophecy-remember",
+      "title": "Remembering the Covenant Made with the Fathers",
+      "year": "",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that Zenos draws upon the language of Moses’ plea, that the Lord would remember His covenant and spare Israel, to describe how the Lord will remember His covenant to gather Israel in the latter days?",
+          "analysis_id": "zenos-prophecy-remember",
+          "html": "./zenos-prophecy-remember.html"
+        },
+        {
+          "order": 2,
+          "heading": "",
+          "analysis_id": "zenos-prophecy-remember2",
+          "html": "./zenos-prophecy-remember2.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Minor speakers/Zenos/prophecy/zenos-prophecy-remember.json"
+      }
+    },
+    {
+      "slug": "zenos-prophecy",
+      "title": "The Prophecy of Zenos (1 Nephi 19:10-17)",
+      "year": "",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that Zenos uses language from the Exodus and the wilderness journey of ancient Israel to invite us to turn to the Son of God?",
+          "analysis_id": "zenos-prophecy",
+          "html": "./zenos-prophecy.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Minor speakers/Zenos/prophecy/zenos-prophecy.json"
+      }
+    },
+    {
+      "slug": "zenos-prophecy-darkness",
+      "title": "Three Days of Darkness",
+      "year": "",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that the sign of three days of darkness, which Zenos gave as a sign of the Lord’s death, recalls the three days of darkness over the land of Egypt?",
+          "analysis_id": "zenos-prophecy-darkness",
+          "html": "./zenos-prophecy-darkness.html"
+        },
+        {
+          "order": 2,
+          "heading": "Darkness as a Sign to the House of Israel",
+          "analysis_id": "zenos-prophecy-darkness2",
+          "html": "./zenos-prophecy-darkness2.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Minor speakers/Zenos/prophecy/zenos-prophecy-darkness.json"
+      }
+    },
+    {
+      "slug": "zenos-prophecy-thunder",
+      "title": "Thunder and Lightning, Fire and Smoke",
+      "year": "",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that Zenos’ prophecy that destructive forces of thunder and lightning, fire and smoke, which would be signs of the Lord’s death, evokes the phenomena that were witnessed at Sinai following the Exodus?",
+          "analysis_id": "zenos-prophecy-thunder",
+          "html": "./zenos-prophecy-thunder.html"
+        },
+        {
+          "order": 2,
+          "heading": "Sinai and Zenos",
+          "analysis_id": "zenos-prophecy-thunder2",
+          "html": "./zenos-prophecy-thunder2.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Minor speakers/Zenos/prophecy/zenos-prophecy-thunder.json"
+      }
+    },
+    {
+      "slug": "zenos-prophecy-visiting",
+      "title": "Visiting the House of Israel",
+      "year": "",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that Zenos’ prophecy about the Lord visiting the house of Israel at the time of His death draws upon language associated with the Exodus, where the Lord visited His people in mercy and judgment?",
+          "analysis_id": "zenos-prophecy-visiting",
+          "html": "./zenos-prophecy-visiting.html"
+        },
+        {
+          "order": 2,
+          "heading": "Two Kinds of Visitation",
+          "analysis_id": "zenos-prophecy-visiting2",
+          "html": "./zenos-prophecy-visiting2.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Minor speakers/Zenos/prophecy/zenos-prophecy-visiting.json"
+      }
+    }
+  ]
+}

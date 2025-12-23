@@ -1,0 +1,69 @@
+{
+  "person_id": "benjamin-new",
+  "tier": "major",
+  "group": "Benjamin",
+  "display_name": "King Benjamin",
+  "year": "200 B.C.-121 B.C.",
+  "word_count": 4242,
+  "image": "./main.jpg",
+  "description": "King Benjamin was the son of Mosiah I, a righteous king, and a seer who ruled over the land of Zarahemla. His people included those of different cultural backgrounds: the original inhabitants of Zarahemla and Nephites who had migrated to that region under the leadership of his father. In his earlier years, he had personally fought in defense of his people against the Lamanites and was successful in driving them out of the land.",
+  "pages": [
+    {
+      "slug": "benjamin-new",
+      "title": "King Benjamin",
+      "year": "200 B.C.-121 B.C.",
+      "word_count": 4242,
+      "description": "King Benjamin was the son of Mosiah I, a righteous king, and a seer who ruled over the land of Zarahemla. His people included those of different cultural backgrounds: the original inhabitants of Zarahemla and Nephites who had migrated to that region under the leadership of his father. In his earlier years, he had personally fought in defense of his people against the Lamanites and was successful in driving them out of the land.",
+      "image": "./main.jpg",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that King Benjamin is the only Nephite leader to use the word \"omnipotent\"?",
+          "analysis_id": "benjamin-new",
+          "html": "./benjamin-new.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Major speakers/Benjamin/benjamin-new.json"
+      }
+    },
+    {
+      "slug": "benjamin-contention",
+      "title": "Avoiding Contention and Deception",
+      "year": "200 B.C.-121 B.C.",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that King Benjamin provides keys that can help us avoid contention and being deceived by false teachings and teachers?",
+          "analysis_id": "benjamin-contention",
+          "html": "./benjamin-contention.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Major speakers/Benjamin/benjamin-contention.json"
+      }
+    },
+    {
+      "slug": "benjamin-poor",
+      "title": "King Benjamin and the Poor",
+      "year": "200 B.C.-121 B.C.",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that King Benjamin’s teachings about the poor show us how humility helps us to obtain greater blessings and happiness?",
+          "analysis_id": "benjamin-poor",
+          "html": "./benjamin-poor.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Major speakers/Benjamin/benjamin-poor.json"
+      }
+    }
+  ]
+}

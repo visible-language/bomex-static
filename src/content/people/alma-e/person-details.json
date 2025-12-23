@@ -1,0 +1,62 @@
+{
+  "person_id": "alma-e",
+  "tier": "minor",
+  "group": "Alma I",
+  "display_name": "Alma the Elder",
+  "year": "173 B.C.-91 B.C.",
+  "word_count": 578,
+  "image": "./main.jpg",
+  "description": "Alma I was a descendant of Nephi. His immediate ancestors were among those who accompanied Zeniff in their resettlement of the lands of Nephi-Lehi and Shilom. When he was still a young man, King Noah appointed Alma as one of his priests. When the prophet Abinadi was brought before King Noah and his court, Alma became convinced of the truth of his words and attempted to persuade King Noah to spare the prophet’s life. Noah, angered by Alma’s support of the prophet, cast him out and sent servants to try to kill him; but Alma escaped and hid. \n\n Alma repented of his sins, recorded the words of Abinadi, and began to secretly teach them to the people. Several hundred people believed in these teachings, so Alma baptized them and organized them into a church at the Waters of Mormon. When King Noah learned of Alma’s activities, he sent an army to destroy him and his followers. Alma and his people escaped into the wilderness, where they founded another settlement that they named Helam.\n\n Although greatly loved by his people, Alma refused to be their king. They were brought into bondage by a group of Lamanites led by Amulon, one of Noah’s former priests, but were miraculously delivered by God. They migrated to the land of Zarahemla, where King Mosiah II permitted Alma to organize the Church of God among his people. Alma was a man of great faith and died at the age of 82.",
+  "pages": [
+    {
+      "slug": "alma-e",
+      "title": "Alma the Elder",
+      "year": "173 B.C.-91 B.C.",
+      "word_count": 578,
+      "description": "Alma I was a descendant of Nephi. His immediate ancestors were among those who accompanied Zeniff in their resettlement of the lands of Nephi-Lehi and Shilom. When he was still a young man, King Noah appointed Alma as one of his priests. When the prophet Abinadi was brought before King Noah and his court, Alma became convinced of the truth of his words and attempted to persuade King Noah to spare the prophet’s life. Noah, angered by Alma’s support of the prophet, cast him out and sent servants to try to kill him; but Alma escaped and hid. \n\n Alma repented of his sins, recorded the words of Abinadi, and began to secretly teach them to the people. Several hundred people believed in these teachings, so Alma baptized them and organized them into a church at the Waters of Mormon. When King Noah learned of Alma’s activities, he sent an army to destroy him and his followers. Alma and his people escaped into the wilderness, where they founded another settlement that they named Helam.\n\n Although greatly loved by his people, Alma refused to be their king. They were brought into bondage by a group of Lamanites led by Amulon, one of Noah’s former priests, but were miraculously delivered by God. They migrated to the land of Zarahemla, where King Mosiah II permitted Alma to organize the Church of God among his people. Alma was a man of great faith and died at the age of 82.",
+      "image": "./main.jpg",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that Alma’s words show influences from the words of the prophet Abinadi?",
+          "analysis_id": "alma-e",
+          "html": "./alma-e.html"
+        },
+        {
+          "order": 2,
+          "heading": "Chronology",
+          "analysis_id": "alma-e2",
+          "html": "./alma-e2.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Minor speakers/Alma I/alma-e.json"
+      }
+    },
+    {
+      "slug": "alma-e-covenant",
+      "title": "The Baptismal Covenant and the People of Alma I",
+      "year": "173 B.C.-91 B.C.",
+      "word_count": 0,
+      "description": "When Alma invited those who believed on his words to be baptized, he outlined the practices that exemplified those who were willing to be called the Lord’s covenant people. Many years after they were baptized, Alma’s faithful group was brought into bondage to the Lamanites. In the midst of their afflictions, the Lord responded to their prayers and covenanted to deliver them from bondage. When we compare Alma’s words about the baptismal covenant with the Lord’s words when they were in bondage, we find that the Lord covenanted to do what they had earlier been willing to do when they were baptized.",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Did you know that Jesus’ promises and blessings in delivering Alma I and his people from bondage reflected the covenant promises they had made when they were baptized?",
+          "analysis_id": "alma-e-covenant",
+          "html": "./alma-e-covenant.html"
+        },
+        {
+          "order": 2,
+          "heading": "",
+          "analysis_id": "alma-e-covenant2",
+          "html": "./alma-e-covenant2.html"
+        }
+      ],
+      "source": {
+        "json": "src/people/Minor speakers/Alma I/alma-e-covenant.json"
+      }
+    }
+  ]
+}
