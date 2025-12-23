@@ -538,6 +538,87 @@ footer {
     color: var(--primary-color);
 }
 
+/* Explore by Person */
+.explore-person-select {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 0.25rem 0 1rem;
+}
+
+.explore-person-select .select-input {
+    flex: 1;
+    margin: 0;
+}
+
+.explore-person-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    object-fit: cover;
+    background-color: var(--secondary-color);
+}
+
+.explore-person-bio p {
+    margin-bottom: 1rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: var(--primary-color);
+}
+
+.explore-person-tabs {
+    display: inline-flex;
+    background-color: var(--secondary-color);
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 0.75rem 0;
+}
+
+.explore-person-tab {
+    border: none;
+    background: transparent;
+    padding: 0.55rem 0.9rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1.05rem;
+    color: var(--primary-color);
+    cursor: pointer;
+}
+
+.explore-person-tab.is-active {
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.explore-widget-summary {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.explore-widget-summary > i {
+    opacity: 0.8;
+}
+
+.explore-widget-title {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1.1rem;
+    line-height: 1.1;
+}
+
+.explore-widget-subtitle {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 0.85rem;
+    line-height: 1.2;
+    opacity: 0.75;
+    margin-top: 0.15rem;
+}
+
+.explore-widget-frame iframe {
+    width: 100%;
+    height: 520px;
+    border: 0;
+    display: block;
+    background-color: var(--white);
+}
+
 @media (max-width: 340px) {
     .people-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));

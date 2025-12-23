@@ -1,0 +1,57 @@
+(function () {
+  function normalizeSlugFromPeopleHref(href) {
+    if (!href) return '';
+    var cleaned = href.split('#')[0].split('?')[0];
+    if (cleaned.endsWith('.html')) cleaned = cleaned.slice(0, -5);
+    return cleaned;
+  }
+
+  function fetchPeopleList() {
+    return fetch('people/index.html')
+      .then(function (r) { return r.text(); })
+      .then(function (html) {
+        var doc = new DOMParser().parseFromString(html, 'text/html');
+        var cards = doc.querySelectorAll('.person-card');
+        var people = [];
+
+        for (var i = 0; i < cards.length; i++) {
+          var href = cards[i].getAttribute('href');
+          var slug = normalizeSlugFromPeopleHref(href);
+          var nameEl = cards[i].querySelector('.person-name');
+          var name = nameEl ? nameEl.textContent.trim() : slug;
+          if (slug) people.push({ slug: slug, name: name });
+        }
+
+        return people;
+      });
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var selectEl = document.getElementById('home-person-select');
+    if (!selectEl) return;
+
+    fetchPeopleList()
+      .then(function (people) {
+        // Preserve the first option ("Select a Name")
+        while (selectEl.options.length > 1) {
+          selectEl.remove(1);
+        }
+
+        for (var i = 0; i < people.length; i++) {
+          var opt = document.createElement('option');
+          opt.value = people[i].slug;
+          opt.textContent = people[i].name;
+          selectEl.appendChild(opt);
+        }
+      })
+      .catch(function () {
+        // Leave the default option if fetch fails.
+      });
+
+    selectEl.addEventListener('change', function () {
+      var slug = selectEl.value;
+      if (!slug) return;
+      window.location.href = 'explore-by-person/?person=' + encodeURIComponent(slug) + '&tab=message';
+    });
+  });
+})();

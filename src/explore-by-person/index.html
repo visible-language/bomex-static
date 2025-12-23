@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" data-root="../">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explore by Person</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  <header></header>
+
+  <section class="page-hero page-hero--people"></section>
+
+  <section class="page-content page-content--wide">
+    <h1 class="content-title">Explore by Person</h1>
+  </section>
+
+  <section class="page-content page-content--wide">
+    <div class="explore-person-select">
+      <select id="person-select" class="select-input" aria-label="Select a person"></select>
+      <img id="person-avatar" class="explore-person-avatar" alt="" loading="lazy">
+    </div>
+
+    <h2 class="subheading">Brief Biography:</h2>
+    <div id="person-bio" class="explore-person-bio"></div>
+
+    <div class="explore-person-tabs" role="tablist" aria-label="Explore tabs">
+      <button id="tab-message" class="explore-person-tab" type="button" role="tab" aria-selected="true">Message</button>
+      <button id="tab-life" class="explore-person-tab" type="button" role="tab" aria-selected="false">Life</button>
+    </div>
+
+    <div id="widget-list" class="explore-person-widgets"></div>
+  </section>
+
+  <footer></footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/explore-by-person.js"></script>
+</body>
+</html>

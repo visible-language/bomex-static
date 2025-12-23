@@ -36,7 +36,7 @@ function getSpeaker() {
         // the conditions that were here appear to be redundant
         loadNewDataset(state.currentDataSet);
         console.log("Bad URL parameter for speaker. Default to Nephi.");
-    }  
+    }
 }
 
 
@@ -58,7 +58,7 @@ function fillDropDown() {
         option.innerHTML = idNameToDisplayName(id);
         dropdown.appendChild(option);
     }
-    
+
     dropdown.value = state.currentDataSet; // dropdown should default to speaker
 }
 
@@ -66,19 +66,19 @@ fillDropDown();
 
 const updateTypeRadios = (el) => {
     state.type = el.value;
-    
+
     setFilteredChartContent();
 }
 
 const isOverflown = ({ offsetWidth }, textWidth) => textWidth > offsetWidth - 20;
 
-const resizeText = ({ 
-    element, 
-    elements, 
-    minSize = 0.45, 
-    maxSize = 2, 
-    step = 0.1, 
-    unit = 'rem' 
+const resizeText = ({
+    element,
+    elements,
+    minSize = 0.45,
+    maxSize = 2,
+    step = 0.1,
+    unit = 'rem'
 }) => {
   (elements || [element]).forEach(el => {
     let i = minSize
@@ -103,7 +103,7 @@ const resizeText = ({
 function getClassName(name) {
     const val = name.toLowerCase();
     const content = ["noun", "verb"];
-    
+
     if(content.includes(val)){
         return 'noun';
     } else {
@@ -113,9 +113,9 @@ function getClassName(name) {
 
 function clearChart() {
     const chart = d3.selectAll(`${chartId} > *`);
-    
+
     if(chart) {
-        chart.remove();   
+        chart.remove();
     }
 }
 
@@ -149,7 +149,7 @@ function destroyTooltipEventListener() {
 function showText(text, fontSize, y = 0, radius = 0) {
     const textWidth = getTextWidth(fontSize, String(text), 10);
     const textAnchor = getTextHeight(fontSize, String(text)) / 2;
-    
+
     return textWidth < (getInnerCircleDistance(radius, y + textAnchor) * 80);
 }
 
@@ -161,9 +161,9 @@ function mouseOver(event, data) {
         .attr('class', `${getClassName(data.data.partOfSpeech)} bubble-hover`);
 
     // Adds tooltip if text will overflow
-    if (true) {	
+    if (true) {
         tooltip
-            .attr('class', 'tooltip tooltip--visible');	
+            .attr('class', 'tooltip tooltip--visible');
         tooltip
             .html(data.data.name + "<br/>"  + data.data.size);
             state.showTooltip = true;
@@ -220,15 +220,15 @@ function addCloseButton(){
     // Get the element you want to add your new element before or after
     var target = document.querySelector('#svg-graph');
     var div = document.createElement('div');
-    
+
     // Add content to the new element
     div.innerHTML = 'X';
     div.classList.add('close-button');
-    
+
     div.addEventListener('click', () => {
         exitDrillDown();
     })
-    
+
     // Insert the element after our target element
     target.parentNode.insertBefore( div, target.nextSibling );
 }
@@ -236,15 +236,15 @@ function addCloseButton(){
 function updateSpeakerData(speaker) {
     // fetch JSON object from folder
     state.loaded = false;
-    
+
     resetRadiosToAll();
-    
+
     state.currentSpeakerData = getSpeakerDataJSON(speaker);
 }
 
 function resetRadiosToAll(){
     const el = document.getElementById('radio-all');
-    
+
     el.checked = true;
     state.type = 'all';
 }
@@ -260,7 +260,7 @@ function renderChart(data = state.currentChartData) {
 
     var min = Number(document.getElementById("wordmin").value);
     var max = Number(document.getElementById("wordmax").value);
-    
+
     if(max > 100) {
         max = 100;
     }
@@ -278,14 +278,14 @@ function renderChart(data = state.currentChartData) {
     if (limit < max) { max = limit; }
     if (max - min > MAX_QUANTITY) { max = min + MAX_QUANTITY; }
 
-    // update data array from user parameters    
+    // update data array from user parameters
     if (min > 0) {
         min -= 1;
     }
     for (let i = min; i < max; i++) {
         dataArrayFinal.push(data.children[i]);
     }
-    
+
     // returns if filter makes length 0 - doesn't try to iterate through empty array
     if (dataArrayFinal.length == 0) return;
 
@@ -293,7 +293,7 @@ function renderChart(data = state.currentChartData) {
         state.isInitialized = true;
         document.getElementById('graph-container').className = "graph graph--initialized";
     }
-    
+
     const width = 900;
     const height = 750;
 
@@ -304,7 +304,7 @@ function renderChart(data = state.currentChartData) {
                     .attr('style', state.isDrillDown ? `clip-path: circle(${800/2}px at 50% 50%)` : '')
                     .attr('id', 'svg-graph')
 
-    
+
     // create tooltip
     if (!state.isDrillDown) {
         d3.select(chartId)
@@ -317,23 +317,23 @@ function renderChart(data = state.currentChartData) {
     const bubblePack = d3.pack()
                     .size([width, height])
                     .padding(0);
-    
-    // Constructs hierarchical data 
+
+    // Constructs hierarchical data
     const rootNode = d3.hierarchy({children: dataArrayFinal})
                     .sum(d => d.size)
                     .sort(() => null);
 
     // Creates bubble pack with data
     const nodes = bubblePack(rootNode);
-    
+
     const maxRadius = d3.max(nodes, (node) => node.r);
-    
+
     let count = 0;
 
     let currentNodes = determineNodeInit();
-    
+
     var graph, circles, texts;
-    
+
     function determineNodeInit() {
         if (state.loaded) {
             return nodes.children;
@@ -341,7 +341,7 @@ function renderChart(data = state.currentChartData) {
             return [nodes.children[count]]
         }
     }
-    
+
     const initializeNodes = () => {
         graph = svg.selectAll('g')
             .data(currentNodes)
@@ -358,15 +358,15 @@ function renderChart(data = state.currentChartData) {
 
         circles = graph.append('circle')
             .attr('class', (d) => getClassName(d.data.partOfSpeech));
-            
+
         texts = textContainerAppend(graph)
     }
-    
+
     const restart = () => {
         d3.selectAll(".bubble-element").remove();
 
         simulation.nodes(currentNodes);
-        
+
         initializeNodes();
         simulation.restart();
     }
@@ -380,9 +380,9 @@ function renderChart(data = state.currentChartData) {
                 currentNodes.push(nodes.children[count]);
                 restart();
             }
-            
+
             count += 1;
-        }, 50)   
+        }, 50)
     }
 
         // Simulation to remove pack()
@@ -394,9 +394,9 @@ function renderChart(data = state.currentChartData) {
           .strength(0.8)
           .iterations(5))
       .on('tick', ticked);
-      
+
     initializeNodes();
-    
+
     function distanceBoundary(dim, rad) {
         if (dim > width - rad) {
             return width - rad;
@@ -404,7 +404,7 @@ function renderChart(data = state.currentChartData) {
             return rad;
         } else {
             return dim;
-        }        
+        }
     }
 
     function ticked() {
@@ -417,17 +417,17 @@ function renderChart(data = state.currentChartData) {
             .attr('cy', function(d) {
                 return distanceBoundary(d.y, d.r);
             })
-            
+
         texts.data(currentNodes)
             .join('text')
             .attr('transform', (d) => {
                 const x = distanceBoundary(d.x, d.r);
                 const y = distanceBoundary(d.y, d.r);
-                
+
                 return `translate(${x - (d.r / 1.25)}, ${y - (d.r / 1.25)})`
             })
     }
-    
+
     function dragstarted(d) {
       if (!d.active) simulation.alphaTarget(.03).restart();
       if (dragConditions(d.x, d.y, width, height)) {
@@ -435,14 +435,14 @@ function renderChart(data = state.currentChartData) {
           d.subject.fy = d.subject.y;
       }
     }
-    
+
     function dragged(d) {
         if (dragConditions(d.x, d.y, width, height)) {
             d.subject.fx = d.x;
-            d.subject.fy = d.y;   
+            d.subject.fy = d.y;
         }
     }
-    
+
     function dragended(d) {
       if (!d.active) simulation.alphaTarget(.03);
       d.subject.fx = null;
@@ -456,7 +456,7 @@ function dragConditions(x, y, width, height) {
 
 function textContainerAppend(graph){
     const textContainer = graph.append('g')
-        
+
     const text = textContainer.append('foreignObject')
         .attr("width", d => (d.r * 1.5 ) + "px" )
         .attr("height", d => (d.r * 1.5 ) + "px")
@@ -472,11 +472,11 @@ function textContainerAppend(graph){
                 return displayMainText(d);
             }
         });
-        
+
     resizeText({
       elements: document.querySelectorAll('.bubble-text-item')
     })
-    
+
     return textContainer;
 }
 
@@ -484,11 +484,11 @@ function displayMainText(d) {
     const name = d.data?.name;
     const length = d.data?.name?.length;
     const size = d.data.size;
-    
+
     let className = 'medium';
-    
+
     const word = Number(d.r) > 25 ? `<p class="bubble-text-item ${className}">${name}</p>` : "";
-    
+
     return `${word}<p>${size}</p>`;
 }
 
@@ -505,13 +505,11 @@ function displayDrillDownText(d) {
 function updateChartTitle() {
     const chartType = state.currentChartType[0].toUpperCase() + state.currentChartType.slice(1);
     document.getElementById('graph-title').innerHTML = `${idNameToDisplayName(state.currentDataSet)} Words Chart`;
-    
+
     // update Image as well
     // const urlBase = 'PackedBubble/graphs/json/json'; // Online Server
-    const urlBase = '/Widgets/Bubbles/images/'; // local Server
-
-    imageString = urlBase + state.currentDataSet + ".jpg"
-    document.getElementById('speaker-image').setAttribute('src', imageString)
+    const imageUrl = new URL(`images/${state.currentDataSet}.jpg`, window.location.href).toString();
+    document.getElementById('speaker-image').setAttribute('src', imageUrl)
 }
 
 function updateStats() {
@@ -533,7 +531,7 @@ function updateUnique(reset) {
         document.getElementById('unique-button').click()
         updateUnique();
     }
-    
+
     state.isDrillDown = false;
     let button = document.getElementById('unique-button');
     if (filter.uniqueFilter == "All") {
@@ -544,7 +542,7 @@ function updateUnique(reset) {
     } else {
         // turning it off
         button.innerHTML = "Unique Words: Off"
-        filter.uniqueFilter = 'All' 
+        filter.uniqueFilter = 'All'
         state.isFiltered = false;
     }
 
@@ -579,18 +577,18 @@ function loadNewDataset(name) {
 // Function to run filtering options on the currently displayed chart when the Go button is clicked.
 function goButton(event) {
     if (event != undefined) {
-        event.preventDefault();  
+        event.preventDefault();
     }
-        
+
     state.loaded = false;
-    
+
     setFilteredChartContent();
 }
 
 function setFilteredChartContent() {
     if (state.currentChartData.children && !state.isDrillDown) {
         let filteredData = [];
-        
+
         for (object of state.currentChartData.children) {
             if (state.type == getClassName(object.partOfSpeech)) {
                 filteredData.push(object)
@@ -612,10 +610,10 @@ function setFilteredChartContent() {
         else {
             filteredData2 = filteredData;
         }
-        
+
         state.isFiltered = true;
         state.currentFilteredData = { children: filteredData2 };
-        
+
         renderChart(state.currentFilteredData);
     }
 }
@@ -623,15 +621,15 @@ function setFilteredChartContent() {
 window.addEventListener('load', function(){
     let message = { height: document.body.scrollHeight, width: document.body.scrollWidth };
     window.top.postMessage(message, "*");
-    
+
     document.getElementById('unique-button').addEventListener("click", (e) => {
         e.preventDefault();
-        
+
         updateUniqueButton(e)
     });
-    
+
     document.getElementById('wordmax').value = 25;
-    
+
     document.getElementById('wordmax').addEventListener("keypress", (e) => {
         if (e.key === "Enter") {
             // Trigger the button element with a click
