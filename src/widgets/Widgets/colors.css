@@ -1,0 +1,29 @@
+
+:root {
+
+    --color-1:#c1cdd3;
+    --color-1-shade:#aeb9be;
+    --color-2:#dfecf2;
+    --color-2-shade:#c9d4da;
+    --color-3:#a7b0b5;
+    --color-3-shade:#959fa5;
+    --box-shadow-color: rgba(109, 109, 109, 0.3);
+    --text-link-color: #2A85F4;
+    --white-shade: #fff;
+    --dark-shade:#222;
+}
+html{
+    scrollbar-width: 10px;
+    scroll-behavior: smooth;
+}
+::-webkit-scrollbar {
+    width: 10px;
+}
+  
+::-webkit-scrollbar-track {
+    background: #eee; 
+}
+   
+::-webkit-scrollbar-thumb {
+    background: #999; 
+}

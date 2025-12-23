@@ -1,0 +1,280 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #5c2600;
+}
+
+h1 {
+    text-align:  center;
+    color: white;
+    font-weight:bold;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1750px auto;
+    grid-template-rows: 100px 800px 40px 75px;
+    grid-template-areas:
+        "header header"
+        "graph sidebar"
+        ". ."
+        "buttons help_btn";
+}
+
+.header {
+    grid-area: header;
+}
+
+/* Bubble Graph CSS */
+.graph {
+    grid-area: graph;
+    align-content: center;
+    margin-left: 50px;
+    height: 900px;
+    width: 1700px;
+    background-color: white;
+}
+
+.help {
+    grid-area: help_btn;
+    width: 60%;
+    margin-left: 140px;
+}
+
+#graph-display {
+    align-content: center;
+    position: relative;
+    width: 100%;
+}
+
+.circle {
+    background: none repeat scroll 0 0 #293a42;
+    border-radius: 50%;
+    color: white;
+    background-color: white;
+    border-color: white;
+    display: table-cell;
+    font-size: 14px;
+    height: 500px;
+    text-align: center;
+    vertical-align: middle;
+    width: 500px;
+  }
+  .content {
+      text-align: center;
+      position: relative;
+      top: 13%;
+      vertical-align: middle;
+      font-size: 38pt;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+
+/* Sidebar/navigation list css*/
+
+.sidebar {
+    grid-area: sidebar;
+    background-color: white;
+    border: solid black 1px;
+    width: 60%;
+    margin-left: 80px;
+    overflow-y: scroll;
+}
+
+
+ul {
+    list-style-type: none;
+    font-size: 14pt;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+li {
+    text-align: center;
+    cursor: pointer;
+    margin-right: 20px;
+}
+.list {
+    margin-top: 5px;
+    text-align: center;
+    position: relative;
+}
+
+/* CSS Code for button area*/
+
+.buttons {
+    grid-area: buttons;
+    margin-top: 100px;
+}
+
+.button-grp {
+    width: 90%;
+    position: relative;
+    left: 100px;
+    display:inline-block;
+}
+
+#button1, #button2, #button3, #help_button {
+    background-color: #f0b400; /* Green */
+    box-shadow: 2pt black;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display:inline-block;
+    font-size: 18px;
+    cursor: pointer;
+}
+#button4 {
+    margin-left: 12px;
+}
+#back-button {
+    visibility: hidden;
+    cursor: pointer;
+    position: relative;
+    left: 47.75%;
+    margin-top: 75px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+label {
+    padding: 12px;
+    color: white;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+}
+
+/* D3 styling */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap');
+
+#graph-display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 800px;
+    width: 800px;
+    padding-bottom: 5px;
+}
+
+#graph-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#graph-title{
+    margin-top: 20px;
+}
+
+.noun, .adjective, .verb, .adverb, .preposition, .conjunction, .article, .pronoun, .auxiliary-verb {
+    transition: opacity .5s;
+    stroke-width: 1px;
+    cursor: pointer;
+    opacity: 1;
+    stroke: rgb(97, 97, 97);
+}
+
+.noun {
+    fill: rgb(238, 119, 51);
+}
+
+.adjective {
+    fill: rgb(136, 204, 238);
+}
+
+.verb {
+    fill: rgb(187, 187, 187);
+}
+
+.adverb {
+    fill: rgb(68, 170, 153);
+}
+
+.preposition {
+    fill: rgb(247, 175, 175);
+}
+
+.conjunction {
+    fill: rgb(102, 153, 204);
+}
+
+.article {
+    fill: white;
+} 
+
+.pronoun {
+    fill: rgb(238, 204, 102);
+} 
+
+.auxiliary-verb {
+    fill: white;
+}
+
+.text, .text--drilldown {
+   fill: black;
+   font-weight: 400;
+   font-size: 14px;
+   font-family: 'Roboto Condensed', sans-serif;
+   cursor: pointer;
+}
+
+.text--drilldown {
+    font-size: 30px;
+}
+
+.bubble-title{
+    font-weight: 700;
+    font-size: 16px
+}
+
+.text--drilldown .bubble-title {
+    font-size: 34px;
+}
+
+.bubble-hover {
+    stroke: black;
+    opacity: .7;
+}
+
+#Test
+{
+    position: absolute;
+    visibility: hidden;
+    height: auto;
+    width: auto;
+    white-space: nowrap;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.tooltip {	
+    position: absolute;			
+    text-align: center;			
+    width: auto;										
+    padding: 10px;				
+    font-family: 'Roboto Condensed', sans-serif;		
+    background: rgb(40, 39, 39);
+    border-radius: 8px;			
+    pointer-events: none;	
+    color: white;
+    font-size: 20px;		
+    opacity: 0;
+    transition: opacity .5s;
+    left: 0;
+    top: 0;
+}
+
+.tooltip--visible {
+    opacity: .9;
+}
+
+.read-more {
+    fill: black;
+}
+
+.read-more:hover {
+    fill: rgb(74, 74, 74);
+    text-decoration: underline;
+}

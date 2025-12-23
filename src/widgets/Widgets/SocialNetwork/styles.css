@@ -1,0 +1,792 @@
+*{
+    box-sizing: border-box;
+    margin: 0; 
+    padding: 0;
+}
+:root {
+    --navy-blue: #061f44;
+    --dark-blue: #03396c;
+    --mid-blue: #005b96;
+    --gray-blue: #5691a3;
+    --light-gray-blue: #b3cde0;
+    --background: #222222;
+  
+    --gray-0: #a9a9a9; 
+    --gray-1: #bdbdbd;
+    --gray-2: #e0e0e0;
+    --gray-3: #eeeeee;
+    --white-1: #f5f5f5;
+    --white-2: #fafafa;
+    --logo-color: #005b96;
+
+    --gray-bom: #d2d5dd;
+    --button-gray: #afb1b6;
+    --button-dark-gray: #8c8e92;
+
+}
+
+#widget{
+    border-radius: 30px;
+    box-shadow: 0 3px 3px 0 var(--box-shadow-color);
+    background-color: var(--color-2);
+}
+body{
+    border-radius: 30px;
+    /*margin:10px;*/
+}
+a{
+	text-decoration: none;
+    color:var(--mid-blue);
+    font-weight:400;
+}
+a:visited{
+    color:var(--mid-blue);
+}
+a:hover{
+    font-weight:600;
+}
+
+#page-container{
+    height: var(--app-height);
+    font-family: 'Roboto', sans-serif;
+	list-style: inside;
+    display: grid;
+    grid-template-columns: auto 300px;
+	grid-template-rows:  50px auto 50px;
+	grid-template-areas: 'headbar headbar'
+						 '3d-graph sidebar'
+						 'toolbar toolbar';
+}
+
+#toolbar{
+	grid-area: toolbar;
+	display: grid;
+	border-color: var(--navy_blue);
+	grid-template-columns: 25% 25% 25% 25%;
+	grid-template-areas: 'button1 button2 button3 button4';
+}
+
+#button1{
+	grid-area: button1;
+    /*border-bottom-left-radius: 30px;*/
+}
+#button2{
+	grid-area: button2;
+}
+#button3{
+	grid-area: button3;
+}
+#button4{
+	grid-area: button4;
+}
+
+#graph-3d{
+	grid-area: 3d-graph; 
+/*	background-color: #222222;*/
+    border-radius: 20px;
+    margin: 5px;
+    box-shadow: 0 6px 10px 0 var(--box-shadow-color);
+}
+/*.scene-container{
+    border-radius: 20px;    
+}*/
+canvas{
+    border-radius: 20px;    
+}
+#headbar{
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
+    grid-area: headbar;
+	display: flex;
+    align-items: center;
+    justify-content: center;
+    /*box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);*/
+    z-index: 10;
+	padding: 0;
+	color: black;	
+	/*border-bottom: 5px solid;*/
+    height:50px;
+}
+h1{
+	display: inline;
+	grid-area: header;
+    font-size: 45px;
+    font-weight: 500;
+}
+#side-menu{
+	grid-area: "side-menu";
+    overflow: auto;
+    scrollbar-width: thin;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+
+}
+#sidebar{
+    margin:5px;
+    border-radius: 20px;
+    box-shadow: 0 6px 10px 0 var(--box-shadow-color);    
+	background-color:#fff;
+	display: grid;
+	grid-area: sidebar;
+	grid-template-rows: auto 100px;
+	grid-template-areas: 'side-menu'
+						 'auxiliary';
+}
+
+#auxiliary{
+	grid-area: auxiliary;
+    height:100px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    /*border-top: 2px solid grey;
+	border-left: 2px solid grey;
+    border-bottom: 2px solid gray;    */
+	display: grid;
+	background-color: var(--color-1);
+	grid-template-rows: auto auto auto auto;
+	grid-template-areas: 'nav-instructions'
+						 'node-select'
+                         'slide-instructions'
+						 'slider';	  
+}
+#slide-instructions{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+	padding: .5em;
+	grid-area: slide-instructions;
+    font-weight: 500;
+    color: #222222;
+}
+#slide-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#slider{
+	grid-area: slider;
+	display: grid;
+	grid-template-columns: auto 75% auto;
+	grid-template-areas: 'left-label slidebar right-label';
+    padding-bottom:.5em;
+}
+.slider{
+	width: 100%;
+    cursor: grab;
+}
+.slider:active{
+    cursor:grabbing;
+}
+
+.slider-label{
+	display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight:400;
+}
+#nav-instructions{
+  	padding: .5em;
+	grid-area: nav-instructions;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 20px;
+    color: #222222;
+}
+#node-select{
+	grid-area: node-select;
+    width:100%;
+	display: grid;
+	grid-template-columns: auto auto;
+	grid-template-areas: 'book-select gobutton';
+}
+#bookSelect{
+    grid-area: book-select;
+    margin:2px;
+}
+
+#button-holder{
+	min-height: 40px;
+	/*max-height: 40px;*/
+	display: grid;
+    grid-template-areas: 
+    "check uncheck"
+    "color1 color1" 
+    "color2 color2"
+    "color3 color3";
+}
+.colorToggle{
+    width: 100%;
+}
+#checkButton{
+	grid-area: check;
+}
+#uncheckButton{
+	grid-area: uncheck;
+}
+#toggle1{
+    grid-area: color1;
+}
+#toggle2{
+    grid-area: color2;
+}#toggle3{
+    grid-area: color3;
+}
+.scene-tooltip{
+	font: 25px;
+    font-weight: bold;
+	background-color: rgba(34, 34, 34, 0.5);
+}
+.default-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color .15s ease-in, color .15s ease-in;	
+    transition-delay: 100ms;
+	background-color: var(--color-3);	
+   	color: black;	
+    cursor: pointer;   
+    font-size: 18px;
+    font-weight: 500; 
+    margin: 2px;
+    border: none;
+    border-radius: 10px;
+}
+.default-button:hover{
+	background-color: var(--color-3-shade);
+}
+.button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   	/*color:  var(--white-2);
+	background-color: var(--gray-blue);
+	border-top: 2px solid;
+	border-color:  var(--navy-blue);*/
+    border-radius: 15px;
+    margin:5px;
+    border: none;
+	background-color: var(--color-3);
+   	color: black;	
+    transition: background-color .15s ease-in, color .15s ease-in;
+	transition-delay: 100ms;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.button:hover{
+	background-color: var(--color-3-shade);
+}
+
+/*style checkboxes*/
+/* Style container */
+.container {
+    display: block;
+    position: relative;
+    padding-left: 30px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 500;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide default checkbox */
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border: 1px solid;
+}
+
+.contents{
+    margin-top: 10px;
+    margin-bottom: 10px;	
+}
+h2{
+  text-align: center;	
+}
+#checkbox-holder{
+    font-size: 16px;
+}
+
+#popup {
+    position: absolute;
+    z-index: 1;
+    background-color: var(--light-gray-blue);
+    color: #222222;
+    text-align: left;
+    cursor: pointer;
+    max-width: 225px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    padding: 5px;
+  }
+
+/*Style the accordion menu
+  This is shamelessly taken from w3schools, and probably not the best, but it works.
+*/
+.accordion {
+    font-family: 'Roboto', sans-serif;
+    color: #222222;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    background-color: var(--color-1);
+/*    border-bottom: 2px solid var(--gray-blue);
+    border-left: 2px solid var(--color-1-shade); */
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    font-weight: 500;
+}
+.active, .accordion:hover {
+    background-color: var(--color-1-shade);
+/*    border-bottom: 2px solid var(--dark-blue);
+    border-left: 2px solid var(--color-1-shade);*/
+}
+.accordion:after {
+    content: '\002B';
+    color: black;
+    font-weight: 700;
+    float: right;
+    margin-left: 5px;
+}
+
+.active:after {
+    content: "\2212";
+}
+#dummyPanel{
+    /*border-left: 2px solid var(--color-1-shade);*/
+    height: 100%;
+    background-color: white;
+}
+.panel {
+    padding: 0px 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    cursor:default;
+    /*transition: max-height 0.4s ease-out;
+    border-left: 2px solid var(--color-1-shade);*/
+}
+#photo-box{
+    position: absolute;
+    z-index: 1;
+    background-color: #f1f1f1;
+    border: 1px solid #d3d3d3;
+    text-align: left;
+    cursor: move;
+    max-width: 250px;
+    max-height: 300px;
+    padding: 10px;
+}
+#nodeinfo img{
+    max-width: 100%;
+    border: 3px black solid;
+}
+
+
+#grey-out{
+    width: 100%;
+    height:100%;
+    border-radius: 30px;
+    position: absolute;
+    z-index: 3;
+    background-color: rgba(1, 1, 1, 0.35);
+    visibility: hidden;
+}
+
+#faq{
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    z-index: 5;
+    width: 90%;
+    height: 90%;
+    background-color: var(--white-1);
+    overflow-x: hidden;
+    overflow-y: hidden;
+    border-radius: 25px;
+    font-family: roboto;
+    visibility: hidden;
+}
+
+.title{
+    grid-area:title;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#head{
+    background-color: var(--color-1);
+    display:grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:"title exit"
+}
+
+.exit{
+    grid-area: exit;
+    cursor:pointer;
+    padding:1rem 2rem 1rem 1rem;
+}
+
+.appear{
+    cursor:pointer;
+    color: var(--dark-blue);
+    font-weight: bolder;
+}
+
+#content{
+    display:flex;
+    grid-area: body;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    max-height: 95%;
+}
+
+.question{
+    padding: 1em;
+    margin: 1em;
+    width:90%;
+    border-radius: 20px;
+    background-color: var(--white-2);
+    box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
+    transition: box-shadow 0.4s;
+    transition-delay: 100ms;
+}
+.question:hover {
+    box-shadow: 0 10px 20px 0 rgba(0,0,0,0.5);
+}
+
+.container input:checked ~ .Righteous{
+	background-color: #097969;}
+.container input:checked ~ .Wicked{
+	background-color: #C41E3A;}
+.container input:checked ~ .Unknown{
+	background-color: #c9c9c9;}
+.container input:checked ~ .Immortal{
+	background-color: #FFEA00 ;}
+.container input:checked ~ .Mixed{
+	background-color: #5D3FD3;}
+.container input:checked ~ .Hebrew{
+	background-color: #800080 ;}
+.container input:checked ~ .Nephite{
+	background-color: #6495ED;}
+.container input:checked ~ .Prehistoric{
+	background-color: #4F7942 ;}
+.container input:checked ~ .Jaredite{
+	background-color: #F33A6A ;}
+.container input:checked ~ .Amalekite{
+	background-color: #A7C7E7 ;}
+.container input:checked ~ .Mulekite{
+	background-color: #E1C16E ;}
+.container input:checked ~ .Lamanite{
+	background-color: #E97451;}
+.container input:checked ~ .Immortal{
+	background-color: #FFEA00 ;}
+.container input:checked ~ .Zoramite{
+	background-color: #93C572 ;}
+.container input:checked ~ .Unknown{
+	background-color: #B2BEB5 ;}
+/*Paste this into your stylesheet*//*Paste this into your stylesheet*/
+.container input:checked ~ .Aaron{
+	background-color: #f29d31;}
+.container input:checked ~ .Abinadi{
+	background-color: #6bca49;}
+.container input:checked ~ .Abraham{
+	background-color: #9936b2;}
+.container input:checked ~ .Adam{
+	background-color: #30bb45;}
+.container input:checked ~ .Aha{
+	background-color: #8e52d1;}
+.container input:checked ~ .Ahaz{
+	background-color: #b2c634;}
+.container input:checked ~ .Akish{
+	background-color: #c06dec;}
+.container input:checked ~ .Alma{
+	background-color: #4f9b1e;}
+.container input:checked ~ .Alma2{
+	background-color: #7858cc;}
+.container input:checked ~ .Amalekite{
+	background-color: #41cf70;}
+.container input:checked ~ .Amalickiah{
+	background-color: #be2f9f;}
+.container input:checked ~ .Ammaron{
+	background-color: #8dc54d;}
+.container input:checked ~ .Ammon{
+	background-color: #6942aa;}
+.container input:checked ~ .Ammon2{
+	background-color: #58af4a;}
+.container input:checked ~ .Ammoron{
+	background-color: #ea6cd9;}
+.container input:checked ~ .Amulek{
+	background-color: #32943e;}
+.container input:checked ~ .Angels{
+	background-color: #FFEA00;}
+.container input:checked ~ .AntiNephiLehi{
+	background-color: #49cb86;}
+.container input:checked ~ .Antionah{
+	background-color: #f64085;}
+.container input:checked ~ .Antipus{
+	background-color: #15dec5;}
+.container input:checked ~ .Benjamin{
+	background-color: #d71f63;}
+.container input:checked ~ .BrotherJared{
+	background-color: #39b888;}
+.container input:checked ~ .BrothersNephi{
+	background-color: #e452aa;}
+.container input:checked ~ .CaptainMoroni{
+	background-color: #7dc871;}
+.container input:checked ~ .ChiefJudge{
+	background-color: #3a58c4;}
+.container input:checked ~ .ChiefJudgeAmmonihah{
+	background-color: #d6b32f;}
+.container input:checked ~ .ChildrenLaman{
+	background-color: #4483f2;}
+.container input:checked ~ .Christ{
+	background-color: #FCF55F ;}
+.container input:checked ~ .Corianton{
+	background-color: #957ced;}
+.container input:checked ~ .Coriantumr{
+	background-color: #8fa830;}
+.container input:checked ~ .DaughterJared{
+	background-color: #bc5ac0;}
+.container input:checked ~ .DaughtersIshmael{
+	background-color: #38711a;}
+.container input:checked ~ .Enos{
+	background-color: #6257b8;}
+.container input:checked ~ .Ether{
+	background-color: #c5b951;}
+.container input:checked ~ .Eve{
+	background-color: #4067be;}
+.container input:checked ~ .FatherLamoni{
+	background-color: #e17a30;}
+.container input:checked ~ .Gid{
+	background-color: #6e8de9;}
+.container input:checked ~ .Giddianhi{
+	background-color: #e85b33;}
+.container input:checked ~ .Giddonah{
+	background-color: #36bddc;}
+.container input:checked ~ .Gideon{
+	background-color: #c93322;}
+.container input:checked ~ .Godhead{
+	background-color: #FFD700;}
+.container input:checked ~ .Helam{
+	background-color: #e13a4b;}
+.container input:checked ~ .Helaman{
+	background-color: #64cdb8;}
+.container input:checked ~ .Helaman3{
+	background-color: #c62647;}
+.container input:checked ~ .Helaman2{
+	background-color: #78c790;}
+.container input:checked ~ .Helorum{
+	background-color: #eb4565;}
+.container input:checked ~ .Himni{
+	background-color: #2fa7a2;}
+.container input:checked ~ .Isaiah{
+	background-color: #c3305d;}
+.container input:checked ~ .Ishmael{
+	background-color: #58a060;}
+.container input:checked ~ .Jacob{
+	background-color: #8d469d;}
+.container input:checked ~ .Jacob3{
+	background-color: #6a821c;}
+.container input:checked ~ .Jared{
+	background-color: #c882dc;}
+.container input:checked ~ .Jared2{
+	background-color: #9a972d;}
+.container input:checked ~ .Jarom{
+	background-color: #785bae;}
+.container input:checked ~ .Joseph{
+	background-color: #494b93;}
+.container input:checked ~ .Joseph2{
+	background-color: #ad8925;}
+.container input:checked ~ .KingLaman{
+	background-color: #e0a54c;}
+.container input:checked ~ .Noah{
+	background-color: #355799;}
+.container input:checked ~ .KingLamanites{
+	background-color: #7f7110;}
+.container input:checked ~ .Kishkumen{
+	background-color: #e37ed1;}
+.container input:checked ~ .Korihor{
+	background-color: #317230;}
+.container input:checked ~ .Laban{
+	background-color: #b7428c;}
+.container input:checked ~ .Lachoneus{
+	background-color: #5f8d40;}
+.container input:checked ~ .Laman{
+	background-color: #e35282;}
+.container input:checked ~ .LamaniteKing{
+	background-color: #3a8853;}
+.container input:checked ~ .LamaniteQueen{
+	background-color: #ab2a65;}
+.container input:checked ~ .Lamoni{
+	background-color: #9dbe6e;}
+.container input:checked ~ .Lehi{
+	background-color: #6462ad;}
+.container input:checked ~ .Lehi2{
+	background-color: #516615;}
+.container input:checked ~ .Lehi3{
+	background-color: #b69ae4;}
+.container input:checked ~ .Lehonti{
+	background-color: #616117;}
+.container input:checked ~ .Lemuel{
+	background-color: #92a7e8;}
+.container input:checked ~ .Limhi{
+	background-color: #9b5116;}
+.container input:checked ~ .Malachi{
+	background-color: #6fb5e6;}
+.container input:checked ~ .Mormon{
+	background-color: #b5382d;}
+.container input:checked ~ .Moroni{
+	background-color: #409677;}
+.container input:checked ~ .Moses{
+	background-color: #eb71a6;}
+.container input:checked ~ .Mosiah{
+	background-color: #235e31;}
+.container input:checked ~ .Mosiah2{
+	background-color: #dd94c7;}
+.container input:checked ~ .MotherLamoni{
+	background-color: #415a1f;}
+.container input:checked ~ .Nehor{
+	background-color: #8182c4;}
+.container input:checked ~ .Nephi{
+	background-color: #cc6a39;}
+.container input:checked ~ .Nephi2{
+	background-color: #3a6eb0;}
+.container input:checked ~ .Nephi3{
+	background-color: #936920;}
+.container input:checked ~ .Omer{
+	background-color: #4585b3;}
+.container input:checked ~ .Omner{
+	background-color: #ad472d;}
+.container input:checked ~ .Omni{
+	background-color: #25735a;}
+.container input:checked ~ .Pahoran{
+	background-color: #ee756a;}
+.container input:checked ~ .PriestsNoah{
+	background-color: #115e41;}
+.container input:checked ~ .Sam{
+	background-color: #ce627c;}
+.container input:checked ~ .SamuelLamanite{
+	background-color: #367042;}
+.container input:checked ~ .Sariah{
+	background-color: #963d6b;}
+.container input:checked ~ .Satan{
+	background-color: #85af6f;}
+.container input:checked ~ .ServantsFatherLamoni{
+	background-color: #7f5896;}
+.container input:checked ~ .ServantHelaman{
+	background-color: #878d43;}
+.container input:checked ~ .ServantLamoni{
+	background-color: #445082;}
+.container input:checked ~ .ServantsLamoni{
+	background-color: #b3b370;}
+.container input:checked ~ .Sherem{
+	background-color: #5d679c;}
+.container input:checked ~ .Shiblon{
+	background-color: #bc7d45;}
+.container input:checked ~ .Shiz{
+	background-color: #b16b9d;}
+.container input:checked ~ .ChildrenLemuel{
+	background-color: #536c31;}
+.container input:checked ~ .SonsIshmael{
+	background-color: #a83b4b;}
+.container input:checked ~ .StriplingWarriors{
+	background-color: #738c4e;}
+.container input:checked ~ .Teancum{
+	background-color: #8b4d6b;}
+.container input:checked ~ .ThreeNephites{
+	background-color: #d0ab6f;}
+.container input:checked ~ .TwelveDisciples{
+	background-color: #85424d;}
+.container input:checked ~ .WifeIshmael{
+	background-color: #787b43;}
+.container input:checked ~ .WifeLamoni{
+	background-color: #eb92a2;}
+.container input:checked ~ .WivesSonsIshmael{
+	background-color: #585c26;}
+.container input:checked ~ .Zeezrom{
+	background-color: #cb7064;}
+.container input:checked ~ .Zeniff{
+	background-color: #63510a;}
+.container input:checked ~ .Zenock{
+	background-color: #ec9d78;}
+.container input:checked ~ .Zenos{
+	background-color: #736123;}
+.container input:checked ~ .Zerahemnah{
+	background-color: #b2696d;}
+.container input:checked ~ .Zoram{
+	background-color: #765113;}
+.container input:checked ~ .Zoram2{
+	background-color: #9b4f3a;}
+
+
+
+
+    
+@media screen and (max-width: 850px) {
+    h1{
+        font-size: 30px;
+    }
+    #page-container{
+        grid-template-columns: auto 250px;
+    }
+    
+
+}
+
+@media screen and (max-width: 500px) {
+    #page-container{
+        grid-template-columns: 100%;
+        grid-template-rows:  50px 50px auto auto 1fr;
+        grid-template-areas: 'headbar'
+                             'toolbar'                     
+                             '3d-graph'
+                             'sidebar';
+    }
+    .button{
+        margin:2px;
+        padding:1px 2px 1px 2px;
+        font-weight: 500;
+        font-size: 12px;
+    }
+    h1{
+        font-size: 20px;
+    }
+    #dummyPanel{
+        height: 0px;
+    }
+
+}
+
+@media screen and (max-width: 340px) {
+    .button{
+        font-size: 10px;
+        font-weight: 800px;
+    }
+}

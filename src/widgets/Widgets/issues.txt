@@ -1,0 +1,44 @@
+Below is a working list of changes that should be made to the widgets. 
+
+ALL WIDGETS 
+- make sure the URL query string works so that cameos can link directly to speaker-in-widget
+
+TIMELINE
+- Under "view significant events," for speakers that have a lot of events (like Mormon), the events stack over and out of the timeline.
+- It would help if the timeline started with "View significant events" visible.
+- Deselect all on context speaker on focus speaker change.
+
+
+WORD BUBBLES
+- On load (either default Nephi or with a speaker query string), everything under Speaker Statistics is broken: undefined or Not a Number. Loading a new speaker with the dropdown populates Speaker Statistics fine, though.
+    - the same is true of unique words
+- Toggling unique words before the bubbles finish populating breaks the whole display. The bubbles stop populating all together, except for one floating word.
+- Dropdown menu goes off the screen on mobile
+- Unique words should be turned off when the speaker is changed.
+
+CONNECTIONS
+- The dropdown doesn't change when you click a new icon. If you try to go to the speaker already selected in the dropdown (after navigating away by clicking an icon), it does not load because there is no state change detected in the dropdown, even though the currently displayed speaker is a different one.
+- The redraw lines button should be removed. The lines are redrawn automatically.
+
+NETWORK DIAGRAM
+- Clicking any connection gives bad data. All undefined.
+- Toggle Influence Beads doesn't do anything? You have to select a node for it to work. 
+- Adapts really poorly on mobile
+- Should start focused on Abinadi
+
+SOCIAL NETWORK
+- Adapts really poorly on mobile
+- Should start focused on Aaron
+
+
+BOM SEMANTIC MAP
+- the dots are extremely hard to click
+- allow users to highlight all speakers by book (using legend? 'select all' setting?)
+- verse reference on hover
+
+- At some point, switch this so it is indexed by speaker instead of by book.
+
+
+SIMILAR VERSE FINDER
+- search bar goes off the screen on mobile
+- no response on bad reference?

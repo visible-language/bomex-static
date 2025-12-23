@@ -1,0 +1,552 @@
+body {
+    margin: 0px;
+    font-family: Roboto;
+    /* padding-bottom: 10px; */
+    /* background-color: rgb(255, 255, 255); */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+
+.page {
+    width: 1250px;
+}
+
+.copyright {
+    width: 100%;
+    margin: 30px 0px 10px 0px;
+    color: gray;
+    text-align: center;
+}
+
+.main-container {
+    background-color: var(--color-2);
+    padding: 10px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-bottom: 20px;
+    box-shadow: 0 6px 10px 0 var(--box-shadow-color);
+}
+.main-title {
+    padding: 5px 5px 5px 20px;
+    font-family: Roboto;
+    font-size: 45px;
+    font-weight: 1000;
+}
+#main-name{
+    font-size: 28px;
+}
+hr {
+    width: 80%;
+}
+svg {
+    background-color: white;
+    border-radius: 15px;
+    min-width:100%;
+}
+
+/* ----------------- Timeline Graphic ---------------------- */
+
+.timeline-top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.main-speaker {
+    display: flex;
+    align-items: center;
+    font-family: Roboto;
+}
+.main-image-cont {
+    height: 100px;
+    width: 100px;
+    border-radius: 100%;
+    overflow: hidden;
+    margin: 5px;
+    margin-left: 20px;
+}
+.main-image-cont img {
+    width: 100%;
+}
+
+#svg-lifespan {
+    margin-top: 20px;
+}
+.horz-line {
+    stroke: rgb(119, 119, 119);
+    stroke-width: 1px;
+}
+.tick {
+    stroke: rgb(119, 119, 119);
+    stroke-width: 1px;
+}
+.timeline-rect {
+    fill: #93c3d98c;
+    stroke: black;
+    stroke-width: 1px;
+}
+.timeline-lifespan {
+    /* transform: translateY(-60px); */
+    font-size: 26px;
+    font-family: Roboto;
+    fill: rgb(49, 49, 49);
+}
+
+
+/* --------------------- Connections ------------------------------ */
+
+.connections {
+    position: relative;
+}
+.connections-top-bar {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+.connections-top-bar-sub {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.connections-top-bar .title {
+    height: 40px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.connections-inner-top-bar {
+    display: flexbox;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+.speaker-select{
+    padding: 0 0.5rem;
+    display: inline;
+    font-family: Roboto;
+}
+#speaker-names {
+    font-family: Roboto;
+    font-size: 18px;
+
+}
+.graphic {
+    position: relative;
+    /* height: 300px; */
+    height: 340px;
+    margin-top: 10px;
+    
+    background-color: white;
+    border-radius: 15px;
+    
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+#svg-connections {
+    height: 300px;
+    margin-bottom: 10em;
+    /* border: solid 1px red; */
+}
+
+/* -------------------- Legend ------------------------ */
+
+.legend {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: var(--color-1);
+    width: 100%;
+    padding: 0.75rem 0px;
+    transition: ease 400ms;
+    z-index: 1;
+    border-radius: 20px;
+
+}
+#legend-collapse {
+    cursor: pointer;
+    width: 100%;
+    height: 24px;
+    background-color: var(--color-1);
+    user-select: none;
+    text-align: center;
+    font-size: 20px;
+}
+#legend-collapse:hover {
+    background-color: var(--color-1-shade);
+}
+#legend-description {
+    height: 30px;
+    margin-bottom: 5px;
+}
+.legend-collapsed {
+    font-size: 18px;
+}
+#description-container {
+    overflow-y:auto;
+    display:none;
+    max-height: 250px;
+    transition-duration: 100ms;
+}
+.legend .description {
+    width: calc(100% - 30px);
+    height: calc(100% - 30px);
+    padding: 10px;
+    font-family: Roboto;
+    font-size: 18px;
+    margin: 5px;
+    margin-bottom: 0px;
+    background-color: var(--white-shade);
+    color: black;
+    border-radius: 20px;
+}
+.color-keys {
+    display: flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    margin:5px;
+}
+.color-key {
+    display: flex;
+    /* width: 100px; */
+    cursor: pointer;
+    margin-right: 15px;
+    user-select: none;
+    font-size: 18px;
+}
+.color-box {
+    height: 10px;
+    width: 10px;
+    margin: 5px;
+    background-color: rgb(0, 0, 0);
+    border: solid 1px rgb(0, 0, 0);
+}
+.color-key .family {
+    background-color: rgb(135, 28, 28);
+    border: solid 1px rgb(135, 28, 28);
+}
+.color-key .associate {
+    background-color: rgb(10, 98, 17);
+    border: solid 1px rgb(10, 98, 17);
+}
+.color-key .enemy {
+    background-color: rgb(142, 40, 165);
+    border: solid 1px rgb(142, 40, 165);
+}
+.color-key .divine {
+    background-color: rgb(251, 234, 102);
+    border: solid 1px rgb(251, 234, 102);
+}
+.color-key .unchecked{
+    background-color: var(--white-shade);
+}
+.round-bottom{
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+
+
+/* --------------------- Icons ----------------------- */
+
+.speaker-icons {
+    position: absolute;
+    height: 100%;
+    /* =width: 100%; */
+    top: 210px;
+}
+.icon {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    /* border: solid 1px black; */
+    transition-duration: 300ms;
+    cursor: pointer;
+    user-select: none;
+    
+}
+.icon:hover {
+    transform: translateY(-5px);
+}
+.icon-name {
+    transform: translateY(53px) translateX(-15%);
+    font-size: 14px;
+    text-align: center;
+    width: 130%;
+
+}
+.icon .img-cont {
+    position: absolute;
+    top: 0px;
+    border-radius: 100%;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.icon img {
+    width: 100%;
+}
+
+
+
+
+
+
+
+
+/* ---------------------- Lines ------------------- */
+.line {
+    stroke: rgba(0, 0, 0, 0.75);
+    stroke-width: 3px;
+/*    stroke-dasharray:4; */
+    fill: none;
+}
+.svg .family {
+    stroke: rgb(135, 28, 28);
+}
+.svg .associate {
+    stroke: rgb(10, 98, 17);
+}
+.svg .enemy {
+    stroke: rgb(142, 40, 165);
+}
+.svg .divine {
+    stroke: rgb(251, 234, 102);
+    
+}
+.svg .unselected {
+    stroke: rgba(172, 172, 172, 0.25);
+}
+
+.svg .animate {
+    animation: ease draw 3000ms forwards;
+}
+@keyframes draw {
+    0% {
+        stroke-dashoffset: default;
+    }
+    100% {
+        stroke-dashoffset: 0;
+    }
+}
+
+.refresh {
+    cursor: pointer;
+}
+.refresh-box {
+    fill: white;
+    stroke: gray;
+    stroke-width: 1px;
+    transform: translateY(45px) translateX(2px);
+}
+.refresh:active .refresh-box {
+    fill: rgb(231, 231, 231);
+}
+.refresh-icon {
+    transform: translateY(45px) translateX(5px);
+    fill: rgb(51, 51, 51);
+}
+.refresh-text {
+    transform: translateY(64px) translateX(35px);
+    user-select: none;
+    fill: rgb(51, 51, 51);
+}
+
+
+
+
+
+
+
+
+
+/* --------------------------- Info Boxes ----------------------------- */
+
+.info-boxes {
+    /* height: 300px; */
+    display: flex;
+    flex-flow: row wrap;
+}
+.info-box {
+    min-width: 300px;
+    min-height: 50px;
+    background-color: var(--color-2);
+    margin: 5px;
+    padding: 10px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 6px 10px 0 var(--box-shadow-color);
+}
+.info-boxes .linguistic {
+    flex: 2;
+}
+.info-boxes .social {
+    flex: 2;
+    min-width: 400px;
+}
+.info-box .title {
+    font-size: 18px;
+    text-decoration: none;
+    margin-top: 3px;
+    margin-left: 5px;
+    height: 30px;
+    user-select: none;
+}
+.info-box .content {
+    background-color: var(--white-shade);
+    padding: 3px;
+    min-height: calc(100% - 40px);
+    border-radius: 16px;
+}
+.icon-bar-small {
+    display: flex;
+    flex-flow: column;
+
+}
+.icon-small {
+    position: relative;
+    /* height: 50px; */
+    width: 100%;
+    border-radius: 25px;
+    margin-top: 3px;
+}
+.icon-small .header {    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 50px;
+}
+.icon-small::before {
+    content: "";
+    height: 1px;
+    width: calc(100% - 50px);
+    margin-left: 25px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-bottom: solid 1px rgba(128, 128, 128, 0.26);
+}
+.icon-small:last-child::before {
+    border-bottom: none;
+}
+.icon-small-speaker {
+    display: flex;
+    align-items: center;
+}
+.icon-small-speaker .name {
+    font-size: 18px;
+    margin-left: 10px;
+}
+.img-cont-small {
+    height: 40px;
+    width: 40px;
+    border-radius: 100%;
+    overflow: hidden;
+    margin-left: 5px;
+}
+.img-cont-small img {
+    width: 100%;
+}
+.small-collapse {
+    height: 20px;
+    width: 20px;
+    text-align: center;
+    border-radius: 100%;
+    border: solid 1px gray;
+    color: gray;
+    margin-right: 15px;
+    cursor: pointer;
+    user-select: none;
+    transition-duration: 300ms;
+}
+
+.icon-small .content {
+     display: none; 
+    /*height: 0px;*/
+    transition-duration: 250ms;
+    overflow: hidden;
+    margin: 0px 15px 0px 10px;
+    border-radius: 0px;
+    font-family: Roboto;
+    font-size: 18px;
+    opacity: 0;
+}
+.icon-small-expanded .content {
+     display: block; 
+    /*min-height: 100px;/*clamp(60px, 100px, 500px);*/
+    transition-duration: 250ms;
+    /* height: 40px; */
+    margin: 0px 15px 0px 20px;
+    opacity: 1;
+    
+}
+.icon-small-expanded .small-collapse {
+    transform: rotate(180deg);
+}
+.header{
+    cursor:pointer;
+    user-select: none;
+}
+.tooltip {
+    border-radius: 8px;
+    background-color: rgba(47, 47, 47, 0.8);
+    padding: 10px;
+    position: absolute;
+    color: white;
+}
+.tooltip-visible {
+    display: default;
+}
+.tooltip-hidden {
+    display: none;
+}
+
+@media screen and (max-width: 1275px) {
+    body {
+        display: block;
+    }
+    .page {
+        width: 100%;
+    }
+    .connections {
+        width: 100%;
+    }
+    #legend {
+        width: 100%;
+    }
+    .graphic {
+        width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+}
+@media screen and (max-width: 650px) {
+    .info-boxes .relationships {
+        flex: 2;
+        min-width: 300px;
+    }
+    .connections-top-bar-sub {
+        flex-direction: column;
+    }
+    .main-image-cont {
+        height: 60px;
+        width: 60px;
+    }
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

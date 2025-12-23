@@ -1,0 +1,1 @@
+These images are extra, duplicates that have been replaced by handmade images. Can be used as placeholders by anyone for anything.

@@ -1,0 +1,11 @@
+{"children": [{"name": "art", "size": 1, "url": "visiblelanguage.net/wordCameos/art", "sourceText": "Behold thou art a robber, and I will slay thee.", "partOfSpeech": "Noun", "theme": "Non-sacred"},
+{"name": "robber", "size": 1, "url": "visiblelanguage.net/wordCameos/robber", "sourceText": "Behold thou art a robber, and I will slay thee.", "partOfSpeech": "Noun", "theme": "Non-Sacred"},
+{"name": "slay", "size": 1, "url": "visiblelanguage.net/wordCameos/slay", "sourceText": "Behold thou art a robber, and I will slay thee.", "partOfSpeech": "Verb", "theme": "Non-Sacred"},
+{"name": "a", "size": 1, "url": "visiblelanguage.net/wordCameos/a", "sourceText": "Behold thou art a robber, and I will slay thee.", "partOfSpeech": "Article", "theme": "Function"},
+{"name": "and", "size": 1, "url": "visiblelanguage.net/wordCameos/and", "sourceText": "Behold thou art a robber, and I will slay thee.", "partOfSpeech": "Conjunction", "theme": "Function"},
+{"name": "behold", "size": 1, "url": "visiblelanguage.net/wordCameos/behold", "sourceText": "Behold thou art a robber, and I will slay thee.", "partOfSpeech": "Verb", "theme": "Non-Sacred"},
+{"name": "I", "size": 1, "url": "visiblelanguage.net/wordCameos/I", "sourceText": "Behold thou art a robber, and I will slay thee.", "partOfSpeech": "Pronoun", "theme": "Function"},
+{"name": "thee", "size": 1, "url": "visiblelanguage.net/wordCameos/thee", "sourceText": "Behold thou art a robber, and I will slay thee.", "partOfSpeech": "Pronoun", "theme": "Function"},
+{"name": "thou", "size": 1, "url": "visiblelanguage.net/wordCameos/thou", "sourceText": "Behold thou art a robber, and I will slay thee.", "partOfSpeech": "Pronoun", "theme": "Function"},
+{"name": "will", "size": 1, "url": "visiblelanguage.net/wordCameos/will", "sourceText": "Behold thou art a robber, and I will slay thee.", "partOfSpeech": "Auxiliary Verb", "theme": "Function"}]
+}

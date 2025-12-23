@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width" initial-scale="1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie-edge">
+
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link type="text/css" rel="stylesheet" href="../colors.css">
+        <link type="text/css" rel="stylesheet" href="styles/packedbubbles.css">
+        <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+
+        <title>Book of Mormon Bubble Chart</title>
+    </head>
+
+    <body>
+        <div class="widget">
+         <!-- Create Color schemes for all categories - svg requires this as an html element to refer to as fill -->
+
+         <svg xmlns="http://www.w3.org/2000/svg" height='0' width='0'>
+            <defs>
+                <radialGradient id="fill1">
+                    <stop offset="0%" stop-color="rgb(255, 187, 130)" />
+                    <stop offset="80%" stop-color="rgb(238, 119, 51)" />
+                    <stop offset="100%" stop-color="rgb(204, 100, 37)" />
+                </radialGradient>
+
+                <radialGradient id="fill2">
+                    <stop offset="0%" stop-color="rgb(201, 224, 235)" />
+                    <stop offset="80%" stop-color="rgb(136, 204, 238)" />
+                    <stop offset="100%" stop-color="rgb(109, 179, 211)" />
+                </radialGradient>
+
+                <radialGradient id="fill3">
+                    <stop offset="0%" stop-color="rgb(240, 240, 240)" />
+                    <stop offset="80%" stop-color="rgb(187, 187, 187)" />
+                    <stop offset="100%" stop-color="rgb(172, 172, 172)" />
+                </radialGradient>
+
+                <radialGradient id="fill4">
+                    <stop offset="0%" stop-color="rgb(134, 216, 202)" />
+                    <stop offset="80%" stop-color="rgb(68, 170, 153)" />
+                    <stop offset="100%" stop-color="rgb(66, 137, 126)" />
+                </radialGradient>
+
+                <radialGradient id="fill5">
+                    <stop offset="0%" stop-color="rgb(255, 213, 213)" />
+                    <stop offset="80%" stop-color="rgb(247, 175, 175)" />
+                    <stop offset="100%" stop-color="rgb(252, 152, 152)" />
+                </radialGradient>
+
+                <radialGradient id="fill6">
+                    <stop offset="0%" stop-color="rgb(195, 241, 193)" />
+                    <stop offset="80%" stop-color="rgb(152, 220, 148)" />
+                    <stop offset="100%" stop-color="rgb(123, 208, 120)" />
+                </radialGradient>
+
+                <radialGradient id="fill7">
+                    <stop offset="0%" stop-color="white" />
+                    <stop offset="80%" stop-color="rgb(250, 250, 250)" />
+                    <stop offset="100%" stop-color="rgb(235, 235, 235)" />
+                </radialGradient>
+
+                <radialGradient id="fill8">
+                    <stop offset="0%" stop-color="rgb(252, 238, 182)" />
+                    <stop offset="80%" stop-color="rgb(238, 204, 102)" />
+                    <stop offset="100%" stop-color="rgb(216, 180, 72)" />
+                </radialGradient>
+
+                <radialGradient id="fill9">
+                    <stop offset="0%" stop-color="rgb(255, 255, 255)" />
+                    <stop offset="80%" stop-color="lightgray" />
+                    <stop offset="100%" stop-color="rgb(181, 181, 181)" />
+                </radialGradient>
+
+                <radialGradient id="fill10">
+                    <stop offset="0%" stop-color="rgb(235, 198, 165)" />
+                    <stop offset="80%" stop-color="rgb(195, 155, 119)" />
+                    <stop offset="100%" stop-color="rgb(179, 130, 83)" />
+                </radialGradient>
+            </defs>
+        </svg>
+
+        <div class="main-description-container" style="display: none;">
+            <div class="main-description"> </div>
+        </div>
+
+        <div class="controls">
+            <select id='dropdown' class="author-select" onchange="loadNewDataset(this.value)">
+                <option disabled selected value> -- Select a speaker -- </option>
+            </select>
+        </div>
+
+        <div class="graph graph--zero-state" id="graph-container">
+            <div class="graph-tools-bar">
+                <div class="graph-speaker-container">
+                    <div class="graph-speaker-image">
+                        <img id="speaker-image" src="" alt="No Image" width="100">
+                    </div>
+
+                    <span class="graph-title" id="graph-title" style="text-align: center;">
+                        Select a chart type to begin
+                    </span>
+                </div>
+
+                <div class="graph-info">
+                    <table class="graph-stats-container graph-info-item graph-info-table">
+                        <tr>
+                            <th class="graph-info-title" colspan="2">
+                                Speaker Statistics
+                            </th>
+                        </tr>
+                        <tr class="graph-stat">
+                            <td class='graph-info-subtitle'>
+                                Total number of words:
+                            </td>
+                            <td id="stat-1"></td>
+                        </tr>
+
+                        <tr class="graph-stat" >
+                            <td class='graph-info-subtitle'>
+                                Percentage of Book of Mormon:
+                            </td>
+                            <td id="stat-2"></td>
+                        </tr>
+
+                        <tr class="graph-stat" >
+                            <td class='graph-info-subtitle'>
+                                Rank out of all Speakers:
+                            </td>
+                            <td id="stat-3"></td>
+                        </tr>
+                    </table>
+
+                    <div class="user-input graph-info-item">
+                        <div class="user-input__form user-parameters">
+                            <table class="graph-info-table filter-item">
+                                <tr>
+                                    <th 
+                                        class="graph-info-title" 
+                                        colspan="2">
+                                            Filters
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <td class="start-range graph-info-subtitle">
+                                        Display Words:
+                                    </td>
+
+                                    <td id="radio-selection-type" class="radio-selectors">
+                                        <div>
+                                            <input 
+                                                type="radio" 
+                                                name="typeRadios" 
+                                                id="radio-all"
+                                                onChange='updateTypeRadios(this)'
+                                                value="all"
+                                                checked />
+
+                                            <label for="radio-all">
+                                                All
+                                            </label>
+                                        </div>
+
+                                        <div>
+                                            <input 
+                                                type="radio" 
+                                                name="typeRadios" 
+                                                id="radio-pink"
+                                                onChange='updateTypeRadios(this)'
+                                                value="noun" />
+
+                                            <label for="radio-pink">
+                                                Content
+                                            </label>
+                                        </div>
+
+                                        <div>
+                                            <input 
+                                                type="radio" 
+                                                name="typeRadios" 
+                                                id="radio-blue"
+                                                onChange='updateTypeRadios(this)'
+                                                value="verb" />
+                                            <label for="radio-blue">
+                                                Function
+                                            </label>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="start-range graph-info-subtitle">
+                                        All/Unique
+                                    </td>
+
+                                    <td class='range-type'>
+                                        <button
+                                            id='unique-button'
+                                            class="button control-button-table">
+                                            Unique Words: Off
+                                        </button>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td colspan="2" class="range-select">
+                                        Number of words to display: 
+                                        <div 
+                                            class="user-input__form-group"
+                                            style="display: none;">
+                                            
+                                            <label 
+                                                class="label range-words-label"         for="wordmin">
+                                            </label>
+
+                                            <input 
+                                                type="number" 
+                                                min="0" 
+                                                max="10000" 
+                                                id="wordmin" 
+                                                name="wordmin" 
+                                                value='0' 
+                                                required>
+
+                                        </div>
+
+                                        <div class="user-input__form-group end-range">
+
+                                            <label class="label num-words-label" for="wordmax"></label>
+
+                                            <input type="number" 
+                                                min="0" 
+                                                max="100" 
+                                                id="wordmax" 
+                                                name="wordmax" 
+                                                value='100' 
+                                                title="Max value is 100"
+                                                required>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <div class="user-input__form-group filter-type filter-item">
+                                <div id="group-select-box" 
+                                    class="group-select-container"></div>
+                            </div>
+
+                            <button id='go-button' 
+                                class="button" 
+                                onclick="goButton(event);">
+                                Reset Display
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="graph-display" id="graph-display"></div>
+            <div class="graph-legend" id="graph-legend"></div>
+        </div>
+    </div>
+
+        <script src="https://d3js.org/d3.v6.min.js"></script>
+        <script type="text/javascript" src="scripts/utilities.js"></script>
+        <script type="text/javascript" src="scripts/import_data.js"></script>
+        <script type="text/javascript" src="scripts/main.js"></script>
+        <script type="text/javascript" src="scripts/draw_graphs.js"></script>
+    </body>
+</html>

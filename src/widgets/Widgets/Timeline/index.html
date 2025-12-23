@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Timeline - Visible Language</title>
+        <link rel="stylesheet" href="../colors.css">
+        <link rel="stylesheet" href="./timeline.css">
+        <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+        <script src="https://d3js.org/d3.v4.js"></script>
+        <script src="https://d3js.org/d3.v6.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.16.0/d3.min.js" integrity="sha512-FHsFVKQ/T1KWJDGSbrUhTJyS1ph3eRrxI228ND0EGaEp6v4a/vGwPWd3Dtd/+9cI7ccofZvl/wulICEurHN1pg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <title>Book of Mormon Timeline</title>
+    </head>
+    <body>
+        <div class="page">
+            <div class="timeline-container main-container">
+                <div class="timeline-top-bar">
+                    <div style="z-index: -1;" class="main-title">Timeline</div>
+                    <div class="main-speaker">
+                        <select id='dropdown' class="author-select" onchange="loadSpeaker(this.value)">
+                            <option disabled selected value>
+                                -- Select a speaker --
+                            </option>
+                        </select>
+                        <div class="main-image-cont">
+                            <img id="main-image" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class='tab-holder'>
+                    <div class='tab selected'>Compare with other speakers</div>
+                    <div class='tab'>View significant events</div>
+                </div>
+
+                <main>
+                    <div id='compare-page'>
+                        <div class='compare'></div>
+                        <div class='horizontal-scroll' id='name-list'></div>
+                        <div class="graphic">
+                            <svg xmlns="http://www.w3.org/2000/svg" id="svg-lifespan" class="svg" viewBox="-50 0 1300 340" preserveAspectRatio="xMidYMid meet"></svg>
+                        </div>
+                    </div>
+
+                    <div id='event-page'>
+                        <div class="description-box">
+                            <div class="description-box-text"></div>
+                        </div>
+                        <div>
+                            <svg xmlns="http://www.w3.org/2000/svg" id="svg-events" class="svg" viewBox="-50 0 1300 300" preserveAspectRatio="xMidYMid meet"></svg>
+                            <div class="zoom-box">
+                               
+                            </div>
+                        </div>
+                        <button id="reset-button">Reset</button>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        <script src="data.js" type="text/javascript"></script>
+        <script src="dropdown.js"></script>
+        <script src="timeline.js" type="text/javascript"></script>
+
+    </body>
+</html>

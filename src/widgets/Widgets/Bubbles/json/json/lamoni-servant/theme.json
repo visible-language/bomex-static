@@ -1,0 +1,8 @@
+{"children": [{"name": "desireth", "size": 1, "url": "visiblelanguage.net/wordCameos/desireth", "sourceText": "Rabbanah, Rabbanah, the king desireth thee to stay.", "partOfSpeech": "Verb", "theme": "Non-sacred"},
+{"name": "king", "size": 1, "url": "visiblelanguage.net/wordCameos/king", "sourceText": "Rabbanah, Rabbanah, the king desireth thee to stay.", "partOfSpeech": "Noun", "theme": "Non-Sacred"},
+{"name": "Rabbanah", "size": 2, "url": "visiblelanguage.net/wordCameos/rabbanah", "sourceText": "Rabbanah, Rabbanah, the king desireth thee to stay.", "partOfSpeech": "Noun", "theme": "Non-Sacred"},
+{"name": "stay", "size": 1, "url": "visiblelanguage.net/wordCameos/stay", "sourceText": "Rabbanah, Rabbanah, the king desireth thee to stay.", "partOfSpeech": "Verb", "theme": "Non-Sacred"},
+{"name": "the", "size": 1, "url": "visiblelanguage.net/wordCameos/the", "sourceText": "Rabbanah, Rabbanah, the king desireth thee to stay.", "partOfSpeech": "Article", "theme": "Function"},
+{"name": "thee", "size": 1, "url": "visiblelanguage.net/wordCameos/thee", "sourceText": "Rabbanah, Rabbanah, the king desireth thee to stay.", "partOfSpeech": "Pronoun", "theme": "Function"},
+{"name": "to", "size": 1, "url": "visiblelanguage.net/wordCameos/to", "sourceText": "Rabbanah, Rabbanah, the king desireth thee to stay.", "partOfSpeech": "Preposition", "theme": "Function"}]
+}

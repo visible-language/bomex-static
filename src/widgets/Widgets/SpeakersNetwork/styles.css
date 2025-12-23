@@ -1,0 +1,637 @@
+*{
+    box-sizing: border-box;
+    margin: 0; 
+    padding: 0;
+}
+:root {
+    --navy-blue: #061f44;
+    --dark-blue: #03396c;
+    --mid-blue: #005b96;
+    --gray-blue: #5691a3;
+    --light-gray-blue: #b3cde0;
+    --background: #222222;
+  
+    --gray-0: #a9a9a9; 
+    --gray-1: #bdbdbd;
+    --gray-2: #e0e0e0;
+    --gray-3: #eeeeee;
+    --white-1: #f5f5f5;
+    --white-2: #fafafa;
+    --logo-color: #005b96;
+
+    --gray-bom: #d2d5dd;
+    --button-gray: #afb1b6;
+    --button-dark-gray: #8c8e92;
+
+}
+
+#widget{
+    border-radius: 30px;
+    box-shadow: 0 3px 3px 0 var(--box-shadow-color);
+    background-color: var(--color-2);
+}
+body{
+    border-radius: 30px;
+    /*margin:10px;*/
+}
+a{
+	text-decoration: none;
+    color:var(--mid-blue);
+    font-weight:400;
+}
+a:visited{
+    color:var(--mid-blue);
+}
+a:hover{
+    font-weight:600;
+}
+
+#page-container{
+    height: var(--app-height);
+    font-family: 'Roboto', sans-serif;
+	list-style: inside;
+    display: grid;
+    grid-template-columns: auto 300px;
+	grid-template-rows:  50px auto 50px;
+	grid-template-areas: 'headbar headbar'
+						 '3d-graph sidebar'
+						 'toolbar toolbar';
+}
+
+#toolbar{
+	grid-area: toolbar;
+	display: grid;
+	border-color: var(--navy_blue);
+	grid-template-columns: 20% 20% 20% 20% 20%;
+	grid-template-areas: 'button1 button2 button3 button4 button5';
+}
+
+#button1{
+	grid-area: button1;
+    /*border-bottom-left-radius: 30px;*/
+}
+#button2{
+	grid-area: button2;
+}
+#button3{
+	grid-area: button3;
+}
+#button4{
+	grid-area: button4;
+}
+#button5{
+	grid-area: button5;
+}
+
+#graph-3d{
+	grid-area: 3d-graph; 
+/*	background-color: #222222;*/
+    border-radius: 20px;
+    margin: 5px;
+    box-shadow: 0 6px 10px 0 var(--box-shadow-color);
+}
+/*.scene-container{
+    border-radius: 20px;    
+}*/
+canvas{
+    border-radius: 20px;    
+}
+#headbar{
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
+    grid-area: headbar;
+	display: flex;
+    align-items: center;
+    justify-content: center;
+    /*box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);*/
+    z-index: 1;
+	padding: 0;
+	color: black;	
+	/*border-bottom: 5px solid;*/
+    height:50px;
+}
+h1{
+	display: inline;
+	grid-area: header;
+    font-size: 45px;
+    font-weight: 500;
+}
+#side-menu{
+	grid-area: "side-menu";
+    overflow: auto;
+    scrollbar-width: thin;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+
+}
+#sidebar{
+    margin:5px;
+    border-radius: 20px;
+    box-shadow: 0 6px 10px 0 var(--box-shadow-color);    
+	background-color:#fff;
+	display: grid;
+	grid-area: sidebar;
+	grid-template-rows: auto 100px;
+	grid-template-areas: 'side-menu'
+						 'auxiliary';
+}
+
+#auxiliary{
+	grid-area: auxiliary;
+    height:100px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    /*border-top: 2px solid grey;
+	border-left: 2px solid grey;
+    border-bottom: 2px solid gray;    */
+	display: grid;
+	background-color: var(--color-1);
+	grid-template-rows: auto auto auto auto;
+	grid-template-areas: 'nav-instructions'
+						 'node-select'
+                         'slide-instructions'
+						 'slider';	  
+}
+#slide-instructions{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+	padding: .5em;
+	grid-area: slide-instructions;
+    font-weight: 500;
+    color: #222222;
+}
+#slide-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#slider{
+	grid-area: slider;
+	display: grid;
+	grid-template-columns: auto 75% auto;
+	grid-template-areas: 'left-label slidebar right-label';
+    padding-bottom:.5em;
+}
+.slider{
+	width: 100%;
+    cursor: grab;
+}
+.slider:active{
+    cursor:grabbing;
+}
+
+.slider-label{
+	display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight:400;
+}
+#nav-instructions{
+  	padding: .5em;
+	grid-area: nav-instructions;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 20px;
+    color: #222222;
+}
+#node-select{
+	grid-area: node-select;
+    width:100%;
+	display: grid;
+	grid-template-columns: auto auto;
+	grid-template-areas: 'book-select gobutton';
+}
+#bookSelect{
+    grid-area: book-select;
+    margin:2px;
+}
+
+#button-holder{
+	min-height: 40px;
+	/*max-height: 40px;*/
+	display: grid;
+    grid-template-areas: 
+    "check uncheck"
+    "color1 color1" 
+    "color2 color2"
+    "color3 color3";
+}
+.colorToggle{
+    width: 100%;
+}
+#checkButton{
+	grid-area: check;
+}
+#uncheckButton{
+	grid-area: uncheck;
+}
+#toggle1{
+    grid-area: color1;
+}
+#toggle2{
+    grid-area: color2;
+}#toggle3{
+    grid-area: color3;
+}
+.scene-tooltip{
+	font: 25px;
+    font-weight: bold;
+	background-color: rgba(34, 34, 34, 0.5);
+}
+.default-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color .15s ease-in, color .15s ease-in;	
+    transition-delay: 100ms;
+	background-color: var(--color-3);	
+   	color: black;	
+    cursor: pointer;   
+    font-size: 18px;
+    font-weight: 500; 
+    margin: 2px;
+    border: none;
+    border-radius: 10px;
+}
+.default-button:hover{
+	background-color: var(--color-3-shade);
+}
+.button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   	/*color:  var(--white-2);
+	background-color: var(--gray-blue);
+	border-top: 2px solid;
+	border-color:  var(--navy-blue);*/
+    border-radius: 15px;
+    margin:5px;
+    border: none;
+	background-color: var(--color-3);
+   	color: black;	
+    transition: background-color .15s ease-in, color .15s ease-in;
+	transition-delay: 100ms;
+    font-weight: 500;
+    cursor: pointer;
+    user-select: none;
+}
+
+.button:hover{
+	background-color: var(--color-3-shade);
+}
+
+/*style checkboxes*/
+/* Style container */
+.container {
+    display: block;
+    position: relative;
+    padding-left: 30px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 500;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide default checkbox */
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border: 1px solid;
+}
+
+.contents{
+    margin-top: 10px;
+    margin-bottom: 10px;	
+}
+h2{
+  text-align: center;	
+}
+#checkbox-holder{
+    font-size: 16px;
+}
+
+#popup{
+    position: absolute;
+    z-index: 1;
+    background-color: var(--light-gray-blue);
+    color: #222222;
+    text-align: left;
+    cursor: pointer;
+    max-width: 225px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    padding: 5px;
+  }
+
+/*Style the accordion menu
+  This is shamelessly taken from w3schools, and probably not the best, but it works.
+*/
+.accordion {
+    font-family: 'Roboto', sans-serif;
+    color: #222222;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    background-color: var(--color-1);
+/*    border-bottom: 2px solid var(--gray-blue);
+    border-left: 2px solid var(--color-1-shade); */
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+    font-weight: 500;
+}
+.active, .accordion:hover {
+    background-color: var(--color-1-shade);
+/*    border-bottom: 2px solid var(--dark-blue);
+    border-left: 2px solid var(--color-1-shade);*/
+}
+.accordion:after {
+    content: '\002B';
+    color: black;
+    font-weight: 700;
+    float: right;
+    margin-left: 5px;
+}
+
+.active:after {
+    content: "\2212";
+}
+#dummyPanel{
+    /*border-left: 2px solid var(--color-1-shade);*/
+    height: 100%;
+    background-color: white;
+}
+.panel {
+    padding: 0px 18px;
+    background-color: white;
+    max-height: 0;
+    overflow: hidden;
+    cursor:default;
+    /*transition: max-height 0.4s ease-out;
+    border-left: 2px solid var(--color-1-shade);*/
+}
+#photo-box{
+    position: absolute;
+    z-index: 1;
+    background-color: #f1f1f1;
+    border: 1px solid #d3d3d3;
+    text-align: left;
+    cursor: move;
+    max-width: 250px;
+    max-height: 300px;
+    padding: 10px;
+}
+#nodeinfo img{
+    max-width: 100%;
+    border: 3px black solid;
+}
+
+#grey-out{
+    width: 100%;
+    height:100%;
+    border-radius: 30px;
+    position: absolute;
+    z-index: 3;
+    background-color: rgba(1, 1, 1, 0.35);
+    visibility: hidden;
+}
+
+#faq{
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    z-index: 5;
+    width: 90%;
+    height: 90%;
+    background-color: var(--white-1);
+    overflow-x: hidden;
+    overflow-y: hidden;
+    border-radius: 25px;
+    font-family: roboto;
+    visibility: hidden;
+}
+
+.title{
+    grid-area:title;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#head{
+    background-color: var(--color-1);
+    display:grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:"title exit"
+}
+
+.exit{
+    grid-area: exit;
+    cursor:pointer;
+    padding:1rem 2rem 1rem 1rem;
+}
+
+.appear{
+    cursor:pointer;
+    color: var(--dark-blue);
+    font-weight: bolder;
+}
+
+#content{
+    display:flex;
+    grid-area: body;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    max-height: 95%;
+}
+
+.question{
+    padding: 1em;
+    margin: 1em;
+    width:90%;
+    border-radius: 20px;
+    background-color: var(--white-2);
+    box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
+    transition: box-shadow 0.4s;
+    transition-delay: 100ms;
+}
+.question:hover {
+    box-shadow: 0 10px 20px 0 rgba(0,0,0,0.5);
+}
+
+.container input:checked ~ .Righteous{
+	background-color: #097969;}
+.container input:checked ~ .Wicked{
+	background-color: #C41E3A;}
+.container input:checked ~ .Unknown{
+	background-color: #c9c9c9;}
+.container input:checked ~ .Immortal{
+	background-color: #FFEA00 ;}
+.container input:checked ~ .Mixed{
+	background-color: #5D3FD3;}
+.container input:checked ~ .Hebrew{
+	background-color: #800080 ;}
+.container input:checked ~ .Nephite{
+	background-color: #6495ED;}
+.container input:checked ~ .Prehistoric{
+	background-color: #4F7942 ;}
+.container input:checked ~ .Jaredite{
+	background-color: #F33A6A ;}
+.container input:checked ~ .Amalekite{
+	background-color: #A7C7E7 ;}
+.container input:checked ~ .Mulekite{
+	background-color: #E1C16E ;}
+.container input:checked ~ .Lamanite{
+	background-color: #E97451;}
+.container input:checked ~ .Immortal{
+	background-color: #FFEA00 ;}
+.container input:checked ~ .Zoramite{
+	background-color: #93C572 ;}
+.container input:checked ~ .Unknown{
+	background-color: #B2BEB5 ;}
+.container input:checked ~ .Laman{
+	background-color: #e35282;}
+.container input:checked ~ .Nephi{
+	background-color: #cc6a39;}
+.container input:checked ~ .Zoram{
+	background-color: #765113;}
+/*Paste this into your stylesheet*/
+.container input:checked ~ .Abinadi{
+	background-color: #9e9e9e;}
+.container input:checked ~ .Alma2{
+	background-color: #8b4513;}
+.container input:checked ~ .Alma{
+	background-color: #556b2f;}
+.container input:checked ~ .Amaleki{
+	background-color: #9685ff;}
+.container input:checked ~ .Ammon{
+	background-color: #b22222 ;}
+.container input:checked ~ .Amulek{
+	background-color: #008000;}
+.container input:checked ~ .Angels{
+	background-color: #008b8b;}
+.container input:checked ~ .AntiNephiLehi{
+	background-color: #3cb371;}
+.container input:checked ~ .Benjamin{
+	background-color: #b8860b;}
+.container input:checked ~ .BrothersNephi{
+	background-color:  #40e0d0;}
+.container input:checked ~ .CaptainMoroni{
+	background-color: #bdb76b;}
+.container input:checked ~ .Christ{
+	background-color: #4682b4;}
+.container input:checked ~ .Enos{
+	background-color: #67679c;}
+.container input:checked ~ .FatherLamoni{
+	background-color: #00ff00;}
+.container input:checked ~ .Godhead{
+	background-color: #87ceeb;}
+.container input:checked ~ .Helaman{
+	background-color: #32cd32;}
+.container input:checked ~ .Isaiah{
+	background-color: #8b008b;}
+.container input:checked ~ .Jacob{
+	background-color: #ff4500;}
+.container input:checked ~ .Jarom{
+	background-color: #ff8c00;}
+.container input:checked ~ .Joseph{
+	background-color: #fffac8;}
+.container input:checked ~ .Korihor{
+	background-color: #ffd700;}
+.container input:checked ~ .Lamoni{
+	background-color: #9400d3;}
+.container input:checked ~ .Lehi{
+	background-color: #00fa9a;}
+.container input:checked ~ .Limhi{
+	background-color: #adff2f;}
+.container input:checked ~ .Malachi{
+	background-color: #1e90ff;}
+.container input:checked ~ .Mormon{
+	background-color: #0000ff;}
+.container input:checked ~ .Moroni{
+	background-color: #da70d6;}
+.container input:checked ~ .Mosiah{
+	background-color: #d8bfd8;}
+.container input:checked ~ .Nephi2{
+	background-color: #ff00ff;}
+.container input:checked ~ .Nephi{
+	background-color: #ffa07a;}
+.container input:checked ~ .Pahoran{
+	background-color: #db7093;}
+.container input:checked ~ .SamuelLamanite{
+	background-color: #ff1493;}
+.container input:checked ~ .Zeniff{
+	background-color: #7b68ee;}
+.container input:checked ~ .Zenos{
+	background-color: #ffdab9;}
+
+
+
+    
+@media screen and (max-width: 850px) {
+    h1{
+        font-size: 30px;
+    }
+    #page-container{
+        grid-template-columns: auto 250px;
+    }
+    .button{
+        font-size: 14px;
+    }    
+
+}
+@media screen and (max-width: 500px) {
+    #page-container{
+        grid-template-columns: 100%;
+        grid-template-rows:  50px 50px auto auto 1fr;
+        grid-template-areas: 'headbar'
+                             'toolbar'                     
+                             '3d-graph'
+                             'sidebar';
+    }
+    .button{
+        margin:2px;
+        padding:1px 2px 1px 2px;
+        font-weight: 500;
+        font-size: 12px;
+    }
+    h1{
+        font-size: 20px;
+    }
+    #dummyPanel{
+        height: 0px;
+    }
+
+}
+
+@media screen and (max-width: 340px) {
+    .button{
+        font-size: 10px;
+        font-weight: 800px;
+    }
+}

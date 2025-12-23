@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<head>
+    <meta name='viewport' content='width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1'>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="stylesheet" href="styles.css"/>
+    <link rel="stylesheet" href="../colors.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&ampdisplay=swap" rel="stylesheet">
+    <script src="//unpkg.com/3d-force-graph"></script>
+    <script src="//unpkg.com/d3-force-3d"></script>
+    <title>Network Diagram</title>
+    <meta charset="utf-8"/>
+</head>
+
+<body>
+    <div id="widget">
+        <div id="faq">
+            <div id="head"> 
+                <div class="title"><h1>FAQ</h1></div>
+                <div class="exit" onclick="faqDisappear()">X</div>
+            </div>
+            <div id = "content">
+                <br>
+                <div class = "question">
+                    <h3>
+                        What is this network diagram?
+                    </h3>
+                    <br>
+                    <p>This diagram is an example of a consensus network. Consensus networks are a visually intuitive way to show the relative similarity between things that can be compared on several distinct axes. The concept of consensus networks was developed in phylogenetics, when researchers wanted a more robust way to compare organisms by several different aspects at once. </p> 
+        			<br>
+                    <p>In our consensus networks, each node represents a text. Connections between the nodes indicate similarity between the nodes they connect. The strength of the connections (how hard they pull on their neighbors) is indicative of the level of similarity between the texts.</p>
+                    <br>
+                </div>
+                <div class="question">
+                    <h3>
+                        What do the spheres represent?
+                    </h3>
+                    <br>
+                    <p>Each sphere (node) represents about 1000 words from a given speaker. These words have been attributed to that speaker. The words fall between the start reference and end reference on the 'Speaker Information' tab.</p>
+                    <br>
+                </div>
+                <div class="question">
+                    <h3>
+                        What do the connections represent?
+                    </h3>
+                    <br>
+                    <p>Each connection is indicative of similarity between the two nodes it connects.</p>
+                    <br>
+                </div>
+                <div class="question">
+                    <h3>
+                        Why do some nodes have more connections than others?
+                    </h3>
+                    <br>
+                    <p>When the networks are created, each node 'reaches out' to the three nodes to which it is most similar. This process is repeated many times, using different measures to compare the documents. Because of this, a node can choose distinct neighbors in different stages of the network-creation process. In this way, some nodes choose several distinct neighbors, whereas others only choose three.</p>
+		            <br>
+                    <p>Additionally, although each node is guaranteed to reach out to at least three others, there is no guarantee that any given node will be chosen by another. This can also lead to fewer connections.</p> 
+                    <br>
+                </div>
+                <div class="question">
+                    <h3>
+                        What determines the placement of the nodes?
+                    </h3>
+                    <br>
+                    <p>This network uses force-directed graphing. In this system, the nodes sit in 3-D space, and pull towards each other where there are connections between them. Stronger connections between documents pull their nodes closer together. Then, a force is applied to push the network apart. In the resulting graph, the nodes fall into place, based on their relative similarity to other documents in the graph.</p>
+                    <br>
+                </div>
+                <div class="question">
+                    <h3>
+                        What is meant by the terms "incoming" and "outgoing" connections?
+                    </h3>
+                    <br>
+                    <p>During network creation, each node 'reaches out' to at least three other nodes. Each of these connections are outgoing connections. If a node is chosen by another document, that connection is an incoming connection.</p>
+                    <br>
+                </div>
+                <div class="question">
+                    <h3>
+                        How are the consensus networks created?
+                    </h3>
+                    <br>
+                    <p>Consensus networks are created by comparing each text to each other text using several different methods of comparison.</p>    
+		            <br/>
+                    <p>Each text is compared to each other document based on a textual feature. Then, the text ‘reaches out’ to its three nearest neighbors. This process is repeated with several textual features, and similarity is measured several different ways for each textual feature. Each time a text reaches out to one its neighbors, a connection is made between those two nodes.</p>    
+		            <br/>
+                    <p>All these connections are layered on top of one another, resulting in a robust web of connections between texts. The ‘consensus’ portion of the name refers to this layering of connections, as the network provides a consensus of where strong inter-textual connections lie.</p>    
+                    <br>
+                </div>        
+            </div>
+        </div>
+        <div id="grey-out" onclick="faqDisappear()"></div>
+    <div id="page-container" style="grid-template-rows: 0px auto 50px">
+        <div id ="headbar" style="height: 0px;"> 
+        <h1 style="display: none;">
+            Network Diagram
+        </h1>
+        </div>
+        <div id="graph-3d">
+        </div>	
+        <div id= "toolbar">
+            <div id= "button1"  class="button" onclick = "resetGraph()">
+                Re-Center Network
+            </div>
+            <div id= "button2"  class="button" onclick = "cycleDimensions()" >
+                Change to 2-D 
+            </div>	  
+            <div id= "button3"  class="button" onclick = "changeBackgroundColor()">
+                Light Mode
+            </div>
+            <div id= "button4"  class="button" onclick = "toggleConnections()">
+                Connections Off
+            </div> 	  
+            <div id= "button5"  class="button" onclick = "cycleBeads()">
+                Toggle Influence Beads
+            </div> 	
+        </div>
+        <div id="sidebar">
+            <div id="side-menu">
+                <button style="display: none;" class="accordion" id="explanationTab" onclick="openTab('explanationTab')">
+                    Explanation
+                </button>
+                <div style="display: none;" class="panel">
+                    <div id="explanation" class = "contents"></div>
+                </div>
+                <button style="display: none;" class="accordion" id="instructionsTab" onclick = "openTab('instructionsTab')">
+                    Instructions
+                </button>
+                <div style="display: none;" class="panel">
+                    <div id='instructions' class="contents"></div>
+                </div>
+                <button class="accordion" id="infoTab" onclick="openTab('infoTab')">
+                    Speaker Information
+                </button>
+                <div class="panel">
+                    <div id="info" class="contents">No speaker selected.</div>
+                </div>  
+                <button class="accordion" id="legendTab" onclick="openTab('legendTab')">
+                    Legend
+                </button>
+                <div class="panel">
+                    <div id="legend" class = "contents">
+                        <h3><div id = "legend-title">Colored by Name</div></h3>
+                        <br>
+                        <div id="checkbox-holder">
+                        </div>
+                        <br>
+                        <div id = "button-holder">
+                            <button id="checkButton" class='default-button' onclick = "checkAll(true)">Check All</button>
+                            <button id="uncheckButton" class='default-button' onclick="checkAll(false)">Uncheck All</button>
+                        </div>
+                    </div>
+                </div>  
+            </div>
+            <div id="auxiliary">
+                <div id="nav-instructions">  
+                    Select Speaker:
+                </div>
+                <div id="node-select">
+                    <select id="bookSelect">
+                        <option value="Abinadi">Abinadi</option>
+                        <option value="Alma2">Alma the Younger</option>
+                        <option value="Alma">Alma</option>
+                        <option value="Amaleki">Amaleki</option>
+                        <option value="Ammon">Ammon</option>
+                        <option value="Amulek">Amulek</option>
+                        <option value="Angels">Angels</option>
+                        <option value="AntiNephiLehi">Anti-Nephi-Lehi</option>
+                        <option value="Benjamin">Benjamin</option>
+                        <option value="BrothersNephi">Brothers of Nephi</option>
+                        <option value="CaptainMoroni">Captain Moroni</option>
+                        <option value="Christ">Christ</option>
+                        <option value="Enos">Enos</option>
+                        <option value="FatherLamoni">Father of Lamoni</option>
+                        <option value="Godhead">Godhead</option>
+                        <option value="Helaman">Helaman</option>
+                        <option value="Isaiah">Isaiah</option>
+                        <option value="Jacob">Jacob</option>
+                        <option value="Jarom">Jarom</option>
+                        <option value="Joseph">Joseph Sold into Egypt</option>
+                        <option value="Korihor">Korihor</option>
+                        <option value="Lamoni">Lamoni</option>
+                        <option value="Lehi">Lehi</option>
+                        <option value="Limhi">Limhi</option>
+                        <option value="Malachi">Malachi</option>
+                        <option value="Mormon">Mormon</option>
+                        <option value="Moroni">Moroni</option>
+                        <option value="Mosiah">Mosiah</option>
+                        <option value="Nephi2">Nephi Son of Helaman</option>
+                        <option value="Nephi">Nephi</option>
+                        <option value="Pahoran">Pahoran</option>
+                        <option value="SamuelLamanite">Samuel the Lamanite</option>
+                        <option value="Zeniff">Zeniff</option>
+                        <option value="Zenos">Zenos</option>
+                    </select>
+                    <button id="goButton" class='default-button' onclick="flyToSpeaker()">
+                        Highlight
+                    </button>
+                </div> 
+            </div>  
+        </div>
+    </div>
+    </div>
+    <script type="text/javascript" src="utils.js"></script>
+
+    <script>
+        // Inline index.js
+        // Very similar structure and functionality to SocialNetwork's index.html
+
+        //Checkbox stuff 
+        const onNames = new Set();
+        const colorNodes = new Set();
+        const highlightLinks = new Set();
+    
+        // size variables for graph creation (hard-coding is bad, but we have to because the force-directed graph library isn't super polished)
+        var windowWidth = window.innerWidth;
+        var windowHeight = window.innerHeight;  
+        var graphWidth = windowWidth - 500;
+        var graphHeight = windowHeight - 500;
+        var sideSizeMin = windowHeight - 275;
+        var sideSizeMax = windowHeight - 275;
+    
+        var graphExtraHeight = 110;
+        var graphExtraWidth = 310;
+        var graphExtraWidthMed = 260;
+        var graphExtraWidthSmall = 10;
+        var graphExtraSideHeight = 210;
+        var graphExtraSideHeightSmall = 210;
+        var minAccordionHeight = 426;
+    
+        
+        // variables for highlighting when nodes are right-clicked
+        var selectedNode = null;  
+        var highlightMode = false;
+        var coloring = 0;
+        const targetNodes = new Set();
+        const incomingNodes = new Set();
+        const outgoingNodes = new Set();
+        const inHighlightLinks = new Set();
+        const outHighlightLinks = new Set();
+    
+        const visibleLinks = new Set();
+        var connectionDisplay = 1;
+        var dimensions = 3;
+        var lineWidth = 1;
+    
+        // set initial color for nodes and background and node drag
+        var graphColoring = 'text';
+        var backgroundColor = 'light';
+        var beads = 'both';
+        
+        //color variables
+        var transparentDark = "rgba(34, 34, 34, 0.5)";
+        var transparentlight = "rgba(236, 236, 236, 0.5)";
+        var lightBackgroundColor = "#ffffff";
+        var darkBackgroundColor = "#222222";
+    
+        // create graph	
+        const Graph = ForceGraph3D({controlType: 'orbit'})
+            (document.getElementById('graph-3d'))
+            .jsonUrl('unpruned.json')
+            .nodeLabel('Display_Name')
+            .nodeResolution([10])
+            .nodeRelSize([6])
+            .linkWidth(['Weight'])
+            .nodeOpacity([1])
+            .linkOpacity([.75])
+            .nodeColor('Color')
+            .nodeId(["Id"])
+            .linkSource(["Source"])
+            .linkTarget(["Target"])
+            //since we are creating the graph here, we can't resize the canvas with media queries, so we have to do it here. 
+            .width((windowWidth < 500 ? windowWidth: graphWidth))
+            .height((windowWidth < 500 ? windowHeight - 25: graphHeight))
+            .linkWidth(lineWidth)
+            .backgroundColor('#222222')
+            .onLinkClick((link) => {
+                showLinkInfo(link);
+                closeAccordion();
+                openTab('infoTab');
+                dehighlightGraph();
+            })
+            .onLinkHover((link, link2) => {
+               // linkHover(link, link2);
+            })
+            .onNodeClick((node, event) => {
+                highlightNode(node);
+            })	  
+            .onNodeRightClick((node) => {
+                showNodeInfo(node);
+                closeAccordion();
+                openTab('infoTab');
+            })
+            .onBackgroundClick(() =>{
+                dehighlightGraph()
+            });
+    
+        // Decide which links should be shown based on checkboxes    
+        function updateVisibleLinks(){
+            visibleLinks.clear(); 
+            var links = Graph.graphData().links;
+
+            for (index = 0; index < links.length; index++) {
+                link = links[index]
+                if(connectionDisplay){
+                    visibleLinks.add(link);
+                }
+            }
+
+            Graph.linkVisibility(link => highlightLinks.has(link) && visibleLinks.has(link) ? 1 : highlightLinks.has(link) && inHighlightLinks.has(link) ? 1 : highlightLinks.has(link)&&outHighlightLinks.has(link) ? 1 : 0); 
+        }
+    
+        //do something when you hover over links
+        function linkHover(link, link2){
+            if (link != null) {
+                //on hover start
+                link.Weight = 2;
+                Graph.linkWidth('Weight')
+            } else {
+                //on hover end
+                link2.Weight = 1;
+                Graph.linkWidth('Weight')
+            }
+        }
+        
+        //return graph to original colors
+        function dehighlightGraph(){
+            highlightMode = false;
+                // return nodes to proper color
+                if (coloring == 1) {
+                    Graph.nodeColor('color1');
+                } else if (coloring == 2) {
+                    Graph.nodeColor('color2');
+                } else {
+                    Graph.nodeColor('Color');
+                }
+                // Turn on link visibility and size
+                Graph.linkOpacity([.75]);
+                if (backgroundColor === 'dark') {
+                    Graph.linkColor(link => '#ffffff');
+                } else {
+                    Graph.linkColor(link => '#888888');
+                }
+
+                Graph.linkWidth(lineWidth);
+                updateVisibleLinks();
+                // Clean out sets for selective highlighting
+                inHighlightLinks.clear();
+                outHighlightLinks.clear();
+                incomingNodes.clear();
+                outgoingNodes.clear();
+                targetNodes.clear();
+                destroyLabel();
+        }
+       
+        // Dynamically resize the canvas on window resize
+        window.onresize = resizeGraph;
+        const appHeight = () => document.documentElement.style.setProperty('--app-height', `${window.innerHeight}px`)
+        window.addEventListener('resize', appHeight)
+        appHeight();
+
+        function resizeGraph(){    
+            Graph.height(window.innerHeight - graphExtraHeight);
+
+            if (window.innerWidth > 850) {
+                Graph.width(window.innerWidth - graphExtraWidth);
+                sideSizeMin = window.innerHeight - graphExtraSideHeight;  
+                sideSizeMax = window.innerHeight - graphExtraSideHeight;  
+            } else if(window.innerWidth > 500) {
+                Graph.width(window.innerWidth - graphExtraWidthMed);
+                sideSizeMin = window.innerHeight - graphExtraSideHeight;  
+                sideSizeMax = window.innerHeight - graphExtraSideHeight;  
+            } else {
+                Graph.width(window.innerWidth - graphExtraWidthSmall);
+                Graph.height(window.innerWidth - graphExtraWidthSmall);
+                sideSizeMin = 1;  
+                sideSizeMax = window.innerHeight;  
+            }
+
+            populateInstructions();
+            populateNavInfo();
+            setSidebarSize(sideSizeMin,sideSizeMax);
+            resetGraph();
+        }
+    
+        // set max height on sidemenu (we are doing it with javaScript to integrate it with the graph resizing)
+        function setSidebarSize(sizeMin, sizeMax){
+            var sideMenu = document.getElementById("side-menu");
+
+            sideMenu.style.maxHeight = sizeMax.toString()+'px'
+            sideMenu.style.minHeight = sizeMin.toString()+'px'
+        }
+
+        //some versions of this graph have different color schemes, which is why this is so long    
+        function setHighlightColor() {
+            // Set node color, colored if highlighted, translucent otherwise
+            if (coloring == 1) {
+                Graph.nodeColor(node => targetNodes.has(node)||incomingNodes.has(node)||outgoingNodes.has(node) ? node.color1 : 'rgba(211, 211, 211, 0.3)');
+            } else if (coloring == 2) {
+                Graph.nodeColor(node => targetNodes.has(node)||incomingNodes.has(node)||outgoingNodes.has(node) ? node.color2 : 'rgba(211, 211, 211, 0.3)');
+            } else {
+                Graph.nodeColor(node => targetNodes.has(node)||incomingNodes.has(node)||outgoingNodes.has(node) ? node.Color : 'rgba(211, 211, 211, 0.3)');
+            }
+            // Set link colors, dependent on background color
+            if (backgroundColor == "dark") {
+                Graph.linkColor(link => inHighlightLinks.has(link) ? '#ffffff': outHighlightLinks.has(link) ? '#ffffff' : 'rgba(211, 211, 211, 0.3)');
+            } else {
+                Graph.linkColor(link => inHighlightLinks.has(link) ? '#888888': outHighlightLinks.has(link) ? '#888888' : 'rgba(211, 211, 211, 0.3)');
+            }
+
+            setBeads();
+            Graph.linkWidth(1.5);
+        }
+
+        function setBeads(){
+            //Add moving particles (Dr Fields really likes them)
+            if (beads == "out") {
+                Graph.linkDirectionalParticles(link => inHighlightLinks.has(link) ? 6 : 0);
+            } else if (beads == "in") {
+                Graph.linkDirectionalParticles(link => outHighlightLinks.has(link) ? 6 : 0);
+            } else if(beads == "both"){
+                Graph.linkDirectionalParticles(link => inHighlightLinks.has(link) ? 6 : outHighlightLinks.has(link) ? 6 : 0);
+            } else if(beads == "none"){
+                Graph.linkDirectionalParticles(0);
+            }
+
+            Graph.linkDirectionalParticleWidth(4);
+            Graph.linkDirectionalParticleSpeed(.005);
+            Graph.linkDirectionalParticleResolution(8);
+        }
+    
+        //zoom to proper size
+        function resetGraph() {
+            destroyLabel();
+            Graph.zoomToFit(500, -75)
+        }
+        
+        //change background color and link color
+        function changeBackgroundColor() {
+            buttonText = document.getElementById("button3");
+            if (backgroundColor === 'dark') {
+                backgroundColor = 'light'
+                Graph.backgroundColor(lightBackgroundColor);
+                Graph.linkColor(link => '#888888');
+                buttonText.innerHTML = "Dark Mode";
+                document.getElementsByClassName("scene-nav-info")[0].style.color = "#222222";
+            } else {
+                Graph.backgroundColor(darkBackgroundColor);	
+                backgroundColor = 'dark';
+                Graph.linkColor(link => '#ffffff');
+                document.getElementsByClassName("scene-nav-info")[0].style.color = "#fafafa";
+                buttonText.innerHTML = "Light Mode";            
+            }
+
+            if(highlightMode == true) {
+                setHighlightColor();
+            }
+
+            updateTooltipColor();
+            updatePopupColor();
+        }
+    
+        //tooltip color has to be updated seperately
+        function updateTooltipColor(){
+            var tooltip = document.getElementsByClassName("scene-tooltip")[0]; 
+            if (backgroundColor === 'dark') {
+                tooltip.style.backgroundColor = transparentDark;
+                tooltip.style.color = "#ffffff";
+            } else {
+                tooltip.style.backgroundColor = "rgba(228,237,240, 0.5)";
+                tooltip.style.color = "#000000";	  
+            }
+        }
+    
+        //change label color if needs be
+        function updatePopupColor(){
+            var popup = document.getElementById("popup"); 
+
+            if (popup) {
+                if (backgroundColor === 'dark') {
+                    popup.style.backgroundColor = transparentDark;
+                    popup.style.color = "#ffffff";
+                } else {
+                    popup.style.backgroundColor = transparentlight;
+                    popup.style.color = "#000000";	  
+                }
+            }
+        }
+    
+        // Function change direction of influence beads 
+        function cycleBeads(){
+            if (beads == "in") {
+                beads = "out";
+            } else if (beads == "out"){
+                beads = "both";
+            } else if (beads == "both"){
+                beads = "none";
+            } else if (beads == "none"){
+                beads = "in";
+            }
+            setBeads();
+        }
+
+        // Functions to change graph between 3-D and 2-D
+        function updateDimensions(){
+            Graph.numDimensions(dimensions);
+        }
+        function cycleDimensions(){
+            destroyLabel();
+
+            var button = document.getElementById("button2");       
+            var explanationText = document.getElementById('Explanation');
+
+            if (dimensions == 3) {
+                dimensions = 2;
+                button.innerHTML = "Change to 3-D";
+            } else {
+                dimensions = 3;
+                button.innerHTML = "Change to 2-D";
+            }
+
+            populateExplanation();
+            updateDimensions();
+        }
+    
+        //Cycle through different color schemes 
+        function changeColors(colorInt, colorText){
+            elem = document.getElementById("legend-title");
+            elem.innerHTML = `Colored by ${colorText}`;
+            coloring = colorInt;
+            populateCheckboxes();
+            dehighlightGraph();
+            checkAll(true);
+        }
+    
+        // Checkbox functions    
+        function checkAll(checked){ 
+            var speakersLength = 0;
+            var list = [];
+
+            if (coloring == 1) {
+                list = speakers1;
+            } else if (coloring == 2) {
+                list = speakers2;
+            } else {
+                list = speakers;
+            }
+
+            speakersLength=list.length;
+
+            for (var i = 0; i < speakersLength; i++) {
+                document.getElementById(list[i]).checked = checked;
+            }
+
+            updateVisibleLinks();
+            check();
+        }
+    
+        //loop over checkbox item for each element in list of all speakers
+        function check(){
+            //Clear names set and color nodes
+            onNames.clear();
+            colorNodes.clear();
+            highlightLinks.clear();
+
+            var nodes = Graph.graphData().nodes;
+            var links = Graph.graphData().links;
+            // loop over all speakers, add each checked one to set
+            var speakersLength = 0;
+            var list = [];
+
+            if (coloring == 1) {
+                speakersLength=speakers1.length;
+                list = speakers1;
+            } else if (coloring == 2) {
+                speakersLength=speakers2.length;
+                list = speakers2;
+            } else {
+                speakersLength=speakers.length;
+                list = speakers;
+            }
+
+            for (var i = 0; i < speakersLength; i++) {
+                var x = document.getElementById(list[i]).checked;
+
+                if (x == true) {
+                    onNames.add(document.getElementById(list[i]).id);
+                }
+            }
+            //iterate over nodes
+            for (index = 0; index < nodes.length; index++) {
+                node = nodes[index];
+                //add correct nodes to the set
+                if (coloring == 1) {
+                    if (onNames.has(node.group1)) {
+                        colorNodes.add(node);
+                    }
+                } else if (coloring == 2) {
+                    if (onNames.has(node.group2)) {
+                        colorNodes.add(node);
+                    }
+                } else{
+                    if (onNames.has(node.Speaker)) {
+                        colorNodes.add(node);
+                    }
+                }  
+            }
+
+            for (index = 0; index < links.length; index++) {
+              link = links[index];
+              //add correct links to the set
+              if (colorNodes.has(link.source)) {
+                    if (colorNodes.has(link.target)) {
+                        highlightLinks.add(link);   
+                    }
+                }	  
+            }
+
+            updateVisibleLinks();
+            Graph.nodeVisibility(node => colorNodes.has(node) ? 1 : 0); 
+        }
+
+        // if you want something to float over graph (like a label), use this
+        function positionElement(element,x,y){
+            element.style.left = x+'px';
+            element.style.top = y+'px';
+        };
+    
+        //export graph info of current node and edge positions
+        function exportSnapshot(){
+            var nodes = Graph.graphData().nodes;
+            var links = Graph.graphData().links;
+            nodesJSON = JSON.stringify(nodes, null, 4);
+            console.log(nodesJSON);
+
+            linksJSON = "[";
+
+            for (index = 0; index < links.length; index++) {
+                link = links[index];
+                info = `\n{
+                    "weight": ${link.Line_Width},
+                    "sourceX": ${link.source.x},
+                    "sourceY": ${link.source.y},
+                    "sourceZ": ${link.source.z},
+                    "targetX": ${link.target.x},
+                    "targetY": ${link.target.y},
+                    "targetZ": ${link.target.z}
+                },`
+                linksJSON += info;
+            }
+
+            noTrailingComma = linksJSON.slice(0, -1);
+            noTrailingComma += "\n]";
+            console.log(noTrailingComma);
+        }
+
+        // accordion info   
+        function openTab(tab){
+            explanation = document.getElementById(tab);
+            open = explanation.classList.contains("active")
+            closeAccordion();
+            if (!open) {
+                explanation.classList.add("active");
+                var panel = explanation.nextElementSibling;
+                panel.style.maxHeight = '200vh';
+                if (window.innerWidth < 500) {
+                    minHeight = 0;
+                } else {
+                    minHeight = window.innerHeight - minAccordionHeight;
+                }
+
+                panel.style.minHeight = minHeight.toString()+'px'
+            }
+        }
+
+        function closeAccordion(){
+            var accordion = document.getElementsByClassName("accordion");
+            var i;
+
+            for (i = 0; i < accordion.length; i++) {
+                current = accordion[i];
+                current.classList.remove('active');
+                var panel = current.nextElementSibling;
+                panel.style.maxHeight = null;
+                panel.style.minHeight = null;
+            }
+        }
+      
+        // go to a certain speaker
+        function flyToSpeaker(){
+            selectedNode = null;
+            var speaker = document.getElementById("bookSelect").value;
+
+            goToSpeaker(speaker); 
+        }
+    
+        //Manually update the color and size of nav info, or give mobile directions if relevant
+        function populateNavInfo(){
+            if (window.innerWidth > 500) {
+                document.getElementsByClassName("scene-nav-info")[0].style.fontSize = "15px";
+                document.getElementsByClassName("scene-nav-info")[0].innerHTML = "Left-click: rotate; mouse-wheel/middle-click: zoom; right-click: pan."
+            } else {
+                document.getElementsByClassName("scene-nav-info")[0].style.fontSize = "12px";
+                document.getElementsByClassName("scene-nav-info")[0].innerHTML = "Drag to rotate; pinch to zoom; two-finger drag to pan."
+            }
+
+            if (backgroundColor === 'dark') {
+                document.getElementsByClassName("scene-nav-info")[0].style.color = "#fafafa";        
+            } else {
+                document.getElementsByClassName("scene-nav-info")[0].style.color = "#222222";
+            }
+        }
+        
+        //turn connections on or off (off improves performance on large datasets)
+        function toggleConnections(){
+            var button = document.getElementById("button4");
+
+            if (connectionDisplay === 1) {
+                connectionDisplay = 0;
+                button.innerHTML = "Connections On"
+            } else {
+                connectionDisplay = 1;
+                button.innerHTML = "Connections Off"
+            }
+
+            updateVisibleLinks();
+        }
+    
+        //create checkboxes
+        function populateCheckboxes(){
+            checkboxHolder = document.getElementById("checkbox-holder")
+
+            if (coloring == 1) {
+                checkboxHolder.innerHTML = checkboxes1
+            } else if(coloring == 2) {
+                checkboxHolder.innerHTML = checkboxes2
+            } else {
+                checkboxHolder.innerHTML = checkboxes
+            }  
+        }
+
+        //create explanation
+        function populateExplanation(){
+            explanation = document.getElementById("explanation")
+            explanation.innerHTML = `
+            <h3>What am I looking at?</h3>
+            <br>
+            This network diagram represents the Book of Mormon. Each sphere (node) represents about 1000 words by a given speaker.
+            <br>
+            <br>
+            The documents are connected by lines that indicate similarity. These lines are invisible by default to improve performance, but the connections can be turned on using the button at the bottom of the screen.
+            <br>
+            <br>
+            The nodes float in 3-D space, with similar nodes close together.
+            The connections ‘pull’ the documents into their positions. The result is a ${dimensions}-D network grouped by text similarity.
+            <br>
+            <br>
+            Find more information in the <div class="appear" onclick="faqAppear()">FAQ</a>.
+            `;
+        }
+
+        //create instructions 
+        function populateInstructions(){
+            instructions = document.getElementById("instructions")
+
+            if (window.innerWidth>500) {
+                instructions.innerHTML = fullInstructions
+            } else {
+                instructions.innerHTML = mobileInstructions 
+            }
+        }
+
+        //populate info in info tab
+        function showNodeInfo(node) {
+            var info = document.getElementById('info');
+            var url = getUrlFromSpeaker(node.Speaker);
+
+            info.innerHTML =  `<div id ='nodeinfo'>
+            <h3>Node:</h3>
+            ${node.Display_Name}<br>
+            <br>
+                <img src="${url}" alt="Portait of ${node.Speaker}"><br>
+            <br>
+            <h3>Incoming Connections:</h3>
+            ${node.Incoming_Docs}<br>
+            <br>    
+            <h3>Outgoing Connections:</h3>
+            ${node.Outgoing_Docs}<br>
+            <br>
+            <h3>Start Reference:</h3>
+            ${node.Start_Link}<br>
+            <br>    
+                <h3>End Reference:</h3>
+            ${node.End_Link}<br>
+            <br>       
+            </div>
+            `; 
+        }
+
+        //show info on click
+        function showLinkInfo(link) {
+            var info = document.getElementById('info');
+            var href = `<a href="${link.Link}" target="blank">${link.Reference}</a>`;
+
+            info.innerHTML =  `<div id ='nodeinfo'>
+            <h3>Speakers:</h3>
+            ${link.Person1}<br>
+            ${link.Person2}<br>
+            <br>
+            <h3>Scripture:</h3>
+            ${href}<br>
+            <br>
+            <h3>Idea:</h3>
+            ${link.Topic}<br>
+            <br>        
+            </div>
+            `; 
+        }
+        function showSpeakerInfo(speaker) {
+            var info = document.getElementById('info');
+            var url = getUrlFromSpeaker(speaker);
+
+            par = speaker+'Paragraph';
+
+            info.innerHTML =  `<div id ='nodeinfo'>
+            <h3>Speaker:</h3>
+            ${speakerToDisplay[speaker]}<br>
+            <br>
+                <img src="${url}" alt="Portait of ${speakerToDisplay[speaker]}"><br>
+            <br>
+            <br>
+            <h3>Description:</h3>
+                ${myDict[par]}<br>
+            <br>        
+            </div>
+            `; 
+        }
+    
+        function getUrlFromSpeaker(speaker){
+            return "../../Images/"+speaker+".jpg";
+        }
+    
+        function goToSpeaker(speaker){
+            destroyLabel();
+
+            if (speakers.includes(speaker)) {
+                document.getElementById("bookSelect").value = speaker;
+                highlightSpeaker(speaker);
+                setTimeout(() => {createLabel(speaker); }, 1000);
+            }
+        }    
+
+        //create label       
+        function createLabel(speaker){     
+            //get rid of old label
+            destroyLabel();
+            // create a new div element 
+            const newDiv = document.createElement("div"); 
+            // Put something in the div
+            newDiv.innerHTML = `${speakerToDisplay[speaker]}`;
+            // Give class to popup
+            newDiv.id = 'popup';
+
+            if (backgroundColor == 'dark') {
+                newDiv.style.backgroundColor = transparentDark;
+            } else {
+                newDiv.style.backgroundColor = transparentlight;
+            }
+
+            newDiv.style.color = speakerToColor[speaker];
+            document.body.append(newDiv); 
+            results = calculateGeometricMean(speaker);
+            screenX = results['x'];
+            screenY = results['y'];
+
+            // Set initial position
+            positionElement(newDiv, screenX, screenY);    
+        };
+        //helper function for array averaging
+        function calculateMeanOfArray(arr){
+            sum = 0;
+
+            for (index = 0; index < arr.length; index++) {
+                sum += arr[index]
+            }
+
+            return sum / arr.length
+        }
+        //calculate center point in 3d space and translate it to screen coordinates
+        function calculateGeometricMean(speaker){
+            var nodes = Graph.graphData().nodes;
+
+            Xs = [];
+            Ys = [];
+            Zs = [];
+
+            for (index = 0; index < nodes.length; index++) {
+                node = nodes[index];
+
+                if (node.Speaker == speaker) {
+                    Xs.push(node.x);
+                    Ys.push(node.y);
+                    Zs.push(node.z);
+                }
+            }
+
+            return(Graph.graph2ScreenCoords(calculateMeanOfArray(Xs), calculateMeanOfArray(Ys), calculateMeanOfArray(Zs)));
+        }
+
+        //get rid of label
+        function destroyLabel(){
+            var label = document.getElementById('popup');
+
+            if (label) {
+                label.remove();
+            }
+        }
+
+        //highlight a given speaker
+        function highlightSpeaker(speaker){
+            // loop over all nodes
+            // if speaker matches speaker, set to colored, else grey
+            // do the same with links
+            targetNodes.clear();   //   clear the selected node
+            highlightMode = true;
+            // Clear the highlights of links and nodes
+            inHighlightLinks.clear();
+            outHighlightLinks.clear();
+            incomingNodes.clear();
+            outgoingNodes.clear();	
+
+            var nodes = Graph.graphData().nodes;
+
+            for (index = 0; index < nodes.length; index++) {
+                node = nodes[index];
+                if (node['Speaker'] == speaker) {
+                    outgoingNodes.add(node);
+                }
+            }
+            // Set which links to highlight 
+            check();
+            setHighlightColor();
+            updateVisibleLinks();
+            showSpeakerInfo(speaker);
+            closeAccordion();
+            openTab('infoTab');
+        }
+
+        //highlight a given node
+        function highlightNode(node){
+            destroyLabel();    // remove any existing labels
+            highlightMode = true;
+            targetNodes.clear();
+                targetNodes.add(node);		
+            // Clear the highlights of links and nodes
+            inHighlightLinks.clear();
+            outHighlightLinks.clear();
+            incomingNodes.clear();
+            outgoingNodes.clear();	
+            // Loop over all nodes and get ins and outs
+            targetNodes.forEach((node) => {
+                Nodes = node.Incoming_Ids.split(' ');
+                var outNum = Nodes.map(Number);
+                var links = Graph.graphData().links;
+                var nodes = Graph.graphData().nodes;
+
+                outNum.forEach(num => outgoingNodes.add(nodes[num]));	
+            });
+
+            targetNodes.forEach((node) => {
+                Nodes = node.Outgoing_Ids.split(' ');
+                var outNum = Nodes.map(Number);
+                var links = Graph.graphData().links;
+                var nodes = Graph.graphData().nodes;
+
+                outNum.forEach(num => outgoingNodes.add(nodes[num]));	
+            });
+            // Set which links to highlight 
+            var links = Graph.graphData().links;
+            for (index = 0; index < links.length; index++) {
+                link = links[index];
+                if (targetNodes.has(link.source)) {
+                    inHighlightLinks.add(link);
+                } else if (targetNodes.has(link.target)) {
+                    outHighlightLinks.add(link);
+                }
+            };
+
+            check();
+            setHighlightColor();
+            updateVisibleLinks();
+            showNodeInfo(node);
+            closeAccordion();
+            openTab('infoTab');
+        }
+
+        //get query variable from url
+        function getQueryVariable(variable){
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get("speaker") !== null) {
+                speaker = urlParams.get("speaker");
+                return speaker;
+            } else {
+                let path = window.location.pathname;
+                let pathArray = path.substr(1).split("/");
+                
+                if (pathArray[1] == "speaker" && idNames.includes(pathArray[2])) {
+                    return pathArray[2];
+                }
+            }
+        }
+
+        //go to speaker from url query
+        function goToURLSpeaker(){
+            speaker = getQueryVariable('speaker');
+            
+            if (speaker) {
+                speaker = speaker.charAt(0).toUpperCase() + speaker.slice(1)
+                
+            }  // force first letter uppercase
+            if (speakers.includes(speaker)) {
+                document.getElementById("bookSelect").value = speaker;
+                goToSpeaker(speaker);
+            } else {
+                console.log("URL param not valid");
+            }
+        }
+
+        function faqDisappear(){
+            elem = document.getElementById("faq");
+            elem.style.visibility = "hidden";
+            elem2 = document.getElementById("grey-out");
+            elem2.style.visibility = "hidden";
+        }
+
+        function faqAppear(){
+            elem = document.getElementById("faq");
+            elem.style.visibility = "visible";
+            elem2 = document.getElementById("grey-out");
+            elem2.style.visibility = "visible";
+        }
+
+        // We wait a few seconds after page load before we set all of these things
+        setTimeout(() => { goToURLSpeaker(); }, 2500);
+        setTimeout( () => { resetGraph(); }, 2000);
+        setTimeout( () => { check(); }, 3000);
+        setTimeout( () => { updateVisibleLinks(); }, 3500);
+
+        // Now, execute the functions necessary to start the first initial page
+        populateExplanation();
+        populateCheckboxes();
+        populateInstructions();
+        populateNavInfo();
+        // We only want to open the explanation tab if we're not on mobile.
+        if (window.innerWidth > 500) {
+            openTab('explanationTab');
+        }
+
+        resizeGraph();
+        checkAll(true);	    
+        Graph.nodeVisibility(1); 
+        setSidebarSize(sideSizeMin,sideSizeMax);
+        changeBackgroundColor();
+    </script>
+</body>

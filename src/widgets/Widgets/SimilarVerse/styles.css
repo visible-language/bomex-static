@@ -1,0 +1,329 @@
+*{
+    box-sizing: border-box;
+    margin: 0; 
+    padding: 0;
+}
+body{
+    height: 100%;
+}
+#widget{
+    margin:2px;
+    box-shadow: 0 3px 5px 0 var(--box-shadow-color);
+    background-color: var(--color-2);
+    border-radius: 30px;
+}
+a{
+	/*text-decoration: none;
+    padding: 0;
+    border: none;
+    color: inherit;*/
+    color: #1c1c84;
+    font: inherit;
+}
+html{
+    font-family: 'Roboto', sans-serif;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    -ms-overflow-style: none;  
+    scrollbar-width: 10px;
+    scroll-behavior: smooth;
+    max-height: 100vh;
+    height: 100%;
+}
+::-webkit-scrollbar {
+    width: 10px;
+}
+  
+::-webkit-scrollbar-track {
+    background: #eee; 
+}
+   
+::-webkit-scrollbar-thumb {
+    background: #999; 
+}
+hr{
+    height:1px;
+    border: 1px solid #383838;
+}
+select{
+    cursor: pointer;
+}
+
+#faq-holder{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    display: flex;
+    visibility: hidden;
+    align-items: center;
+    justify-content: center;
+    max-height:715px;
+}
+  
+#cover{
+    position:absolute;
+    z-index: 3;
+    background: rgba(255,255,255, 0.8);
+    border: 1px solid #d1d1d1;
+    visibility: hidden;
+    height: 100%;
+    width: 100%;
+    max-height:715px;
+    border-radius: 20px;
+}
+#faq{
+    position: absolute;
+    z-index: 4;
+    box-shadow: 2px 5px 10px 2px rgba(0,0,0,0.2);
+    padding: 1rem;
+    background: rgba(255,255,255, 0.8);
+    overflow-y: auto;
+    overflow-x: hidden;
+    min-width: 250px;
+    max-width: 70%;
+    max-height: 60%;
+    border-radius: 20px;
+}
+.title{
+    grid-area:title;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+  
+#head{
+    display:grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:"title exit";
+}
+.exit{
+    grid-area: exit;
+    cursor:pointer;
+    padding:1rem 2rem 1rem 1rem;
+    font-size: larger;
+    font-weight: bold;
+}
+
+#holder{
+    height: 100%;
+    display: grid;
+    grid-template-rows: 85px auto;
+	grid-template-areas: 'header'
+						 'content';
+}
+
+.header{
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    grid-area: header;
+    color:black;
+    /*border-bottom: 5px solid var(--legend-gray);*/
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    width: 100%;
+    height:85px;
+    z-index: 1;
+}
+
+.content{
+    grid-area: content;
+    width:100vw;
+    min-height:100%;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    overflow-y:auto;
+}
+h1{
+    font-size: 45px;
+    font-weight: 1000;
+}
+#search{
+    width:65%;
+    display: grid;
+    grid-template-columns: 60% 40%;
+    grid-template-areas: "left right";
+    box-shadow: 0 6px 10px 0 var(--box-shadow-color);
+    background-color:var(--white-shade);
+    border-radius: 20px;
+    height:600px;
+    max-height:600px;
+    margin-bottom: 30px;
+}
+#ref{
+    width:auto;
+}
+.line{
+    width: 100%;
+    display: flex;
+}
+#left{
+    grid-area: left;
+    width:100%;
+    height:100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+#right{
+    grid-area: right;
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-left:2px solid var(--color-2-shade);
+}
+#verse{
+    min-height: 100px;
+    margin: 1rem;
+    font-size: 20px;
+}
+#results{
+    width:100%;
+    overflow: hidden;
+    border-bottom-right-radius: 20px;
+}
+.content{
+    background-color: var(--color-2);
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+.title{
+    height: 46px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+#result-list{
+    width:100%;
+    max-height: 555px;
+    overflow-y:auto;
+    overflow-x: hidden;
+}
+
+input{
+    margin-left:1rem;
+    padding:.5rem;
+    font-size: 18px;
+    border: 1px solid rgb(207, 205, 205);
+    flex-grow: 1;
+}
+button{
+    background-color: var(--color-1);
+    padding: .5rem;
+    font-size: 18px;
+    border: 1px solid var(--color-1-shade);
+}
+button:hover{
+    background-color: var(--color-1-shade);
+}
+#submit{
+    margin-left: .5rem;
+    margin-right: .5rem;
+    border-radius: 5px;
+
+}
+#help-holder{
+    flex: 1;
+    display:flex;
+    flex-direction: column;
+}
+#help-row{
+    display:flex;
+}
+#help{
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border:solid 3px var(--color-1);
+    font-weight: bolder;
+    font-size: 25px;
+    margin-left: .5rem;
+    margin-bottom: .5rem;
+    cursor: pointer;
+    user-select: none;
+}
+#help:hover{
+    background-color: var(--color-2);
+}
+#dummy{
+    flex: 1;
+}
+
+/*I got this from the internet */
+.accordion {
+    background-color: var(--color-1);
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+    transition-delay: 0.05s;
+}
+.active, .accordion:hover {
+    background-color: var(--color-1-shade);
+}
+
+.panel {
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+    padding: 0 18px;
+    background-color: white;
+    display: none;
+    overflow: hidden;
+}
+/*
+.accordion:after {
+    content: '\02c5'; 
+    color: #777;
+    float: right;
+    margin-left: 5px;
+}
+  
+.active:after {
+    content: "\2013";
+}*/
+
+@media screen and (max-width: 1000px) {
+    #search{
+        width: 90%;
+        border: none;
+    }
+
+.header{
+    font-size:1rem;
+}
+}
+@media screen and (max-width: 550px) {
+
+    #search{
+        width: 95%;
+        grid-template-columns: 100%;
+        grid-template-rows: min-content auto;
+        grid-template-areas: "left"
+                             "right";
+        max-height: 1000000px;
+    }
+    h1{
+        font-size: 30px;
+        font-weight: 1000;
+    }
+    #result-list{
+        max-height: 1000000px;
+        margin-bottom: 2rem;
+    }
+    #right{
+        border-left:none;
+    }
+}

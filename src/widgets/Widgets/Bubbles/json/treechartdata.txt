@@ -1,0 +1,142 @@
+{
+    id: 'Pronouns',
+    color: '#05dfeb',
+    name: 'Pronouns',
+    parent: 'B'
+},{
+    name: 'behold',
+    parent: 'Verbs',
+    value: 1247
+}, {
+    name: 'people',
+    parent: 'Nouns',
+    value: 894
+}, {
+    name: 'it came to pass',
+    parent: 'Verbs',
+    value: 830
+}, {
+    name: 'land',
+    parent: 'Nouns',
+    value: 698
+}, {
+    name: 'Lamanites',
+    parent: 'Pronouns',
+    value: 544
+}, {
+    name: 'God',
+    parent: 'Nouns',
+    value: 437
+}, {
+    name: 'come again',
+    parent: 'Verbs',
+    value: 397
+}, {
+    name: 'king',
+    parent: 'Nouns',
+    value: 350
+}, {
+    name: 'Nephites',
+    parent: 'Articles',
+    value: 322
+}, {
+    name: 'Lord',
+    parent: 'Nouns',
+    value: 318
+}, {
+    name: 'words',
+    parent: 'Nouns',
+    value: 261
+}, {
+    name: 'Alma',
+    parent: 'Adverbs',
+    value: 244
+}, {
+    name: 'city',
+    parent: 'Nouns',
+    value: 191
+}, {
+    name: 'brethren',
+    parent:'Nouns',
+    value: 188
+}, {
+     name: 'Moroni',
+     parent: 'Nouns',
+     value: 182
+}, {
+    name: 'man',
+    parent: 'Adjectives',
+    value: 171
+}, {
+    name: 'men',
+    parent: 'Nouns',
+    value: 164
+}, {
+    name: 'Ammon',
+    parent: 'Nouns',
+    value: 160
+}, {
+    name: 'church',
+    parent: 'Nouns',
+    value: 147
+}, {
+    name: 'Christ',
+    parent: 'Conjunctions',
+    value: 140
+}, {
+    name: 'power',
+    parent: 'Nouns',
+    value: 130
+}, {
+    name: 'earth',
+    parent: 'Prepositions',
+    value: 126
+}, {
+    name: 'time',
+    parent: 'Prepositions',
+    value: 126
+}, {
+    name: 'judges',
+    parent: 'Prepositions',
+    value: 125
+}, {
+    name: 'reign',
+    parent: 'Prepositions',
+    value: 122
+}, {
+    name: 'word',
+    parent: 'Prepositions',
+    value: 122
+}, {
+    name: 'Jesus',
+    parent: 'Prepositions',
+    value: 121
+}, {
+    name: 'armies',
+    parent: 'Prepositions',
+    value: 114
+}, {
+    name: 'children',
+    parent: 'Prepositions',
+    value: 108
+}, {
+    name: 'hearts',
+    parent: 'Prepositions',
+    value: 108
+}, {
+    name: 'wilderness',
+    parent: 'Prepositions',
+    value: 107
+}, {
+    name: 'Zarahemla',
+    parent: 'Prepositions',
+    value: 98
+}, {
+    name: 'know',
+    parent: 'Prepositions',
+    value: 89
+}, {
+    name: 'manner',
+    parent: 'Prepositions',
+    value: 89
+}

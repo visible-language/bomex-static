@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="../colors.css">
+    <link rel="stylesheet" href="styles.css"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&ampdisplay=swap" rel="stylesheet"> 
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Similar Verse Finder</title>
+    <meta charset="utf-8"/>
+</head>
+
+<body>
+    <div id="widget">
+        <div id="cover" onclick="helpDisappear()"></div>
+        <div id="faq-holder">
+            <div id="faq">
+                <div id ="head"> 
+                    <div class="title"><h1>FAQ</h1></div>
+                    <div class="exit" onclick="helpDisappear()">X</div>
+                </div>
+                <div class="question">
+                    <h3>What does this do?</h3>
+                    <p>This application lets you search the Standard Works for similar verses.</p>
+                </div>
+                <br>
+                <div class="question">
+                    <h3>How can I search for a verse?</h3>
+                    <p>Type a verse into the search bar and hit enter.</p>
+                </div>
+                <br>
+                <div class="question">
+                    <h3>What determines if verses are similar?</h3>
+                    <p>The widget uses computational semantics to determine verses with similar content.</p>
+                </div>
+                <br>
+                <div class="question">
+                    <h3>How does this differ from keyword searching?</h3>
+                    <p>Semantic similarity is robust to synonyms. This means that two verses (one that talks about trees, and one that talks about vines) would be seen as similar even if they use different words.</p>
+                </div>
+            </div>
+        </div>
+        <div id="holder">
+            <div style="display: none;" class = "header">
+                <h1>Similar Verse Finder</h1>
+            </div>
+            <div class="content">
+                <div id="search">
+                    <div id="left">
+                        <div class = "title">
+                            <h2>Scripture Reference</h2> 
+                        </div>
+                        <div class="line">
+                            <input type="text" id="ref" placeholder="Type reference here">
+                            <button onclick="buttonFunction()" id="submit">Submit</button>
+                        </div>
+                        <div id="verse">
+                            <p></p>
+                        </div>
+                        <div id="help-holder">
+                            <div id="dummy"></div>
+                            <div id="help-row">
+                                <div id="help" onclick="helpAppear()">
+                                    ?
+                                </div>
+                                <div id="dummy"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="right">
+                        <div id="results">
+                            <div class="title right-title">
+                                <h2>Results</h2>
+                            </div>
+                            <div id="result-list"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="utils.js"></script>
+    <script>
+        // this is inline index.js
+
+        // functionality for FAQ box
+        function helpAppear(){
+            menuOn = true;
+            help = document.getElementById('faq-holder');
+            background = document.getElementById('cover');
+            help.style.visibility = "visible";
+            background.style.visibility = "visible";
+        }
+
+        function helpDisappear(){
+            menuOn = false;
+            help = document.getElementById('faq-holder');
+            background = document.getElementById('cover');
+            help.style.visibility = "hidden";
+            background.style.visibility = "hidden";
+        }
+
+        // input functionality
+        var input = document.getElementById("ref");
+        input.addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                buttonFunction();
+            }
+        });
+
+        // standardize input from some common forms
+        function validateInput(rawInput){
+            text = rawInput.trim();
+            text = text.toLowerCase();
+            text = text.replaceAll(';', ':');
+            text = text.replaceAll('.', '');
+            text = text.replace(/\s\s+/g, ' ');
+
+            return text;
+        }
+
+        // create accordion element for results area
+        function createTab(idx){
+            verseText = idx2txt[idx];
+            reference = idx2ref[idx];
+            html =  `<button class="accordion">${reference}</button>
+                    <div class="panel">
+                    <p>${verseText}</p>
+                    </div>`;
+            return html;
+        }
+
+        // submit button functionality
+        function buttonFunction(){
+            var rawInput = document.getElementById('ref').value;
+            var ref = validateInput(rawInput);
+            var verseSpot = document.getElementById("verse");
+
+            if (Object.keys(ref2idx).includes(ref)) {
+                // populate verse text area
+                verseSpot.innerHTML = '<p>'+idx2txt[ref2idx[ref]]+'</p>';
+
+                // populate results area
+                var nNeighbors = neighbors[ref2idx[ref]];
+                var guy = ''
+                for(i=0;i<nNeighbors.length; i++){
+                    guy+=createTab(nNeighbors[i]);
+                };
+                resultArea = document.getElementById("result-list");
+                resultArea.innerHTML = guy;
+                accordionEventListeners();
+            }
+        }
+
+        // event listeners for accordion (expandable results on right side)
+        function accordionEventListeners(){
+            var acc = document.getElementsByClassName("accordion");
+            for ( let i = 0; i < acc.length; i++) {
+                acc[i].addEventListener("click", function() {
+                    this.classList.toggle("active");
+                    var panel = this.nextElementSibling;
+                        if (panel.style.display === "block") {
+                        panel.style.display = "none";
+                    } else {
+                        panel.style.display = "block";
+                    }
+                });
+            }
+        }
+
+        accordionEventListeners();
+
+        // If reference is passed in URL query string (from a widget), open that reference.
+        // NB: spaces are passed in URLs with the character code `%20`
+        const parameters = new URLSearchParams(window.location.search);
+        let paramRef = parameters.get('reference');
+        if (paramRef) {
+            input.value = paramRef;
+            buttonFunction();
+        } else {
+            console.log('No URL parameters detected');
+        }
+    </script>
+</body>
