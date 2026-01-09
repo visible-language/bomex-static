@@ -66,6 +66,7 @@ def _doc(title: str, body_html: str, scripts_html: str = "", *, asset_prefix: st
         "  <meta charset=\"UTF-8\">\n"
         "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n"
         f"  <title>{html.escape(title)}</title>\n"
+        f"  <link rel=\"icon\" href=\"{html.escape(asset_prefix)}favicon.ico\">\n"
         f"  <link rel=\"stylesheet\" href=\"{html.escape(asset_prefix)}css/main.css\">\n"
         "  <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css\">\n"
         "</head>\n"
