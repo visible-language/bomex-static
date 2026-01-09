@@ -216,7 +216,10 @@ def main(argv: Optional[List[str]] = None) -> int:
             delete_source=not args.copy,
             dry_run=args.dry_run,
         )
-        rel = person_details_path.relative_to(repo_root)
+        try:
+            rel = person_details_path.relative_to(repo_root)
+        except ValueError:
+            rel = person_details_path
         if ok:
             updated += 1
             if args.dry_run:

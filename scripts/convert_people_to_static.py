@@ -285,7 +285,11 @@ def build_person_details(
                 "image": str(sp.get("img") or "").strip(),
                 "sections": sections,
                 "source": {
-                    "json": os.path.relpath(json_path, start=Path.cwd()),
+                    "json": (
+                        json_path.resolve().relative_to(Path(__file__).resolve().parents[1]).as_posix()
+                        if json_path.resolve().is_relative_to(Path(__file__).resolve().parents[1])
+                        else os.path.relpath(json_path, start=Path.cwd())
+                    ),
                 },
             }
         )
@@ -363,7 +367,11 @@ def build_item_details(
                 "image": str(sp.get("img") or "").strip(),
                 "sections": sections,
                 "source": {
-                    "json": os.path.relpath(json_path, start=Path.cwd()),
+                    "json": (
+                        json_path.resolve().relative_to(Path(__file__).resolve().parents[1]).as_posix()
+                        if json_path.resolve().is_relative_to(Path(__file__).resolve().parents[1])
+                        else os.path.relpath(json_path, start=Path.cwd())
+                    ),
                 },
             }
         )
