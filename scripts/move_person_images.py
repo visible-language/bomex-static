@@ -156,7 +156,7 @@ def process_person(
     return True, "copied-and-updated"
 
 
-def main() -> None:
+def main(argv: Optional[List[str]] = None) -> int:
     parser = argparse.ArgumentParser(
         description=(
             "Copy/move person images referenced in docs/content/people/*/person-details.json "
@@ -190,16 +190,18 @@ def main() -> None:
         help="Print what would change without writing files",
     )
 
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
 
     repo_root = Path(__file__).resolve().parents[1]
     people_root = (repo_root / args.people_root).resolve()
     images_root = (repo_root / args.images_root).resolve()
 
     if not people_root.exists():
-        raise SystemExit(f"people root not found: {people_root}")
+        print(f"people root not found: {people_root}")
+        return 2
     if not images_root.exists():
-        raise SystemExit(f"images root not found: {images_root}")
+        print(f"images root not found: {images_root}")
+        return 2
 
     updated = 0
     skipped = 0
@@ -230,6 +232,8 @@ def main() -> None:
         for p in problems:
             print(f"- {p}")
 
+    return 0
+
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

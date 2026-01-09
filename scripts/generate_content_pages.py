@@ -13,7 +13,7 @@ from typing import Any, Dict, Iterable, List, Optional, Tuple
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
-SRC_ROOT = REPO_ROOT / "src"
+SRC_ROOT = REPO_ROOT / "docs"
 
 
 @dataclass(frozen=True)
@@ -104,7 +104,8 @@ def _resolve_asset_ref(details_path: Path, output_dir: Path, ref: str) -> str:
     # If already rooted at docs/ (e.g., 'img/...', 'content/...'), translate to a relative path.
     for prefix in ("content/", "img/", "css/", "js/"):
         if ref.startswith(prefix):
-            abs_target = (SRC_ROOT / ref).resolve()
+            # output_dir is typically docs/{people,concepts,influences}/
+            abs_target = (output_dir.parent / ref).resolve()
             rel = os.path.relpath(abs_target, output_dir.resolve())
             return rel.replace(os.sep, "/")
 
@@ -259,11 +260,11 @@ def _list_index(kind: str, title: str, subtitle: str, items: List[Item]) -> str:
     )
 
 
-def _person_detail(item: Item) -> str:
+def _person_detail(item: Item, *, output_dir: Path) -> str:
     name = html.escape(item.display_name)
     hero_style = ""
     # People detail pages live in docs/people/
-    img_ref = _resolve_asset_ref(item.details_path, SRC_ROOT / "people", item.image)
+    img_ref = _resolve_asset_ref(item.details_path, output_dir, item.image)
     if img_ref:
         hero_style = f" style=\"background-image: url('{html.escape(img_ref)}')\""
 
@@ -367,7 +368,7 @@ def _remove_generated(src_root: Path) -> None:
                 pass
 
 
-def main() -> None:
+def main(argv: Optional[List[str]] = None) -> int:
     parser = argparse.ArgumentParser(
         description=(
             "Generate People/Influences/Concepts index + detail pages from docs/content. "
@@ -377,14 +378,14 @@ def main() -> None:
     parser.add_argument(
         "--src-root",
         default=str(SRC_ROOT),
-        help="Path to docs/ (default: <repo>/src)",
+        help="Path to docs/ (default: <repo>/docs)",
     )
     parser.add_argument(
         "--data-root",
         default=str(SRC_ROOT / "content"),
         help="Path to docs/content (default: <repo>/docs/content)",
     )
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
 
     src_root = Path(args.src_root).resolve()
     data_root = Path(args.data_root).resolve()
@@ -454,7 +455,7 @@ def main() -> None:
         fname = f"{_safe_filename(it.item_id)}.html"
         _write_text(
             src_root / "people" / fname,
-            _doc(it.display_name, _person_detail(it), asset_prefix="../", root_prefix="../"),
+            _doc(it.display_name, _person_detail(it, output_dir=src_root / "people"), asset_prefix="../", root_prefix="../"),
         )
 
     for it in influences:
@@ -472,6 +473,7 @@ def main() -> None:
         )
 
     print(f"Wrote: people={len(people)} concepts={len(concepts)} influences={len(influences)}")
+    return 0
 
 
 def _people_search_script() -> str:
@@ -496,4 +498,4 @@ def _people_search_script() -> str:
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

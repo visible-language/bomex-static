@@ -29,7 +29,13 @@ Edit the JSON and/or fragment HTML under:
 Then regenerate the site pages:
 
 ```bash
-python3 scripts/generate_content_pages.py
+uv run scripts/bomex.py build --steps pages
+```
+
+You can also run just the page generator:
+
+```bash
+uv run scripts/bomex.py pages
 ```
 
 That regenerates:
@@ -43,7 +49,13 @@ That regenerates:
 If you need to re-import from the older React-era `docs/people/...` JSON + `*-analysis.js` sources:
 
 ```bash
-python3 scripts/convert_people_to_static.py --out docs/content
+uv run scripts/convert_people_to_static.py --out docs/content
+```
+
+Equivalent via the combined build script:
+
+```bash
+uv run scripts/bomex.py build --steps convert,pages
 ```
 
 Note: the legacy React-era source folder is intentionally not kept under `docs/` anymore.
@@ -54,13 +66,19 @@ If you have the old image library available (see `old/bomex-webstructure/public/
 
 ```bash
 # dry run
-python3 scripts/move_person_images.py --dry-run
+uv run scripts/move_person_images.py --dry-run
 
 # move (default)
-python3 scripts/move_person_images.py
+uv run scripts/move_person_images.py
 
 # copy instead of move
-python3 scripts/move_person_images.py --copy
+uv run scripts/move_person_images.py --copy
+```
+
+Equivalent via the combined build script:
+
+```bash
+uv run scripts/bomex.py build --steps images,pages --copy
 ```
 
 Missing images are tracked in `docs/content/TODO.md`.
@@ -68,7 +86,13 @@ Missing images are tracked in `docs/content/TODO.md`.
 ### 4) (Optional) Fix mojibake / apostrophes site-wide
 
 ```bash
-python3 scripts/fix_apostrophes.py
+uv run scripts/fix_apostrophes.py
+```
+
+Equivalent via the combined build script:
+
+```bash
+uv run scripts/bomex.py build --steps fix
 ```
 
 ## Preview Locally
@@ -76,8 +100,8 @@ python3 scripts/fix_apostrophes.py
 Serve `docs/` as the web root:
 
 ```bash
-cd src
-python3 -m http.server 8008
+cd docs
+uv run python -m http.server 8008
 ```
 
 Then open:

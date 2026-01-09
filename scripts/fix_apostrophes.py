@@ -120,7 +120,7 @@ def run(root: Path, apply: bool) -> int:
     return 0
 
 
-def main() -> None:
+def main(argv: List[str] | None = None) -> int:
     parser = argparse.ArgumentParser(
         description=(
             "Fix broken apostrophes/quotes across the site by replacing common mojibake sequences "
@@ -138,13 +138,14 @@ def main() -> None:
         help="Report changes without modifying files",
     )
 
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
     root = (REPO_ROOT / args.root).resolve()
     if not root.exists():
-        raise SystemExit(f"Root not found: {root}")
+        print(f"Root not found: {root}")
+        return 2
 
-    raise SystemExit(run(root=root, apply=not args.check))
+    return run(root=root, apply=not args.check)
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())
