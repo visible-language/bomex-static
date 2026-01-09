@@ -2,7 +2,7 @@
 """Convert BOMEX JSX + JSON into a static, per-item folder layout.
 
 Input (current repo state):
-- `src/people/Major speakers/**` and `src/people/Minor speakers/**`
+- `docs/people/Major speakers/**` and `docs/people/Minor speakers/**`
   - `*.json` files: metadata for a "page" (bio or sub-article)
   - `*-analysis.js` files: JSX with blocks keyed by `id === "..."` returning HTML-ish content
 
@@ -14,11 +14,11 @@ Output (new static layout):
 - `<out>/influences/<influence_id>/influence-details.json`
 - `<out>/influences/<influence_id>/*.html`
 
-By default this script is non-destructive: it writes to `src/content/`.
+By default this script is non-destructive: it writes to `docs/content/`.
 
 Usage:
   python3 scripts/convert_people_to_static.py
-    python3 scripts/convert_people_to_static.py --out src/people
+    python3 scripts/convert_people_to_static.py --out docs/people
 
 Notes:
 - The generated HTML files are fragments (no <html>/<head>), suitable for injecting.
@@ -386,8 +386,8 @@ def build_item_details(
 
 def main(argv: Optional[List[str]] = None) -> int:
     parser = argparse.ArgumentParser(description="Convert people JSX+JSON into static per-person folders")
-    parser.add_argument("--in", dest="in_dir", default="src/people", help="Input people dir (default: src/people)")
-    parser.add_argument("--out", dest="out_dir", default="src/content", help="Output dir (default: src/content)")
+    parser.add_argument("--in", dest="in_dir", default="docs/people", help="Input people dir (default: docs/people)")
+    parser.add_argument("--out", dest="out_dir", default="docs/content", help="Output dir (default: docs/content)")
     parser.add_argument(
         "--include",
         choices=["speakers", "all"],

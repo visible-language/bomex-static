@@ -91,7 +91,7 @@ def _resolve_asset_ref(details_path: Path, output_dir: Path, ref: str) -> str:
     """Resolve an asset path stored in details JSON into a link relative to the output HTML.
 
     Details JSONs store local assets as './main.jpg' (relative to the details folder).
-    Generated HTML pages live in src/{people,concepts,influences}/, so we must rewrite these to e.g.
+    Generated HTML pages live in docs/{people,concepts,influences}/, so we must rewrite these to e.g.
     '../content/people/<id>/main.jpg'.
     """
 
@@ -101,7 +101,7 @@ def _resolve_asset_ref(details_path: Path, output_dir: Path, ref: str) -> str:
     if ref.startswith("http://") or ref.startswith("https://"):
         return ref
 
-    # If already rooted at src/ (e.g., 'img/...', 'content/...'), translate to a relative path.
+    # If already rooted at docs/ (e.g., 'img/...', 'content/...'), translate to a relative path.
     for prefix in ("content/", "img/", "css/", "js/"):
         if ref.startswith(prefix):
             abs_target = (SRC_ROOT / ref).resolve()
@@ -180,7 +180,7 @@ def _parse_item(kind: str, details_path: Path) -> Item:
 
 
 def _internal_href(href: str) -> str:
-    # Keep links relative to src/ root.
+    # Keep links relative to docs/ root.
     return href
 
 
@@ -262,7 +262,7 @@ def _list_index(kind: str, title: str, subtitle: str, items: List[Item]) -> str:
 def _person_detail(item: Item) -> str:
     name = html.escape(item.display_name)
     hero_style = ""
-    # People detail pages live in src/people/
+    # People detail pages live in docs/people/
     img_ref = _resolve_asset_ref(item.details_path, SRC_ROOT / "people", item.image)
     if img_ref:
         hero_style = f" style=\"background-image: url('{html.escape(img_ref)}')\""
@@ -370,19 +370,19 @@ def _remove_generated(src_root: Path) -> None:
 def main() -> None:
     parser = argparse.ArgumentParser(
         description=(
-            "Generate People/Influences/Concepts index + detail pages from src/content. "
-            "Outputs HTML files into src/people/, src/concepts/, and src/influences/."
+            "Generate People/Influences/Concepts index + detail pages from docs/content. "
+            "Outputs HTML files into docs/people/, docs/concepts/, and docs/influences/."
         )
     )
     parser.add_argument(
         "--src-root",
         default=str(SRC_ROOT),
-        help="Path to src/ (default: <repo>/src)",
+        help="Path to docs/ (default: <repo>/src)",
     )
     parser.add_argument(
         "--data-root",
         default=str(SRC_ROOT / "content"),
-        help="Path to src/content (default: <repo>/src/content)",
+        help="Path to docs/content (default: <repo>/docs/content)",
     )
     args = parser.parse_args()
 
