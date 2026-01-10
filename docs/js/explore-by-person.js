@@ -97,13 +97,6 @@
         src: withSpeaker(rootPrefix + 'widgets/Widgets/Bubbles/index.html', ids.bubbles)
       },
       {
-        key: 'semantic-map',
-        title: 'Semantic Map',
-        subtitle: 'Find verses with similar ideas and themes',
-        icon: 'fa-map',
-        src: rootPrefix + 'widgets/Widgets/SemanticMaps/BOMSemanticMap/index.html'
-      },
-      {
         key: 'topic',
         title: 'Similar Topic Diagram',
         subtitle: 'Explore how topics cluster together',
