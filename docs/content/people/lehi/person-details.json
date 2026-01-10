@@ -30,7 +30,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Major speakers/Lehi/lehi.json"
+        "json": "../bomex-webstructure/cameo jsons/Major speakers/Lehi/lehi.json"
       }
     },
     {
@@ -49,7 +49,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Major speakers/Lehi/lehi-messiah.json"
+        "json": "../bomex-webstructure/cameo jsons/Major speakers/Lehi/lehi-messiah.json"
       }
     },
     {
@@ -68,7 +68,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Major speakers/Lehi/lehi-mediator.json"
+        "json": "../bomex-webstructure/cameo jsons/Major speakers/Lehi/lehi-mediator.json"
       }
     }
   ]

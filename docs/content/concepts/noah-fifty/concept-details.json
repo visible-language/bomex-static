@@ -30,7 +30,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Concepts/noah-fifty.json"
+        "json": "../bomex-webstructure/cameo jsons/Concepts/noah-fifty.json"
       }
     }
   ]

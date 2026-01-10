@@ -30,7 +30,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Minor speakers/samuel.json"
+        "json": "../bomex-webstructure/cameo jsons/Minor speakers/samuel.json"
       }
     }
   ]

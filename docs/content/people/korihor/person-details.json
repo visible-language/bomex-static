@@ -30,7 +30,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Minor speakers/Korihor/korihor.json"
+        "json": "../bomex-webstructure/cameo jsons/Minor speakers/Korihor/korihor.json"
       }
     },
     {
@@ -49,7 +49,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Minor speakers/Korihor/korihor-partial.json"
+        "json": "../bomex-webstructure/cameo jsons/Minor speakers/Korihor/korihor-partial.json"
       }
     }
   ]

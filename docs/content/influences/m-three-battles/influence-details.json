@@ -30,7 +30,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Influences/Mormon/m-mists.json"
+        "json": "../bomex-webstructure/cameo jsons/Influences/Mormon/m-mists.json"
       }
     },
     {
@@ -55,7 +55,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Influences/Mormon/m-flood.json"
+        "json": "../bomex-webstructure/cameo jsons/Influences/Mormon/m-flood.json"
       }
     },
     {
@@ -80,7 +80,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Influences/Mormon/m-three-battles.json"
+        "json": "../bomex-webstructure/cameo jsons/Influences/Mormon/m-three-battles.json"
       }
     }
   ]

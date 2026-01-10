@@ -24,7 +24,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Influences/Book of Ether/Reversal of the Fall/fall-reversal.json"
+        "json": "../bomex-webstructure/cameo jsons/Influences/Book of Ether/Reversal of the Fall/fall-reversal.json"
       }
     },
     {
@@ -43,7 +43,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Influences/Book of Ether/Reversal of the Fall/fall-calling.json"
+        "json": "../bomex-webstructure/cameo jsons/Influences/Book of Ether/Reversal of the Fall/fall-calling.json"
       }
     },
     {
@@ -62,7 +62,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Influences/Book of Ether/Evil Fruit of the Jaredites/ef-enmity.json"
+        "json": "../bomex-webstructure/cameo jsons/Influences/Book of Ether/Evil Fruit of the Jaredites/ef-enmity.json"
       }
     },
     {
@@ -81,7 +81,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Influences/Book of Ether/Evil Fruit of the Jaredites/ef-open.json"
+        "json": "../bomex-webstructure/cameo jsons/Influences/Book of Ether/Evil Fruit of the Jaredites/ef-open.json"
       }
     },
     {
@@ -100,7 +100,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Influences/Book of Ether/Reversal of the Fall/fall-knowledge.json"
+        "json": "../bomex-webstructure/cameo jsons/Influences/Book of Ether/Reversal of the Fall/fall-knowledge.json"
       }
     },
     {
@@ -119,7 +119,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Influences/Book of Ether/Book of Ether and the Flood/boj-destruction.json"
+        "json": "../bomex-webstructure/cameo jsons/Influences/Book of Ether/Book of Ether and the Flood/boj-destruction.json"
       }
     },
     {
@@ -138,7 +138,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Influences/Book of Ether/Evil Fruit of the Jaredites/ef-daughter.json"
+        "json": "../bomex-webstructure/cameo jsons/Influences/Book of Ether/Evil Fruit of the Jaredites/ef-daughter.json"
       }
     },
     {
@@ -157,7 +157,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Influences/Book of Ether/Evil Fruit of the Jaredites/ef-heart.json"
+        "json": "../bomex-webstructure/cameo jsons/Influences/Book of Ether/Evil Fruit of the Jaredites/ef-heart.json"
       }
     },
     {
@@ -176,7 +176,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Influences/Book of Ether/Reversal of the Fall/fall-tree.json"
+        "json": "../bomex-webstructure/cameo jsons/Influences/Book of Ether/Reversal of the Fall/fall-tree.json"
       }
     },
     {
@@ -195,7 +195,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Influences/Book of Ether/Book of Ether and the Flood/secret-flood.json"
+        "json": "../bomex-webstructure/cameo jsons/Influences/Book of Ether/Book of Ether and the Flood/secret-flood.json"
       }
     },
     {
@@ -214,7 +214,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Influences/Book of Ether/Reversal of the Fall/fall-shut-out.json"
+        "json": "../bomex-webstructure/cameo jsons/Influences/Book of Ether/Reversal of the Fall/fall-shut-out.json"
       }
     },
     {
@@ -233,7 +233,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Influences/Book of Ether/Evil Fruit of the Jaredites/ef-forbidden.json"
+        "json": "../bomex-webstructure/cameo jsons/Influences/Book of Ether/Evil Fruit of the Jaredites/ef-forbidden.json"
       }
     },
     {
@@ -252,7 +252,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Influences/Book of Ether/Book of Ether and the Flood/bojandnoah.json"
+        "json": "../bomex-webstructure/cameo jsons/Influences/Book of Ether/Book of Ether and the Flood/bojandnoah.json"
       }
     },
     {
@@ -271,7 +271,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Influences/Book of Ether/Evil Fruit of the Jaredites/ef-ambition.json"
+        "json": "../bomex-webstructure/cameo jsons/Influences/Book of Ether/Evil Fruit of the Jaredites/ef-ambition.json"
       }
     },
     {
@@ -296,7 +296,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Influences/Book of Ether/Evil Fruit of the Jaredites/evil-fruit-jaredites.json"
+        "json": "../bomex-webstructure/cameo jsons/Influences/Book of Ether/Evil Fruit of the Jaredites/evil-fruit-jaredites.json"
       }
     },
     {
@@ -315,7 +315,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Influences/Book of Ether/Book of Ether and the Flood/ether-flood.json"
+        "json": "../bomex-webstructure/cameo jsons/Influences/Book of Ether/Book of Ether and the Flood/ether-flood.json"
       }
     },
     {
@@ -334,7 +334,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Influences/Book of Ether/Reversal of the Fall/fall-redemption.json"
+        "json": "../bomex-webstructure/cameo jsons/Influences/Book of Ether/Reversal of the Fall/fall-redemption.json"
       }
     }
   ]

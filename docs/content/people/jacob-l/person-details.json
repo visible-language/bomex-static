@@ -30,7 +30,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Major speakers/Jacob/jacob-l.json"
+        "json": "../bomex-webstructure/cameo jsons/Major speakers/Jacob/jacob-l.json"
       }
     },
     {
@@ -49,7 +49,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Major speakers/Jacob/jacob-l-greatness.json"
+        "json": "../bomex-webstructure/cameo jsons/Major speakers/Jacob/jacob-l-greatness.json"
       }
     },
     {
@@ -68,7 +68,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Major speakers/Jacob/jacob-l-temple.json"
+        "json": "../bomex-webstructure/cameo jsons/Major speakers/Jacob/jacob-l-temple.json"
       }
     },
     {
@@ -87,7 +87,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Major speakers/Jacob/jacob-l-isaiah.json"
+        "json": "../bomex-webstructure/cameo jsons/Major speakers/Jacob/jacob-l-isaiah.json"
       }
     },
     {
@@ -112,7 +112,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Major speakers/Jacob/jacob-isaiah-chart.json"
+        "json": "../bomex-webstructure/cameo jsons/Major speakers/Jacob/jacob-isaiah-chart.json"
       }
     }
   ]

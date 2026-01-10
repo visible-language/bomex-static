@@ -30,7 +30,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Minor speakers/laman-lemuel.json"
+        "json": "../bomex-webstructure/cameo jsons/Minor speakers/laman-lemuel.json"
       }
     }
   ]

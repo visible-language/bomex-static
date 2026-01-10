@@ -30,7 +30,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Major speakers/Jesus/christ-america.json"
+        "json": "../bomex-webstructure/cameo jsons/Major speakers/Jesus/christ-america.json"
       }
     },
     {
@@ -55,7 +55,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Major speakers/Jesus/jc-mormon.json"
+        "json": "../bomex-webstructure/cameo jsons/Major speakers/Jesus/jc-mormon.json"
       }
     },
     {
@@ -80,7 +80,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Major speakers/Jesus/jc-moroni.json"
+        "json": "../bomex-webstructure/cameo jsons/Major speakers/Jesus/jc-moroni.json"
       }
     },
     {
@@ -105,7 +105,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Major speakers/Jesus/jc-bowing-down.json"
+        "json": "../bomex-webstructure/cameo jsons/Major speakers/Jesus/jc-bowing-down.json"
       }
     }
   ]

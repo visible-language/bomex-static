@@ -269,19 +269,20 @@ def _person_detail(item: Item, *, output_dir: Path) -> str:
     if img_ref:
         hero_style = f" style=\"background-image: url('{html.escape(img_ref)}')\""
 
-    # Prefer first page sections.
-    sections = item.pages[0].sections if item.pages else []
     accordion = []
-    for sec in sections:
-        heading = sec.heading.strip() or "Details"
-        frag = _load_fragment(sec.html_fragment_path)
+    for page in item.pages:
+        inner: List[str] = []
+        for sec in page.sections:
+            if sec.heading.strip():
+                inner.append(f"<h3 class=\"subheading\">{html.escape(sec.heading.strip())}</h3>")
+            inner.append(_load_fragment(sec.html_fragment_path))
         accordion.append(
             "<details class=\"accordion\">"
             "<summary>"
-            f"<span>{html.escape(heading)}</span>"
+            f"<span>{html.escape(page.title or 'Details')}</span>"
             "<i class=\"fas fa-chevron-down\"></i>"
             "</summary>"
-            f"<div class=\"accordion-body\">{frag}</div>"
+            f"<div class=\"accordion-body\">{''.join(inner)}</div>"
             "</details>"
         )
 
@@ -310,31 +311,22 @@ def _concept_or_influence_detail(kind: str, item: Item) -> str:
     if item.description.strip():
         body.append(f"  <p class=\"content-subtitle\">{html.escape(item.description.strip())}</p>")
 
-    # Concepts: render expanded; Influences: group pages into accordions.
-    if kind == "concepts":
-        for page in item.pages:
-            if len(item.pages) > 1:
-                body.append(f"  <h2>{html.escape(page.title)}</h2>")
-            for sec in page.sections:
-                if sec.heading.strip():
-                    body.append(f"  <h3 class=\"subheading\">{html.escape(sec.heading.strip())}</h3>")
-                body.append(_load_fragment(sec.html_fragment_path))
-    else:
-        for page in item.pages:
-            inner = []
-            for sec in page.sections:
-                if sec.heading.strip():
-                    inner.append(f"<h3 class=\"subheading\">{html.escape(sec.heading.strip())}</h3>")
-                inner.append(_load_fragment(sec.html_fragment_path))
-            body.append(
-                "<details class=\"accordion\">"
-                "<summary>"
-                f"<span>{html.escape(page.title)}</span>"
-                "<i class=\"fas fa-chevron-down\"></i>"
-                "</summary>"
-                f"<div class=\"accordion-body\">{''.join(inner)}</div>"
-                "</details>"
-            )
+    # Render one accordion per page (sub-JSON), for both concepts and influences.
+    for page in item.pages:
+        inner: List[str] = []
+        for sec in page.sections:
+            if sec.heading.strip():
+                inner.append(f"<h3 class=\"subheading\">{html.escape(sec.heading.strip())}</h3>")
+            inner.append(_load_fragment(sec.html_fragment_path))
+        body.append(
+            "<details class=\"accordion\">"
+            "<summary>"
+            f"<span>{html.escape(page.title or 'Details')}</span>"
+            "<i class=\"fas fa-chevron-down\"></i>"
+            "</summary>"
+            f"<div class=\"accordion-body\">{''.join(inner)}</div>"
+            "</details>"
+        )
 
     body.append("</section>")
     return "\n".join(body) + "\n"

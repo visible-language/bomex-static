@@ -30,7 +30,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Major speakers/Nephi-l/nephi-l.json"
+        "json": "../bomex-webstructure/cameo jsons/Major speakers/Nephi-l/nephi-l.json"
       }
     },
     {
@@ -55,7 +55,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Major speakers/Nephi-l/Nephi's Defense/nephi-l-hearken.json"
+        "json": "../bomex-webstructure/cameo jsons/Major speakers/Nephi-l/Nephi's Defense/nephi-l-hearken.json"
       }
     },
     {
@@ -80,7 +80,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Major speakers/Nephi-l/Nephi's Defense/nephi-l-lead.json"
+        "json": "../bomex-webstructure/cameo jsons/Major speakers/Nephi-l/Nephi's Defense/nephi-l-lead.json"
       }
     },
     {
@@ -99,7 +99,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Major speakers/Nephi-l/Nephi's Defense/nephi-l-defense.json"
+        "json": "../bomex-webstructure/cameo jsons/Major speakers/Nephi-l/Nephi's Defense/nephi-l-defense.json"
       }
     },
     {
@@ -124,7 +124,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Major speakers/Nephi-l/Nephi's Defense/nephi-l-know.json"
+        "json": "../bomex-webstructure/cameo jsons/Major speakers/Nephi-l/Nephi's Defense/nephi-l-know.json"
       }
     }
   ]

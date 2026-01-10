@@ -24,7 +24,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Major speakers/Benjamin/benjamin-new.json"
+        "json": "../bomex-webstructure/cameo jsons/Major speakers/Benjamin/benjamin-new.json"
       }
     },
     {
@@ -43,7 +43,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Major speakers/Benjamin/benjamin-contention.json"
+        "json": "../bomex-webstructure/cameo jsons/Major speakers/Benjamin/benjamin-contention.json"
       }
     },
     {
@@ -62,7 +62,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Major speakers/Benjamin/benjamin-poor.json"
+        "json": "../bomex-webstructure/cameo jsons/Major speakers/Benjamin/benjamin-poor.json"
       }
     }
   ]

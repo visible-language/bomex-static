@@ -30,7 +30,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Minor speakers/sariah.json"
+        "json": "../bomex-webstructure/cameo jsons/Minor speakers/sariah.json"
       }
     }
   ]

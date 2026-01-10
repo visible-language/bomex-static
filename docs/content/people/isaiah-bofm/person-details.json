@@ -30,7 +30,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Major speakers/isaiah-bofm.json"
+        "json": "../bomex-webstructure/cameo jsons/Major speakers/isaiah-bofm.json"
       }
     }
   ]

@@ -24,7 +24,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Minor speakers/limhi.json"
+        "json": "../bomex-webstructure/cameo jsons/Minor speakers/limhi.json"
       }
     }
   ]

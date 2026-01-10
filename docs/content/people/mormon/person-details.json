@@ -24,7 +24,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Major speakers/Mormon/mormon.json"
+        "json": "../bomex-webstructure/cameo jsons/Major speakers/Mormon/mormon.json"
       }
     },
     {
@@ -32,7 +32,7 @@
       "title": "Dating Mormon’s Letter to Moroni (Moroni 9)",
       "year": "A.D. 310-A.D. 390",
       "word_count": 0,
-      "description": "Moroni chapter 9 is an epistle written by Mormon to his son, Moroni. Unlike Mormon’s abridgement in Mormon 1’6, this chapter does not provide the year when it was written. Some have wondered when Mormon wrote his second letter. Mormon’s words, however, provide clues that help us place this letter in the timeframe of the final decade of the Nephites.",
+      "description": "Moroni chapter 9 is an epistle written by Mormon to his son, Moroni. Unlike Mormon’s abridgement in Mormon 1–6, this chapter does not provide the year when it was written. Some have wondered when Mormon wrote his second letter. Mormon’s words, however, provide clues that help us place this letter in the timeframe of the final decade of the Nephites.",
       "image": "",
       "sections": [
         {
@@ -49,7 +49,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Major speakers/Mormon/m-date-moroni.json"
+        "json": "../bomex-webstructure/cameo jsons/Major speakers/Mormon/m-date-moroni.json"
       }
     },
     {
@@ -68,7 +68,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Major speakers/Mormon/m-endurance-faith.json"
+        "json": "../bomex-webstructure/cameo jsons/Major speakers/Mormon/m-endurance-faith.json"
       }
     },
     {
@@ -87,7 +87,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Major speakers/Mormon/m-joy.json"
+        "json": "../bomex-webstructure/cameo jsons/Major speakers/Mormon/m-joy.json"
       }
     },
     {
@@ -106,7 +106,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Major speakers/Mormon/m-command-earth.json"
+        "json": "../bomex-webstructure/cameo jsons/Major speakers/Mormon/m-command-earth.json"
       }
     }
   ]

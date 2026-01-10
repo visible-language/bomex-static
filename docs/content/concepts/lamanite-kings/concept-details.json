@@ -24,7 +24,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Concepts/Lamanite kings/lk-portion-spirit.json"
+        "json": "../bomex-webstructure/cameo jsons/Concepts/Lamanite kings/lk-portion-spirit.json"
       }
     },
     {
@@ -49,7 +49,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Concepts/Lamanite kings/lk-bow-down.json"
+        "json": "../bomex-webstructure/cameo jsons/Concepts/Lamanite kings/lk-bow-down.json"
       }
     },
     {
@@ -74,7 +74,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Concepts/Lamanite kings/lk-great-spirit.json"
+        "json": "../bomex-webstructure/cameo jsons/Concepts/Lamanite kings/lk-great-spirit.json"
       }
     },
     {
@@ -99,7 +99,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Concepts/Lamanite kings/lamanite-kings.json"
+        "json": "../bomex-webstructure/cameo jsons/Concepts/Lamanite kings/lamanite-kings.json"
       }
     },
     {
@@ -118,7 +118,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Concepts/Lamanite kings/lk-merits-christ.json"
+        "json": "../bomex-webstructure/cameo jsons/Concepts/Lamanite kings/lk-merits-christ.json"
       }
     }
   ]

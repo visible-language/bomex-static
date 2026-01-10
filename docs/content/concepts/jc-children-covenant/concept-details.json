@@ -24,7 +24,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Concepts/jc-children-covenant.json"
+        "json": "../bomex-webstructure/cameo jsons/Concepts/jc-children-covenant.json"
       }
     }
   ]

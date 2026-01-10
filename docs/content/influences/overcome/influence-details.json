@@ -24,7 +24,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Influences/overcome.json"
+        "json": "../bomex-webstructure/cameo jsons/Influences/overcome.json"
       }
     }
   ]

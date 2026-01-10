@@ -30,7 +30,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Influences/Alma II/alma-y-plan.json"
+        "json": "../bomex-webstructure/cameo jsons/Influences/Alma II/alma-y-plan.json"
       }
     },
     {
@@ -55,7 +55,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Influences/Alma II/alma-y-plates.json"
+        "json": "../bomex-webstructure/cameo jsons/Influences/Alma II/alma-y-plates.json"
       }
     },
     {
@@ -80,7 +80,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Influences/Alma II/alma-y-pride.json"
+        "json": "../bomex-webstructure/cameo jsons/Influences/Alma II/alma-y-pride.json"
       }
     },
     {
@@ -105,7 +105,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Influences/Alma II/alma-y-abinadi.json"
+        "json": "../bomex-webstructure/cameo jsons/Influences/Alma II/alma-y-abinadi.json"
       }
     },
     {
@@ -130,7 +130,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Influences/Alma II/alma-y-lehi.json"
+        "json": "../bomex-webstructure/cameo jsons/Influences/Alma II/alma-y-lehi.json"
       }
     }
   ]

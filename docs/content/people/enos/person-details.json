@@ -24,7 +24,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Minor speakers/enos.json"
+        "json": "../bomex-webstructure/cameo jsons/Minor speakers/enos.json"
       }
     }
   ]

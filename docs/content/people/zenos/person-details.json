@@ -24,7 +24,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Minor speakers/Zenos/zenos.json"
+        "json": "../bomex-webstructure/cameo jsons/Minor speakers/Zenos/zenos.json"
       }
     },
     {
@@ -49,7 +49,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Minor speakers/Zenos/prophecy/zenos-prophecy-mountains.json"
+        "json": "../bomex-webstructure/cameo jsons/Minor speakers/Zenos/prophecy/zenos-prophecy-mountains.json"
       }
     },
     {
@@ -74,7 +74,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Minor speakers/Zenos/prophecy/zenos-prophecy-opening.json"
+        "json": "../bomex-webstructure/cameo jsons/Minor speakers/Zenos/prophecy/zenos-prophecy-opening.json"
       }
     },
     {
@@ -99,7 +99,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Minor speakers/Zenos/prophecy/zenos-prophecy-rejecting.json"
+        "json": "../bomex-webstructure/cameo jsons/Minor speakers/Zenos/prophecy/zenos-prophecy-rejecting.json"
       }
     },
     {
@@ -124,7 +124,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Minor speakers/Zenos/prophecy/zenos-prophecy-remember.json"
+        "json": "../bomex-webstructure/cameo jsons/Minor speakers/Zenos/prophecy/zenos-prophecy-remember.json"
       }
     },
     {
@@ -143,7 +143,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Minor speakers/Zenos/prophecy/zenos-prophecy.json"
+        "json": "../bomex-webstructure/cameo jsons/Minor speakers/Zenos/prophecy/zenos-prophecy.json"
       }
     },
     {
@@ -168,7 +168,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Minor speakers/Zenos/prophecy/zenos-prophecy-darkness.json"
+        "json": "../bomex-webstructure/cameo jsons/Minor speakers/Zenos/prophecy/zenos-prophecy-darkness.json"
       }
     },
     {
@@ -193,7 +193,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Minor speakers/Zenos/prophecy/zenos-prophecy-thunder.json"
+        "json": "../bomex-webstructure/cameo jsons/Minor speakers/Zenos/prophecy/zenos-prophecy-thunder.json"
       }
     },
     {
@@ -218,7 +218,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Minor speakers/Zenos/prophecy/zenos-prophecy-visiting.json"
+        "json": "../bomex-webstructure/cameo jsons/Minor speakers/Zenos/prophecy/zenos-prophecy-visiting.json"
       }
     }
   ]

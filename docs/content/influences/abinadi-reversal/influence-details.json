@@ -24,7 +24,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Influences/Abinadi/abinadi-isaiah.json"
+        "json": "../bomex-webstructure/cameo jsons/Influences/Abinadi/abinadi-isaiah.json"
       }
     },
     {
@@ -43,7 +43,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Influences/Abinadi/abinadi-reversal.json"
+        "json": "../bomex-webstructure/cameo jsons/Influences/Abinadi/abinadi-reversal.json"
       }
     },
     {
@@ -62,7 +62,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Influences/Abinadi/abinadi-smitten.json"
+        "json": "../bomex-webstructure/cameo jsons/Influences/Abinadi/abinadi-smitten.json"
       }
     },
     {
@@ -87,7 +87,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Influences/Abinadi/abinadi-isaiah-chart.json"
+        "json": "../bomex-webstructure/cameo jsons/Influences/Abinadi/abinadi-isaiah-chart.json"
       }
     }
   ]

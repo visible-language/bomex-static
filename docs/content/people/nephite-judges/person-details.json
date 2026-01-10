@@ -24,7 +24,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Minor speakers/nephite-judges.json"
+        "json": "../bomex-webstructure/cameo jsons/Minor speakers/nephite-judges.json"
       }
     }
   ]

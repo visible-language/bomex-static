@@ -24,7 +24,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Minor speakers/lamoni-wife.json"
+        "json": "../bomex-webstructure/cameo jsons/Minor speakers/lamoni-wife.json"
       }
     }
   ]

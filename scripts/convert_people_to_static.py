@@ -36,7 +36,31 @@ from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Tuple
 
 
-REPLACEMENT_CHAR = "\ufffd"  # often shows up as "�" in the source text
+REPLACEMENT_CHAR = "\ufffd"  # U+FFFD replacement char; should not appear in output.
+
+
+def _normalize_text(s: str) -> str:
+    """Fix common legacy mojibake in a conservative way.
+
+    Many legacy files have already been decoded with errors, leaving U+FFFD (�)
+    where a right apostrophe should be (e.g., "Benjamin�s"). We only rewrite
+    U+FFFD when it is *between word characters* to avoid incorrectly changing
+    opening/closing quote marks.
+    """
+
+    if not s:
+        return s
+    return re.sub(r"(?<=\w)\ufffd(?=\w)", "’", s)
+
+
+def _normalize_obj(obj: Any) -> Any:
+    if isinstance(obj, str):
+        return _normalize_text(obj)
+    if isinstance(obj, list):
+        return [_normalize_obj(v) for v in obj]
+    if isinstance(obj, dict):
+        return {k: _normalize_obj(v) for k, v in obj.items()}
+    return obj
 
 
 @dataclass(frozen=True)
@@ -47,8 +71,20 @@ class AnalysisBlock:
 
 
 def _read_text(path: Path) -> str:
-    # Be permissive; some source files contain Windows-1252 artifacts.
-    return path.read_text(encoding="utf-8", errors="replace")
+    """Read text from legacy sources without introducing U+FFFD.
+
+    Some files in `old/` are Windows-1252 encoded. Decoding them as UTF-8 with
+    `errors="replace"` produces the replacement character (�), which then leaks
+    into generated JSON/HTML. We instead:
+    1) Try strict UTF-8
+    2) Fall back to Windows-1252
+    """
+
+    data = path.read_bytes()
+    try:
+        return data.decode("utf-8")
+    except UnicodeDecodeError:
+        return data.decode("cp1252")
 
 
 def _write_text(path: Path, content: str) -> None:
@@ -97,8 +133,7 @@ def _jsx_to_html(fragment: str) -> str:
 
     out = fragment
 
-    # Normalize replacement characters from legacy encodings.
-    out = out.replace(REPLACEMENT_CHAR, "’")
+    out = _normalize_text(out)
 
     # className -> class
     out = re.sub(r"\bclassName=", "class=", out)
@@ -168,9 +203,10 @@ def parse_analysis_file(path: Path) -> List[AnalysisBlock]:
 
     occurrences: Dict[str, int] = {}
 
-    # Find `else if (id === "...") {` occurrences.
-    for m in re.finditer(r"else\s+if\s*\(\s*id\s*===\s*\"([^\"]+)\"\s*\)", text):
-        base_id = m.group(1)
+    # Find `if (id === "...") {` and `else if (id === "...") {` occurrences.
+    # Some files use single quotes; accept both.
+    for m in re.finditer(r"(?:else\s+)?if\s*\(\s*id\s*===\s*(['\"])([^'\"]+)\1\s*\)", text):
+        base_id = m.group(2)
         occurrences[base_id] = occurrences.get(base_id, 0) + 1
         analysis_id = base_id if occurrences[base_id] == 1 else f"{base_id}{occurrences[base_id]}"
         after = text[m.end() :]
@@ -187,12 +223,13 @@ def parse_analysis_file(path: Path) -> List[AnalysisBlock]:
 
 
 def _load_json_speaker(path: Path) -> Dict[str, Any]:
-    data = json.loads(path.read_text(encoding="utf-8", errors="replace"))
+    data = json.loads(_read_text(path))
     if isinstance(data, dict) and "speakers" in data and isinstance(data["speakers"], list) and data["speakers"]:
-        return data["speakers"][0]
+        sp = data["speakers"][0]
+        return _normalize_obj(sp)
     # Some json files are already a single speaker object.
     if isinstance(data, dict):
-        return data
+        return _normalize_obj(data)
     raise ValueError(f"Unexpected JSON structure: {path}")
 
 

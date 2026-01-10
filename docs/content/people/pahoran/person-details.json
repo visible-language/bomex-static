@@ -24,7 +24,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Minor speakers/Pahoran/pahoran.json"
+        "json": "../bomex-webstructure/cameo jsons/Minor speakers/Pahoran/pahoran.json"
       }
     },
     {
@@ -43,7 +43,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Minor speakers/Pahoran/pahoran-stand-fast.json"
+        "json": "../bomex-webstructure/cameo jsons/Minor speakers/Pahoran/pahoran-stand-fast.json"
       }
     }
   ]

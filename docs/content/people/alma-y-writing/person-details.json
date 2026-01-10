@@ -24,7 +24,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Major speakers/Alma II/alma-y-writing.json"
+        "json": "../bomex-webstructure/cameo jsons/Major speakers/Alma II/alma-y-writing.json"
       }
     },
     {
@@ -43,7 +43,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Major speakers/Alma II/alma-y-cast-out.json"
+        "json": "../bomex-webstructure/cameo jsons/Major speakers/Alma II/alma-y-cast-out.json"
       }
     },
     {
@@ -62,7 +62,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Major speakers/Alma II/alma-y-state.json"
+        "json": "../bomex-webstructure/cameo jsons/Major speakers/Alma II/alma-y-state.json"
       }
     }
   ]

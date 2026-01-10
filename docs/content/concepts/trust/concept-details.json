@@ -24,7 +24,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Concepts/trust.json"
+        "json": "../bomex-webstructure/cameo jsons/Concepts/trust.json"
       }
     }
   ]

@@ -24,7 +24,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Major speakers/Moroni/moroni.json"
+        "json": "../bomex-webstructure/cameo jsons/Major speakers/Moroni/moroni.json"
       }
     },
     {
@@ -43,7 +43,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Major speakers/Moroni/moroni-jehovah.json"
+        "json": "../bomex-webstructure/cameo jsons/Major speakers/Moroni/moroni-jehovah.json"
       }
     },
     {
@@ -68,7 +68,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Major speakers/Moroni/moroni-nephi.json"
+        "json": "../bomex-webstructure/cameo jsons/Major speakers/Moroni/moroni-nephi.json"
       }
     }
   ]

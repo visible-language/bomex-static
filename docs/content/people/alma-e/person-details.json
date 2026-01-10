@@ -30,7 +30,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Minor speakers/Alma I/alma-e.json"
+        "json": "../bomex-webstructure/cameo jsons/Minor speakers/Alma I/alma-e.json"
       }
     },
     {
@@ -55,7 +55,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Minor speakers/Alma I/alma-e-covenant.json"
+        "json": "../bomex-webstructure/cameo jsons/Minor speakers/Alma I/alma-e-covenant.json"
       }
     }
   ]

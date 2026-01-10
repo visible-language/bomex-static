@@ -24,7 +24,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Major speakers/Nephi-h/nephi-h.json"
+        "json": "../bomex-webstructure/cameo jsons/Major speakers/Nephi-h/nephi-h.json"
       }
     },
     {
@@ -43,7 +43,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Major speakers/Nephi-h/nephi-h-teacher.json"
+        "json": "../bomex-webstructure/cameo jsons/Major speakers/Nephi-h/nephi-h-teacher.json"
       }
     }
   ]

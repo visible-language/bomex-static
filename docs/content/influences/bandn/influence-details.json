@@ -24,7 +24,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Influences/Benjamin and Nephi/benjamin-eyes.json"
+        "json": "../bomex-webstructure/cameo jsons/Influences/Benjamin and Nephi/benjamin-eyes.json"
       }
     },
     {
@@ -43,7 +43,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Influences/Benjamin and Nephi/bandn-dwindle.json"
+        "json": "../bomex-webstructure/cameo jsons/Influences/Benjamin and Nephi/bandn-dwindle.json"
       }
     },
     {
@@ -62,7 +62,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Influences/Benjamin and Nephi/bandn-commandments.json"
+        "json": "../bomex-webstructure/cameo jsons/Influences/Benjamin and Nephi/bandn-commandments.json"
       }
     },
     {
@@ -81,7 +81,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Influences/Benjamin and Nephi/bandn-language.json"
+        "json": "../bomex-webstructure/cameo jsons/Influences/Benjamin and Nephi/bandn-language.json"
       }
     },
     {
@@ -106,7 +106,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Influences/Benjamin and Nephi/bandn.json"
+        "json": "../bomex-webstructure/cameo jsons/Influences/Benjamin and Nephi/bandn.json"
       }
     },
     {
@@ -125,7 +125,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Influences/Benjamin and Nephi/bandn-mysteries.json"
+        "json": "../bomex-webstructure/cameo jsons/Influences/Benjamin and Nephi/bandn-mysteries.json"
       }
     }
   ]

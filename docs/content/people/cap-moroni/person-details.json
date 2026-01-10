@@ -30,7 +30,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Major speakers/cap-moroni.json"
+        "json": "../bomex-webstructure/cameo jsons/Major speakers/cap-moroni.json"
       }
     }
   ]

@@ -24,7 +24,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Influences/Ammon/ammon-m-moses.json"
+        "json": "../bomex-webstructure/cameo jsons/Influences/Ammon/ammon-m-moses.json"
       }
     },
     {
@@ -43,7 +43,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Influences/Ammon/ammon-m-chart.json"
+        "json": "../bomex-webstructure/cameo jsons/Influences/Ammon/ammon-m-chart.json"
       }
     }
   ]

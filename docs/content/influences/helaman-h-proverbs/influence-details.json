@@ -30,7 +30,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Influences/helaman-h-proverbs.json"
+        "json": "../bomex-webstructure/cameo jsons/Influences/helaman-h-proverbs.json"
       }
     }
   ]

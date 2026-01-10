@@ -30,7 +30,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Major speakers/Ammon-m/ammon-m.json"
+        "json": "../bomex-webstructure/cameo jsons/Major speakers/Ammon-m/ammon-m.json"
       }
     },
     {
@@ -49,7 +49,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Major speakers/Ammon-m/ammon-m-ag.json"
+        "json": "../bomex-webstructure/cameo jsons/Major speakers/Ammon-m/ammon-m-ag.json"
       }
     }
   ]

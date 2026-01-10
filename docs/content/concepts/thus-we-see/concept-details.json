@@ -30,7 +30,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Concepts/thus-we-see.json"
+        "json": "../bomex-webstructure/cameo jsons/Concepts/thus-we-see.json"
       }
     }
   ]

@@ -30,7 +30,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Minor speakers/giddianhi-new.json"
+        "json": "../bomex-webstructure/cameo jsons/Minor speakers/giddianhi-new.json"
       }
     }
   ]

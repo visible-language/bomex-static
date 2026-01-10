@@ -24,7 +24,7 @@
         }
       ],
       "source": {
-        "json": "src/people/Major speakers/brother-of-jared.json"
+        "json": "../bomex-webstructure/cameo jsons/Major speakers/brother-of-jared.json"
       }
     }
   ]
