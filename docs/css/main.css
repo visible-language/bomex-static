@@ -200,6 +200,79 @@ header {
     color: var(--text-color);
 }
 
+/* Explore by Tool */
+.tool-picker {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin: 0.25rem 0 1rem;
+}
+
+.tool-section-title {
+    margin: 1.25rem 0 0.75rem;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+}
+
+.tool-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.tool-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.9rem 1rem;
+    border: 1px solid var(--secondary-color);
+    border-radius: 8px;
+    color: var(--text-color);
+}
+
+.tool-row:hover {
+    background-color: var(--light-bg);
+}
+
+.tool-row-text {
+    flex: 1;
+}
+
+.tool-row-title {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.tool-row-subtitle {
+    color: #555;
+}
+
+.tool-widget {
+    border: 1px solid var(--secondary-color);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.tool-iframe {
+    width: 100%;
+    height: 70vh;
+    border: 0;
+    display: block;
+}
+
+.tool-hint {
+    margin-top: 0.75rem;
+    color: #555;
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .tool-hint {
+        display: block;
+    }
+}
+
 .card-header {
     display: flex;
     justify-content: space-between;

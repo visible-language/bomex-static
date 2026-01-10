@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" data-root="../">
+<head>
+  <link rel="icon" href="../favicon.ico">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stylo XR</title>
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body data-tool="stylo-xr">
+  <header></header>
+
+  <section class="page-hero page-hero--people"></section>
+
+  <section class="page-content page-content--wide">
+    <h1 class="content-title">Explore by Tool</h1>
+  </section>
+
+  <section class="page-content page-content--wide">
+    <div class="tool-picker">
+      <select id="tool-select" class="select-input" aria-label="Select a tool">
+        <option value="" selected>Select a Tool</option>
+      </select>
+      <i class="far fa-question-circle help-icon" aria-hidden="true"></i>
+    </div>
+
+    <div class="tool-widget">
+      <iframe class="tool-iframe" title="Stylo XR" loading="lazy" referrerpolicy="no-referrer" src="../widgets/Widgets/StyloXR/index.html"></iframe>
+    </div>
+
+    <p class="tool-hint">For an enhanced experience, try this on a computer</p>
+  </section>
+
+  <footer></footer>
+
+  <script src="../js/main.js"></script>
+  <script src="../js/explore-by-tool.js"></script>
+</body>
+</html>

@@ -80,3 +80,47 @@
     });
   });
 })();
+
+(function () {
+  var TOOLS = [
+    { key: 'timeline', title: 'Timeline' },
+    { key: 'connections', title: 'Connections' },
+    { key: 'word-bubbles', title: 'Word Bubbles' },
+    { key: 'conversation-network', title: 'Conversation Network' },
+    { key: 'similar-topic-diagram', title: 'Similar Topic Diagram' },
+    { key: 'semantic-map', title: 'Semantic Map' },
+    { key: 'stylo-xr', title: 'Stylo XR' }
+  ];
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var selectEl = document.getElementById('home-tool-select');
+    if (!selectEl) return;
+
+    // Preserve the first option ("Select a Tool")
+    while (selectEl.options.length > 1) {
+      selectEl.remove(1);
+    }
+
+    var allOpt = document.createElement('option');
+    allOpt.value = '__all__';
+    allOpt.textContent = 'See All';
+    selectEl.appendChild(allOpt);
+
+    for (var i = 0; i < TOOLS.length; i++) {
+      var opt = document.createElement('option');
+      opt.value = TOOLS[i].key;
+      opt.textContent = TOOLS[i].title;
+      selectEl.appendChild(opt);
+    }
+
+    selectEl.addEventListener('change', function () {
+      var v = selectEl.value;
+      if (!v) return;
+      if (v === '__all__') {
+        window.location.href = 'explore-by-tool/';
+        return;
+      }
+      window.location.href = 'explore-by-tool/' + v + '.html';
+    });
+  });
+})();
