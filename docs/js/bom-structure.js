@@ -1,0 +1,333 @@
+// GENERATED from docs/widgets/Widgets/SimilarVerse/utils.js
+// Minimal Book of Mormon structure for Similar Verse Finder menus.
+window.BOM_STRUCTURE = [
+  {
+    "name": "1 Nephi",
+    "key": "1 nephi",
+    "versesByChapter": [
+      20,
+      24,
+      31,
+      38,
+      22,
+      6,
+      22,
+      38,
+      6,
+      22,
+      36,
+      23,
+      42,
+      30,
+      36,
+      39,
+      55,
+      25,
+      24,
+      22,
+      26,
+      31
+    ]
+  },
+  {
+    "name": "2 Nephi",
+    "key": "2 nephi",
+    "versesByChapter": [
+      32,
+      30,
+      25,
+      35,
+      34,
+      18,
+      11,
+      25,
+      54,
+      25,
+      8,
+      22,
+      26,
+      6,
+      30,
+      13,
+      25,
+      22,
+      21,
+      34,
+      16,
+      6,
+      22,
+      32,
+      30,
+      33,
+      35,
+      32,
+      14,
+      18,
+      21,
+      9,
+      15
+    ]
+  },
+  {
+    "name": "Jacob",
+    "key": "jacob",
+    "versesByChapter": [
+      19,
+      35,
+      14,
+      18,
+      77,
+      13,
+      27
+    ]
+  },
+  {
+    "name": "Enos",
+    "key": "enos",
+    "versesByChapter": [
+      27
+    ]
+  },
+  {
+    "name": "Jarom",
+    "key": "jarom",
+    "versesByChapter": [
+      15
+    ]
+  },
+  {
+    "name": "Omni",
+    "key": "omni",
+    "versesByChapter": [
+      30
+    ]
+  },
+  {
+    "name": "Words Of Mormon",
+    "key": "words of mormon",
+    "versesByChapter": [
+      18
+    ]
+  },
+  {
+    "name": "Mosiah",
+    "key": "mosiah",
+    "versesByChapter": [
+      18,
+      41,
+      27,
+      30,
+      15,
+      7,
+      33,
+      21,
+      19,
+      22,
+      29,
+      37,
+      35,
+      12,
+      31,
+      15,
+      20,
+      35,
+      29,
+      26,
+      36,
+      16,
+      39,
+      25,
+      24,
+      39,
+      37,
+      20,
+      47
+    ]
+  },
+  {
+    "name": "Alma",
+    "key": "alma",
+    "versesByChapter": [
+      33,
+      38,
+      27,
+      20,
+      62,
+      8,
+      27,
+      32,
+      34,
+      32,
+      46,
+      37,
+      31,
+      29,
+      19,
+      21,
+      39,
+      43,
+      36,
+      30,
+      23,
+      35,
+      18,
+      30,
+      17,
+      37,
+      30,
+      14,
+      17,
+      60,
+      38,
+      43,
+      23,
+      41,
+      16,
+      30,
+      47,
+      15,
+      19,
+      26,
+      15,
+      31,
+      54,
+      24,
+      24,
+      41,
+      36,
+      25,
+      30,
+      40,
+      37,
+      40,
+      23,
+      24,
+      35,
+      57,
+      36,
+      41,
+      13,
+      36,
+      21,
+      52,
+      17
+    ]
+  },
+  {
+    "name": "Helaman",
+    "key": "helaman",
+    "versesByChapter": [
+      34,
+      14,
+      37,
+      26,
+      52,
+      41,
+      29,
+      28,
+      41,
+      19,
+      38,
+      26,
+      39,
+      31,
+      17,
+      25
+    ]
+  },
+  {
+    "name": "3 Nephi",
+    "key": "3 nephi",
+    "versesByChapter": [
+      30,
+      19,
+      26,
+      33,
+      26,
+      30,
+      26,
+      25,
+      22,
+      19,
+      41,
+      48,
+      34,
+      27,
+      24,
+      20,
+      25,
+      39,
+      36,
+      46,
+      29,
+      17,
+      14,
+      18,
+      6,
+      21,
+      33,
+      40,
+      9,
+      2
+    ]
+  },
+  {
+    "name": "4 Nephi",
+    "key": "4 nephi",
+    "versesByChapter": [
+      49
+    ]
+  },
+  {
+    "name": "Mormon",
+    "key": "mormon",
+    "versesByChapter": [
+      19,
+      29,
+      22,
+      23,
+      24,
+      22,
+      10,
+      41,
+      37
+    ]
+  },
+  {
+    "name": "Ether",
+    "key": "ether",
+    "versesByChapter": [
+      43,
+      25,
+      28,
+      19,
+      6,
+      30,
+      27,
+      26,
+      35,
+      34,
+      23,
+      41,
+      31,
+      31,
+      34
+    ]
+  },
+  {
+    "name": "Moroni",
+    "key": "moroni",
+    "versesByChapter": [
+      4,
+      3,
+      4,
+      3,
+      2,
+      9,
+      48,
+      30,
+      26,
+      34
+    ]
+  }
+];

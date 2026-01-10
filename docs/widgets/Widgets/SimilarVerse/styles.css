@@ -187,6 +187,7 @@ h1{
     width:100%;
     overflow: hidden;
     border-bottom-right-radius: 20px;
+    color: var(--dark-shade);
 }
 .content{
     background-color: var(--color-2);
@@ -204,13 +205,20 @@ h1{
     max-height: 555px;
     overflow-y:auto;
     overflow-x: hidden;
+    padding: 0.5rem;
+}
+
+#result-list p{
+    color: var(--dark-shade);
+    font-size: 16px;
+    line-height: 1.35;
 }
 
 input{
     margin-left:1rem;
     padding:.5rem;
     font-size: 18px;
-    border: 1px solid rgb(207, 205, 205);
+    color: var(--text-link-color);
     flex-grow: 1;
 }
 button{
@@ -261,27 +269,30 @@ button:hover{
 /*I got this from the internet */
 .accordion {
     background-color: var(--color-1);
-    color: #444;
+    color: var(--dark-shade);
     cursor: pointer;
-    padding: 18px;
+    padding: 14px 16px;
     width: 100%;
     text-align: left;
     border: none;
     outline: none;
     transition: 0.4s;
     transition-delay: 0.05s;
+    border-radius: 12px;
+    border: 1px solid var(--color-1-shade);
 }
 .active, .accordion:hover {
     background-color: var(--color-1-shade);
 }
 
 .panel {
-    margin-top: .5rem;
-    margin-bottom: .5rem;
-    padding: 0 18px;
-    background-color: white;
+    margin: 0.5rem 0;
+    padding: 12px 16px;
+    background-color: var(--white-shade);
     display: none;
     overflow: hidden;
+    border-radius: 12px;
+    border: 1px solid var(--color-2-shade);
 }
 /*
 .accordion:after {

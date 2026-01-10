@@ -55,3 +55,28 @@
     });
   });
 })();
+
+(function () {
+  function go() {
+    var input = document.getElementById('home-similar-verse');
+    if (!input) return;
+    var ref = String(input.value || '').trim();
+    var url = 'similar-verse-finder/';
+    if (ref) url += '?reference=' + encodeURIComponent(ref);
+    window.location.href = url;
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    var input = document.getElementById('home-similar-verse');
+    var btn = document.getElementById('home-similar-verse-submit');
+    if (!input || !btn) return;
+
+    btn.addEventListener('click', go);
+    input.addEventListener('keypress', function (e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        go();
+      }
+    });
+  });
+})();
