@@ -1,6 +1,6 @@
 *{
     box-sizing: border-box;
-    margin: 0; 
+    margin: 0;
     padding: 0;
 }
 body{
@@ -24,7 +24,7 @@ html{
     font-family: 'Roboto', sans-serif;
     overflow-x: hidden;
     overflow-y: hidden;
-    -ms-overflow-style: none;  
+    -ms-overflow-style: none;
     scrollbar-width: 10px;
     scroll-behavior: smooth;
     max-height: 100vh;
@@ -33,13 +33,13 @@ html{
 ::-webkit-scrollbar {
     width: 10px;
 }
-  
+
 ::-webkit-scrollbar-track {
-    background: #eee; 
+    background: #eee;
 }
-   
+
 ::-webkit-scrollbar-thumb {
-    background: #999; 
+    background: #999;
 }
 hr{
     height:1px;
@@ -59,7 +59,7 @@ select{
     justify-content: center;
     max-height:715px;
 }
-  
+
 #cover{
     position:absolute;
     z-index: 3;
@@ -90,7 +90,7 @@ select{
     align-items: center;
     justify-content: center;
 }
-  
+
 #head{
     display:grid;
     grid-template-columns: 1fr auto;
@@ -296,12 +296,12 @@ button:hover{
 }
 /*
 .accordion:after {
-    content: '\02c5'; 
+    content: '\02c5';
     color: #777;
     float: right;
     margin-left: 5px;
 }
-  
+
 .active:after {
     content: "\2013";
 }*/
