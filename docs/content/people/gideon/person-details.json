@@ -5,7 +5,7 @@
   "display_name": "Gideon",
   "year": "circa 145 B.C.",
   "word_count": 405,
-  "image": "./main.jpg",
+  "image": "./gideon.jpg",
   "description": "",
   "pages": [
     {
@@ -14,7 +14,7 @@
       "year": "circa 145 B.C.",
       "word_count": 405,
       "description": "",
-      "image": "./main.jpg",
+      "image": "./gideon.jpg",
       "sections": [
         {
           "order": 1,

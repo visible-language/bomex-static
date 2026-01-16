@@ -31,6 +31,7 @@ import argparse
 import json
 import os
 import re
+import shutil
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Tuple
@@ -91,6 +92,93 @@ def _write_text(path: Path, content: str) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", encoding="utf-8", newline="\n") as f:
         f.write(content)
+
+
+def _materialize_local_image(*, item_id: str, image_value: str, out_dir: Path, images_root: Path) -> str:
+    """Copy a legacy referenced image into out_dir and rewrite to a slug-based filename.
+
+    Legacy JSON uses values like './Images/Gideon.jpg'. Those images live in
+    old/bomex-webstructure/public/Images. We copy them into the generated folder
+    and rename to '<item_id>.<ext>' so generated static paths are stable.
+    """
+
+    ref = (image_value or "").strip()
+    if not ref:
+        return ref
+    if ref.startswith("http://") or ref.startswith("https://"):
+        return ref
+
+    # Common older output; if present we can rename/copy.
+    if ref in {"./main.jpg", "main.jpg"}:
+        main = out_dir / "main.jpg"
+        if main.exists():
+            dst = out_dir / f"{item_id}.jpg"
+            shutil.copy2(main, dst)
+            try:
+                main.unlink()
+            except Exception:
+                pass
+            return f"./{dst.name}"
+        return ref
+
+    src_name = Path(ref[2:] if ref.startswith("./") else ref).name
+    if not src_name:
+        return ref
+
+    src = images_root / src_name
+    ext = (src.suffix or ".jpg").lower()
+    dst = out_dir / f"{item_id}{ext}"
+
+    if src.exists():
+        dst.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(src, dst)
+
+        # Remove old default name if present to reduce confusion.
+        main = out_dir / "main.jpg"
+        if main.exists() and dst.name != "main.jpg":
+            try:
+                main.unlink()
+            except Exception:
+                pass
+
+        return f"./{dst.name}"
+
+    # If the legacy source isn't present, fall back to any existing main.jpg.
+    main = out_dir / "main.jpg"
+    if main.exists():
+        dst.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(main, dst)
+        try:
+            main.unlink()
+        except Exception:
+            pass
+        return f"./{dst.name}"
+
+    return ref
+
+
+def _materialize_images_in_details(details: Dict[str, Any], *, item_id: str, out_dir: Path, images_root: Path) -> None:
+    # Top-level image
+    if isinstance(details.get("image"), str):
+        details["image"] = _materialize_local_image(
+            item_id=item_id,
+            image_value=details["image"],
+            out_dir=out_dir,
+            images_root=images_root,
+        )
+
+    pages = details.get("pages")
+    if isinstance(pages, list):
+        for p in pages:
+            if not isinstance(p, dict):
+                continue
+            if isinstance(p.get("image"), str) and p.get("image").strip():
+                p["image"] = _materialize_local_image(
+                    item_id=item_id,
+                    image_value=str(p.get("image")),
+                    out_dir=out_dir,
+                    images_root=images_root,
+                )
 
 
 def _kebab_case(name: str) -> str:
@@ -163,6 +251,103 @@ def _jsx_to_html(fragment: str) -> str:
     return out
 
 
+def _fix_legacy_margin_attrs(html_str: str) -> str:
+    # Legacy JSX sometimes used non-standard attributes like:
+    #   <p marginLeft='5%'>  (which later becomes malformed)
+    # or even:
+    #   <p margin-left: 5%>
+    #   <p left-margin: 5%>
+    # Normalize these into a standard inline style.
+
+    def _repl(m: re.Match[str]) -> str:
+        tag = m.group("tag")
+        key = m.group("key")
+        val = m.group("val").strip().rstrip(";")
+        # Only support left indentation variants.
+        if key in ("margin-left", "left-margin", "marginleft", "marginLeft"):
+            return f"<{tag} style=\"margin-left: {val};\">"
+        return m.group(0)
+
+    # Matches:
+    #   <p margin-left: 5%>
+    #   <p left-margin: 5%>
+    #   <p marginLeft: 5%>
+    html_str = re.sub(
+        r"<(?P<tag>p|div|span)\s+(?P<key>margin-left|left-margin|marginLeft|marginleft)\s*:\s*(?P<val>[^>]+?)>",
+        _repl,
+        html_str,
+        flags=re.IGNORECASE,
+    )
+
+    # Matches:
+    #   <p marginLeft='5%'>
+    #   <p marginLeft="5%">
+    html_str = re.sub(
+        r"<(?P<tag>p|div|span)\s+(?P<key>marginLeft|marginleft)=(?P<q>['\"])(?P<val>[^'\"]+)(?P=q)>",
+        lambda m: f"<{m.group('tag')} style=\"margin-left: {m.group('val').strip().rstrip(';')};\">",
+        html_str,
+        flags=re.IGNORECASE,
+    )
+
+    return html_str
+
+
+def _unwrap_single_outer_p(html_str: str) -> str:
+    # Some legacy fragments wrap everything in a single <p> and also contain
+    # additional <p> blocks inside (often for indented quotations). That creates
+    # invalid nested paragraphs in HTML. Unwrap the outer <p> only in that case.
+    m = re.match(
+        r"^(\s*<div\s+class=\"analysis\"\s*>)(\s*<p[^>]*>)(.*?)(</p>\s*)(</div>\s*)$",
+        html_str,
+        flags=re.DOTALL | re.IGNORECASE,
+    )
+    if not m:
+        return html_str
+    inner = m.group(3)
+    # Only unwrap if there is another <p ...> inside the wrapper.
+    if re.search(r"<p\b", inner, flags=re.IGNORECASE) is None:
+        return html_str
+    return m.group(1) + m.group(3) + m.group(5)
+
+
+def _postprocess_analysis_html(html_str: str) -> str:
+    s = html_str
+    s = _fix_legacy_margin_attrs(s)
+    s = _unwrap_single_outer_p(s)
+
+    # Convert Key Insights marker into a real heading.
+    # Handle variants like:
+    #   <b>Key Insights</b><br><br>
+    #   <b>Key Insights </b> <br><br>
+    s = re.sub(
+        r"\s*<b>\s*Key\s+Insights\s*</b>\s*(?:<br>\s*){1,4}",
+        "</p><h4 class=\"analysis-heading\">Suggested application</h4><p>",
+        s,
+        flags=re.IGNORECASE,
+    )
+
+    # If we inserted paragraph boundaries but the fragment has no paragraph tags at all,
+    # wrap the content in a single <p>..</p> to keep the HTML valid.
+    if "<p" not in s.lower():
+        s = re.sub(
+            r"^(\s*<div\s+class=\"analysis\"\s*>)(\s*)",
+            r"\1<p>",
+            s,
+            flags=re.IGNORECASE,
+        )
+        s = re.sub(r"(</div>\s*)$", r"</p>\1", s, flags=re.IGNORECASE)
+
+    # Clean up empty paragraphs that can appear from replacements.
+    s = re.sub(r"<p>\s*</p>", "", s, flags=re.IGNORECASE)
+    s = s.replace("</p></p>", "</p>")
+    s = s.replace("<p><p>", "<p>")
+
+    # Remove an orphaned closing paragraph if we injected one at the very start.
+    s = re.sub(r"(<div\s+class=\"analysis\"\s*>\s*)</p>", r"\1", s, flags=re.IGNORECASE)
+
+    return s.strip()
+
+
 def _extract_returned_div(htmlish: str) -> str:
     """Given content starting at `return <div...`, return the full <div>...</div> block.
 
@@ -216,7 +401,7 @@ def parse_analysis_file(path: Path) -> List[AnalysisBlock]:
         after_return = after[ret_pos:]
         # Capture from first '<div' through balanced '</div>'
         div_block = _extract_returned_div(after_return)
-        html = _jsx_to_html(div_block)
+        html = _postprocess_analysis_html(_jsx_to_html(div_block))
         blocks.append(AnalysisBlock(analysis_id=analysis_id, html=html, source_path=str(path)))
 
     return blocks
@@ -434,6 +619,11 @@ def main(argv: Optional[List[str]] = None) -> int:
     parser.add_argument("--in", dest="in_dir", default="docs/people", help="Input people dir (default: docs/people)")
     parser.add_argument("--out", dest="out_dir", default="docs/content", help="Output dir (default: docs/content)")
     parser.add_argument(
+        "--images-root",
+        default="old/bomex-webstructure/public/Images",
+        help="Legacy images folder used by ./Images/<name>.jpg refs (default: old/bomex-webstructure/public/Images)",
+    )
+    parser.add_argument(
         "--include",
         choices=["speakers", "all"],
         default="all",
@@ -444,6 +634,7 @@ def main(argv: Optional[List[str]] = None) -> int:
 
     in_dir = Path(args.in_dir).resolve()
     out_root = Path(args.out_dir).resolve()
+    images_root = Path(args.images_root).resolve()
 
     speaker_roots = [in_dir / "Major speakers", in_dir / "Minor speakers"]
     concept_root = in_dir / "Concepts"
@@ -515,6 +706,9 @@ def main(argv: Optional[List[str]] = None) -> int:
             out_dir=out_dir,
         )
 
+        if images_root.exists():
+            _materialize_images_in_details(details, item_id=person_id, out_dir=out_dir, images_root=images_root)
+
         # Track missing HTML for analysis ids referenced by JSON but not found in parsed JSX.
         for page in details["pages"]:
             for section in page["sections"]:
@@ -540,6 +734,9 @@ def main(argv: Optional[List[str]] = None) -> int:
                 analysis_map=analysis_map,
                 out_dir=out_dir,
             )
+
+            if images_root.exists():
+                _materialize_images_in_details(details, item_id=item_id, out_dir=out_dir, images_root=images_root)
 
             for page in details["pages"]:
                 for section in page["sections"]:

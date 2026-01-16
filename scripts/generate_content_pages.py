@@ -26,6 +26,8 @@ class Section:
 class Page:
     slug: str
     title: str
+    year: str
+    word_count: int
     description: str
     image: str
     sections: List[Section]
@@ -36,6 +38,8 @@ class Item:
     kind: str  # people|concepts|influences
     item_id: str
     display_name: str
+    year: str
+    word_count: int
     description: str
     image: str
     pages: List[Page]
@@ -134,6 +138,8 @@ def _parse_item(kind: str, details_path: Path) -> Item:
 
     item_id = str(data.get("person_id") or data.get("item_id") or details_path.parent.name)
     display_name = str(data.get("display_name") or item_id)
+    year = str(data.get("year") or "")
+    word_count = data.get("word_count") if isinstance(data.get("word_count"), int) else 0
     description = str(data.get("description") or "")
     image = str(data.get("image") or "")
 
@@ -145,6 +151,8 @@ def _parse_item(kind: str, details_path: Path) -> Item:
                 continue
             slug = str(p.get("slug") or "")
             title = str(p.get("title") or display_name)
+            pyr = str(p.get("year") or "")
+            pwc = p.get("word_count") if isinstance(p.get("word_count"), int) else 0
             pdesc = str(p.get("description") or "")
             pimg = str(p.get("image") or image)
 
@@ -161,7 +169,9 @@ def _parse_item(kind: str, details_path: Path) -> Item:
                     frag_path = (details_path.parent / html_rel).resolve()
                     sections.append(Section(heading=heading, html_fragment_path=frag_path))
 
-            pages.append(Page(slug=slug, title=title, description=pdesc, image=pimg, sections=sections))
+            pages.append(
+                Page(slug=slug, title=title, year=pyr, word_count=pwc, description=pdesc, image=pimg, sections=sections)
+            )
 
     # People pages tend to use first page description/image.
     if pages:
@@ -174,6 +184,8 @@ def _parse_item(kind: str, details_path: Path) -> Item:
         kind=kind,
         item_id=item_id,
         display_name=display_name,
+        year=year,
+        word_count=word_count,
         description=description,
         image=image,
         pages=pages,
@@ -269,29 +281,71 @@ def _person_detail(item: Item, *, output_dir: Path) -> str:
     if img_ref:
         hero_style = f" style=\"background-image: url('{html.escape(img_ref)}')\""
 
+    def _chronology_html() -> str:
+        entries: List[str] = []
+        for page in item.pages:
+            yr = str(getattr(page, "year", "") or "").strip() or str(getattr(item, "year", "") or "").strip()
+            if not yr:
+                continue
+            desc_parts: List[str] = []
+            if str(page.title or "").strip():
+                desc_parts.append(str(page.title).strip())
+            pwc = getattr(page, "word_count", 0)
+            if isinstance(pwc, int) and pwc > 0:
+                desc_parts.append(f"{pwc} words")
+            desc = " — ".join(desc_parts).strip()
+            entries.append(f"<p><strong>{html.escape(yr)}</strong></p>" + (f"<p>{html.escape(desc)}</p>" if desc else ""))
+
+        if not entries:
+            return ""
+
+        return (
+            "<details class=\"accordion\">"
+            "<summary><span>Chronology</span><i class=\"fas fa-chevron-down\"></i></summary>"
+            "<div class=\"accordion-body\">"
+            "<div class=\"analysis\">"
+            + "".join(entries)
+            + "</div></div></details>"
+        )
+
     accordion = []
     for page in item.pages:
         inner: List[str] = []
         for sec in page.sections:
             if sec.heading.strip():
-                inner.append(f"<h3 class=\"subheading\">{html.escape(sec.heading.strip())}</h3>")
+                inner.append(
+                    f"<p class=\"analysis-intro\"><em>{html.escape(sec.heading.strip())}</em></p>"
+                )
             inner.append(_load_fragment(sec.html_fragment_path))
+
+        page_title = (page.title or "Details").strip() or "Details"
+        if page_title.strip().lower() == str(item.display_name or "").strip().lower():
+            page_title = "Insights into the Words and phrases"
         accordion.append(
             "<details class=\"accordion\">"
             "<summary>"
-            f"<span>{html.escape(page.title or 'Details')}</span>"
+            f"<span>{html.escape(page_title)}</span>"
             "<i class=\"fas fa-chevron-down\"></i>"
             "</summary>"
             f"<div class=\"accordion-body\">{''.join(inner)}</div>"
             "</details>"
         )
 
+    chronology = _chronology_html()
+    if chronology:
+        accordion.append(chronology)
+
+    brief = str(item.description or "").strip()
+    brief_html = ""
+    if brief:
+        brief_html = "  <h2>Brief biography</h2>\n" f"  <p>{html.escape(brief)}</p>\n"
+
     return (
         f"<section class=\"detail-hero\"{hero_style}><div class=\"detail-hero-title\"><h1>{name}</h1></div></section>\n"
         "<section class=\"page-content\">\n"
-        "  <h2>Brief Biography</h2>\n"
-        f"  <p>{html.escape(item.description)}</p>\n"
-        "  <h2>Insights into the Words and Phrases</h2>\n"
+        "  <div class=\"detail-actions\"><a class=\"back-link\" href=\"index.html\">Back to people</a></div>\n"
+        + brief_html
+        + "  <h2>Insights into the Words and Phrases</h2>\n"
         + "\n".join(accordion)
         + "\n</section>\n"
     )
