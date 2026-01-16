@@ -343,9 +343,8 @@ def _person_detail(item: Item, *, output_dir: Path) -> str:
     return (
         f"<section class=\"detail-hero\"{hero_style}><div class=\"detail-hero-title\"><h1>{name}</h1></div></section>\n"
         "<section class=\"page-content\">\n"
-        "  <div class=\"detail-actions\"><a class=\"back-link\" href=\"index.html\">Back to people</a></div>\n"
+        "  <div class=\"detail-actions\"><a class=\"back-link\" href=\"index.html\" aria-label=\"Back to people\" title=\"Back to people\"><i class=\"fas fa-arrow-left\"></i></a></div>\n"
         + brief_html
-        + "  <h2>Insights into the Words and Phrases</h2>\n"
         + "\n".join(accordion)
         + "\n</section>\n"
     )
