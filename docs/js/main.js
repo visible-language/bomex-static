@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", function() {
         .then(data => {
             document.querySelector('footer').innerHTML = data;
             applyRootLinks(rootPrefix);
+            updateCopyrightYear();
         })
         .catch(error => console.error('Error loading footer:', error));
 
@@ -48,5 +49,12 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             });
         }
+    }
+
+    function updateCopyrightYear() {
+        const el = document.getElementById('copyright-year');
+        if (!el) return;
+
+        el.textContent = String(new Date().getFullYear());
     }
 });

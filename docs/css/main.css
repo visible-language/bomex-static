@@ -291,6 +291,35 @@ header {
 .help-icon {
     color: #999;
     cursor: pointer;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.help-icon:focus {
+    outline: none;
+}
+
+.help-icon:hover::after,
+.help-icon:focus::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: 1.4rem;
+    right: 0;
+    width: max-content;
+    max-width: 240px;
+    padding: 0.5rem 0.6rem;
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.85);
+    color: #fff;
+    font-size: 0.85rem;
+    line-height: 1.2;
+    z-index: 10;
+}
+
+.help-icon--nav {
+    margin-left: auto;
+    color: rgba(255, 255, 255, 0.85);
 }
 
 .select-input, .text-input {
@@ -371,6 +400,7 @@ header {
     font-size: 1.5rem;
     margin-bottom: 1rem;
     text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    line-height: 1.2;
 }
 
 .action-btn {
@@ -403,6 +433,10 @@ footer {
     margin-bottom: 2rem;
     padding-bottom: 2rem;
     border-bottom: 1px solid rgba(255,255,255,0.3);
+}
+
+.footer-section--after-cards {
+    margin-top: 1.5rem;
 }
 
 .footer-section:last-of-type {

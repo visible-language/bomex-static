@@ -198,6 +198,42 @@ def _internal_href(href: str) -> str:
     return href
 
 
+def _strip_did_you_know_paragraphs(fragment: str) -> str:
+    if not fragment:
+        return fragment
+    return re.sub(
+        r"<p\b[^>]*>\s*(?:<[^>]+>\s*)*Did you know.*?</p>",
+        "",
+        fragment,
+        flags=re.IGNORECASE | re.DOTALL,
+    )
+
+
+def _starts_with_did_you_know(text: str) -> bool:
+    return bool(re.match(r"^\s*Did you know\b", text.strip(), flags=re.IGNORECASE))
+
+
+def _is_chronology_section(heading: str, fragment: str) -> bool:
+    if re.search(r"\bchronology\b", heading or "", flags=re.IGNORECASE):
+        return True
+
+    chrono_re = re.compile(
+        r"(?:^|<p[^>]*>\s*|<br\s*/?>\s*|<strong>\s*|<b>\s*)\s*(?:circa\s+)?"
+        r"(?:\d{1,4}\s*(?:B\.?C\.?|A\.?D\.?)|(?:B\.?C\.?|A\.?D\.?)\s*\d{1,4})",
+        flags=re.IGNORECASE,
+    )
+    return bool(chrono_re.search(fragment or ""))
+
+
+def _format_year_line(year: str) -> str:
+    yr = (year or "").strip()
+    if not yr:
+        return ""
+    if re.search(r"\bcirca\b", yr, flags=re.IGNORECASE):
+        return yr
+    return f"Circa {yr}"
+
+
 def _hero(kind: str, title: str, subtitle: str) -> str:
     # For index pages: image first, then title/subtitle on white.
     hero_class = {
@@ -281,46 +317,36 @@ def _person_detail(item: Item, *, output_dir: Path) -> str:
     if img_ref:
         hero_style = f" style=\"background-image: url('{html.escape(img_ref)}')\""
 
-    def _chronology_html() -> str:
-        entries: List[str] = []
-        for page in item.pages:
-            yr = str(getattr(page, "year", "") or "").strip() or str(getattr(item, "year", "") or "").strip()
-            if not yr:
-                continue
-            desc_parts: List[str] = []
-            if str(page.title or "").strip():
-                desc_parts.append(str(page.title).strip())
-            pwc = getattr(page, "word_count", 0)
-            if isinstance(pwc, int) and pwc > 0:
-                desc_parts.append(f"{pwc} words")
-            desc = " — ".join(desc_parts).strip()
-            entries.append(f"<p><strong>{html.escape(yr)}</strong></p>" + (f"<p>{html.escape(desc)}</p>" if desc else ""))
-
-        if not entries:
-            return ""
-
-        return (
-            "<details class=\"accordion\">"
-            "<summary><span>Chronology</span><i class=\"fas fa-chevron-down\"></i></summary>"
-            "<div class=\"accordion-body\">"
-            "<div class=\"analysis\">"
-            + "".join(entries)
-            + "</div></div></details>"
-        )
-
+    chronology_blocks: List[str] = []
     accordion = []
     for page in item.pages:
         inner: List[str] = []
+        page_desc = str(page.description or "").strip()
+        if (
+            page_desc
+            and page_desc != str(item.description or "").strip()
+            and not _starts_with_did_you_know(page_desc)
+        ):
+            inner.append(f"<p>{html.escape(page_desc)}</p>")
         for sec in page.sections:
-            if sec.heading.strip():
+            raw_fragment = _load_fragment(sec.html_fragment_path)
+            fragment = _strip_did_you_know_paragraphs(raw_fragment).strip()
+
+            if _is_chronology_section(sec.heading, fragment):
+                if fragment:
+                    chronology_blocks.append(fragment)
+                continue
+
+            if sec.heading.strip() and not _starts_with_did_you_know(sec.heading):
                 inner.append(
                     f"<p class=\"analysis-intro\"><em>{html.escape(sec.heading.strip())}</em></p>"
                 )
-            inner.append(_load_fragment(sec.html_fragment_path))
+            if fragment:
+                inner.append(fragment)
 
         page_title = (page.title or "Details").strip() or "Details"
         if page_title.strip().lower() == str(item.display_name or "").strip().lower():
-            page_title = "Insights into the Words and phrases"
+            page_title = "Insights into words and phrases"
         accordion.append(
             "<details class=\"accordion\">"
             "<summary>"
@@ -331,14 +357,27 @@ def _person_detail(item: Item, *, output_dir: Path) -> str:
             "</details>"
         )
 
-    chronology = _chronology_html()
-    if chronology:
-        accordion.append(chronology)
-
     brief = str(item.description or "").strip()
-    brief_html = ""
-    if brief:
-        brief_html = "  <h2>Brief biography</h2>\n" f"  <p>{html.escape(brief)}</p>\n"
+    year_line = _format_year_line(item.year)
+    brief_parts: List[str] = []
+    if year_line:
+        brief_parts.append(f"  <p><em>{html.escape(year_line)}</em></p>\n")
+    if brief and not _starts_with_did_you_know(brief):
+        brief_parts.append("  <h2>Brief biography</h2>\n")
+        brief_parts.append(f"  <p>{html.escape(brief)}</p>\n")
+    if isinstance(item.word_count, int) and item.word_count > 0:
+        brief_parts.append(f"  <p>Total recorded words -- {item.word_count}</p>\n")
+    brief_html = "".join(brief_parts)
+
+    if chronology_blocks:
+        chronology = (
+            "<details class=\"accordion\">"
+            "<summary><span>Chronology</span><i class=\"fas fa-chevron-down\"></i></summary>"
+            "<div class=\"accordion-body\">"
+            + "".join(chronology_blocks)
+            + "</div></details>"
+        )
+        accordion.append(chronology)
 
     return (
         f"<section class=\"detail-hero\"{hero_style}><div class=\"detail-hero-title\"><h1>{name}</h1></div></section>\n"
