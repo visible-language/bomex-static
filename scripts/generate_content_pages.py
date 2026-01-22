@@ -89,7 +89,27 @@ def _doc(title: str, body_html: str, scripts_html: str = "", *, asset_prefix: st
 def _load_fragment(path: Path) -> str:
     if not path.exists():
         return ""
-    return path.read_text(encoding="utf-8")
+    fragment = path.read_text(encoding="utf-8")
+    return _ensure_content_table_class(fragment)
+
+
+def _ensure_content_table_class(fragment: str) -> str:
+    if not fragment:
+        return fragment
+
+    def _repl(match: re.Match[str]) -> str:
+        attrs = match.group(1) or ""
+        class_match = re.search(r"\bclass\s*=\s*(['\"])(.*?)\1", attrs, flags=re.IGNORECASE)
+        if class_match:
+            existing = class_match.group(2)
+            if re.search(r"(?:^|\s)content-table(?:\s|$)", existing):
+                return f"<table{attrs}>"
+            new_classes = f"{existing} content-table"
+            new_attrs = attrs[: class_match.start()] + f' class="{new_classes}"' + attrs[class_match.end() :]
+            return f"<table{new_attrs}>"
+        return f"<table class=\"content-table\"{attrs}>"
+
+    return re.sub(r"<table([^>]*)>", _repl, fragment, flags=re.IGNORECASE)
 
 
 def _resolve_asset_ref(details_path: Path, output_dir: Path, ref: str) -> str:

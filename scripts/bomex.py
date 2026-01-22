@@ -7,7 +7,7 @@ It intentionally does not parse subcommand flags itself; the underlying scripts 
 
 Examples:
     uv run scripts/bomex.py build --steps pages
-    uv run scripts/bomex.py convert --in docs/people --out docs/content
+    uv run scripts/bomex.py convert --in "old/bomex-webstructure/cameo jsons" --out docs/content
     uv run scripts/bomex.py images --copy
     uv run scripts/bomex.py pages
     uv run scripts/bomex.py fix --check
@@ -59,8 +59,8 @@ def _build_main(argv: Optional[List[str]] = None) -> int:
     parser.add_argument(
         "--in",
         dest="in_dir",
-        default="docs/people",
-        help="Input legacy people dir for convert step (default: docs/people)",
+        default="old/bomex-webstructure/cameo jsons",
+        help="Input legacy people dir for convert step (default: old/bomex-webstructure/cameo jsons)",
     )
     parser.add_argument(
         "--out",

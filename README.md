@@ -46,11 +46,13 @@ That regenerates:
 
 ### 2) (Optional) Rebuild `docs/content/` from legacy React-era sources
 
-If you need to re-import from the older React-era `docs/people/...` JSON + `*-analysis.js` sources:
+If you need to re-import from the older React-era `old/bomex-webstructure/cameo jsons/...` JSON + `*-analysis.js` sources:
 
 ```bash
 uv run scripts/convert_people_to_static.py --out docs/content
 ```
+
+Default input is `old/bomex-webstructure/cameo jsons` (note the space in the folder name).
 
 Equivalent via the combined build script:
 

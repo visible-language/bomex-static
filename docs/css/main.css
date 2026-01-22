@@ -658,6 +658,10 @@ footer {
     transition: transform 0.15s;
 }
 
+.content-table {
+    table-layout: fixed;
+}
+
 .accordion-body {
     background-color: var(--white);
     padding: 1rem;
