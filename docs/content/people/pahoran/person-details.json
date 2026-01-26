@@ -18,7 +18,7 @@
       "sections": [
         {
           "order": 1,
-          "heading": "Did you know that Pahoran was humble enough to not become angry when he was falsely accused of being a traitor?",
+          "heading": "",
           "analysis_id": "pahoran",
           "html": "./pahoran.html"
         }
@@ -37,7 +37,7 @@
       "sections": [
         {
           "order": 1,
-          "heading": "Did you know that Pahoran was as committed to freedom from sin as he was to freedom from kings?",
+          "heading": "",
           "analysis_id": "pahoran-stand-fast",
           "html": "./pahoran-stand-fast.html"
         }

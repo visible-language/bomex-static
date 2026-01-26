@@ -18,7 +18,7 @@
       "sections": [
         {
           "order": 1,
-          "heading": "Did you know that Korihor is the only Book of Mormon speaker to use the phrase, \"the foolish traditions of your fathers\"?",
+          "heading": "",
           "analysis_id": "korihor",
           "html": "./korihor.html"
         },
@@ -43,7 +43,7 @@
       "sections": [
         {
           "order": 1,
-          "heading": "Did you know that Korihor deceived the people by presenting only a part of the truth and then making it seem foolish?",
+          "heading": "",
           "analysis_id": "korihor-partial",
           "html": "./korihor-partial.html"
         }

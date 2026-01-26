@@ -43,8 +43,8 @@ REPLACEMENT_CHAR = "\ufffd"  # U+FFFD replacement char; should not appear in out
 def _normalize_text(s: str) -> str:
     """Fix common legacy mojibake in a conservative way.
 
-    Many legacy files have already been decoded with errors, leaving U+FFFD (�)
-    where a right apostrophe should be (e.g., "Benjamin�s"). We only rewrite
+    Many legacy files have already been decoded with errors, leaving U+FFFD (replacement character)
+    where a right apostrophe should be (e.g., "Benjamin's"). We only rewrite
     U+FFFD when it is *between word characters* to avoid incorrectly changing
     opening/closing quote marks.
     """
@@ -62,6 +62,22 @@ def _normalize_obj(obj: Any) -> Any:
     if isinstance(obj, dict):
         return {k: _normalize_obj(v) for k, v in obj.items()}
     return obj
+
+
+def _starts_with_did_you_know(text: str) -> bool:
+    return bool(re.match(r"^\s*Did you know\b", (text or "").strip(), flags=re.IGNORECASE))
+
+
+def _strip_did_you_know_blocks(html_str: str) -> str:
+    """Remove block elements whose content starts with 'Did you know'."""
+    if not html_str:
+        return html_str
+    return re.sub(
+        r"<(?P<tag>p|h[1-6])\b[^>]*>(?:(?:\s|<[^>]+>)+)?Did you know\b.*?</(?P=tag)>",
+        "",
+        html_str,
+        flags=re.IGNORECASE | re.DOTALL,
+    )
 
 
 @dataclass(frozen=True)
@@ -219,9 +235,7 @@ def _convert_style_object(style_obj: str) -> str:
 def _jsx_to_html(fragment: str) -> str:
     """Best-effort JSX->HTML conversion for this repo's analysis blocks."""
 
-    out = fragment
-
-    out = _normalize_text(out)
+    out = _normalize_text(fragment)
 
     # className -> class
     out = re.sub(r"\bclassName=", "class=", out)
@@ -325,6 +339,8 @@ def _postprocess_analysis_html(html_str: str) -> str:
         s,
         flags=re.IGNORECASE,
     )
+
+    s = _strip_did_you_know_blocks(s)
 
     # If we inserted paragraph boundaries but the fragment has no paragraph tags at all,
     # wrap the content in a single <p>..</p> to keep the HTML valid.
@@ -487,7 +503,7 @@ def build_person_details(
             sections.append(
                 {
                     "order": n,
-                    "heading": heading,
+                    "heading": "" if _starts_with_did_you_know(heading) else heading,
                     "analysis_id": analysis_id,
                     "html": html_rel,
                 }
@@ -569,7 +585,7 @@ def build_item_details(
             sections.append(
                 {
                     "order": n,
-                    "heading": heading,
+                    "heading": "" if _starts_with_did_you_know(heading) else heading,
                     "analysis_id": analysis_id,
                     "html": html_rel,
                 }

@@ -218,17 +218,6 @@ def _internal_href(href: str) -> str:
     return href
 
 
-def _strip_did_you_know_paragraphs(fragment: str) -> str:
-    if not fragment:
-        return fragment
-    return re.sub(
-        r"<p\b[^>]*>\s*(?:<[^>]+>\s*)*Did you know.*?</p>",
-        "",
-        fragment,
-        flags=re.IGNORECASE | re.DOTALL,
-    )
-
-
 def _starts_with_did_you_know(text: str) -> bool:
     return bool(re.match(r"^\s*Did you know\b", text.strip(), flags=re.IGNORECASE))
 
@@ -349,8 +338,7 @@ def _person_detail(item: Item, *, output_dir: Path) -> str:
         ):
             inner.append(f"<p>{html.escape(page_desc)}</p>")
         for sec in page.sections:
-            raw_fragment = _load_fragment(sec.html_fragment_path)
-            fragment = _strip_did_you_know_paragraphs(raw_fragment).strip()
+            fragment = _load_fragment(sec.html_fragment_path)
 
             if _is_chronology_section(sec.heading, fragment):
                 if fragment:

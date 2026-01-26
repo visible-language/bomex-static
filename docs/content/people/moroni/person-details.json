@@ -18,7 +18,7 @@
       "sections": [
         {
           "order": 1,
-          "heading": "Did you know that Moroni’s words show influences from the writings of many earlier prophets?",
+          "heading": "",
           "analysis_id": "moroni",
           "html": "./moroni.html"
         }
@@ -37,7 +37,7 @@
       "sections": [
         {
           "order": 1,
-          "heading": "Did you know that Moroni is the only Nephite prophet to use the name \"Jehovah\"?",
+          "heading": "",
           "analysis_id": "moroni-jehovah",
           "html": "./moroni-jehovah.html"
         }
@@ -56,7 +56,7 @@
       "sections": [
         {
           "order": 1,
-          "heading": "Did you know that the writings on the plates of Nephi influenced the teachings of Moroni son of Mormon?",
+          "heading": "",
           "analysis_id": "moroni-nephi",
           "html": "./moroni-nephi.html"
         },

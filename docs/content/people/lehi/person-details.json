@@ -18,7 +18,7 @@
       "sections": [
         {
           "order": 1,
-          "heading": "Did you know that Lehi is the only Book of Mormon speaker who uses the word \"opposition?\"",
+          "heading": "",
           "analysis_id": "lehi",
           "html": "./lehi.html"
         },
@@ -43,7 +43,7 @@
       "sections": [
         {
           "order": 1,
-          "heading": "Did you know that Lehi is the only Book of Mormon prophet to refer to the Savior as the \"Holy Messiah\"?",
+          "heading": "",
           "analysis_id": "lehi-messiah",
           "html": "./lehi-messiah.html"
         }
@@ -62,7 +62,7 @@
       "sections": [
         {
           "order": 1,
-          "heading": "Did you know that Lehi is the only Book of Mormon prophet to use the word \"Mediator\"?",
+          "heading": "",
           "analysis_id": "lehi-mediator",
           "html": "./lehi-mediator.html"
         }

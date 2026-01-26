@@ -18,7 +18,7 @@
       "sections": [
         {
           "order": 1,
-          "heading": "Did you know that Mormon is the only writer in the Book of Mormon to use the phrase \"Holy Child Jesus\"?",
+          "heading": "",
           "analysis_id": "mormon",
           "html": "./mormon.html"
         }
@@ -37,7 +37,7 @@
       "sections": [
         {
           "order": 1,
-          "heading": "Did you know that Moroni 9 was written shortly before the final battle at Cumorah?",
+          "heading": "",
           "analysis_id": "m-date-moroni",
           "html": "./m-date-moroni.html"
         },
@@ -62,7 +62,7 @@
       "sections": [
         {
           "order": 1,
-          "heading": "Did you know that the phrase \"endurance of faith\" teaches us what it means to endure to the end?",
+          "heading": "",
           "analysis_id": "m-endurance-faith",
           "html": "./m-endurance-faith.html"
         }
@@ -81,7 +81,7 @@
       "sections": [
         {
           "order": 1,
-          "heading": "Did you know that when Mormon used the adjective \"great,\" the most common object was joy?",
+          "heading": "",
           "analysis_id": "m-joy",
           "html": "./m-joy.html"
         }
@@ -100,7 +100,7 @@
       "sections": [
         {
           "order": 1,
-          "heading": "Did you know that Mormon uses certain words in a manner that is distinct from other Book of Mormon writers?",
+          "heading": "",
           "analysis_id": "m-command-earth",
           "html": "./m-command-earth.html"
         }
