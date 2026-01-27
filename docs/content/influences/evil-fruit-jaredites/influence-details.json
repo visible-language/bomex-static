@@ -1,0 +1,37 @@
+{
+  "item_id": "evil-fruit-jaredites",
+  "category": "influences",
+  "group": "Book of Ether/Evil Fruit of the Jaredites/evil-fruit-jaredites",
+  "display_name": "The Evil Fruit of the Jaredites",
+  "year": "",
+  "word_count": 0,
+  "image": "",
+  "description": "In the story of the brother of Jared, Moroni uses language from the account of the Fall of Man to teach how man can be redeemed. He also draws upon this language to teach about the dangers and awful consequences of rejecting good knowledge revealed by God, and acting upon evil knowledge given by the devil. Moroni does this through the story of the daughter of unrighteous Jared, who introduced secret combinations to the Jaredites. Examples of this can be seen in \"Jared’s Daughter and the Serpent,\" \"The Evil Fruit of Unrestrained Ambition and Desire,\" \"Putting It into the Heart,\" \"That Which is Forbidden,\" \"Eyes Opened,\" and \"Enmity.\"",
+  "pages": [
+    {
+      "slug": "evil-fruit-jaredites",
+      "title": "The Evil Fruit of the Jaredites",
+      "year": "",
+      "word_count": 0,
+      "description": "In the story of the brother of Jared, Moroni uses language from the account of the Fall of Man to teach how man can be redeemed. He also draws upon this language to teach about the dangers and awful consequences of rejecting good knowledge revealed by God, and acting upon evil knowledge given by the devil. Moroni does this through the story of the daughter of unrighteous Jared, who introduced secret combinations to the Jaredites. Examples of this can be seen in \"Jared’s Daughter and the Serpent,\" \"The Evil Fruit of Unrestrained Ambition and Desire,\" \"Putting It into the Heart,\" \"That Which is Forbidden,\" \"Eyes Opened,\" and \"Enmity.\"",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "",
+          "analysis_id": "evil-fruit-jaredites",
+          "html": "./evil-fruit-jaredites.html"
+        },
+        {
+          "order": 2,
+          "heading": "The Fruits of Evil Knowledge",
+          "analysis_id": "evil-fruit-jaredites2",
+          "html": "./evil-fruit-jaredites2.html"
+        }
+      ],
+      "source": {
+        "json": "../bomex-webstructure/cameo jsons/Influences/Book of Ether/Evil Fruit of the Jaredites/evil-fruit-jaredites.json"
+      }
+    }
+  ]
+}

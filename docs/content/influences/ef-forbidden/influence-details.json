@@ -1,0 +1,31 @@
+{
+  "item_id": "ef-forbidden",
+  "category": "influences",
+  "group": "Book of Ether/Evil Fruit of the Jaredites/ef-forbidden",
+  "display_name": "That Which is Forbidden",
+  "year": "",
+  "word_count": 0,
+  "image": "",
+  "description": "",
+  "pages": [
+    {
+      "slug": "ef-forbidden",
+      "title": "That Which is Forbidden",
+      "year": "",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "",
+          "analysis_id": "ef-forbidden",
+          "html": "./ef-forbidden.html"
+        }
+      ],
+      "source": {
+        "json": "../bomex-webstructure/cameo jsons/Influences/Book of Ether/Evil Fruit of the Jaredites/ef-forbidden.json"
+      }
+    }
+  ]
+}

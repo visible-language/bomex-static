@@ -1,0 +1,31 @@
+{
+  "item_id": "abinadi-isaiah",
+  "category": "influences",
+  "group": "Abinadi/abinadi-isaiah",
+  "display_name": "Abinadi and Isaiah: Who Are the Lord’s People?",
+  "year": "200 B.C.-148 B.C.",
+  "word_count": 0,
+  "image": "",
+  "description": "",
+  "pages": [
+    {
+      "slug": "abinadi-isaiah",
+      "title": "Abinadi and Isaiah: Who Are the Lord’s People?",
+      "year": "200 B.C.-148 B.C.",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "",
+          "analysis_id": "abinadi-isaiah",
+          "html": "./abinadi-isaiah.html"
+        }
+      ],
+      "source": {
+        "json": "../bomex-webstructure/cameo jsons/Influences/Abinadi/abinadi-isaiah.json"
+      }
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "item_id": "abinadi-isaiah-chart",
+  "category": "influences",
+  "group": "Abinadi/abinadi-isaiah-chart",
+  "display_name": "Chart of Isaiah’s and Abinadi’s Words",
+  "year": "200 B.C.-148 B.C.",
+  "word_count": 0,
+  "image": "",
+  "description": "",
+  "pages": [
+    {
+      "slug": "abinadi-isaiah-chart",
+      "title": "Chart of Isaiah’s and Abinadi’s Words",
+      "year": "200 B.C.-148 B.C.",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Below are additional examples where Abinadi may be drawing upon Isaiah’s words, phrases, and ideas.",
+          "analysis_id": "abinadi-isaiah-chart",
+          "html": "./abinadi-isaiah-chart.html"
+        },
+        {
+          "order": 2,
+          "heading": "",
+          "analysis_id": "abinadi-isaiah-chart2",
+          "html": "./abinadi-isaiah-chart2.html"
+        }
+      ],
+      "source": {
+        "json": "../bomex-webstructure/cameo jsons/Influences/Abinadi/abinadi-isaiah-chart.json"
+      }
+    }
+  ]
+}

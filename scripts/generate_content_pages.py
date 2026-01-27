@@ -295,23 +295,35 @@ def _people_index(items: List[Item], *, output_dir: Path) -> str:
     )
 
 
-def _list_index(kind: str, title: str, subtitle: str, items: List[Item]) -> str:
+def _list_index(kind: str, title: str, subtitle: str, items: List[Item], *, enable_search: bool = False) -> str:
     rows = []
     for it in items:
         href = _internal_href(f"{_safe_filename(it.item_id)}.html")
+        name_key = (it.display_name or "").lower()
         rows.append(
             "<a class=\"list-row\" href=\""
             + href
-            + "\">"
+            + f"\" data-name=\"{html.escape(name_key)}\">"
             + f"<span>{html.escape(it.display_name)}</span>"
             + "<i class=\"fas fa-chevron-right\"></i>"
             + "</a>"
         )
 
+    search_html = ""
+    list_id = f"{kind}-list"
+    if enable_search:
+        search_html = (
+            f"  <div class=\"input-wrapper {kind}-search\">\n"
+            f"    <input id=\"{kind}-search\" type=\"text\" class=\"text-input\" placeholder=\"Search {kind[:-1]}\">\n"
+            "    <button class=\"search-icon-btn\" type=\"button\"><i class=\"fas fa-search\"></i></button>\n"
+            "  </div>\n"
+        )
+
     return (
         _hero(kind, title, subtitle)
         + "\n<section class=\"page-content page-content--wide\">\n"
-        "  <div class=\"list\">\n"
+        + search_html
+        + f"  <div id=\"{list_id}\" class=\"list\">\n"
         + "\n".join(rows)
         + "\n  </div>\n"
         "</section>\n"
@@ -327,7 +339,7 @@ def _person_detail(item: Item, *, output_dir: Path) -> str:
         hero_style = f" style=\"background-image: url('{html.escape(img_ref)}')\""
 
     chronology_blocks: List[str] = []
-    accordion = []
+    panels: List[Tuple[str, str]] = []
     for page in item.pages:
         inner: List[str] = []
         page_desc = str(page.description or "").strip()
@@ -355,15 +367,7 @@ def _person_detail(item: Item, *, output_dir: Path) -> str:
         page_title = (page.title or "Details").strip() or "Details"
         if page_title.strip().lower() == str(item.display_name or "").strip().lower():
             page_title = "Insights into words and phrases"
-        accordion.append(
-            "<details class=\"accordion\">"
-            "<summary>"
-            f"<span>{html.escape(page_title)}</span>"
-            "<i class=\"fas fa-chevron-down\"></i>"
-            "</summary>"
-            f"<div class=\"accordion-body\">{''.join(inner)}</div>"
-            "</details>"
-        )
+        panels.append((page_title, "".join(inner)))
 
     brief = str(item.description or "").strip()
     year_line = _format_year_line(item.year)
@@ -378,21 +382,28 @@ def _person_detail(item: Item, *, output_dir: Path) -> str:
     brief_html = "".join(brief_parts)
 
     if chronology_blocks:
-        chronology = (
+        panels.append(("Chronology", "".join(chronology_blocks)))
+
+    if len(panels) == 1:
+        accordion_html = panels[0][1]
+    else:
+        accordion_html = "".join(
             "<details class=\"accordion\">"
-            "<summary><span>Chronology</span><i class=\"fas fa-chevron-down\"></i></summary>"
-            "<div class=\"accordion-body\">"
-            + "".join(chronology_blocks)
-            + "</div></details>"
+            "<summary>"
+            f"<span>{html.escape(title)}</span>"
+            "<i class=\"fas fa-chevron-down\"></i>"
+            "</summary>"
+            f"<div class=\"accordion-body\">{body}</div>"
+            "</details>"
+            for title, body in panels
         )
-        accordion.append(chronology)
 
     return (
         f"<section class=\"detail-hero\"{hero_style}><div class=\"detail-hero-title\"><h1>{name}</h1></div></section>\n"
         "<section class=\"page-content\">\n"
         "  <div class=\"detail-actions\"><a class=\"back-link\" href=\"index.html\" aria-label=\"Back to people\" title=\"Back to people\"><i class=\"fas fa-arrow-left\"></i></a></div>\n"
         + brief_html
-        + "\n".join(accordion)
+        + accordion_html
         + "\n</section>\n"
     )
 
@@ -412,21 +423,28 @@ def _concept_or_influence_detail(kind: str, item: Item) -> str:
         body.append(f"  <p class=\"content-subtitle\">{html.escape(item.description.strip())}</p>")
 
     # Render one accordion per page (sub-JSON), for both concepts and influences.
+    panels: List[Tuple[str, str]] = []
     for page in item.pages:
         inner: List[str] = []
         for sec in page.sections:
             if sec.heading.strip():
                 inner.append(f"<h3 class=\"subheading\">{html.escape(sec.heading.strip())}</h3>")
             inner.append(_load_fragment(sec.html_fragment_path))
-        body.append(
-            "<details class=\"accordion\">"
-            "<summary>"
-            f"<span>{html.escape(page.title or 'Details')}</span>"
-            "<i class=\"fas fa-chevron-down\"></i>"
-            "</summary>"
-            f"<div class=\"accordion-body\">{''.join(inner)}</div>"
-            "</details>"
-        )
+        panels.append((page.title or "Details", "".join(inner)))
+
+    if len(panels) == 1:
+        body.append(panels[0][1])
+    else:
+        for title, inner_html in panels:
+            body.append(
+                "<details class=\"accordion\">"
+                "<summary>"
+                f"<span>{html.escape(title)}</span>"
+                "<i class=\"fas fa-chevron-down\"></i>"
+                "</summary>"
+                f"<div class=\"accordion-body\">{inner_html}</div>"
+                "</details>"
+            )
 
     body.append("</section>")
     return "\n".join(body) + "\n"
@@ -523,7 +541,9 @@ def main(argv: Optional[List[str]] = None) -> int:
                 "Influences",
                 "Learn how the People in the Book of Mormon Influenced the Messages of Others",
                 influences,
+                enable_search=True,
             ),
+            scripts_html=_list_search_script("influences"),
             asset_prefix="../",
             root_prefix="../",
         ),
@@ -537,7 +557,9 @@ def main(argv: Optional[List[str]] = None) -> int:
                 "Concepts",
                 "Explore key concepts and phrases in the Book of Mormon",
                 concepts,
+                enable_search=True,
             ),
+            scripts_html=_list_search_script("concepts"),
             asset_prefix="../",
             root_prefix="../",
         ),
@@ -583,6 +605,28 @@ def _people_search_script() -> str:
         "    for (var i=0;i<cards.length;i++){\n"
         "      var name = cards[i].getAttribute('data-name') || '';\n"
         "      cards[i].style.display = (!q || name.indexOf(q) !== -1) ? '' : 'none';\n"
+        "    }\n"
+        "  });\n"
+        "})();\n"
+        "</script>"
+    )
+
+
+def _list_search_script(kind: str) -> str:
+    input_id = f"{kind}-search"
+    list_id = f"{kind}-list"
+    return (
+        "<script>\n"
+        "(function(){\n"
+        f"  var input = document.getElementById('{input_id}');\n"
+        f"  var list = document.getElementById('{list_id}');\n"
+        "  if(!input || !list) return;\n"
+        "  input.addEventListener('input', function(){\n"
+        "    var q = (input.value || '').toLowerCase().trim();\n"
+        "    var rows = list.querySelectorAll('.list-row');\n"
+        "    for (var i=0;i<rows.length;i++){\n"
+        "      var name = rows[i].getAttribute('data-name') || '';\n"
+        "      rows[i].style.display = (!q || name.indexOf(q) !== -1) ? '' : 'none';\n"
         "    }\n"
         "  });\n"
         "})();\n"

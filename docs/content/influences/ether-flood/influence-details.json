@@ -1,0 +1,31 @@
+{
+  "item_id": "ether-flood",
+  "category": "influences",
+  "group": "Book of Ether/Book of Ether and the Flood/ether-flood",
+  "display_name": "The Flood and the Book of Ether",
+  "year": "",
+  "word_count": 0,
+  "image": "",
+  "description": "",
+  "pages": [
+    {
+      "slug": "ether-flood",
+      "title": "The Flood and the Book of Ether",
+      "year": "",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "",
+          "analysis_id": "ether-flood",
+          "html": "./ether-flood.html"
+        }
+      ],
+      "source": {
+        "json": "../bomex-webstructure/cameo jsons/Influences/Book of Ether/Book of Ether and the Flood/ether-flood.json"
+      }
+    }
+  ]
+}

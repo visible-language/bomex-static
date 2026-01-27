@@ -1,0 +1,31 @@
+{
+  "item_id": "bandn-commandments",
+  "category": "influences",
+  "group": "Benjamin and Nephi/bandn-commandments",
+  "display_name": "Knowing and Keeping the Commandments of the Lord",
+  "year": "",
+  "word_count": 0,
+  "image": "",
+  "description": "",
+  "pages": [
+    {
+      "slug": "bandn-commandments",
+      "title": "Knowing and Keeping the Commandments of the Lord",
+      "year": "",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "",
+          "analysis_id": "bandn-commandments",
+          "html": "./bandn-commandments.html"
+        }
+      ],
+      "source": {
+        "json": "../bomex-webstructure/cameo jsons/Influences/Benjamin and Nephi/bandn-commandments.json"
+      }
+    }
+  ]
+}

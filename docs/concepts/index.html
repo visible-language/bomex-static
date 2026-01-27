@@ -17,21 +17,43 @@
   <p class="content-subtitle">Explore key concepts and phrases in the Book of Mormon</p>
 </section>
 <section class="page-content page-content--wide">
-  <div class="list">
-<a class="list-row" href="came-to-pass.html"><span>&quot;It Came to Pass&quot; and &quot;It Shall Come to Pass&quot;</span><i class="fas fa-chevron-right"></i></a>
-<a class="list-row" href="jc-children-covenant.html"><span>Children of the Covenant</span><i class="fas fa-chevron-right"></i></a>
-<a class="list-row" href="gift-power.html"><span>Gift and Power</span><i class="fas fa-chevron-right"></i></a>
-<a class="list-row" href="lamanite-kings.html"><span>Lamanite Kings: Lamoni, His Father, and Anti-Nephi-Lehi</span><i class="fas fa-chevron-right"></i></a>
-<a class="list-row" href="noah-fifty.html"><span>Noah and His Fifty</span><i class="fas fa-chevron-right"></i></a>
-<a class="list-row" href="steadfast.html"><span>Steadfast and Immovable</span><i class="fas fa-chevron-right"></i></a>
-<a class="list-row" href="thus-we-see.html"><span>The Prophets’ Exclamation Point: &quot;And Thus We See&quot; in the Book of Mormon</span><i class="fas fa-chevron-right"></i></a>
-<a class="list-row" href="pleasing.html"><span>To Please</span><i class="fas fa-chevron-right"></i></a>
-<a class="list-row" href="trust.html"><span>Trust</span><i class="fas fa-chevron-right"></i></a>
+  <div class="input-wrapper concepts-search">
+    <input id="concepts-search" type="text" class="text-input" placeholder="Search concept">
+    <button class="search-icon-btn" type="button"><i class="fas fa-search"></i></button>
+  </div>
+  <div id="concepts-list" class="list">
+<a class="list-row" href="came-to-pass.html" data-name="&quot;it came to pass&quot; and &quot;it shall come to pass&quot;"><span>&quot;It Came to Pass&quot; and &quot;It Shall Come to Pass&quot;</span><i class="fas fa-chevron-right"></i></a>
+<a class="list-row" href="jc-children-covenant.html" data-name="children of the covenant"><span>Children of the Covenant</span><i class="fas fa-chevron-right"></i></a>
+<a class="list-row" href="gift-power.html" data-name="gift and power"><span>Gift and Power</span><i class="fas fa-chevron-right"></i></a>
+<a class="list-row" href="lk-portion-spirit.html" data-name="lamanite kings: a portion of his spirit"><span>Lamanite kings: A Portion of His Spirit</span><i class="fas fa-chevron-right"></i></a>
+<a class="list-row" href="lk-bow-down.html" data-name="lamanite kings: bowing down before god"><span>Lamanite kings: Bowing Down Before God</span><i class="fas fa-chevron-right"></i></a>
+<a class="list-row" href="lk-great-spirit.html" data-name="lamanite kings: great spirit"><span>Lamanite kings: Great Spirit</span><i class="fas fa-chevron-right"></i></a>
+<a class="list-row" href="lamanite-kings.html" data-name="lamanite kings: lamanite kings: lamoni, his father, and anti-nephi-lehi"><span>Lamanite kings: Lamanite Kings: Lamoni, His Father, and Anti-Nephi-Lehi</span><i class="fas fa-chevron-right"></i></a>
+<a class="list-row" href="lk-merits-christ.html" data-name="lamanite kings: the merits of the messiah or the son of god"><span>Lamanite kings: The Merits of the Messiah or the Son of God</span><i class="fas fa-chevron-right"></i></a>
+<a class="list-row" href="noah-fifty.html" data-name="noah and his fifty"><span>Noah and His Fifty</span><i class="fas fa-chevron-right"></i></a>
+<a class="list-row" href="steadfast.html" data-name="steadfast and immovable"><span>Steadfast and Immovable</span><i class="fas fa-chevron-right"></i></a>
+<a class="list-row" href="thus-we-see.html" data-name="the prophets’ exclamation point: &quot;and thus we see&quot; in the book of mormon"><span>The Prophets’ Exclamation Point: &quot;And Thus We See&quot; in the Book of Mormon</span><i class="fas fa-chevron-right"></i></a>
+<a class="list-row" href="pleasing.html" data-name="to please"><span>To Please</span><i class="fas fa-chevron-right"></i></a>
+<a class="list-row" href="trust.html" data-name="trust"><span>Trust</span><i class="fas fa-chevron-right"></i></a>
   </div>
 </section>
 
   <footer></footer>
   <script src="../js/main.js"></script>
-  
+  <script>
+(function(){
+  var input = document.getElementById('concepts-search');
+  var list = document.getElementById('concepts-list');
+  if(!input || !list) return;
+  input.addEventListener('input', function(){
+    var q = (input.value || '').toLowerCase().trim();
+    var rows = list.querySelectorAll('.list-row');
+    for (var i=0;i<rows.length;i++){
+      var name = rows[i].getAttribute('data-name') || '';
+      rows[i].style.display = (!q || name.indexOf(q) !== -1) ? '' : 'none';
+    }
+  });
+})();
+</script>
 </body>
 </html>

@@ -1,0 +1,31 @@
+{
+  "item_id": "ef-heart",
+  "category": "influences",
+  "group": "Book of Ether/Evil Fruit of the Jaredites/ef-heart",
+  "display_name": "Putting It Into the Heart",
+  "year": "",
+  "word_count": 0,
+  "image": "",
+  "description": "",
+  "pages": [
+    {
+      "slug": "ef-heart",
+      "title": "Putting It Into the Heart",
+      "year": "",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "",
+          "analysis_id": "ef-heart",
+          "html": "./ef-heart.html"
+        }
+      ],
+      "source": {
+        "json": "../bomex-webstructure/cameo jsons/Influences/Book of Ether/Evil Fruit of the Jaredites/ef-heart.json"
+      }
+    }
+  ]
+}

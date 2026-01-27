@@ -1,0 +1,31 @@
+{
+  "item_id": "boj-destruction",
+  "category": "influences",
+  "group": "Book of Ether/Book of Ether and the Flood/boj-destruction",
+  "display_name": "Jaredite Destruction and the Flood",
+  "year": "",
+  "word_count": 0,
+  "image": "",
+  "description": "",
+  "pages": [
+    {
+      "slug": "boj-destruction",
+      "title": "Jaredite Destruction and the Flood",
+      "year": "",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "",
+          "analysis_id": "boj-destruction",
+          "html": "./boj-destruction.html"
+        }
+      ],
+      "source": {
+        "json": "../bomex-webstructure/cameo jsons/Influences/Book of Ether/Book of Ether and the Flood/boj-destruction.json"
+      }
+    }
+  ]
+}

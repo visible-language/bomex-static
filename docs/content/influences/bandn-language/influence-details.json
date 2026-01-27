@@ -1,0 +1,31 @@
+{
+  "item_id": "bandn-language",
+  "category": "influences",
+  "group": "Benjamin and Nephi/bandn-language",
+  "display_name": "Preserving the Language of Their Fathers",
+  "year": "",
+  "word_count": 0,
+  "image": "",
+  "description": "",
+  "pages": [
+    {
+      "slug": "bandn-language",
+      "title": "Preserving the Language of Their Fathers",
+      "year": "",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "",
+          "analysis_id": "bandn-language",
+          "html": "./bandn-language.html"
+        }
+      ],
+      "source": {
+        "json": "../bomex-webstructure/cameo jsons/Influences/Benjamin and Nephi/bandn-language.json"
+      }
+    }
+  ]
+}

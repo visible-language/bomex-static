@@ -1,0 +1,31 @@
+{
+  "item_id": "ef-enmity",
+  "category": "influences",
+  "group": "Book of Ether/Evil Fruit of the Jaredites/ef-enmity",
+  "display_name": "Enmity",
+  "year": "",
+  "word_count": 0,
+  "image": "",
+  "description": "",
+  "pages": [
+    {
+      "slug": "ef-enmity",
+      "title": "Enmity",
+      "year": "",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "",
+          "analysis_id": "ef-enmity",
+          "html": "./ef-enmity.html"
+        }
+      ],
+      "source": {
+        "json": "../bomex-webstructure/cameo jsons/Influences/Book of Ether/Evil Fruit of the Jaredites/ef-enmity.json"
+      }
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "item_id": "lk-great-spirit",
+  "category": "concepts",
+  "group": "Lamanite kings/lk-great-spirit",
+  "display_name": "Lamanite kings: Great Spirit",
+  "year": "90-77 B.C.",
+  "word_count": 0,
+  "image": "",
+  "description": "",
+  "pages": [
+    {
+      "slug": "lk-great-spirit",
+      "title": "Great Spirit",
+      "year": "90-77 B.C.",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "",
+          "analysis_id": "lk-great-spirit",
+          "html": "./lk-great-spirit.html"
+        },
+        {
+          "order": 2,
+          "heading": "",
+          "analysis_id": "lk-great-spirit2",
+          "html": "./lk-great-spirit2.html"
+        }
+      ],
+      "source": {
+        "json": "../bomex-webstructure/cameo jsons/Concepts/Lamanite kings/lk-great-spirit.json"
+      }
+    }
+  ]
+}

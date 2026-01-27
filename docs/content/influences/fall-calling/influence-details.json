@@ -1,0 +1,31 @@
+{
+  "item_id": "fall-calling",
+  "category": "influences",
+  "group": "Book of Ether/Reversal of the Fall/fall-calling",
+  "display_name": "Calling Upon the Name of the Lord",
+  "year": "",
+  "word_count": 0,
+  "image": "",
+  "description": "",
+  "pages": [
+    {
+      "slug": "fall-calling",
+      "title": "Calling Upon the Name of the Lord",
+      "year": "",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "",
+          "analysis_id": "fall-calling",
+          "html": "./fall-calling.html"
+        }
+      ],
+      "source": {
+        "json": "../bomex-webstructure/cameo jsons/Influences/Book of Ether/Reversal of the Fall/fall-calling.json"
+      }
+    }
+  ]
+}

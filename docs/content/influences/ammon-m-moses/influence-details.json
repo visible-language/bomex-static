@@ -1,0 +1,31 @@
+{
+  "item_id": "ammon-m-moses",
+  "category": "influences",
+  "group": "Ammon/ammon-m-moses",
+  "display_name": "Ammon and Moses",
+  "year": "circa 90-77 B.C.",
+  "word_count": 0,
+  "image": "",
+  "description": "In many ways, Ammon, the son of King Mosiah II, resembles the prophet Moses (See chart \"Ammon: A Prophet Like Moses\"). Both Ammon and Moses share notable characteristics. Both grew up as princes. Ammon was one of the sons of King Mosiah II and Moses was raised by the sister of Pharaoh in the royal court of Egypt. Both men, however, renounced their former royal privileges and become great servants of the Lord. Both men also had brothers named Aaron and both received a visitation from an angel of the Lord, whose message altered the course of their lives. Because of these similar life experiences, it is interesting to read the story of Ammon in light of the story of Moses.",
+  "pages": [
+    {
+      "slug": "ammon-m-moses",
+      "title": "Ammon and Moses",
+      "year": "circa 90-77 B.C.",
+      "word_count": 0,
+      "description": "In many ways, Ammon, the son of King Mosiah II, resembles the prophet Moses (See chart \"Ammon: A Prophet Like Moses\"). Both Ammon and Moses share notable characteristics. Both grew up as princes. Ammon was one of the sons of King Mosiah II and Moses was raised by the sister of Pharaoh in the royal court of Egypt. Both men, however, renounced their former royal privileges and become great servants of the Lord. Both men also had brothers named Aaron and both received a visitation from an angel of the Lord, whose message altered the course of their lives. Because of these similar life experiences, it is interesting to read the story of Ammon in light of the story of Moses.",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "",
+          "analysis_id": "ammon-m-moses",
+          "html": "./ammon-m-moses.html"
+        }
+      ],
+      "source": {
+        "json": "../bomex-webstructure/cameo jsons/Influences/Ammon/ammon-m-moses.json"
+      }
+    }
+  ]
+}

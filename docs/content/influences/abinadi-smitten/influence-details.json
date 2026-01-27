@@ -1,0 +1,31 @@
+{
+  "item_id": "abinadi-smitten",
+  "category": "influences",
+  "group": "Abinadi/abinadi-smitten",
+  "display_name": "Abinadi’s Warning: Smitten Like the Egyptians",
+  "year": "200 B.C.-148 B.C.",
+  "word_count": 0,
+  "image": "",
+  "description": "",
+  "pages": [
+    {
+      "slug": "abinadi-smitten",
+      "title": "Abinadi’s Warning: Smitten Like the Egyptians",
+      "year": "200 B.C.-148 B.C.",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "",
+          "analysis_id": "abinadi-smitten",
+          "html": "./abinadi-smitten.html"
+        }
+      ],
+      "source": {
+        "json": "../bomex-webstructure/cameo jsons/Influences/Abinadi/abinadi-smitten.json"
+      }
+    }
+  ]
+}

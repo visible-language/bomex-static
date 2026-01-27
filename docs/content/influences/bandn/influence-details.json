@@ -1,89 +1,13 @@
 {
   "item_id": "bandn",
   "category": "influences",
-  "group": "Benjamin and Nephi",
+  "group": "Benjamin and Nephi/bandn",
   "display_name": "The Influence of Nephi’s Words on King Benjamin’s Teachings to His Sons",
   "year": "",
   "word_count": 0,
   "image": "",
   "description": "The first chapter of Mosiah contains some of the teachings that King Benjamin taught his sons. Benjamin was the custodian of the plates that had been kept and preserved by his ancestors, including the small plates of Nephi (Omni 1:25). A comparison between Benjamin’s words in Mosiah 1 and those in 1 Nephi shows that the Nephite king was strongly influenced by his ancestor.",
   "pages": [
-    {
-      "slug": "benjamin-eyes",
-      "title": "Before Our Eyes",
-      "year": "200 B.C.-121 B.C.",
-      "word_count": 0,
-      "description": "",
-      "image": "",
-      "sections": [
-        {
-          "order": 1,
-          "heading": "",
-          "analysis_id": "benjamin-eyes",
-          "html": "./benjamin-eyes.html"
-        }
-      ],
-      "source": {
-        "json": "../bomex-webstructure/cameo jsons/Influences/Benjamin and Nephi/benjamin-eyes.json"
-      }
-    },
-    {
-      "slug": "bandn-dwindle",
-      "title": "Dwindling in Unbelief",
-      "year": "",
-      "word_count": 0,
-      "description": "",
-      "image": "",
-      "sections": [
-        {
-          "order": 1,
-          "heading": "",
-          "analysis_id": "bandn-dwindle",
-          "html": "./bandn-dwindle.html"
-        }
-      ],
-      "source": {
-        "json": "../bomex-webstructure/cameo jsons/Influences/Benjamin and Nephi/bandn-dwindle.json"
-      }
-    },
-    {
-      "slug": "bandn-commandments",
-      "title": "Knowing and Keeping the Commandments of the Lord",
-      "year": "",
-      "word_count": 0,
-      "description": "",
-      "image": "",
-      "sections": [
-        {
-          "order": 1,
-          "heading": "",
-          "analysis_id": "bandn-commandments",
-          "html": "./bandn-commandments.html"
-        }
-      ],
-      "source": {
-        "json": "../bomex-webstructure/cameo jsons/Influences/Benjamin and Nephi/bandn-commandments.json"
-      }
-    },
-    {
-      "slug": "bandn-language",
-      "title": "Preserving the Language of Their Fathers",
-      "year": "",
-      "word_count": 0,
-      "description": "",
-      "image": "",
-      "sections": [
-        {
-          "order": 1,
-          "heading": "",
-          "analysis_id": "bandn-language",
-          "html": "./bandn-language.html"
-        }
-      ],
-      "source": {
-        "json": "../bomex-webstructure/cameo jsons/Influences/Benjamin and Nephi/bandn-language.json"
-      }
-    },
     {
       "slug": "bandn",
       "title": "The Influence of Nephi’s Words on King Benjamin’s Teachings to His Sons",
@@ -107,25 +31,6 @@
       ],
       "source": {
         "json": "../bomex-webstructure/cameo jsons/Influences/Benjamin and Nephi/bandn.json"
-      }
-    },
-    {
-      "slug": "bandn-mysteries",
-      "title": "The Mysteries of God",
-      "year": "200 B.C.-121 B.C.",
-      "word_count": 0,
-      "description": "",
-      "image": "",
-      "sections": [
-        {
-          "order": 1,
-          "heading": "",
-          "analysis_id": "bandn-mysteries",
-          "html": "./bandn-mysteries.html"
-        }
-      ],
-      "source": {
-        "json": "../bomex-webstructure/cameo jsons/Influences/Benjamin and Nephi/bandn-mysteries.json"
       }
     }
   ]

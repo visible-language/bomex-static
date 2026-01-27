@@ -1,82 +1,13 @@
 {
   "item_id": "lamanite-kings",
   "category": "concepts",
-  "group": "Lamanite kings",
-  "display_name": "Lamanite Kings: Lamoni, His Father, and Anti-Nephi-Lehi",
+  "group": "Lamanite kings/lamanite-kings",
+  "display_name": "Lamanite kings: Lamanite Kings: Lamoni, His Father, and Anti-Nephi-Lehi",
   "year": "90-77 B.C.",
   "word_count": 0,
   "image": "./lamanite-kings.jpg",
   "description": "The Book of Mormon contains words from three Lamanite kings, who were miraculously converted through the examples and teachings of Ammon, Aaron, and their fellow missionaries. These include King Lamoni, his father, and King Anti-Nephi-Lehi. Lamoni was king over the people in the land of Ishmael and a descendant of Ishmael (Alma 17:19, 21). At this time, Lamoni's father was king over all the Lamanites in the land of Nephi. When Lamoni's father died, his son Anti-Nephi-Lehi became king.",
   "pages": [
-    {
-      "slug": "lk-portion-spirit",
-      "title": "A Portion of His Spirit",
-      "year": "90-77 B.C.",
-      "word_count": 0,
-      "description": "",
-      "image": "",
-      "sections": [
-        {
-          "order": 1,
-          "heading": "",
-          "analysis_id": "lk-portion-spirit",
-          "html": "./lk-portion-spirit.html"
-        }
-      ],
-      "source": {
-        "json": "../bomex-webstructure/cameo jsons/Concepts/Lamanite kings/lk-portion-spirit.json"
-      }
-    },
-    {
-      "slug": "lk-bow-down",
-      "title": "Bowing Down Before God",
-      "year": "90-77 B.C.",
-      "word_count": 0,
-      "description": "",
-      "image": "",
-      "sections": [
-        {
-          "order": 1,
-          "heading": "",
-          "analysis_id": "lk-bow-down",
-          "html": "./lk-bow-down.html"
-        },
-        {
-          "order": 2,
-          "heading": "",
-          "analysis_id": "lk-bow-down2",
-          "html": "./lk-bow-down2.html"
-        }
-      ],
-      "source": {
-        "json": "../bomex-webstructure/cameo jsons/Concepts/Lamanite kings/lk-bow-down.json"
-      }
-    },
-    {
-      "slug": "lk-great-spirit",
-      "title": "Great Spirit",
-      "year": "90-77 B.C.",
-      "word_count": 0,
-      "description": "",
-      "image": "",
-      "sections": [
-        {
-          "order": 1,
-          "heading": "",
-          "analysis_id": "lk-great-spirit",
-          "html": "./lk-great-spirit.html"
-        },
-        {
-          "order": 2,
-          "heading": "",
-          "analysis_id": "lk-great-spirit2",
-          "html": "./lk-great-spirit2.html"
-        }
-      ],
-      "source": {
-        "json": "../bomex-webstructure/cameo jsons/Concepts/Lamanite kings/lk-great-spirit.json"
-      }
-    },
     {
       "slug": "lamanite-kings",
       "title": "Lamanite Kings: Lamoni, His Father, and Anti-Nephi-Lehi",
@@ -100,25 +31,6 @@
       ],
       "source": {
         "json": "../bomex-webstructure/cameo jsons/Concepts/Lamanite kings/lamanite-kings.json"
-      }
-    },
-    {
-      "slug": "lk-merits-christ",
-      "title": "The Merits of the Messiah or the Son of God",
-      "year": "90-77 B.C.",
-      "word_count": 0,
-      "description": "",
-      "image": "",
-      "sections": [
-        {
-          "order": 1,
-          "heading": "",
-          "analysis_id": "lk-merits-christ",
-          "html": "./lk-merits-christ.html"
-        }
-      ],
-      "source": {
-        "json": "../bomex-webstructure/cameo jsons/Concepts/Lamanite kings/lk-merits-christ.json"
       }
     }
   ]

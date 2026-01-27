@@ -1,0 +1,31 @@
+{
+  "item_id": "bojandnoah",
+  "category": "influences",
+  "group": "Book of Ether/Book of Ether and the Flood/bojandnoah",
+  "display_name": "The Brother of Jared and Noah",
+  "year": "",
+  "word_count": 0,
+  "image": "",
+  "description": "Both Noah in the Genesis account and the Brother of Jared were righteous men who were commanded by God to build water-going vessels for themselves and their families (Genesis 6:14i16; Ether 2:16). Also, God is described as making a covenant with both men relating to the future destruction of man (Genesis 9:8i17; Ether 2:8i12). Similar wording in both the Genesis story and the Jaredite account suggest that Moroni’s choice of language was intentionally designed to draw this connection to the attention of the reader.",
+  "pages": [
+    {
+      "slug": "bojandnoah",
+      "title": "The Brother of Jared and Noah",
+      "year": "",
+      "word_count": 0,
+      "description": "Both Noah in the Genesis account and the Brother of Jared were righteous men who were commanded by God to build water-going vessels for themselves and their families (Genesis 6:14i16; Ether 2:16). Also, God is described as making a covenant with both men relating to the future destruction of man (Genesis 9:8i17; Ether 2:8i12). Similar wording in both the Genesis story and the Jaredite account suggest that Moroni’s choice of language was intentionally designed to draw this connection to the attention of the reader.",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "",
+          "analysis_id": "bojandnoah",
+          "html": "./bojandnoah.html"
+        }
+      ],
+      "source": {
+        "json": "../bomex-webstructure/cameo jsons/Influences/Book of Ether/Book of Ether and the Flood/bojandnoah.json"
+      }
+    }
+  ]
+}

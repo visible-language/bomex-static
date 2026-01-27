@@ -335,7 +335,7 @@ def _postprocess_analysis_html(html_str: str) -> str:
     #   <b>Key Insights </b> <br><br>
     s = re.sub(
         r"\s*<b>\s*Key\s+Insights\s*</b>\s*(?:<br>\s*){1,4}",
-        "</p><h4 class=\"analysis-heading\">Suggested application</h4><p>",
+        "</p><h4 class=\"analysis-heading\">Practical application</h4><p>",
         s,
         flags=re.IGNORECASE,
     )
@@ -692,7 +692,8 @@ def main(argv: Optional[List[str]] = None) -> int:
             anchor = rel.parts[0] if len(rel.parts) > 1 else json_path.stem
             people_groups.setdefault((tier, anchor), []).append((json_path, sp))
 
-    # Group concept and influence json entries by their first folder component.
+    # Group concept and influence json entries. Influences are one-page-per-JSON.
+    # Concepts are grouped by folder, except "Lamanite kings" which is one-page-per-JSON.
     item_groups: Dict[Tuple[str, str], List[Tuple[Path, Dict[str, Any]]]] = {}
     if args.include == "all":
         for root, category in [(concept_root, "concepts"), (influence_root, "influences")]:
@@ -704,7 +705,13 @@ def main(argv: Optional[List[str]] = None) -> int:
                 except Exception:
                     continue
                 rel = json_path.relative_to(root)
-                anchor = rel.parts[0] if len(rel.parts) > 1 else json_path.stem
+                rel_anchor = rel.with_suffix("").as_posix()
+                if category == "influences":
+                    anchor = rel_anchor
+                elif rel.parts and rel.parts[0].lower() == "lamanite kings":
+                    anchor = rel_anchor
+                else:
+                    anchor = rel.parts[0] if len(rel.parts) > 1 else json_path.stem
                 item_groups.setdefault((category, anchor), []).append((json_path, sp))
 
     written_people = 0
@@ -758,6 +765,10 @@ def main(argv: Optional[List[str]] = None) -> int:
 
             if images_root.exists():
                 _materialize_images_in_details(details, item_id=item_id, out_dir=out_dir, images_root=images_root)
+
+            if category == "concepts" and anchor.lower().startswith("lamanite kings/"):
+                title = str(details.get("display_name") or "")
+                details["display_name"] = f"Lamanite kings: {title}".strip()
 
             for page in details["pages"]:
                 for section in page["sections"]:

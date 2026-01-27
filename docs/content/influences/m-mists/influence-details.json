@@ -1,0 +1,37 @@
+{
+  "item_id": "m-mists",
+  "category": "influences",
+  "group": "Mormon/m-mists",
+  "display_name": "Mists of Darkness",
+  "year": "A.D. 310-A.D. 390",
+  "word_count": 0,
+  "image": "",
+  "description": "Readers of the Book of Mormon can easily miss how subsequent Book of Mormon prophets adopted the imagery and language of Lehi’s tree-of-life vision in their own teachings to emphasize their importance and to highlight key messages in the Book of Mormon.",
+  "pages": [
+    {
+      "slug": "m-mists",
+      "title": "Mists of Darkness",
+      "year": "A.D. 310-A.D. 390",
+      "word_count": 0,
+      "description": "Readers of the Book of Mormon can easily miss how subsequent Book of Mormon prophets adopted the imagery and language of Lehi’s tree-of-life vision in their own teachings to emphasize their importance and to highlight key messages in the Book of Mormon.",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "",
+          "analysis_id": "m-mists",
+          "html": "./m-mists.html"
+        },
+        {
+          "order": 2,
+          "heading": "",
+          "analysis_id": "m-mists2",
+          "html": "./m-mists2.html"
+        }
+      ],
+      "source": {
+        "json": "../bomex-webstructure/cameo jsons/Influences/Mormon/m-mists.json"
+      }
+    }
+  ]
+}

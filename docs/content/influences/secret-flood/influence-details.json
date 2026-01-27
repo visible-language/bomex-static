@@ -1,0 +1,31 @@
+{
+  "item_id": "secret-flood",
+  "category": "influences",
+  "group": "Book of Ether/Book of Ether and the Flood/secret-flood",
+  "display_name": "Secret Combinations and the Flood",
+  "year": "",
+  "word_count": 0,
+  "image": "",
+  "description": "Moroni recounts how the practice of secret murderous combinations was introduced among the Jaredites. In doing so, he uses language that recalls the wickedness of the people before the Flood, who created social conditions that led to the destruction of that generation.",
+  "pages": [
+    {
+      "slug": "secret-flood",
+      "title": "Secret Combinations and the Flood",
+      "year": "",
+      "word_count": 0,
+      "description": "Moroni recounts how the practice of secret murderous combinations was introduced among the Jaredites. In doing so, he uses language that recalls the wickedness of the people before the Flood, who created social conditions that led to the destruction of that generation.",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "",
+          "analysis_id": "secret-flood",
+          "html": "./secret-flood.html"
+        }
+      ],
+      "source": {
+        "json": "../bomex-webstructure/cameo jsons/Influences/Book of Ether/Book of Ether and the Flood/secret-flood.json"
+      }
+    }
+  ]
+}

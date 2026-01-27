@@ -1,0 +1,31 @@
+{
+  "item_id": "fall-tree",
+  "category": "influences",
+  "group": "Book of Ether/Reversal of the Fall/fall-tree",
+  "display_name": "Returning to the Tree",
+  "year": "",
+  "word_count": 0,
+  "image": "",
+  "description": "",
+  "pages": [
+    {
+      "slug": "fall-tree",
+      "title": "Returning to the Tree",
+      "year": "",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "",
+          "analysis_id": "fall-tree",
+          "html": "./fall-tree.html"
+        }
+      ],
+      "source": {
+        "json": "../bomex-webstructure/cameo jsons/Influences/Book of Ether/Reversal of the Fall/fall-tree.json"
+      }
+    }
+  ]
+}

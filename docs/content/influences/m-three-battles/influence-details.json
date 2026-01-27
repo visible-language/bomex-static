@@ -1,63 +1,13 @@
 {
   "item_id": "m-three-battles",
   "category": "influences",
-  "group": "Mormon",
-  "display_name": "Mormon, the Nephites, and the Flood",
+  "group": "Mormon/m-three-battles",
+  "display_name": "Mormon, the Nephites, and the Tribe of Benjamin",
   "year": "A.D. 310-A.D. 390",
   "word_count": 0,
   "image": "",
-  "description": "Mormon, the primary editor of the Nephite record, lived in a time of great wickedness and sorrow as he witnessed the disintegration of the moral fabric of Nephite society and their final destruction as a people. His own book in the record that carries his name is \"a small abridgment, daring not to give a full account of the things which I have seen, because of the commandment which I have received, and also that ye might not have too great sorrow because of the wickedness of this people\" (Mormon 5:9).",
+  "description": "Mormon tells of three destructive battles that led to the loss of the strategic city of Desolation (Mormon 3-4). This was a key event that led to the eventual destruction of the Nephites as a people by their Lamanite enemies. When he describes this event, Mormon uses words that allude to another set of three battles from earlier Israelite history, which caused the near annihilation of the tribe of Benjamin (Judges 21-22).",
   "pages": [
-    {
-      "slug": "m-mists",
-      "title": "Mists of Darkness",
-      "year": "A.D. 310-A.D. 390",
-      "word_count": 0,
-      "description": "Readers of the Book of Mormon can easily miss how subsequent Book of Mormon prophets adopted the imagery and language of Lehi’s tree-of-life vision in their own teachings to emphasize their importance and to highlight key messages in the Book of Mormon.",
-      "image": "",
-      "sections": [
-        {
-          "order": 1,
-          "heading": "",
-          "analysis_id": "m-mists",
-          "html": "./m-mists.html"
-        },
-        {
-          "order": 2,
-          "heading": "",
-          "analysis_id": "m-mists2",
-          "html": "./m-mists2.html"
-        }
-      ],
-      "source": {
-        "json": "../bomex-webstructure/cameo jsons/Influences/Mormon/m-mists.json"
-      }
-    },
-    {
-      "slug": "m-flood",
-      "title": "Mormon, the Nephites, and the Flood",
-      "year": "A.D. 310-A.D. 390",
-      "word_count": 0,
-      "description": "Mormon, the primary editor of the Nephite record, lived in a time of great wickedness and sorrow as he witnessed the disintegration of the moral fabric of Nephite society and their final destruction as a people. His own book in the record that carries his name is \"a small abridgment, daring not to give a full account of the things which I have seen, because of the commandment which I have received, and also that ye might not have too great sorrow because of the wickedness of this people\" (Mormon 5:9).",
-      "image": "",
-      "sections": [
-        {
-          "order": 1,
-          "heading": "",
-          "analysis_id": "m-flood",
-          "html": "./m-flood.html"
-        },
-        {
-          "order": 2,
-          "heading": "",
-          "analysis_id": "m-flood2",
-          "html": "./m-flood2.html"
-        }
-      ],
-      "source": {
-        "json": "../bomex-webstructure/cameo jsons/Influences/Mormon/m-flood.json"
-      }
-    },
     {
       "slug": "m-three-battles",
       "title": "Mormon, the Nephites, and the Tribe of Benjamin",

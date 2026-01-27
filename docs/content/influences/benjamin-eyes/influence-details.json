@@ -1,0 +1,31 @@
+{
+  "item_id": "benjamin-eyes",
+  "category": "influences",
+  "group": "Benjamin and Nephi/benjamin-eyes",
+  "display_name": "Before Our Eyes",
+  "year": "200 B.C.-121 B.C.",
+  "word_count": 0,
+  "image": "",
+  "description": "",
+  "pages": [
+    {
+      "slug": "benjamin-eyes",
+      "title": "Before Our Eyes",
+      "year": "200 B.C.-121 B.C.",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "",
+          "analysis_id": "benjamin-eyes",
+          "html": "./benjamin-eyes.html"
+        }
+      ],
+      "source": {
+        "json": "../bomex-webstructure/cameo jsons/Influences/Benjamin and Nephi/benjamin-eyes.json"
+      }
+    }
+  ]
+}

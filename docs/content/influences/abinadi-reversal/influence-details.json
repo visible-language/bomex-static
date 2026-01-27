@@ -1,32 +1,13 @@
 {
   "item_id": "abinadi-reversal",
   "category": "influences",
-  "group": "Abinadi",
+  "group": "Abinadi/abinadi-reversal",
   "display_name": "Abinadi’s Warning to Noah and His People: A Reversal of the Exodus",
   "year": "200 B.C.-148 B.C.",
   "word_count": 0,
   "image": "",
   "description": "",
   "pages": [
-    {
-      "slug": "abinadi-isaiah",
-      "title": "Abinadi and Isaiah: Who Are the Lord’s People?",
-      "year": "200 B.C.-148 B.C.",
-      "word_count": 0,
-      "description": "",
-      "image": "",
-      "sections": [
-        {
-          "order": 1,
-          "heading": "",
-          "analysis_id": "abinadi-isaiah",
-          "html": "./abinadi-isaiah.html"
-        }
-      ],
-      "source": {
-        "json": "../bomex-webstructure/cameo jsons/Influences/Abinadi/abinadi-isaiah.json"
-      }
-    },
     {
       "slug": "abinadi-reversal",
       "title": "Abinadi’s Warning to Noah and His People: A Reversal of the Exodus",
@@ -44,50 +25,6 @@
       ],
       "source": {
         "json": "../bomex-webstructure/cameo jsons/Influences/Abinadi/abinadi-reversal.json"
-      }
-    },
-    {
-      "slug": "abinadi-smitten",
-      "title": "Abinadi’s Warning: Smitten Like the Egyptians",
-      "year": "200 B.C.-148 B.C.",
-      "word_count": 0,
-      "description": "",
-      "image": "",
-      "sections": [
-        {
-          "order": 1,
-          "heading": "",
-          "analysis_id": "abinadi-smitten",
-          "html": "./abinadi-smitten.html"
-        }
-      ],
-      "source": {
-        "json": "../bomex-webstructure/cameo jsons/Influences/Abinadi/abinadi-smitten.json"
-      }
-    },
-    {
-      "slug": "abinadi-isaiah-chart",
-      "title": "Chart of Isaiah’s and Abinadi’s Words",
-      "year": "200 B.C.-148 B.C.",
-      "word_count": 0,
-      "description": "",
-      "image": "",
-      "sections": [
-        {
-          "order": 1,
-          "heading": "Below are additional examples where Abinadi may be drawing upon Isaiah’s words, phrases, and ideas.",
-          "analysis_id": "abinadi-isaiah-chart",
-          "html": "./abinadi-isaiah-chart.html"
-        },
-        {
-          "order": 2,
-          "heading": "",
-          "analysis_id": "abinadi-isaiah-chart2",
-          "html": "./abinadi-isaiah-chart2.html"
-        }
-      ],
-      "source": {
-        "json": "../bomex-webstructure/cameo jsons/Influences/Abinadi/abinadi-isaiah-chart.json"
       }
     }
   ]

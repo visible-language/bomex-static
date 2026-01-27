@@ -1,0 +1,37 @@
+{
+  "item_id": "alma-y-abinadi",
+  "category": "influences",
+  "group": "Alma II/alma-y-abinadi",
+  "display_name": "Alma’s Counsel to His Son and the Words of Abinadi",
+  "year": "144 B.C.-73 B.C.",
+  "word_count": 0,
+  "image": "",
+  "description": "",
+  "pages": [
+    {
+      "slug": "alma-y-abinadi",
+      "title": "Alma’s Counsel to His Son and the Words of Abinadi",
+      "year": "144 B.C.-73 B.C.",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "",
+          "analysis_id": "alma-y-abinadi",
+          "html": "./alma-y-abinadi.html"
+        },
+        {
+          "order": 2,
+          "heading": "Comparison of Abinadi's and Alma's words",
+          "analysis_id": "alma-y-abinadi2",
+          "html": "./alma-y-abinadi2.html"
+        }
+      ],
+      "source": {
+        "json": "../bomex-webstructure/cameo jsons/Influences/Alma II/alma-y-abinadi.json"
+      }
+    }
+  ]
+}

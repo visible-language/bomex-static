@@ -1,0 +1,37 @@
+{
+  "item_id": "lk-bow-down",
+  "category": "concepts",
+  "group": "Lamanite kings/lk-bow-down",
+  "display_name": "Lamanite kings: Bowing Down Before God",
+  "year": "90-77 B.C.",
+  "word_count": 0,
+  "image": "",
+  "description": "",
+  "pages": [
+    {
+      "slug": "lk-bow-down",
+      "title": "Bowing Down Before God",
+      "year": "90-77 B.C.",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "",
+          "analysis_id": "lk-bow-down",
+          "html": "./lk-bow-down.html"
+        },
+        {
+          "order": 2,
+          "heading": "",
+          "analysis_id": "lk-bow-down2",
+          "html": "./lk-bow-down2.html"
+        }
+      ],
+      "source": {
+        "json": "../bomex-webstructure/cameo jsons/Concepts/Lamanite kings/lk-bow-down.json"
+      }
+    }
+  ]
+}

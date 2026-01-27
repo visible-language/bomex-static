@@ -1,0 +1,31 @@
+{
+  "item_id": "lk-merits-christ",
+  "category": "concepts",
+  "group": "Lamanite kings/lk-merits-christ",
+  "display_name": "Lamanite kings: The Merits of the Messiah or the Son of God",
+  "year": "90-77 B.C.",
+  "word_count": 0,
+  "image": "",
+  "description": "",
+  "pages": [
+    {
+      "slug": "lk-merits-christ",
+      "title": "The Merits of the Messiah or the Son of God",
+      "year": "90-77 B.C.",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "",
+          "analysis_id": "lk-merits-christ",
+          "html": "./lk-merits-christ.html"
+        }
+      ],
+      "source": {
+        "json": "../bomex-webstructure/cameo jsons/Concepts/Lamanite kings/lk-merits-christ.json"
+      }
+    }
+  ]
+}
