@@ -15,8 +15,8 @@
         "Scaled2": 27,
         "Scaled3": 36,
         "Scaled4": 45,
-        "Ids": "7 8 9 12 16 17 24 35 40 77",
-        "Docs": "Alma, Alma the Younger,  Amalekite, Ammon Son of Mosiah, Angel,  Anti-Nephi-Lehi,  Chief Judge,  Father of Lamoni,  Godhead,  Mosiah",
+        "Ids": "7 9 12 16 17 24 35 40 77",
+        "Docs": "Alma, Amalekite, Ammon Son of Mosiah, Angel, Anti-Nephi-Lehi, Chief Judge, Father of Lamoni, Godhead, Mosiah",
         "Weights": 10
     },
     {
@@ -34,8 +34,8 @@
         "Scaled2": 9,
         "Scaled3": 12,
         "Scaled4": 15,
-        "Ids": "7 40 57 88",
-        "Docs": "Alma, Godhead, King Noah, Priests of Noah",
+        "Ids": "40 57 88",
+        "Docs": "Godhead, King Noah, Priests of Noah",
         "Weights": 3
     },
     {
@@ -48,7 +48,7 @@
         "Group2": "Hebrew",
         "Color2": "#800080 ",
         "Name": "Abraham",
-        "Blurb": "Abraham covenanted with God to become the father of many nations in the Old Testament.",
+        "Blurb": "In the Old Testament, Abraham covenanted with God to become the father of many nations.",
         "Scaled": 2,
         "Scaled2": 3,
         "Scaled3": 4,
@@ -149,7 +149,7 @@
         "Scaled3": 32,
         "Scaled4": 40,
         "Ids": "0 12 40 41 46 57 77 85",
-        "Docs": "Aaron,  Ammon, Godhead, Helam, Himni, King Noah,  Mosiah,  Omner",
+        "Docs": "Aaron, Ammon, Godhead, Helam, Himni, King Noah, Mosiah, Omner",
         "Weights": 8
     },
     {
@@ -167,9 +167,9 @@
         "Scaled2": 51,
         "Scaled3": 68,
         "Scaled4": 85,
-        "Ids": "0 4 12 15 16 18 25 28 40 42 46 60 69 77 80 85 98 108 114",
-        "Docs": "Aaron,  Aha,  Ammon,  Amulek,  Angel,  Antionah,  Chief Judge in Ammonihah,  Corianton, Godhead, Helaman,  Himni,  Korihor,  Lehi Son of Zoram,  Mosiah,  Nehor,  Omner,  Shiblon,  Zeezrom,  Zoram Captain of Nephites",
-        "Weights": 19
+        "Ids": "4 15 16 18 25 28 40 42 60 69 77 80 98 108 114",
+        "Docs": "Aha, Amulek, Angel, Antionah, Chief Judge in Ammonihah, Corianton, Godhead, Helaman, Korihor, Lehi Son of Zoram, Mosiah, Nehor, Shiblon, Zeezrom, Zoram Captain of Nephites",
+        "Weights": 15
     },
     {
         "Label": "Amalekite",
@@ -206,7 +206,7 @@
         "Scaled3": 8,
         "Scaled4": 10,
         "Ids": "65 70",
-        "Docs": "Lamanite Queen,  Lehonti",
+        "Docs": "Lamanite Queen, Lehonti",
         "Weights": 2
     },
     {
@@ -224,9 +224,9 @@
         "Scaled2": 3,
         "Scaled3": 4,
         "Scaled4": 5,
-        "Ids": "74",
-        "Docs": "Mormon",
-        "Weights": 1
+        "Ids": "40 74",
+        "Docs": "Godhead, Mormon",
+        "Weights": 2
     },
     {
         "Label": "Ammon Son of Mosiah",
@@ -244,7 +244,7 @@
         "Scaled3": 56,
         "Scaled4": 70,
         "Ids": "0 7 8 16 17 24 35 40 46 66 77 85 95 96 107",
-        "Docs": "Aaron,  Alma,  Alma the Younger,  Angel,  Anti-Nephi-Lehi,  Chief Judge,  Father of Lamoni,  Godhead, Himni,  Lamoni,  Mosiah,  Omner,  Servant of Lamoni,  Servants of Lamoni,  Wife of Lamoni",
+        "Docs": "Aaron, Alma, Alma the Younger, Angel, Anti-Nephi-Lehi, Chief Judge, Father of Lamoni, Godhead, Himni, Lamoni, Mosiah, Omner, Servant of Lamoni, Servants of Lamoni, Wife of Lamoni",
         "Weights": 15
     },
     {
@@ -282,7 +282,7 @@
         "Scaled3": 8,
         "Scaled4": 10,
         "Ids": "23 42",
-        "Docs": "Captain Moroni,  Helaman",
+        "Docs": "Captain Moroni, Helaman",
         "Weights": 2
     },
     {
@@ -320,7 +320,7 @@
         "Scaled3": 52,
         "Scaled4": 65,
         "Ids": "0 8 12 15 20 22 46 49 67 81 85 90",
-        "Docs": "Aaron, Alma the Younger,  Ammon Son of Mosiah, Amulek,  Benjamin,  Brothers of Nephi,  Himni,  Jacob,  Lehi,  Nephi,  Omner,  Samuel the Lamanite",
+        "Docs": "Aaron, Alma the Younger, Ammon Son of Mosiah, Amulek, Benjamin, Brothers of Nephi, Himni, Jacob, Lehi, Nephi, Omner, Samuel the Lamanite",
         "Weights": 12
     },
     {
@@ -339,7 +339,7 @@
         "Scaled3": 16,
         "Scaled4": 20,
         "Ids": "0 12 46 85",
-        "Docs": "Aaron,  Ammon Son of Mosiah,  Himni,  Omner",
+        "Docs": "Aaron, Ammon Son of Mosiah, Himni, Omner",
         "Weights": 4
     },
     {
@@ -396,7 +396,7 @@
         "Scaled3": 16,
         "Scaled4": 20,
         "Ids": "16 43 45 77",
-        "Docs": "Angel,  Helaman Son of Benjamin,  Helorum,  Mosiah",
+        "Docs": "Angel, Helaman Son of Benjamin, Helorum, Mosiah",
         "Weights": 4
     },
     {
@@ -434,7 +434,7 @@
         "Scaled3": 44,
         "Scaled4": 55,
         "Ids": "16 31 40 48 61 67 81 91 101 106",
-        "Docs": "Angel,  Daughters of Ishmael, Godhead,   Ishmael,  Laban,  Lehi,  Nephi,  Sariah,  Sons of Ishmael,  Wife of Ishmael",
+        "Docs": "Angel, Daughters of Ishmael, Godhead,  Ishmael, Laban, Lehi, Nephi, Sariah, Sons of Ishmael, Wife of Ishmael",
         "Weights": 10
     },
     {
@@ -453,7 +453,7 @@
         "Scaled3": 28,
         "Scaled4": 35,
         "Ids": "14 40 42 50 87 103 112",
-        "Docs": "Ammoron, Godhead, Helaman, Jacob the Zoramite, Pahoran, Teancum,  Zerahemnah",
+        "Docs": "Ammoron, Godhead, Helaman, Jacob the Zoramite, Pahoran, Teancum, Zerahemnah",
         "Weights": 7
     },
     {
@@ -465,14 +465,14 @@
         "Color1": "#097969",
         "Group2": "Nephite",
         "Color2": "#6495ED",
-        "Name": "ChiefJudge",
+        "Name": "Nephihah",
         "Blurb": "Nephihah was the second chief judge of the Nephites. He is described as a righteous man and an elder of the church.",
         "Scaled": 8,
         "Scaled2": 12,
         "Scaled3": 16,
         "Scaled4": 20,
         "Ids": "0 12 46 85",
-        "Docs": "Aaron,  Ammon Son of Mosiah,  Himni,  Omner",
+        "Docs": "Aaron, Ammon Son of Mosiah, Himni, Omner",
         "Weights": 4
     },
     {
@@ -491,7 +491,7 @@
         "Scaled3": 8,
         "Scaled4": 10,
         "Ids": "8 15",
-        "Docs": "Alma the Younger,  Amulek",
+        "Docs": "Alma the Younger, Amulek",
         "Weights": 2
     },
     {
@@ -529,7 +529,7 @@
         "Scaled3": 24,
         "Scaled4": 30,
         "Ids": "40 83 104 105",
-        "Docs": "Godhead, Nephi Son of Nephi Son of Helaman,  Three Nephites,  Twelve Disciples",
+        "Docs": "Godhead, Nephi Son of Nephi Son of Helaman, Three Nephites, Twelve Disciples",
         "Weights": 4
     },
     {
@@ -605,7 +605,7 @@
         "Scaled3": 16,
         "Scaled4": 20,
         "Ids": "22 40 67",
-        "Docs": "Brothers of Nephi,  Godhead,  Lehi",
+        "Docs": "Brothers of Nephi, Godhead, Lehi",
         "Weights": 3
     },
     {
@@ -681,7 +681,7 @@
         "Scaled3": 16,
         "Scaled4": 20,
         "Ids": "0 12 40 66",
-        "Docs": "Aaron,  Ammon Son of Mosiah,  Godhead,  Lamoni",
+        "Docs": "Aaron, Ammon Son of Mosiah, Godhead, Lamoni",
         "Weights": 4
     },
     {
@@ -757,7 +757,7 @@
         "Scaled3": 12,
         "Scaled4": 15,
         "Ids": "57 72 80",
-        "Docs": "King Noah,  Limhi, Nehor",
+        "Docs": "King Noah, Limhi, Nehor",
         "Weights": 3
     },
     {
@@ -776,7 +776,7 @@
         "Scaled3": 212,
         "Scaled4": 265,
         "Ids": "0 1 2 3 5 7 8 12 21 22 23 27 31 32 33 35 46 47 49 55 66 67 68 72 73 74 75 76 77 78 81 82 83 84 85 90 91 96 101 105 106 107 109 110 111",
-        "Docs": "Aaron,  Abinadi,  Abraham,  Adam,  Ahaz,  Alma,  Alma the Younger,  Ammon Son of Mosiah,  Brother of Jared,  Brothers of Nephi,  Captain Moroni,  Christ in America,  Daughters of Ishmael,  Enos,  Ether,  Father of Lamoni,  Himni,  Isaiah,  Jacob,  Joseph in Egypt,  Lamoni,  Lehi,  Lehi Son of Helaman,  Limhi,  Malachi,  Mormon,  Moroni,  Moses,  Mosiah,  Mosiah Father of Benjamin,  Nephi,  Nephi Son of Helaman,  Nephi Son of Nephi Son of Helaman,  Omer,  Omner,  Samuel the Lamanite,  Sariah,  Servants of Lamoni,  Sons of Ishmael,  Twelve Disciples,  Wife of Ishmael,  Wife of Lamoni,  Zeniff,  Zenock,  Zenos",
+        "Docs": "Aaron, Abinadi, Abraham, Adam, Ahaz, Alma, Alma the Younger, Ammon Son of Mosiah, Brother of Jared, Brothers of Nephi, Captain Moroni, Christ in America, Daughters of Ishmael, Enos, Ether, Father of Lamoni, Himni, Isaiah, Jacob, Joseph in Egypt, Lamoni, Lehi, Lehi Son of Helaman, Limhi, Malachi, Mormon, Moroni, Moses, Mosiah, Mosiah Father of Benjamin, Nephi, Nephi Son of Helaman, Nephi Son of Nephi Son of Helaman, Omer, Omner, Samuel the Lamanite, Sariah, Servants of Lamoni, Sons of Ishmael, Twelve Disciples, Wife of Ishmael, Wife of Lamoni, Zeniff, Zenock, Zenos",
         "Weights": 46
     },
     {
@@ -814,7 +814,7 @@
         "Scaled3": 24,
         "Scaled4": 30,
         "Ids": "8 14 19 23 36 102",
-        "Docs": "Alma the Younger,  Ammoron,  Antipus, Captain Moroni, Gid,  Stripling Warriors",
+        "Docs": "Alma the Younger, Ammoron, Antipus, Captain Moroni, Gid, Stripling Warriors",
         "Weights": 6
     },
     {
@@ -827,7 +827,7 @@
         "Group2": "Nephite",
         "Color2": "#6495ED",
         "Name": "Helaman3",
-        "Blurb": "Helaman was King Benjamin's son and was taught by his father. ",
+        "Blurb": "Helaman was King Benjamin's son and was taught by his father.",
         "Scaled": 2,
         "Scaled2": 3,
         "Scaled3": 4,
@@ -852,7 +852,7 @@
         "Scaled3": 8,
         "Scaled4": 10,
         "Ids": "68 82",
-        "Docs": "Lehi Son of Helaman,  Nephi Son of Helaman",
+        "Docs": "Lehi Son of Helaman, Nephi Son of Helaman",
         "Weights": 2
     },
     {
@@ -890,7 +890,7 @@
         "Scaled3": 28,
         "Scaled4": 35,
         "Ids": "12 16 17 24 40 77",
-        "Docs": "Alma the Younger,  Ammon Son of Mosiah,  Angel,  Anti-Nephi-Lehi,  Chief Judge, Godhead, Mosiah",
+        "Docs": "Alma the Younger, Ammon Son of Mosiah, Angel, Anti-Nephi-Lehi, Chief Judge, Godhead, Mosiah",
         "Weights": 8
     },
     {
@@ -928,7 +928,7 @@
         "Scaled3": 12,
         "Scaled4": 15,
         "Ids": "22 67 81",
-        "Docs": "Brothers of Nephi,  Lehi,  Nephi",
+        "Docs": "Brothers of Nephi, Lehi, Nephi",
         "Weights": 3
     },
     {
@@ -947,7 +947,7 @@
         "Scaled3": 24,
         "Scaled4": 30,
         "Ids": "16 32 40 67 81 97",
-        "Docs": "Angel,  Enos, Godhead,  Lehi,  Nephi,  Sherem",
+        "Docs": "Angel, Enos, Godhead, Lehi, Nephi, Sherem",
         "Weights": 6
     },
     {
@@ -966,7 +966,7 @@
         "Scaled3": 8,
         "Scaled4": 10,
         "Ids": "23 103",
-        "Docs": "Captain Moroni,  Teancum",
+        "Docs": "Captain Moroni, Teancum",
         "Weights": 2
     },
     {
@@ -1004,7 +1004,7 @@
         "Scaled3": 8,
         "Scaled4": 10,
         "Ids": "6 30",
-        "Docs": "Akish,  Daughter of Jared Son of Omer",
+        "Docs": "Akish, Daughter of Jared Son of Omer",
         "Weights": 2
     },
     {
@@ -1023,7 +1023,7 @@
         "Scaled3": 8,
         "Scaled4": 10,
         "Ids": "32 86",
-        "Docs": "Enos,  Omni",
+        "Docs": "Enos, Omni",
         "Weights": 2
     },
     {
@@ -1099,7 +1099,7 @@
         "Scaled3": 16,
         "Scaled4": 20,
         "Ids": "1 7 39 88",
-        "Docs": "Abinadi,  Alma,  Gideon,  Priests of Noah",
+        "Docs": "Abinadi, Alma, Gideon, Priests of Noah",
         "Weights": 4
     },
     {
@@ -1156,7 +1156,7 @@
         "Scaled3": 8,
         "Scaled4": 10,
         "Ids": "8 38",
-        "Docs": "Alma the Younger,  Giddonah",
+        "Docs": "Alma the Younger, Giddonah",
         "Weights": 2
     },
     {
@@ -1175,7 +1175,7 @@
         "Scaled3": 8,
         "Scaled4": 10,
         "Ids": "22 81",
-        "Docs": "Brothers of Nephi,  Nephi",
+        "Docs": "Brothers of Nephi, Nephi",
         "Weights": 2
     },
     {
@@ -1213,7 +1213,7 @@
         "Scaled3": 24,
         "Scaled4": 30,
         "Ids": "67 81 89 101",
-        "Docs": "Lehi,  Nephi, Sam, Sons of Ishmael",
+        "Docs": "Lehi, Nephi, Sam, Sons of Ishmael",
         "Weights": 4
     },
     {
@@ -1270,7 +1270,7 @@
         "Scaled3": 16,
         "Scaled4": 20,
         "Ids": "12 35 40 96",
-        "Docs": "Ammon Son of Mosiah,  Father of Lamoni,  Godhead,  Servants of Lamoni",
+        "Docs": "Ammon Son of Mosiah, Father of Lamoni, Godhead, Servants of Lamoni",
         "Weights": 4
     },
     {
@@ -1289,7 +1289,7 @@
         "Scaled3": 88,
         "Scaled4": 109,
         "Ids": "16 22 26 31 40 48 49 54 63 71 81 89 91 100 101 106 113",
-        "Docs": "Angel,  Brothers of Nephi,  Children of Laman,  Daughters of Ishmael,  Godhead,  Ishmael,  Jacob,  Joseph2,  Laman,  Lemuel,  Nephi,  Sam,  Sariah,  Sons and Daughters of Lemuel,  Sons of Ishmael,  Wife of Ishmael,  Zoram",
+        "Docs": "Angel, Brothers of Nephi, Children of Laman, Daughters of Ishmael, Godhead, Ishmael, Jacob, Joseph, Laman, Lemuel, Nephi, Sam, Sariah, Sons and Daughters of Lemuel, Sons of Ishmael, Wife of Ishmael, Zoram",
         "Weights": 17
     },
     {
@@ -1308,7 +1308,7 @@
         "Scaled3": 8,
         "Scaled4": 10,
         "Ids": "40 44",
-        "Docs": "Godhead,  Helaman Son of Helaman",
+        "Docs": "Godhead, Helaman Son of Helaman",
         "Weights": 2
     },
     {
@@ -1365,7 +1365,7 @@
         "Scaled3": 20,
         "Scaled4": 25,
         "Ids": "67 81 89",
-        "Docs": "Lehi,  Nephi,  Sam",
+        "Docs": "Lehi, Nephi, Sam",
         "Weights": 3
     },
     {
@@ -1384,7 +1384,7 @@
         "Scaled3": 16,
         "Scaled4": 20,
         "Ids": "13 39 40 58",
-        "Docs": "Ammon the Mulekite,  Gideon, Godhead,   King of the Lamanites",
+        "Docs": "Ammon the Mulekite, Gideon, Godhead,  King of the Lamanites",
         "Weights": 4
     },
     {
@@ -1422,7 +1422,7 @@
         "Scaled3": 24,
         "Scaled4": 30,
         "Ids": "11 40 64 75",
-        "Docs": "Ammaron, Godhead,  Lamanite King,  Moroni",
+        "Docs": "Ammaron, Godhead, Lamanite King, Moroni",
         "Weights": 3
     },
     {
@@ -1441,7 +1441,7 @@
         "Scaled3": 8,
         "Scaled4": 10,
         "Ids": "40 74",
-        "Docs": "Godhead,  Mormon",
+        "Docs": "Godhead, Mormon",
         "Weights": 2
     },
     {
@@ -1479,7 +1479,7 @@
         "Scaled3": 36,
         "Scaled4": 45,
         "Ids": "0 7 8 12 20 40 46 85",
-        "Docs": "Aaron, Alma,  Alma the Younger, Ammon Son of Mosiah, Benjamin, Godhead,   Himni,  Omner",
+        "Docs": "Aaron, Alma, Alma the Younger, Ammon Son of Mosiah, Benjamin, Godhead,  Himni, Omner",
         "Weights": 8
     },
     {
@@ -1536,7 +1536,7 @@
         "Scaled3": 8,
         "Scaled4": 10,
         "Ids": "8 39",
-        "Docs": "Alma the Younger,  Gideon",
+        "Docs": "Alma the Younger, Gideon",
         "Weights": 2
     },
     {
@@ -1555,7 +1555,7 @@
         "Scaled3": 72,
         "Scaled4": 90,
         "Ids": "16 22 31 40 48 49 61 63 67 71 89 91 101 113",
-        "Docs": "Angel,  Brothers of Nephi,  Daughters of Ishmael, Godhead,   Ishmael,  Jacob,  Laban,  Laman,  Lehi,  Lemuel,  Sam,  Sariah,  Sons of Ishmael,  Zoram",
+        "Docs": "Angel, Brothers of Nephi, Daughters of Ishmael, Godhead,  Ishmael, Jacob, Laban, Laman, Lehi, Lemuel, Sam, Sariah, Sons of Ishmael, Zoram",
         "Weights": 14
     },
     {
@@ -1574,7 +1574,7 @@
         "Scaled3": 8,
         "Scaled4": 10,
         "Ids": "40 44",
-        "Docs": "Godhead,  Helaman Son of Helaman",
+        "Docs": "Godhead, Helaman Son of Helaman",
         "Weights": 2
     },
     {
@@ -1587,13 +1587,13 @@
         "Group2": "Nephite",
         "Color2": "#6495ED",
         "Name": "Nephi3",
-        "Blurb": "Nephi was a prophet who became one of Christ's disciples. ",
+        "Blurb": "Nephi was a prophet who became one of Christ's disciples.",
         "Scaled": 4,
         "Scaled2": 6,
         "Scaled3": 8,
         "Scaled4": 10,
         "Ids": "27 40",
-        "Docs": "Christ in America,  Godhead",
+        "Docs": "Christ in America, Godhead",
         "Weights": 2
     },
     {
@@ -1631,7 +1631,7 @@
         "Scaled3": 28,
         "Scaled4": 35,
         "Ids": "7 12 16 17 24 40 77",
-        "Docs": "Alma,  Ammon Son of Mosiah, Angel, Anti-Nephi-Lehi, Chief Judge, Godhead, Mosiah",
+        "Docs": "Alma, Ammon Son of Mosiah, Angel, Anti-Nephi-Lehi, Chief Judge, Godhead, Mosiah",
         "Weights": 7
     },
     {
@@ -1688,7 +1688,7 @@
         "Scaled3": 8,
         "Scaled4": 10,
         "Ids": "1 57",
-        "Docs": "Abinadi,  King Noah",
+        "Docs": "Abinadi, King Noah",
         "Weights": 2
     },
     {
@@ -1707,7 +1707,7 @@
         "Scaled3": 16,
         "Scaled4": 20,
         "Ids": "63 67 71 81",
-        "Docs": "Laman,  Lehi,  Lemuel,  Nephi",
+        "Docs": "Laman, Lehi, Lemuel, Nephi",
         "Weights": 4
     },
     {
@@ -1726,7 +1726,7 @@
         "Scaled3": 12,
         "Scaled4": 15,
         "Ids": "16 40",
-        "Docs": "Angel,  Godhead",
+        "Docs": "Angel, Godhead",
         "Weights": 2
     },
     {
@@ -1745,7 +1745,7 @@
         "Scaled3": 16,
         "Scaled4": 20,
         "Ids": "22 40 67 81",
-        "Docs": "Brothers of Nephi,  Godhead,  Lehi,  Nephi",
+        "Docs": "Brothers of Nephi, Godhead, Lehi, Nephi",
         "Weights": 4
     },
     {
@@ -1840,7 +1840,7 @@
         "Scaled3": 12,
         "Scaled4": 15,
         "Ids": "12 40 66",
-        "Docs": "Ammon Son of Mosiah,  Godhead,  Lamoni",
+        "Docs": "Ammon Son of Mosiah, Godhead, Lamoni",
         "Weights": 3
     },
     {
@@ -1935,7 +1935,7 @@
         "Scaled3": 28,
         "Scaled4": 35,
         "Ids": "22 40 63 67 81",
-        "Docs": "Brothers of Nephi,  Godhead,  Laman,  Lehi,  Nephi",
+        "Docs": "Brothers of Nephi, Godhead, Laman, Lehi, Nephi",
         "Weights": 5
     },
     {
@@ -1973,7 +1973,7 @@
         "Scaled3": 8,
         "Scaled4": 10,
         "Ids": "23 50",
-        "Docs": "Captain Moroni,  Jacob the Zoramite",
+        "Docs": "Captain Moroni, Jacob the Zoramite",
         "Weights": 2
     },
     {
@@ -2011,7 +2011,7 @@
         "Scaled3": 12,
         "Scaled4": 15,
         "Ids": "27 40",
-        "Docs": "Christ in America,  Godhead",
+        "Docs": "Christ in America, Godhead",
         "Weights": 2
     },
     {
@@ -2030,7 +2030,7 @@
         "Scaled3": 12,
         "Scaled4": 15,
         "Ids": "22 40 67",
-        "Docs": "Brothers of Nephi,  Godhead,  Lehi",
+        "Docs": "Brothers of Nephi, Godhead, Lehi",
         "Weights": 3
     },
     {
@@ -2049,7 +2049,7 @@
         "Scaled3": 8,
         "Scaled4": 10,
         "Ids": "12 40",
-        "Docs": "Ammon Son of Mosiah,  Godhead",
+        "Docs": "Ammon Son of Mosiah, Godhead",
         "Weights": 2
     },
     {
@@ -2068,7 +2068,7 @@
         "Scaled3": 12,
         "Scaled4": 15,
         "Ids": "8 15",
-        "Docs": "Alma the Younger,  Amulek",
+        "Docs": "Alma the Younger, Amulek",
         "Weights": 2
     },
     {
@@ -2087,7 +2087,7 @@
         "Scaled3": 8,
         "Scaled4": 10,
         "Ids": "40 56",
-        "Docs": "Godhead,  King Laman",
+        "Docs": "Godhead, King Laman",
         "Weights": 2
     },
     {
@@ -2157,13 +2157,13 @@
         "Group2": "Hebrew",
         "Color2": "#800080 ",
         "Name": "Zoram",
-        "Blurb": "Zoram kept Laban's records. He left Jerusalem with Lehi's family. ",
+        "Blurb": "Zoram kept Laban's records. He left Jerusalem with Lehi's family.",
         "Scaled": 4,
         "Scaled2": 6,
         "Scaled3": 8,
         "Scaled4": 10,
         "Ids": "67 81",
-        "Docs": "Lehi,  Nephi",
+        "Docs": "Lehi, Nephi",
         "Weights": 2
     },
     {
@@ -2187,24 +2187,14 @@
     }
 ], "links":[
     {
-        "Source": 0,
-        "Target": 9,
+        "Source": 9,
+        "Target": 0,
         "Weight": 1,
-        "Speaker1": "Aaron",
-        "Speaker2": "Amalekite",
+        "Speaker1": "Amalekite",
+        "Speaker2": "Aaron",
         "Verse": "Alma 21:5",
         "Idea": "Therefore, as Aaron entered into one of their synagogues to preach unto the people, and as he was speaking unto them, behold there arose an Amalekite and began to contend with him, saying: What is that thou hast testified? Hast thou seen an angel? Why do not angels appear unto us? Behold are not this people as good as thy people?",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/21/?lang=eng&id=5#p5"
-    },
-    {
-        "Source": 0,
-        "Target": 17,
-        "Weight": 1,
-        "Speaker1": "Aaron",
-        "Speaker2": "Anti-Nephi-Lehi",
-        "Verse": "Alma 27:8",
-        "Idea": "Ammon converses with the king to go down to the Nephites",
-        "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/27/?lang=eng&id=8#p8"
     },
     {
         "Source": 0,
@@ -2213,7 +2203,7 @@
         "Speaker1": "Aaron",
         "Speaker2": "Chief Judge",
         "Verse": "Alma 27:20",
-        "Idea": "Ammon and his brethren tell the Chief Judge everything that happened to them in the Land of Nephi",
+        "Idea": "Ammon and his brethren tell the Chief Judge everything that happened to them in the Land of Nephi.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/27/?lang=eng&id=20#p20"
     },
     {
@@ -2223,27 +2213,27 @@
         "Speaker1": "Aaron",
         "Speaker2": "Father of Lamoni",
         "Verse": "Alma 22:11",
-        "Idea": "Aaron teaches King Lamoni's father about the Creation",
+        "Idea": "Aaron teaches King Lamoni's father about the Creation.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/22/?lang=eng&id=11#p11"
     },
     {
-        "Source": 1,
-        "Target": 88,
+        "Source": 88,
+        "Target": 1,
         "Weight": 1,
-        "Speaker1": "Abinadi",
-        "Speaker2": "Priests of Noah",
+        "Speaker1": "Priests of Noah",
+        "Speaker2": "Abinadi",
         "Verse": "Mosiah 12:20",
-        "Idea": "What meaneth the words which are written, and which have been taught by our fathers",
+        "Idea": "What meaneth the words which are written, and which have been taught by our fathers, saying: How beautiful upon the mountains are the feet of him that bringeth good tidings;",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/12/?lang=eng&id=20#p20"
     },
     {
-        "Source": 7,
-        "Target": 0,
+        "Source": 0,
+        "Target": 7,
         "Weight": 1,
-        "Speaker1": "Alma",
-        "Speaker2": "Aaron",
+        "Speaker1": "Aaron",
+        "Speaker2": "Alma",
         "Verse": "Mosiah 27:20",
-        "Idea": "The sons of Mosiah tell Alma what happened to Alma the Younger",
+        "Idea": "The sons of Mosiah tell Alma what happened to Alma the Younger.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/27/?lang=eng&id=20#p20"
     },
     {
@@ -2253,17 +2243,17 @@
         "Speaker1": "Alma",
         "Speaker2": "Helam",
         "Verse": "Mosiah 18:13",
-        "Idea": "Alma baptizes Helam ",
+        "Idea": "Alma baptizes Helam.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/18/?lang=eng&id=13#p13"
     },
     {
-        "Source": 7,
-        "Target": 46,
+        "Source": 46,
+        "Target": 7,
         "Weight": 1,
-        "Speaker1": "Alma",
-        "Speaker2": "Himni",
+        "Speaker1": "Himni",
+        "Speaker2": "Alma",
         "Verse": "Mosiah 27:20",
-        "Idea": "The sons of Mosiah tell Alma what happened to Alma the Younger",
+        "Idea": "The sons of Mosiah tell Alma what happened to Alma the Younger.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/27/?lang=eng&id=20#p20"
     },
     {
@@ -2273,27 +2263,27 @@
         "Speaker1": "Alma",
         "Speaker2": "King Noah",
         "Verse": "Mosiah 17:2",
-        "Idea": "Alma pleads on behalf of Abinadi with King Noah",
+        "Idea": "Alma pleads with King Noah to spare Abinadi's life.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/17/?lang=eng&id=2#p2"
     },
     {
-        "Source": 7,
-        "Target": 85,
+        "Source": 85,
+        "Target": 7,
         "Weight": 1,
-        "Speaker1": "Alma",
-        "Speaker2": "Omner",
+        "Speaker1": "Omner",
+        "Speaker2": "Alma",
         "Verse": "Mosiah 27:20",
-        "Idea": "The sons of Mosiah tell Alma what happened to Alma the Younger",
+        "Idea": "The sons of Mosiah tell Alma what happened to Alma the Younger.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/27/?lang=eng&id=20#p20"
     },
     {
-        "Source": 8,
-        "Target": 4,
+        "Source": 4,
+        "Target": 8,
         "Weight": 1,
-        "Speaker1": "Alma the Younger",
-        "Speaker2": "Aha",
+        "Speaker1": "Aha",
+        "Speaker2": "Alma the Younger",
         "Verse": "Alma 16:6",
-        "Idea": "They went unto him and desired of him to know whither the Lord would that they should go into the wilderness in search of their brethren, who had been taken captive by the Lamanites",
+        "Idea": "They went unto him and desired of him to know whither the Lord would that they should go into the wilderness in search of their brethren, who had been taken captive by the Lamanites.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/16/?lang=eng&id=6#p6"
     },
     {
@@ -2303,37 +2293,37 @@
         "Speaker1": "Alma the Younger",
         "Speaker2": "Amulek",
         "Verse": "Alma 8:24",
-        "Idea": "I am Alma, and am the a high priest over the church of God throughout the land. And behold, I have been called to preach the word of God among all this people, according to the spirit of revelation and prophecy",
+        "Idea": "I am Alma, and am the high priest over the church of God throughout the land. And behold, I have been called to preach the word of God among all this people, according to the spirit of revelation and prophecy.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/8/?lang=eng&id=24#p24"
     },
     {
-        "Source": 8,
-        "Target": 16,
+        "Source": 16,
+        "Target": 8,
         "Weight": 1,
-        "Speaker1": "Alma the Younger",
-        "Speaker2": "Angel",
+        "Speaker1": "Angel",
+        "Speaker2": "Alma the Younger",
         "Verse": "Alma 8:16",
-        "Idea": "The angel commands Alma the Younger to preach the gospel in the city of Ammonihah",
+        "Idea": "The angel commands Alma the Younger to preach the gospel in the city of Ammonihah.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/8/?lang=eng&id=16#p16"
     },
     {
-        "Source": 8,
-        "Target": 18,
+        "Source": 18,
+        "Target": 8,
         "Weight": 1,
-        "Speaker1": "Alma the Younger",
-        "Speaker2": "Antionah",
+        "Speaker1": "Antionah",
+        "Speaker2": "Alma the Younger",
         "Verse": "Alma 12:21",
         "Idea": "What does the scripture mean, which saith that God placed cherubim and a flaming sword on the east of the garden of Eden, lest our first parents should enter and partake of the fruit of the tree of life, and live forever? And thus we see that there was no possible chance that they should live forever.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/12/?lang=eng&id=21#p21"
     },
     {
-        "Source": 8,
-        "Target": 25,
+        "Source": 25,
+        "Target": 8,
         "Weight": 1,
-        "Speaker1": "Alma the Younger",
-        "Speaker2": "Chief Judge in Ammonihah",
+        "Speaker1": "Chief Judge in Ammonihah",
+        "Speaker2": "Alma the Younger",
         "Verse": "Alma 14:15",
-        "Idea": "The Chief Judge is angry that Alma and Amulek did not save the people who burned in the fire",
+        "Idea": "The Chief Judge mocks Alma and Amulek, saying that they could not save the people who burned in the fire.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/14/?lang=eng&id=15#p15"
     },
     {
@@ -2343,7 +2333,7 @@
         "Speaker1": "Alma the Younger",
         "Speaker2": "Corianton",
         "Verse": "Alma 39:15",
-        "Idea": "Alma tells his son Corianton to repent for his sins and to come unto Christ",
+        "Idea": "Alma tells his son Corianton to repent of his sins and come unto Christ.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/39/?lang=eng&id=15#p15"
     },
     {
@@ -2353,15 +2343,15 @@
         "Speaker1": "Alma the Younger",
         "Speaker2": "Helaman",
         "Verse": "Alma 36:18",
-        "Idea": "Alma testifies to Helaman, his son, about God and his conversion",
+        "Idea": "Alma testifies to Helaman, his son, about God and his own conversion.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/36/?lang=eng&id=18#p18"
     },
     {
-        "Source": 8,
-        "Target": 60,
+        "Source": 60,
+        "Target": 8,
         "Weight": 1,
-        "Speaker1": "Alma the Younger",
-        "Speaker2": "Korihor",
+        "Speaker1": "Korihor",
+        "Speaker2": "Alma the Younger",
         "Verse": "Alma 30:43",
         "Idea": "And now Korihor said unto Alma: If thou wilt show me a sign, that I may be convinced that there is a God, yea, show unto me that he hath power, and then will I be convinced of the truth of thy words.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/30/?lang=eng&id=43#p43"
@@ -2373,17 +2363,17 @@
         "Speaker1": "Alma the Younger",
         "Speaker2": "Lehi Son of Zoram",
         "Verse": "Alma 16:6",
-        "Idea": "Alma tells Zoram and his sons that they should meet the Lamanites on the river Sidon",
+        "Idea": "Alma tells Zoram and his sons that they should meet the Lamanites on the river Sidon.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/16/?lang=eng&id=6#p6"
     },
     {
-        "Source": 8,
-        "Target": 77,
+        "Source": 77,
+        "Target": 8,
         "Weight": 1,
-        "Speaker1": "Alma the Younger",
-        "Speaker2": "Mosiah",
+        "Speaker1": "Mosiah",
+        "Speaker2": "Alma the Younger",
         "Verse": "Mosiah 28:20",
-        "Idea": "Mosiah gives the plates to Alma the Younger",
+        "Idea": "Mosiah gives the plates to Alma the Younger.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/28/?lang=eng&id=20#p20"
     },
     {
@@ -2393,7 +2383,7 @@
         "Speaker1": "Alma the Younger",
         "Speaker2": "Nehor",
         "Verse": "Alma 1:14",
-        "Idea": "Alma condemns Nehor ",
+        "Idea": "Alma condemns Nehor. ",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/1/?lang=eng&id=14#p14"
     },
     {
@@ -2403,7 +2393,7 @@
         "Speaker1": "Alma the Younger",
         "Speaker2": "Shiblon",
         "Verse": "Alma 38:8",
-        "Idea": "Alma tells his son Shiblon about his repentance story",
+        "Idea": "Alma tells his son Shiblon his repentance story.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/38/?lang=eng&id=8#p8"
     },
     {
@@ -2413,7 +2403,7 @@
         "Speaker1": "Alma the Younger",
         "Speaker2": "Zeezrom",
         "Verse": "Alma 12:15",
-        "Idea": "Alma testifies to Zeezrom about the Plan of Salvation",
+        "Idea": "Alma testifies to Zeezrom about the Plan of Salvation.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/12/?lang=eng&id=15#p15"
     },
     {
@@ -2423,18 +2413,28 @@
         "Speaker1": "Alma the Younger",
         "Speaker2": "Zoram Captain of Nephites",
         "Verse": "Alma 16:6",
-        "Idea": "Alma tells Zoram and his sons that they should meet the Lamanites on the river Sidon",
+        "Idea": "Alma tells Zoram and his sons that they should meet the Lamanites on the river Sidon.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/16/?lang=eng&id=6#p6"
     },
     {
-        "Source": 10,
-        "Target": 65,
+        "Source": 65,
+        "Target": 10,
         "Weight": 1,
-        "Speaker1": "Amalickiah",
-        "Speaker2": "Lamanite Queen",
+        "Speaker1": "Lamanite Queen",
+        "Speaker2": "Amalickiah",
         "Verse": "Alma 47:33",
         "Idea": "Therefore, when the queen had received this message she sent unto Amalickiah, desiring him that he would spare the people of the city; and she also desired him that he should come in unto her; and she also desired him that he should bring witnesses with him to testify concerning the death of the king.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/47/?lang=eng&id=33#p33"
+    },
+    {
+        "Source": 11,
+        "Target": 74,
+        "Weight": 1,
+        "Speaker1": "Ammaron",
+        "Speaker2": "Mormon",
+        "Verse": "Mormon 1:2-4",
+        "Idea": "And about the time that Ammaron hid up the records unto the Lord, he came unto me, (I being about ten years of age, and I began to be learned somewhat after the manner of the learning of my people) and Ammaron said unto me: I perceive that thou art a sober child, and art quick to observe;",
+        "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/morm/1/?lang=eng&id=2#p2"
     },
     {
         "Source": 10,
@@ -2453,8 +2453,18 @@
         "Speaker1": "Ammon Son of Mosiah",
         "Speaker2": "Aaron",
         "Verse": "Alma 26:22",
-        "Idea": "Ammon encourages his brothers to believe in God and to repent",
+        "Idea": "Ammon encourages his brothers to believe in God and to repent.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/26/?lang=eng&id=22#p22"
+    },
+    {
+        "Source": 12,
+        "Target": 17,
+        "Weight": 1,
+        "Speaker1": "Ammon Son of Mosiah",
+        "Speaker2": "Anti-Nephi-Lehi",
+        "Verse": "Alma 27:8",
+        "Idea": "Ammon converses with the king about going down to the Nephites.",
+        "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/27/?lang=eng&id=8#p8"
     },
     {
         "Source": 12,
@@ -2463,17 +2473,17 @@
         "Speaker1": "Ammon Son of Mosiah",
         "Speaker2": "Alma",
         "Verse": "Mosiah 27:20",
-        "Idea": "The sons of Mosiah tell Alma what happened to Alma the Younger",
+        "Idea": "The sons of Mosiah tell Alma what happened to Alma the Younger.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/27/?lang=eng&id=20#p20"
     },
     {
-        "Source": 12,
-        "Target": 16,
+        "Source": 16,
+        "Target": 12,
         "Weight": 1,
-        "Speaker1": "Ammon Son of Mosiah",
-        "Speaker2": "Angel",
+        "Speaker1": "Angel",
+        "Speaker2": "Ammon Son of Mosiah",
         "Verse": "Mosiah 27:13",
-        "Idea": "An angel chastises the sons of Mosiah and Alma the Younger for opposing the Church",
+        "Idea": "An angel chastises the sons of Mosiah and Alma the Younger for opposing the Church.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/27/?lang=eng&id=13#p13"
     },
     {
@@ -2483,7 +2493,7 @@
         "Speaker1": "Ammon Son of Mosiah",
         "Speaker2": "Anti-Nephi-Lehi",
         "Verse": "Alma 27:13",
-        "Idea": "Ammon tells the king what God told him to do ",
+        "Idea": "Ammon tells the king what God told him to do.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/27/?lang=eng&id=13#p13"
     },
     {
@@ -2493,7 +2503,7 @@
         "Speaker1": "Ammon Son of Mosiah",
         "Speaker2": "Chief Judge",
         "Verse": "Alma 27:20",
-        "Idea": "Ammon and his brethren tell the Chief Judge everything that happened to them in the Land of Nephi",
+        "Idea": "Ammon and his brethren tell the Chief Judge everything that happened to them in the Land of Nephi.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/27/?lang=eng&id=20#p20"
     },
     {
@@ -2503,7 +2513,7 @@
         "Speaker1": "Ammon Son of Mosiah",
         "Speaker2": "Father of Lamoni",
         "Verse": "Alma 22:6",
-        "Idea": "Ammon tells King Lamoni's father, that if he repents, he will be saved",
+        "Idea": "Ammon tells King Lamoni's father that if he repents, he will be saved.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/22/?lang=eng&id=6#p6"
     },
     {
@@ -2513,7 +2523,7 @@
         "Speaker1": "Ammon Son of Mosiah",
         "Speaker2": "Himni",
         "Verse": "Alma 26:22",
-        "Idea": "Ammon encourages his brothers to believe in God and to repent",
+        "Idea": "Ammon encourages his brothers to believe in God and to repent.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/26/?lang=eng&id=22#p22"
     },
     {
@@ -2533,27 +2543,27 @@
         "Speaker1": "Ammon Son of Mosiah",
         "Speaker2": "Mosiah",
         "Verse": "Mosiah 28:1",
-        "Idea": "The sons of Mosiah... returned to their father, the king, and desired of him that he would grant unto them that they might... go up to the land of Nephi that they might preach the things which they had heard",
+        "Idea": "The sons of Mosiah... returned to their father, the king, and desired of him that he would grant unto them that they might... go up to the land of Nephi that they might preach the things which they had heard.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/28/?lang=eng&id=1#p1"
     },
     {
-        "Source": 12,
-        "Target": 85,
+        "Source": 16,
+        "Target": 8,
         "Weight": 1,
-        "Speaker1": "Ammon Son of Mosiah",
-        "Speaker2": "Omner",
+        "Speaker1": "Angel",
+        "Speaker2": "Alma the Younger",
         "Verse": "Mosiah 27:13",
-        "Idea": "An angel chastises the sons of Mosiah and Alma the Younger for opposing the Church",
+        "Idea": "An angel chastises the sons of Mosiah and Alma the Younger for opposing the Church.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/27/?lang=eng&id=13#p13"
     },
     {
-        "Source": 12,
-        "Target": 95,
+        "Source": 95,
+        "Target": 12,
         "Weight": 1,
-        "Speaker1": "Ammon Son of Mosiah",
-        "Speaker2": "Servant of Lamoni",
+        "Speaker1": "Servant of Lamoni",
+        "Speaker2": "Ammon Son of Mosiah",
         "Verse": "Alma 18:13",
-        "Idea": "And one of the king\ufffds servants said unto him, Rabbanah, which is, being interpreted, powerful or great king, considering their kings to be powerful; and thus he said unto him: Rabbanah, the king desireth thee to stay.",
+        "Idea": "And one of the king's servants said unto him, Rabbanah, which is, being interpreted, powerful or great king, considering their kings to be powerful; and thus he said unto him: Rabbanah, the king desireth thee to stay.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/18/?lang=eng&id=13#p13"
     },
     {
@@ -2563,35 +2573,35 @@
         "Speaker1": "Ammon Son of Mosiah",
         "Speaker2": "Servants of Lamoni",
         "Verse": "Alma 17:31",
-        "Idea": "Ammon tells the servants of Lamoni to save the king's flocks ",
+        "Idea": "Ammon tells the servants of Lamoni to save the king's flocks.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/17/?lang=eng&id=31#p31"
     },
     {
-        "Source": 12,
-        "Target": 107,
+        "Source": 107,
+        "Target": 12,
         "Weight": 1,
-        "Speaker1": "Ammon Son of Mosiah",
-        "Speaker2": "Wife of Lamoni",
+        "Speaker1": "Wife of Lamoni",
+        "Speaker2": "Ammon Son of Mosiah",
         "Verse": "Alma 18:4",
         "Idea": "And she said unto him: The servants of my husband have made it known unto me that thou art a prophet of a holy God, and that thou hast power to do many mighty works in his name;",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/18/?lang=eng&id=4#p4"
     },
     {
-        "Source": 15,
-        "Target": 25,
+        "Source": 25,
+        "Target": 15,
         "Weight": 1,
-        "Speaker1": "Amulek",
-        "Speaker2": "Chief Judge in Ammonihah",
+        "Speaker1": "Chief Judge in Ammonihah",
+        "Speaker2": "Amulek",
         "Verse": "Alma 14:24",
-        "Idea": "The Chief Judge tells Alma and Amulek to deliver themselves",
+        "Idea": "The Chief Judge tells Alma and Amulek to deliver themselves.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/14/?lang=eng&id=24#p24"
     },
     {
-        "Source": 15,
-        "Target": 108,
+        "Source": 108,
+        "Target": 15,
         "Weight": 1,
-        "Speaker1": "Amulek",
-        "Speaker2": "Zeezrom",
+        "Speaker1": "Zeezrom",
+        "Speaker2": "Amulek",
         "Verse": "Alma 11:22",
         "Idea": "Behold, here are six onties of silver, and all these will I give thee if thou wilt deny the existence of a Supreme Being.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/11/?lang=eng&id=22#p22"
@@ -2603,7 +2613,7 @@
         "Speaker1": "Angel",
         "Speaker2": "Aaron",
         "Verse": "Mosiah 27:13",
-        "Idea": "An angel chastises the sons of Mosiah and Alma the Younger for opposing the Church",
+        "Idea": "An angel chastises the sons of Mosiah and Alma the Younger for opposing the Church.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/27/?lang=eng&id=13#p13"
     },
     {
@@ -2613,7 +2623,7 @@
         "Speaker1": "Angel",
         "Speaker2": "Amulek",
         "Verse": "Alma 8:20",
-        "Idea": "The angel tells Amulek of Alma the Younger",
+        "Idea": "The angel tells Amulek of Alma the Younger.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/8/?lang=eng&id=20#p20"
     },
     {
@@ -2623,7 +2633,7 @@
         "Speaker1": "Angel",
         "Speaker2": "Benjamin",
         "Verse": "Mosiah 3:5",
-        "Idea": "The time cometh, and is not far distant... the Lord Omnipotent who reigneth... shall come down from heaven among the children of men",
+        "Idea": "The time cometh, and is not far distant... the Lord Omnipotent who reigneth... shall come down from heaven among the children of men.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/3/?lang=eng&id=5#p5"
     },
     {
@@ -2633,7 +2643,7 @@
         "Speaker1": "Angel",
         "Speaker2": "Brothers of Nephi",
         "Verse": "1 Nephi 3:29",
-        "Idea": "Angel appears to brothers of Nephi",
+        "Idea": "An angel stops the Laman and Lemuel from beating Nephi and Sam.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/3/?lang=eng&id=29#p29"
     },
     {
@@ -2643,7 +2653,7 @@
         "Speaker1": "Angel",
         "Speaker2": "Himni",
         "Verse": "Mosiah 27:13",
-        "Idea": "An angel chastises the sons of Mosiah and Alma the Younger for opposing the Church",
+        "Idea": "An angel chastises the sons of Mosiah and Alma the Younger for opposing the Church.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/27/?lang=eng&id=13#p13"
     },
     {
@@ -2653,7 +2663,7 @@
         "Speaker1": "Angel",
         "Speaker2": "Jacob",
         "Verse": "2 Nephi 6:9",
-        "Idea": "Jacob prophesies of Christ's crucifixion ",
+        "Idea": "An angel tells Jacob about Christ's crucifixion.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/2-ne/6/?lang=eng&id=9#p9"
     },
     {
@@ -2663,7 +2673,7 @@
         "Speaker1": "Angel",
         "Speaker2": "Omner",
         "Verse": "Mosiah 27:13",
-        "Idea": "An angel chastises the sons of Mosiah and Alma the Younger for opposing the Church",
+        "Idea": "An angel chastises the sons of Mosiah and Alma the Younger for opposing the Church.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/27/?lang=eng&id=13#p13"
     },
     {
@@ -2673,7 +2683,7 @@
         "Speaker1": "Angel",
         "Speaker2": "Samuel the Lamanite",
         "Verse": "Helaman 13:7",
-        "Idea": "An angel tells Samuel the Lamanite about good tidings",
+        "Idea": "An angel brings good tidings to Samuel the Lamanite.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/hel/13/?lang=eng&id=7#p7"
     },
     {
@@ -2683,7 +2693,7 @@
         "Speaker1": "Benjamin",
         "Speaker2": "Helaman Son of Benjamin",
         "Verse": "Mosiah 1:5",
-        "Idea": "I say unto you, my sons, were it not for these things, which have been kept and preserved by the hand of God, that we might read and understand his mysteries... we should have been like unto our brethren",
+        "Idea": "I say unto you, my sons, were it not for these things, which have been kept and preserved by the hand of God, that we might read and understand his mysteries... we should have been like unto our brethren.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/1/?lang=eng&id=5#p5"
     },
     {
@@ -2693,27 +2703,27 @@
         "Speaker1": "Benjamin",
         "Speaker2": "Helorum",
         "Verse": "Mosiah 1:5",
-        "Idea": "I say unto you, my sons, were it not for these things, which have been kept and preserved by the hand of God, that we might read and understand his mysteries... we should have been like unto our brethren",
+        "Idea": "I say unto you, my sons, were it not for these things, which have been kept and preserved by the hand of God, that we might read and understand his mysteries... we should have been like unto our brethren.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/1/?lang=eng&id=5#p5"
     },
     {
-        "Source": 21,
-        "Target": 51,
+        "Source": 51,
+        "Target": 21,
         "Weight": 1,
-        "Speaker1": "Brother of Jared",
-        "Speaker2": "Jared",
+        "Speaker1": "Jared",
+        "Speaker2": "Brother of Jared",
         "Verse": "Ether 1:34",
-        "Idea": "Jared asks his brother to pray to the Lord",
+        "Idea": "Jared asks his brother to pray to the Lord.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/ether/1/?lang=eng&id=34#p34"
     },
     {
-        "Source": 22,
-        "Target": 31,
+        "Source": 31,
+        "Target": 22,
         "Weight": 1,
-        "Speaker1": "Brothers of Nephi",
-        "Speaker2": "Daughters of Ishmael",
+        "Speaker1": "Daughters of Ishmael",
+        "Speaker2": "Brothers of Nephi",
         "Verse": "1 Nephi 7:19",
-        "Idea": "One of the daughters of Ishmael, yea, and also her mother, and one of the sons of Ishmael, did plead with my brethren insomuch that they did soften their hearts",
+        "Idea": "One of the daughters of Ishmael, yea, and also her mother, and one of the sons of Ishmael, did plead with my brethren insomuch that they did soften their hearts.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/7/?lang=eng&id=19#p19"
     },
     {
@@ -2723,7 +2733,7 @@
         "Speaker1": "Brothers of Nephi",
         "Speaker2": "Ishmael",
         "Verse": "1 Nephi 7:4",
-        "Idea": "Nephi and his brothers tell Ishmael Lehi's revelation",
+        "Idea": "Nephi and his brothers tell Ishmael Lehi's revelation.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/7/?lang=eng&id=4#p4"
     },
     {
@@ -2733,57 +2743,57 @@
         "Speaker1": "Brothers of Nephi",
         "Speaker2": "Laban",
         "Verse": "1 Nephi 3:24",
-        "Idea": "Brothers of Nephi offered Laban their precious possessions in exchange for the plates",
+        "Idea": "The brothers of Nephi offer Laban their precious possessions in exchange for the plates.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/3/?lang=eng&id=24#p24"
     },
     {
-        "Source": 22,
-        "Target": 91,
+        "Source": 91,
+        "Target": 22,
         "Weight": 1,
-        "Speaker1": "Brothers of Nephi",
-        "Speaker2": "Sariah",
+        "Speaker1": "Sariah",
+        "Speaker2": "Brothers of Nephi",
         "Verse": "1 Nephi 5:8",
-        "Idea": "Sariah testifies that Lehi is being led by God",
+        "Idea": "Sariah testifies that Lehi is being led by God.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/5/?lang=eng&id=8#p8"
     },
     {
-        "Source": 22,
-        "Target": 101,
+        "Source": 101,
+        "Target": 22,
         "Weight": 1,
-        "Speaker1": "Brothers of Nephi",
-        "Speaker2": "Sons of Ishmael",
+        "Speaker1": "Sons of Ishmael",
+        "Speaker2": "Brothers of Nephi",
         "Verse": "1 Nephi 7:19",
-        "Idea": "One of the daughters of Ishmael, yea, and also her mother, and one of the sons of Ishmael, did plead with my brethren insomuch that they did soften their hearts",
+        "Idea": "One of the daughters of Ishmael, yea, and also her mother, and one of the sons of Ishmael, did plead with my brethren insomuch that they did soften their hearts.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/7/?lang=eng&id=19#p19"
     },
     {
-        "Source": 22,
-        "Target": 106,
+        "Source": 106,
+        "Target": 22,
         "Weight": 1,
-        "Speaker1": "Brothers of Nephi",
-        "Speaker2": "Wife of Ishmael",
+        "Speaker1": "Wife of Ishmael",
+        "Speaker2": "Brothers of Nephi",
         "Verse": "1 Nephi 7:19",
-        "Idea": "One of the daughters of Ishmael, yea, and also her mother, and one of the sons of Ishmael, did plead with my brethren insomuch that they did soften their hearts",
+        "Idea": "One of the daughters of Ishmael, yea, and also her mother, and one of the sons of Ishmael, did plead with my brethren insomuch that they did soften their hearts.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/7/?lang=eng&id=19#p19"
     },
     {
-        "Source": 23,
-        "Target": 14,
+        "Source": 14,
+        "Target": 23,
         "Weight": 1,
-        "Speaker1": "Captain Moroni",
-        "Speaker2": "Ammoron",
+        "Speaker1": "Ammoron",
+        "Speaker2": "Captain Moroni",
         "Verse": "Alma 54:20",
         "Idea": "Nevertheless, I will grant to exchange prisoners according to your request, gladly, that I may preserve my food for my men of war; and we will wage a war which shall be eternal, either to the subjecting the Nephites to our authority or to their eternal extinction.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/54/?lang=eng&id=20#p20"
     },
     {
-        "Source": 23,
-        "Target": 42,
+        "Source": 42,
+        "Target": 23,
         "Weight": 1,
-        "Speaker1": "Captain Moroni",
-        "Speaker2": "Helaman",
+        "Speaker1": "Helaman",
+        "Speaker2": "Captain Moroni",
         "Verse": "Alma 57:20-21",
-        "Idea": "And as the remainder of our army were about to give way before the Lamanites, behold, those two thousand and sixty were firm and undaunted. Yea, and they did obey and observe to perform every word of command with exactness; yea, and even according to their faith it was done unto them; and I did remember the words which they said unto me that their mothers had taught them. ",
+        "Idea": "And as the remainder of our army were about to give way before the Lamanites, behold, those two thousand and sixty were firm and undaunted. Yea, and they did obey and observe to perform every word of command with exactness; yea, and even according to their faith it was done unto them; and I did remember the words which they said unto me that their mothers had taught them.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/57/?lang=eng&id=20-21#p20"
     },
     {
@@ -2793,7 +2803,7 @@
         "Speaker1": "Captain Moroni",
         "Speaker2": "Jacob the Zoramite",
         "Verse": "Alma 52:20",
-        "Idea": "Captain Moroni and Teancum asks Jacob the Zoramite, the leader of the Lamanite army, to meet them with his army",
+        "Idea": "Captain Moroni and Teancum ask Jacob the Zoramite, the leader of the Lamanite army, to meet them with his army.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/52/?lang=eng&id=20#p20"
     },
     {
@@ -2803,7 +2813,7 @@
         "Speaker1": "Captain Moroni",
         "Speaker2": "Pahoran",
         "Verse": "Alma 59:3",
-        "Idea": "Captain Moroni asks Pahoran to gather the men of Helaman and maintain the land ",
+        "Idea": "Captain Moroni asks Pahoran to gather the men of Helaman and maintain the land.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/59/?lang=eng&id=3#p3"
     },
     {
@@ -2817,11 +2827,11 @@
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/52/?lang=eng&id=19#p19"
     },
     {
-        "Source": 23,
-        "Target": 112,
+        "Source": 112,
+        "Target": 23,
         "Weight": 1,
-        "Speaker1": "Captain Moroni",
-        "Speaker2": "Zerahemnah",
+        "Speaker1": "Zerahemnah",
+        "Speaker2": "Captain Moroni",
         "Verse": "Alma 44:19",
         "Idea": "Now Zerahemnah, when he saw that they were all about to be destroyed, cried mightily unto Moroni, promising that he would covenant and also his people with them, if they would spare the remainder of their lives, that they never would come to war again against them.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/44/?lang=eng&id=19#p19"
@@ -2833,7 +2843,7 @@
         "Speaker1": "Christ in America",
         "Speaker2": "Nephi Son of Nephi Son of Helaman",
         "Verse": "3 Nephi 3:21",
-        "Idea": "Christ gives Nephi the power to baptize in his name",
+        "Idea": "Christ gives Nephi the power to baptize in his name.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/3/?lang=eng&id=21#p21"
     },
     {
@@ -2843,7 +2853,7 @@
         "Speaker1": "Christ in America",
         "Speaker2": "Three Nephites",
         "Verse": "3 Nephi 28:8",
-        "Idea": "Christ promises three of his disciples they shall not taste of death",
+        "Idea": "Christ promises three of his disciples they shall not taste of death.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/28/?lang=eng&id=8#p8"
     },
     {
@@ -2873,17 +2883,17 @@
         "Speaker1": "Enos",
         "Speaker2": "Jarom",
         "Verse": "Jarom 1:1",
-        "Idea": "I, Jarom, write a few words according to the commandment of my father, Enos, that our genealogy may be kept",
+        "Idea": "I, Jarom, write a few words according to the commandment of my father, Enos, that our genealogy may be kept.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/jarom/1/?lang=eng&id=1#p1"
     },
     {
-        "Source": 34,
-        "Target": 92,
+        "Source": 92,
+        "Target": 34,
         "Weight": 1,
-        "Speaker1": "Eve",
-        "Speaker2": "Satan",
+        "Speaker1": "Satan",
+        "Speaker2": "Eve",
         "Verse": "2 Nephi 2:18",
-        "Idea": "Partake of the forbidden fruit, and ye shall not die, but ye shall be as God, knowing good and evil",
+        "Idea": "Partake of the forbidden fruit, and ye shall not die, but ye shall be as God, knowing good and evil.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/2-ne/2/?lang=eng&id=18#p18"
     },
     {
@@ -2907,13 +2917,23 @@
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/3/?lang=eng&id=7#p7"
     },
     {
+        "Source": 80,
+        "Target": 39,
+        "Weight": 1,
+        "Speaker1": "Nehor",
+        "Speaker2": "Gideon",
+        "Verse": "Alma 1:7",
+        "Idea": "He began to contend with him sharply, that he might lead away the people of the church.",
+        "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/1/?lang=eng&id=7#p7"
+    },
+    {
         "Source": 39,
         "Target": 80,
         "Weight": 1,
         "Speaker1": "Gideon",
         "Speaker2": "Nehor",
         "Verse": "Alma 1:7",
-        "Idea": "He began to contend with him sharply, that he might lead away the people of the church",
+        "Idea": "He began to contend with him sharply, that he might lead away the people of the church; but the man withstood him, admonishing him with the words of God.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/1/?lang=eng&id=7#p7"
     },
     {
@@ -2923,7 +2943,7 @@
         "Speaker1": "Godhead",
         "Speaker2": "Aaron",
         "Verse": "Alma 17:11",
-        "Idea": "God asks the sons of Mosiah to preach among the Lamanites",
+        "Idea": "God asks the sons of Mosiah to preach among the Lamanites.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/17/?lang=eng&id=11#p11"
     },
     {
@@ -2933,7 +2953,7 @@
         "Speaker1": "Godhead",
         "Speaker2": "Abinadi",
         "Verse": "Mosiah 11:20",
-        "Idea": "God commands Abinadi to preach to King Noah's people",
+        "Idea": "God commands Abinadi to preach to King Noah's people.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/11/?lang=eng&id=20#p20"
     },
     {
@@ -2943,7 +2963,7 @@
         "Speaker1": "Godhead",
         "Speaker2": "Abraham",
         "Verse": "1 Nephi 15:18",
-        "Idea": "God spoke to Abraham and said his posterity will be blessed",
+        "Idea": "God spoke to Abraham and said his posterity would be blessed.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/15/?lang=eng&id=18#p18"
     },
     {
@@ -2953,8 +2973,18 @@
         "Speaker1": "Godhead",
         "Speaker2": "Adam",
         "Verse": "2 Nephi 2:16",
-        "Idea": "God gives Adam freedom to act",
+        "Idea": "God gives Adam freedom to act.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/2-ne/2/?lang=eng&id=16#p16"
+    },
+    {
+        "Source": 5,
+        "Target": 40,
+        "Weight": 1,
+        "Speaker1": "Ahaz",
+        "Speaker2": "Godhead",
+        "Verse": "2 Nephi 17:12",
+        "Idea": "But Ahaz said: I will not ask, neither will I tempt the Lord.",
+        "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/2-ne/17/?lang=eng&id=12#p12"
     },
     {
         "Source": 40,
@@ -2962,9 +2992,9 @@
         "Weight": 1,
         "Speaker1": "Godhead",
         "Speaker2": "Ahaz",
-        "Verse": "2 Nephi 17:12",
-        "Idea": "I will not ask, neither will I tempt the Lord",
-        "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/2-ne/17/?lang=eng&id=12#p12"
+        "Verse": "2 Nephi 17:10-11",
+        "Idea": "Moreover, the Lord spake again unto Ahaz, saying: Ask thee a sign of the Lord thy God; ask it either in the depths, or in the heights above.",
+        "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/2-ne/17/?lang=eng&id=10#p10"
     },
     {
         "Source": 40,
@@ -2973,7 +3003,7 @@
         "Speaker1": "Godhead",
         "Speaker2": "Alma",
         "Verse": "Mosiah 27:14",
-        "Idea": "The Lord hath heard the prayers of his people, and also the prayers of his servant, Alma...for he has prayed with much faith concerning thee that thou mightest be brough to the knowledge of the truth",
+        "Idea": "The Lord hath heard the prayers of his people, and also the prayers of his servant, Alma...for he has prayed with much faith concerning thee that thou mightest be brough to the knowledge of the truth. ",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/27/?lang=eng&id=14#p14"
     },
     {
@@ -2983,7 +3013,7 @@
         "Speaker1": "Godhead",
         "Speaker2": "Alma the Younger",
         "Verse": "Alma 5:51",
-        "Idea": "God tells Alma to tell his people to repent",
+        "Idea": "God tells Alma to tell his people to repent.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/5/?lang=eng&id=51#p51"
     },
     {
@@ -2993,7 +3023,7 @@
         "Speaker1": "Godhead",
         "Speaker2": "Ammaron",
         "Verse": "4 Nephi 1:48",
-        "Idea": "The Holy Ghost tells Ammaron to hide up the plates",
+        "Idea": "The Holy Ghost tells Ammaron to hide up the plates.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/4-ne/1/?lang=eng&id=48#p48"
     },
     {
@@ -3003,17 +3033,17 @@
         "Speaker1": "Godhead",
         "Speaker2": "Ammon Son of Mosiah",
         "Verse": "Alma 17:11",
-        "Idea": "God asks the sons of Mosiah to preach among the Lamanites",
+        "Idea": "God asks the sons of Mosiah to preach among the Lamanites.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/17/?lang=eng&id=11#p11"
     },
     {
-        "Source": 40,
-        "Target": 21,
+        "Source": 21,
+        "Target": 40,
         "Weight": 1,
-        "Speaker1": "Godhead",
-        "Speaker2": "Brother of Jared",
+        "Speaker1": "Brother of Jared",
+        "Speaker2": "Godhead",
         "Verse": "Ether 1:35",
-        "Idea": "The Brother of Jared prays so his and his family's language is not confounded",
+        "Idea": "The Brother of Jared prays that his and his family's language will not be confounded.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/ether/1/?lang=eng&id=35#p35"
     },
     {
@@ -3023,17 +3053,17 @@
         "Speaker1": "Godhead",
         "Speaker2": "Brothers of Nephi",
         "Verse": "1 Nephi 16:39",
-        "Idea": "God speaks to the brothers of Nephi",
+        "Idea": "The voice of the Lord came and did speak many words unto them, and did chasten them exceedingly;",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/16/?lang=eng&id=39#p39"
     },
     {
-        "Source": 40,
-        "Target": 23,
+        "Source": 23,
+        "Target": 40,
         "Weight": 1,
-        "Speaker1": "Godhead",
-        "Speaker2": "Captain Moroni",
+        "Speaker1": "Captain Moroni",
+        "Speaker2": "Godhead",
         "Verse": "Alma 46:13",
-        "Idea": "Captain Moroni prays to God and asks that his people will gain liberty ",
+        "Idea": "Captain Moroni prays to God for the liberty of his people.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/46/?lang=eng&id=13#p13"
     },
     {
@@ -3042,9 +3072,9 @@
         "Weight": 1,
         "Speaker1": "Godhead",
         "Speaker2": "Christ in America",
-        "Verse": "3 Nephi 16:12",
-        "Idea": "Christ says he will tell God to suffer his people and keep the promises he made with him",
-        "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/16/?lang=eng&id=12#p12"
+        "Verse": "3 Nephi 16:10-11",
+        "Idea": "God tells Christ to tell the people that he will remember his covenant with them.",
+        "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/16/?lang=eng&id=10#p10"
     },
     {
         "Source": 40,
@@ -3053,17 +3083,17 @@
         "Speaker1": "Godhead",
         "Speaker2": "Daughters of Ishmael",
         "Verse": "1 Nephi 17:12",
-        "Idea": "God reassures Lehi's and Ishmael's families that He will provide",
+        "Idea": "God reassures Lehi's and Ishmael's families that He will provide.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/17/?lang=eng&id=12#p12"
     },
     {
-        "Source": 40,
-        "Target": 32,
+        "Source": 32,
+        "Target": 40,
         "Weight": 1,
-        "Speaker1": "Godhead",
-        "Speaker2": "Enos",
+        "Speaker1": "Enos",
+        "Speaker2": "Godhead",
         "Verse": "Enos 1:4",
-        "Idea": "I kneeled down before my Maker, and I cried unto him in mighty prayer and supplication for mine own soul",
+        "Idea": "I kneeled down before my Maker, and I cried unto him in mighty prayer and supplication for mine own soul.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/enos/1/?lang=eng&id=4#p4"
     },
     {
@@ -3073,17 +3103,17 @@
         "Speaker1": "Godhead",
         "Speaker2": "Ether",
         "Verse": "Ether 12:2",
-        "Idea": "The spirit of the lord fills Ether, impelling him to prophecy",
+        "Idea": "The spirit of the Lord fills Ether, impelling him to prophesy.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/ether/12/?lang=eng&id=2#p2"
     },
     {
-        "Source": 40,
-        "Target": 35,
+        "Source": 35,
+        "Target": 40,
         "Weight": 1,
-        "Speaker1": "Godhead",
-        "Speaker2": "Father of Lamoni",
+        "Speaker1": "Father of Lamoni",
+        "Speaker2": "Godhead",
         "Verse": "Alma 22:18",
-        "Idea": "King Lamoni's father prays to God and repents",
+        "Idea": "King Lamoni's father prays to God and repents.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/22/?lang=eng&id=18#p18"
     },
     {
@@ -3093,17 +3123,17 @@
         "Speaker1": "Godhead",
         "Speaker2": "Himni",
         "Verse": "Alma 17:11",
-        "Idea": "God asks the sons of Mosiah to preach among the Lamanites",
+        "Idea": "God asks the sons of Mosiah to preach among the Lamanites.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/17/?lang=eng&id=11#p11"
     },
     {
-        "Source": 40,
-        "Target": 47,
+        "Source": 47,
+        "Target": 40,
         "Weight": 1,
-        "Speaker1": "Godhead",
-        "Speaker2": "Isaiah",
-        "Verse": "2 Nephi 17:3",
-        "Idea": "Isaiah answers God saying \"Send me\"",
+        "Speaker1": "Isaiah",
+        "Speaker2": "Godhead",
+        "Verse": "2 Nephi 16:8",
+        "Idea": "Isaiah answers God saying \"Send me.\"",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/2-ne/17/?lang=eng&id=3#p3"
     },
     {
@@ -3113,7 +3143,7 @@
         "Speaker1": "Godhead",
         "Speaker2": "Jacob",
         "Verse": "Jacob 2:9",
-        "Idea": "Jacob recieves commandments from God",
+        "Idea": "Jacob receives commandments from God.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/jacob/2/?lang=eng&id=9#p9"
     },
     {
@@ -3123,47 +3153,57 @@
         "Speaker1": "Godhead",
         "Speaker2": "Joseph in Egypt",
         "Verse": "2 Nephi 3:7",
-        "Idea": "Lehi tells about Joseph's prophecy",
+        "Idea": "Lehi tells what the Lord said to Joseph in Egypt.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/2-ne/3/?lang=eng&id=7#p7"
     },
     {
-        "Source": 40,
-        "Target": 66,
+        "Source": 66,
+        "Target": 40,
         "Weight": 1,
-        "Speaker1": "Godhead",
-        "Speaker2": "Lamoni",
+        "Speaker1": "Lamoni",
+        "Speaker2": "Godhead",
         "Verse": "Alma 18:41",
         "Idea": "And he began to cry unto the Lord, saying: O Lord, have mercy; according to thy abundant mercy which thou hast had upon the people of Nephi, have upon me, and my people.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/18/?lang=eng&id=41#p41"
     },
     {
-        "Source": 40,
-        "Target": 67,
+        "Source": 67,
+        "Target": 40,
         "Weight": 1,
-        "Speaker1": "Godhead",
-        "Speaker2": "Lehi",
+        "Speaker1": "Lehi",
+        "Speaker2": "Godhead",
         "Verse": "1 Nephi 1:5",
-        "Idea": "As he went forth prayed unto the Lord, yea, even with all his heart, in behalf of his people",
+        "Idea": "Wherefore it came to pass that my father, Lehi, as he went forth prayed unto the Lord, yea, even with all his heart, in behalf of his people.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/1/?lang=eng&id=5#p5"
     },
     {
-        "Source": 40,
-        "Target": 68,
+        "Source": 82,
+        "Target": 40,
         "Weight": 1,
-        "Speaker1": "Godhead",
-        "Speaker2": "Lehi Son of Helaman",
+        "Speaker1": "Nephi Son of Helaman",
+        "Speaker2": "Godhead",
         "Verse": "Helaman 5:36",
-        "Idea": "Nephi, son of Helaman, and Lehi, son of Helaman, pray to God ",
+        "Idea": "Nephi, son of Helaman, and Lehi, son of Helaman, pray to God.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/hel/5/?lang=eng&id=36#p36"
     },
     {
-        "Source": 40,
-        "Target": 72,
+        "Source": 68,
+        "Target": 40,
         "Weight": 1,
-        "Speaker1": "Godhead",
-        "Speaker2": "Limhi",
+        "Speaker1": "Lehi Son of Helaman",
+        "Speaker2": "Godhead",
+        "Verse": "Helaman 5:36",
+        "Idea": "Nephi, son of Helaman, and Lehi, son of Helaman, pray to God.",
+        "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/hel/5/?lang=eng&id=36#p36"
+    },
+    {
+        "Source": 72,
+        "Target": 40,
+        "Weight": 1,
+        "Speaker1": "Limhi",
+        "Speaker2": "Godhead",
         "Verse": "Mosiah 8:19",
-        "Idea": "King Limhi gives thanks to God for the things Ammon taught",
+        "Idea": "King Limhi gives thanks to God for the things Ammon taught.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/8/?lang=eng&id=19#p19"
     },
     {
@@ -3173,27 +3213,27 @@
         "Speaker1": "Godhead",
         "Speaker2": "Malachi",
         "Verse": "3 Nephi 24:10",
-        "Idea": "God tells Malachi that if the people give their tithes they will be blessed",
+        "Idea": "God tells Malachi that if the people pay their tithes, they will be blessed.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/24/?lang=eng&id=10#p10"
     },
     {
-        "Source": 40,
-        "Target": 74,
+        "Source": 74,
+        "Target": 40,
         "Weight": 1,
-        "Speaker1": "Godhead",
-        "Speaker2": "Mormon",
+        "Speaker1": "Mormon",
+        "Speaker2": "Godhead",
         "Verse": "Words of Mormon 1:8",
-        "Idea": "And my prayer to God is concerning my brethren, that they may once again come to the knowledge of God, yea, the redemption of Christ; that they may once again be a delightsome people",
+        "Idea": "And my prayer to God is concerning my brethren, that they may once again come to the knowledge of God, yea, the redemption of Christ; that they may once again be a delightsome people.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/w-of-m/1/?lang=eng&id=8#p8"
     },
     {
-        "Source": 40,
-        "Target": 75,
+        "Source": 75,
+        "Target": 40,
         "Weight": 1,
-        "Speaker1": "Godhead",
-        "Speaker2": "Moroni",
+        "Speaker1": "Moroni",
+        "Speaker2": "Godhead",
         "Verse": "Mormon 9:37",
-        "Idea": "Moroni prays that God will answer the prayers of his brethren",
+        "Idea": "Moroni prays that God will answer the prayers of his brethren.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/morm/9/?lang=eng&id=37#p37"
     },
     {
@@ -3203,7 +3243,7 @@
         "Speaker1": "Godhead",
         "Speaker2": "Moses",
         "Verse": "1 Nephi 17:30",
-        "Idea": "Nephi explains to his brothers that God will help them as he did Moses",
+        "Idea": "Nephi explains to his brothers that God will help them as he did Moses.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/17/?lang=eng&id=30#p30"
     },
     {
@@ -3213,7 +3253,7 @@
         "Speaker1": "Godhead",
         "Speaker2": "Mosiah",
         "Verse": "Mosiah 28:7",
-        "Idea": "The Lord tells Mosiah to let his sons preach to the Lamanites and He will deliver them",
+        "Idea": "The Lord tells Mosiah to let his sons preach to the Lamanites and He will deliver them.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/28/?lang=eng&id=7#p7"
     },
     {
@@ -3223,8 +3263,18 @@
         "Speaker1": "Godhead",
         "Speaker2": "Mosiah Father of Benjamin",
         "Verse": "Omni 1:12",
-        "Idea": "Amaleki recounts the story of Mosiah ",
+        "Idea": "Amaleki recounts the story of Mosiah, who was warned by the Lord to flee out of the land.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/omni/1/?lang=eng&id=12#p12"
+    },
+    {
+        "Source": 81,
+        "Target": 40,
+        "Weight": 1,
+        "Speaker1": "Nephi",
+        "Speaker2": "Godhead",
+        "Verse": "1 Nephi 2:16",
+        "Idea": "Nephi cries unto the Lord, who visits him and softens his heart.",
+        "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/2/?lang=eng&id=16#p16"
     },
     {
         "Source": 40,
@@ -3233,7 +3283,7 @@
         "Speaker1": "Godhead",
         "Speaker2": "Nephi",
         "Verse": "1 Nephi 2:16",
-        "Idea": "Nephi cries unto the Lord and he visits him and softens his heart",
+        "Idea": "Nephi cries unto the Lord, who visits him and softens his heart.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/2/?lang=eng&id=16#p16"
     },
     {
@@ -3243,7 +3293,7 @@
         "Speaker1": "Godhead",
         "Speaker2": "Nephi Son of Helaman",
         "Verse": "Helaman 10:7",
-        "Idea": "God tells Nephi, son of Helaman, that he has the authority to seal things on earth for heaven ",
+        "Idea": "God tells Nephi, son of Helaman, that he has the authority to seal things on earth for heaven.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/hel/10/?lang=eng&id=7#p7"
     },
     {
@@ -3253,7 +3303,7 @@
         "Speaker1": "Godhead",
         "Speaker2": "Nephi Son of Nephi Son of Helaman",
         "Verse": "3 Nephi 1:13",
-        "Idea": "God tells Nephi, son of Nephi Sr., that He will fulfill his promises",
+        "Idea": "God tells Nephi son of Nephi that He will fulfill his promises.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/1/?lang=eng&id=13#p13"
     },
     {
@@ -3263,7 +3313,7 @@
         "Speaker1": "Godhead",
         "Speaker2": "Omer",
         "Verse": "Ether 9:3",
-        "Idea": "The Lord warns Omer in a dream of a plot on his life",
+        "Idea": "The Lord warns Omer in a dream of a plot on his life.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/ether/9/?lang=eng&id=3#p3"
     },
     {
@@ -3273,7 +3323,7 @@
         "Speaker1": "Godhead",
         "Speaker2": "Omner",
         "Verse": "Alma 17:11",
-        "Idea": "God asks the sons of Mosiah to preach among the Lamanites",
+        "Idea": "God asks the sons of Mosiah to preach among the Lamanites.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/17/?lang=eng&id=11#p11"
     },
     {
@@ -3283,27 +3333,27 @@
         "Speaker1": "Godhead",
         "Speaker2": "Samuel the Lamanite",
         "Verse": "Helaman 14:9",
-        "Idea": "God tells Samuel the Lamanite to preach to the Nephites",
+        "Idea": "God tells Samuel the Lamanite to preach to the Nephites.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/hel/14/?lang=eng&id=9#p9"
     },
     {
-        "Source": 40,
-        "Target": 91,
+        "Source": 91,
+        "Target": 40,
         "Weight": 1,
-        "Speaker1": "Godhead",
-        "Speaker2": "Sariah",
+        "Speaker1": "Sariah",
+        "Speaker2": "Godhead",
         "Verse": "1 Nephi 5:9",
-        "Idea": "Lehi and his family gives thanks to God",
+        "Idea": "Lehi and his family give thanks to God.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/5/?lang=eng&id=9#p9"
     },
     {
-        "Source": 40,
-        "Target": 96,
+        "Source": 96,
+        "Target": 40,
         "Weight": 1,
-        "Speaker1": "Godhead",
-        "Speaker2": "Servants of Lamoni",
+        "Speaker1": "Servants of Lamoni",
+        "Speaker2": "Godhead",
         "Verse": "Alma 19:15",
-        "Idea": "The servants of Lamoni cried unto God",
+        "Idea": "The servants of Lamoni cried unto God.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/19/?lang=eng&id=15#p15"
     },
     {
@@ -3313,15 +3363,15 @@
         "Speaker1": "Godhead",
         "Speaker2": "Sons of Ishmael",
         "Verse": "1 Nephi 16:39",
-        "Idea": "God speaks to the sons of Ishmael ",
+        "Idea": "God speaks to the sons of Ishmael.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/16/?lang=eng&id=39#p39"
     },
     {
-        "Source": 40,
-        "Target": 105,
+        "Source": 105,
+        "Target": 40,
         "Weight": 1,
-        "Speaker1": "Godhead",
-        "Speaker2": "Twelve Disciples",
+        "Speaker1": "Twelve Disciples",
+        "Speaker2": "Godhead",
         "Verse": "3 Nephi 19:9",
         "Idea": "And they did pray for that which they most desired; and they desired that the Holy Ghost should be given unto them.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/3-ne/19/?lang=eng&id=9#p9"
@@ -3333,45 +3383,45 @@
         "Speaker1": "Godhead",
         "Speaker2": "Wife of Ishmael",
         "Verse": "1 Nephi 17:12",
-        "Idea": "God reassures Lehi's and Ishmael's families that He will provide",
+        "Idea": "God reassures Lehi's and Ishmael's families that He will provide.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/17/?lang=eng&id=12#p12"
     },
     {
-        "Source": 40,
-        "Target": 107,
+        "Source": 107,
+        "Target": 40,
         "Weight": 1,
-        "Speaker1": "Godhead",
-        "Speaker2": "Wife of Lamoni",
+        "Speaker1": "Wife of Lamoni",
+        "Speaker2": "Godhead",
         "Verse": "Alma 19:29",
-        "Idea": "Lamoni's wife testifies of Jesus Christ",
+        "Idea": "Lamoni's wife asks God to have mercy on her people.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/19/?lang=eng&id=29#p29"
     },
     {
-        "Source": 40,
-        "Target": 109,
+        "Source": 109,
+        "Target": 40,
         "Weight": 1,
-        "Speaker1": "Godhead",
-        "Speaker2": "Zeniff",
+        "Speaker1": "Zeniff",
+        "Speaker2": "Godhead",
         "Verse": "Mosiah 9:17",
-        "Idea": "I and my people did cry mightily to the Lord that he would deliver us out of the hands of our enemies",
+        "Idea": "I and my people did cry mightily to the Lord that he would deliver us out of the hands of our enemies.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/9/?lang=eng&id=17#p17"
     },
     {
-        "Source": 40,
-        "Target": 110,
+        "Source": 110,
+        "Target": 40,
         "Weight": 1,
-        "Speaker1": "Godhead",
-        "Speaker2": "Zenock",
+        "Speaker1": "Zenock",
+        "Speaker2": "Godhead",
         "Verse": "Alma 33:16",
         "Idea": "For behold, he said: Thou art angry, O Lord, with this people, because they will not understand thy mercies which thou hast bestowed upon them because of thy Son.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/33/?lang=eng&id=16#p16"
     },
     {
-        "Source": 40,
-        "Target": 111,
+        "Source": 111,
+        "Target": 40,
         "Weight": 1,
-        "Speaker1": "Godhead",
-        "Speaker2": "Zenos",
+        "Speaker1": "Zenos",
+        "Speaker2": "Godhead",
         "Verse": "Alma 33:7",
         "Idea": "And when I did turn unto my closet, O Lord, and prayed unto thee, thou didst hear me.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/33/?lang=eng&id=7#p7"
@@ -3383,25 +3433,25 @@
         "Speaker1": "Helaman",
         "Speaker2": "Ammoron",
         "Verse": "Alma 57:2",
-        "Idea": "Helaman tells Ammoron that his army will take the city of Antiparah by force ",
+        "Idea": "Helaman tells Ammoron that his army will take the city of Antiparah by force.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/57/?lang=eng&id=2#p2"
     },
     {
-        "Source": 42,
-        "Target": 19,
+        "Source": 19,
+        "Target": 42,
         "Weight": 1,
-        "Speaker1": "Helaman",
-        "Speaker2": "Antipus",
+        "Speaker1": "Antipus",
+        "Speaker2": "Helaman",
         "Verse": "Alma 56:30",
         "Idea": "Now when we saw that the Lamanites began to grow uneasy on this wise, we were desirous to bring a stratagem into effect upon them; therefore Antipus ordered that I should march forth with my little sons to a neighboring city, as if we were carrying provisions to a neighboring city.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/56/?lang=eng&id=30#p30"
     },
     {
-        "Source": 42,
-        "Target": 36,
+        "Source": 36,
+        "Target": 42,
         "Weight": 1,
-        "Speaker1": "Helaman",
-        "Speaker2": "Gid",
+        "Speaker1": "Gid",
+        "Speaker2": "Helaman",
         "Verse": "Alma 57:30",
         "Idea": "And now, these are the words which Gid said unto me: Behold, we did start to go down to the land of Zarahemla with our prisoners. And it came to pass that we did meet the spies of our armies, who had been sent out to watch the camp of the Lamanites.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/57/?lang=eng&id=30#p30"
@@ -3423,7 +3473,7 @@
         "Speaker1": "Helaman Son of Helaman",
         "Speaker2": "Lehi Son of Helaman",
         "Verse": "Helaman 5:12",
-        "Idea": "Helaman encourages his sons to believe in Jesus Christ",
+        "Idea": "Helaman encourages his sons to believe in Jesus Christ.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/hel/5/?lang=eng&id=12#p12"
     },
     {
@@ -3433,18 +3483,8 @@
         "Speaker1": "Helaman Son of Helaman",
         "Speaker2": "Nephi Son of Helaman",
         "Verse": "Helaman 5:12",
-        "Idea": "Helaman encourages his sons to believe in Jesus Christ",
+        "Idea": "Helaman encourages his sons to believe in Jesus Christ.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/hel/5/?lang=eng&id=12#p12"
-    },
-    {
-        "Source": 46,
-        "Target": 17,
-        "Weight": 1,
-        "Speaker1": "Himni",
-        "Speaker2": "Anti-Nephi-Lehi",
-        "Verse": "Alma 27:8",
-        "Idea": "Ammon converses with the king to go down to the Nephites",
-        "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/27/?lang=eng&id=8#p8"
     },
     {
         "Source": 46,
@@ -3453,7 +3493,7 @@
         "Speaker1": "Himni",
         "Speaker2": "Chief Judge",
         "Verse": "Alma 27:20",
-        "Idea": "Ammon and his brethren tell the Chief Judge everything that happened to them in the Land of Nephi",
+        "Idea": "Ammon and his brethren tell the Chief Judge everything that happened to them in the Land of Nephi.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/27/?lang=eng&id=20#p20"
     },
     {
@@ -3463,27 +3503,27 @@
         "Speaker1": "Jacob",
         "Speaker2": "Enos",
         "Verse": "Jacob 7:27",
-        "Idea": "Jacob gives Enos the plates",
+        "Idea": "Jacob gives Enos the plates.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/jacob/7/?lang=eng&id=27#p27"
     },
     {
-        "Source": 49,
-        "Target": 97,
+        "Source": 97,
+        "Target": 49,
         "Weight": 1,
-        "Speaker1": "Jacob",
-        "Speaker2": "Sherem",
+        "Speaker1": "Sherem",
+        "Speaker2": "Jacob",
         "Verse": "Jacob 7:7",
-        "Idea": "I, Sherem, declare unto you that this is blasphemy; for no man knoweth for such things; for he cannot tell of things to come",
+        "Idea": "I, Sherem, declare unto you that this is blasphemy; for no man knoweth of such things; for he cannot tell of things to come.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/jacob/7/?lang=eng&id=7#p7"
     },
     {
-        "Source": 50,
-        "Target": 103,
+        "Source": 103,
+        "Target": 50,
         "Weight": 1,
-        "Speaker1": "Jacob the Zoramite",
-        "Speaker2": "Teancum",
+        "Speaker1": "Teancum",
+        "Speaker2": "Jacob the Zoramite",
         "Verse": "Alma 52:20",
-        "Idea": "Captain Moroni and Teancum asks Jacob the Zoramite, the leader of the Lamanite army, to meet them with his army",
+        "Idea": "Captain Moroni and Teancum ask Jacob the Zoramite, the leader of the Lamanite army, to meet them with his army.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/52/?lang=eng&id=20#p20"
     },
     {
@@ -3493,17 +3533,17 @@
         "Speaker1": "Jared Son of Omer",
         "Speaker2": "Akish",
         "Verse": "Ether 8:12",
-        "Idea": "Jared promises his daughter to Akish as part of a murderous plot",
+        "Idea": "Jared promises his daughter to Akish as part of a murderous plot.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/ether/8/?lang=eng&id=12#p12"
     },
     {
-        "Source": 52,
-        "Target": 30,
+        "Source": 30,
+        "Target": 52,
         "Weight": 1,
-        "Speaker1": "Jared Son of Omer",
-        "Speaker2": "Daughter of Jared Son of Omer",
+        "Speaker1": "Daughter of Jared Son of Omer",
+        "Speaker2": "Jared Son of Omer",
         "Verse": "Ether 8:9",
-        "Idea": "Jared's daughter hatches a plot to murder the king",
+        "Idea": "Jared's daughter hatches a plot to murder the king.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/ether/8/?lang=eng&id=9#p9"
     },
     {
@@ -3513,15 +3553,15 @@
         "Speaker1": "Jarom",
         "Speaker2": "Omni",
         "Verse": "Omni 1:1",
-        "Idea": "I, Omni, being commanded by my father, Jarom, that I should write somewhat upon these plates, to preserve our genealogy",
+        "Idea": "I, Omni, being commanded by my father, Jarom, that I should write somewhat upon these plates, to preserve our genealogy...",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/omni/1/?lang=eng&id=1#p1"
     },
     {
-        "Source": 57,
-        "Target": 1,
+        "Source": 1,
+        "Target": 57,
         "Weight": 1,
-        "Speaker1": "King Noah",
-        "Speaker2": "Abinadi",
+        "Speaker1": "Abinadi",
+        "Speaker2": "King Noah",
         "Verse": "Mosiah 17:10",
         "Idea": "Yea, and I will suffer even until death, and I will not recall my words, and they shall stand as a testimony against you",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/17/?lang=eng&id=10#p10"
@@ -3533,7 +3573,7 @@
         "Speaker1": "King Noah",
         "Speaker2": "Gideon",
         "Verse": "Mosiah 19:7",
-        "Idea": "King Noah asks Gideon to spare his life",
+        "Idea": "King Noah asks Gideon to spare his life.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/19/?lang=eng&id=7#p7"
     },
     {
@@ -3543,25 +3583,25 @@
         "Speaker1": "King Noah",
         "Speaker2": "Priests of Noah",
         "Verse": "Mosiah 13:1",
-        "Idea": "Away with this fellow, and slay him; for what have we to do with him, for he is mad",
+        "Idea": "Away with this fellow, and slay him; for what have we to do with him, for he is mad.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/13/?lang=eng&id=1#p1"
     },
     {
-        "Source": 59,
-        "Target": 94,
+        "Source": 94,
+        "Target": 59,
         "Weight": 1,
-        "Speaker1": "Kishkumen",
-        "Speaker2": "Servant of Helaman",
+        "Speaker1": "Servant of Helaman",
+        "Speaker2": "Kishkumen",
         "Verse": "Helaman 2:8",
-        "Idea": "The servant of Helaman asks Kishkumen to go to the judgement seat.",
+        "Idea": "The servant of Helaman asks Kishkumen to go to the judgment-seat.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/hel/2/?lang=eng&id=8#p8"
     },
     {
-        "Source": 60,
-        "Target": 38,
+        "Source": 38,
+        "Target": 60,
         "Weight": 1,
-        "Speaker1": "Korihor",
-        "Speaker2": "Giddonah",
+        "Speaker1": "Giddonah",
+        "Speaker2": "Korihor",
         "Verse": "Alma 30:22",
         "Idea": "And it came to pass that the high priest said unto him: Why do ye go about perverting the ways of the Lord? Why do ye teach this people that there shall be no Christ, to interrupt their rejoicings? Why do ye speak against all the prophecies of the holy prophets?",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/30/?lang=eng&id=22#p22"
@@ -3573,7 +3613,7 @@
         "Speaker1": "Laman",
         "Speaker2": "Sam",
         "Verse": "1 Nephi 3:28",
-        "Idea": "Laman and Lemuel beat Nephi and Sam with a rod",
+        "Idea": "Laman and Lemuel beat Nephi and Sam with a rod.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/3/?lang=eng&id=28#p28"
     },
     {
@@ -3583,17 +3623,17 @@
         "Speaker1": "Lamoni",
         "Speaker2": "Servants of Lamoni",
         "Verse": "Alma 18:4",
-        "Idea": "Lamoni testifies of the Great Spirit and says he will spare the lives of Ammon and his servants",
+        "Idea": "Lamoni testifies of the Great Spirit and says he will spare the lives of Ammon and his servants.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/18/?lang=eng&id=4#p4"
     },
     {
-        "Source": 67,
-        "Target": 16,
+        "Source": 16,
+        "Target": 67,
         "Weight": 1,
-        "Speaker1": "Lehi",
-        "Speaker2": "Angel",
+        "Speaker1": "Angel",
+        "Speaker2": "Lehi",
         "Verse": "1 Nephi 8:6",
-        "Idea": "An angel appears to Lehi and tells him to follow him",
+        "Idea": "An angel appears to Lehi and tells him to follow him.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/8/?lang=eng&id=6#p6"
     },
     {
@@ -3603,7 +3643,7 @@
         "Speaker1": "Lehi",
         "Speaker2": "Brothers of Nephi",
         "Verse": "1 Nephi 5:19",
-        "Idea": "Lehi tells his family that the plates will never perish and will help future generations",
+        "Idea": "Lehi tells his family that the plates will never perish and will help future generations.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/5/?lang=eng&id=19#p19"
     },
     {
@@ -3613,7 +3653,7 @@
         "Speaker1": "Lehi",
         "Speaker2": "Children of Laman",
         "Verse": "2 Nephi 4:4",
-        "Idea": "Lehi promises Laman's children that if they keep the commandments, they will be blessed",
+        "Idea": "Lehi promises Laman's children that if they keep the commandments, they will be blessed.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/2-ne/4/?lang=eng&id=4#p4"
     },
     {
@@ -3623,7 +3663,7 @@
         "Speaker1": "Lehi",
         "Speaker2": "Daughters of Ishmael",
         "Verse": "2 Nephi 4:10",
-        "Idea": "Lehi speaks to Ishmael's family",
+        "Idea": "Lehi speaks to Ishmael's family.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/2-ne/4/?lang=eng&id=10#p10"
     },
     {
@@ -3633,7 +3673,7 @@
         "Speaker1": "Lehi",
         "Speaker2": "Ishmael",
         "Verse": "1 Nephi 8:3",
-        "Idea": "Lehi explains to his family that he had a vision",
+        "Idea": "Lehi explains to his family that he had a vision.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/8/?lang=eng&id=3#p3"
     },
     {
@@ -3643,7 +3683,7 @@
         "Speaker1": "Lehi",
         "Speaker2": "Jacob",
         "Verse": "2 Nephi 2:3",
-        "Idea": "Lehi tells Jacob that if he is obedient, he will be blessed",
+        "Idea": "Lehi tells Jacob that if he is obedient, he will be blessed.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/2-ne/2/?lang=eng&id=3#p3"
     },
     {
@@ -3653,7 +3693,7 @@
         "Speaker1": "Lehi",
         "Speaker2": "Joseph",
         "Verse": "2 Nephi 3:5",
-        "Idea": "Lehi tells Joseph about his prophecies",
+        "Idea": "Lehi tells Joseph about his prophecies.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/2-ne/3/?lang=eng&id=5#p5"
     },
     {
@@ -3663,7 +3703,7 @@
         "Speaker1": "Lehi",
         "Speaker2": "Laman",
         "Verse": "1 Nephi 2:9",
-        "Idea": "Lehi tells Laman to be like the river continually running into righteousness",
+        "Idea": "Lehi tells Laman to be like the river, continually running into righteousness.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/2/?lang=eng&id=9#p9"
     },
     {
@@ -3673,17 +3713,17 @@
         "Speaker1": "Lehi",
         "Speaker2": "Lemuel",
         "Verse": "1 Nephi 2:10",
-        "Idea": "Lehi tells Lemuel to be like the valley firm and steadfast in keeping the commandments",
+        "Idea": "Lehi tells Lemuel to be like the valley, firm and steadfast in keeping the commandments.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/2/?lang=eng&id=10#p10"
     },
     {
-        "Source": 67,
-        "Target": 81,
+        "Source": 81,
+        "Target": 67,
         "Weight": 1,
-        "Speaker1": "Lehi",
-        "Speaker2": "Nephi",
+        "Speaker1": "Nephi",
+        "Speaker2": "Lehi",
         "Verse": "1 Nephi 3:7",
-        "Idea": "I will go and do the things which the Lord hath commanded, \ufffd",
+        "Idea": "I will go and do the things which the Lord hath commanded.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/3/?lang=eng&id=7#p7"
     },
     {
@@ -3693,17 +3733,17 @@
         "Speaker1": "Lehi",
         "Speaker2": "Sam",
         "Verse": "2 Nephi 4:11",
-        "Idea": "Lehi tells Sam he will be blessed",
+        "Idea": "Lehi tells Sam he will be blessed.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/2-ne/4/?lang=eng&id=11#p11"
     },
     {
-        "Source": 67,
-        "Target": 91,
+        "Source": 91,
+        "Target": 67,
         "Weight": 1,
-        "Speaker1": "Lehi",
-        "Speaker2": "Sariah",
+        "Speaker1": "Sariah",
+        "Speaker2": "Lehi",
         "Verse": "1 Nephi 5:8",
-        "Idea": "Now I know of a surety that the Lord hath commanded my husband to flee into the wilderness",
+        "Idea": "Now I know of a surety that the Lord hath commanded my husband to flee into the wilderness.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/5/?lang=eng&id=8#p8"
     },
     {
@@ -3713,7 +3753,7 @@
         "Speaker1": "Lehi",
         "Speaker2": "Sons and Daughters of Lemuel",
         "Verse": "2 Nephi 4:9",
-        "Idea": "Lehi promises Lemuel's children that if they keep the commandments, they will be blessed",
+        "Idea": "Lehi promises Lemuel's children that if they keep the commandments, they will be blessed.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/2-ne/4/?lang=eng&id=9#p9"
     },
     {
@@ -3723,7 +3763,7 @@
         "Speaker1": "Lehi",
         "Speaker2": "Sons of Ishmael",
         "Verse": "2 Nephi 4:10",
-        "Idea": "Lehi speaks to Ishmael's family",
+        "Idea": "Lehi speaks to Ishmael's family.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/2-ne/4/?lang=eng&id=10#p10"
     },
     {
@@ -3733,7 +3773,7 @@
         "Speaker1": "Lehi",
         "Speaker2": "Wife of Ishmael",
         "Verse": "2 Nephi 4:10",
-        "Idea": "Lehi speaks to Ishmael's family",
+        "Idea": "Lehi speaks to Ishmael's family.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/2-ne/4/?lang=eng&id=10#p10"
     },
     {
@@ -3743,7 +3783,7 @@
         "Speaker1": "Lehi",
         "Speaker2": "Zoram",
         "Verse": "2 Nephi 1:31",
-        "Idea": "Lehi encourages Zoram to keep the commandments",
+        "Idea": "Lehi encourages Zoram to keep the commandments.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/2-ne/1/?lang=eng&id=31#p31"
     },
     {
@@ -3753,7 +3793,7 @@
         "Speaker1": "Lemuel",
         "Speaker2": "Sam",
         "Verse": "1 Nephi 3:28",
-        "Idea": "Laman and Lemuel beat Nephi and Sam with a rod",
+        "Idea": "Laman and Lemuel beat Nephi and Sam with a rod.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/3/?lang=eng&id=28#p28"
     },
     {
@@ -3762,28 +3802,28 @@
         "Weight": 1,
         "Speaker1": "Limhi",
         "Speaker2": "Ammon the Mulekite",
-        "Verse": "Mosiah 7:3",
-        "Idea": "Ammon discovers the land of Lehi-Nephi",
-        "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/7/?lang=eng&id=3#p3"
+        "Verse": "Mosiah 7:10",
+        "Idea": "Limhi asks Ammon why he came near the walls of the city.",
+        "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/7/?lang=eng&id=10#p10"
     },
     {
-        "Source": 72,
-        "Target": 39,
+        "Source": 39,
+        "Target": 72,
         "Weight": 1,
-        "Speaker1": "Limhi",
-        "Speaker2": "Gideon",
-        "Verse": "Mosiah 20:17",
-        "Idea": "And now let us pacify the king... for it is better that we should be in bondage than that we shoudl lose our lives; therefore, let us put a stop to the shedding of so much blood",
-        "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/20/?lang=eng&id=17#p17"
+        "Speaker1": "Gideon",
+        "Speaker2": "Limhi",
+        "Verse": "Mosiah 20:22",
+        "Idea": "And now let us pacify the king... for it is better that we should be in bondage than that we should lose our lives; therefore, let us put a stop to the shedding of so much blood.",
+        "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/20/?lang=eng&id=22#p22"
     },
     {
-        "Source": 72,
-        "Target": 58,
+        "Source": 58,
+        "Target": 72,
         "Weight": 1,
-        "Speaker1": "Limhi",
-        "Speaker2": "King of the Lamanites",
+        "Speaker1": "King of the Lamanites",
+        "Speaker2": "Limhi",
         "Verse": "Mosiah 20:24",
-        "Idea": "Let us go forth to meet my people, without arms; and I swear unto you with an oath that my people shall not slay thy people",
+        "Idea": "Let us go forth to meet my people, without arms; and I swear unto you with an oath that my people shall not slay thy people.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/20/?lang=eng&id=24#p24"
     },
     {
@@ -3793,7 +3833,7 @@
         "Speaker1": "Mormon",
         "Speaker2": "Lamanite King",
         "Verse": "Mormon 6:2",
-        "Idea": "Mormon writes to the King of the Lamanites to coordinate a final battle",
+        "Idea": "Mormon writes to the King of the Lamanites to coordinate a final battle.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/morm/6/?lang=eng&id=2#p2"
     },
     {
@@ -3803,17 +3843,17 @@
         "Speaker1": "Mormon",
         "Speaker2": "Moroni",
         "Verse": "Moroni 9:22",
-        "Idea": "Mormon writes a final epistle to his son, Mormon",
+        "Idea": "Mormon writes a final epistle to his son, Moroni.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/moro/9/?lang=eng&id=22#p22"
     },
     {
-        "Source": 77,
-        "Target": 0,
+        "Source": 0,
+        "Target": 77,
         "Weight": 1,
-        "Speaker1": "Mosiah",
-        "Speaker2": "Aaron",
+        "Speaker1": "Aaron",
+        "Speaker2": "Mosiah",
         "Verse": "Mosiah 28:1",
-        "Idea": "The sons of Mosiah... returned to their father, the king, and desired of him that he would grant unto them that they might... go up to the land of Nephi that they might preach the things which they had heard",
+        "Idea": "The sons of Mosiah... returned to their father, the king, and desired of him that he would grant unto them that they might... go up to the land of Nephi that they might preach the things which they had heard.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/28/?lang=eng&id=1#p1"
     },
     {
@@ -3823,67 +3863,67 @@
         "Speaker1": "Mosiah",
         "Speaker2": "Alma",
         "Verse": "Mosiah 26:12",
-        "Idea": "Mosiah gives Alma the right to pass judgement on the people who are unrighteous",
+        "Idea": "Mosiah gives Alma the right to pass judgment on the people who are unrighteous.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/26/?lang=eng&id=12#p12"
     },
     {
-        "Source": 77,
-        "Target": 20,
+        "Source": 20,
+        "Target": 77,
         "Weight": 1,
-        "Speaker1": "Mosiah",
-        "Speaker2": "Benjamin",
+        "Speaker1": "Benjamin",
+        "Speaker2": "Mosiah",
         "Verse": "Mosiah 1:10",
-        "Idea": "King Benjamin chooses Mosiah to be king",
+        "Idea": "King Benjamin chooses Mosiah to be king.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/1/?lang=eng&id=10#p10"
     },
     {
-        "Source": 77,
-        "Target": 46,
+        "Source": 46,
+        "Target": 77,
         "Weight": 1,
-        "Speaker1": "Mosiah",
-        "Speaker2": "Himni",
+        "Speaker1": "Himni",
+        "Speaker2": "Mosiah",
         "Verse": "Mosiah 28:1",
-        "Idea": "The sons of Mosiah... returned to their father, the king, and desired of him that he would grant unto them that they might... go up to the land of Nephi that they might preach the things which they had heard",
+        "Idea": "The sons of Mosiah... returned to their father, the king, and desired of him that he would grant unto them that they might... go up to the land of Nephi that they might preach the things which they had heard.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/28/?lang=eng&id=1#p1"
     },
     {
-        "Source": 77,
-        "Target": 85,
+        "Source": 85,
+        "Target": 77,
         "Weight": 1,
-        "Speaker1": "Mosiah",
-        "Speaker2": "Omner",
+        "Speaker1": "Omner",
+        "Speaker2": "Mosiah",
         "Verse": "Mosiah 28:1",
-        "Idea": "The sons of Mosiah... returned to their father, the king, and desired of him that he would grant unto them that they might... go up to the land of Nephi that they might preach the things which they had heard",
+        "Idea": "The sons of Mosiah... returned to their father, the king, and desired of him that he would grant unto them that they might... go up to the land of Nephi that they might preach the things which they had heard.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/28/?lang=eng&id=1#p1"
     },
     {
         "Source": 79,
         "Target": 93,
         "Weight": 1,
-        "Speaker1": "Mother of Lamoni",
+        "Speaker1": "Queen of Father of Lamoni",
         "Speaker2": "Servant of Father of Lamoni",
         "Verse": "Alma 22:21",
         "Idea": "Now when the queen saw the fear of the servants she also began to fear exceedingly, lest there should some evil come upon her. And she commanded her servants that they should go and call the people, that they might slay Aaron and his brethren.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/22/?lang=eng&id=21#p21"
     },
     {
-        "Source": 81,
-        "Target": 16,
+        "Source": 16,
+        "Target": 81,
         "Weight": 1,
-        "Speaker1": "Nephi",
-        "Speaker2": "Angel",
+        "Speaker1": "Angel",
+        "Speaker2": "Nephi",
         "Verse": "1 Nephi 12:5",
-        "Idea": "An angel shows Nephi future events of the righteous and unrighteous",
+        "Idea": "An angel shows Nephi future events of the righteous and unrighteous.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/12/?lang=eng&id=5#p5"
     },
     {
-        "Source": 81,
-        "Target": 22,
+        "Source": 22,
+        "Target": 81,
         "Weight": 1,
-        "Speaker1": "Nephi",
-        "Speaker2": "Brothers of Nephi",
+        "Speaker1": "Brothers of Nephi",
+        "Speaker2": "Nephi",
         "Verse": "1 Nephi 18:10",
-        "Idea": "We will not that our younger brother shall be a ruler over us",
+        "Idea": "We will not that our younger brother shall be a ruler over us.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/18/?lang=eng&id=10#p10"
     },
     {
@@ -3893,7 +3933,7 @@
         "Speaker1": "Nephi",
         "Speaker2": "Ishmael",
         "Verse": "1 Nephi 7:4",
-        "Idea": "Nephi and his brothers tell Ishmael Lehi's revelation",
+        "Idea": "Nephi and his brothers tell Ishmael Lehi's revelation.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/7/?lang=eng&id=4#p4"
     },
     {
@@ -3903,37 +3943,37 @@
         "Speaker1": "Nephi",
         "Speaker2": "Jacob",
         "Verse": "Jacob 1:1 ",
-        "Idea": "Nephi gave me, Jacob, a commandment concerning the small plates, upon which these things are engraven",
+        "Idea": "Nephi gave me, Jacob, a commandment concerning the small plates, upon which these things are engraven.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/jacob/1/?lang=eng&id=1#p1"
     },
     {
-        "Source": 81,
+        "Source": 22,
         "Target": 61,
         "Weight": 1,
-        "Speaker1": "Nephi",
+        "Speaker1": "Brothers of Nephi",
         "Speaker2": "Laban",
         "Verse": "1 Nephi 3:24",
-        "Idea": "Brothers of Nephi offered Laban their precious possessions in exchange for the plates",
+        "Idea": "The brothers of Nephi offer Laban their precious possessions in exchange for the plates.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/3/?lang=eng&id=24#p24"
     },
     {
-        "Source": 81,
-        "Target": 63,
+        "Source": 63,
+        "Target": 81,
         "Weight": 1,
-        "Speaker1": "Nephi",
-        "Speaker2": "Laman",
+        "Speaker1": "Laman",
+        "Speaker2": "Nephi",
         "Verse": "1 Nephi 3:28",
-        "Idea": "Laman and Lemuel did speak many hard words unto us",
+        "Idea": "Laman and Lemuel did speak many hard words unto us.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/3/?lang=eng&id=28#p28"
     },
     {
-        "Source": 81,
-        "Target": 71,
+        "Source": 71,
+        "Target": 81,
         "Weight": 1,
-        "Speaker1": "Nephi",
-        "Speaker2": "Lemuel",
+        "Speaker1": "Lemuel",
+        "Speaker2": "Nephi",
         "Verse": "1 Nephi 3:28",
-        "Idea": "Laman and Lemuel did speak many hard words unto us",
+        "Idea": "Laman and Lemuel did speak many hard words unto us.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/3/?lang=eng&id=28#p28"
     },
     {
@@ -3943,38 +3983,28 @@
         "Speaker1": "Nephi",
         "Speaker2": "Sam",
         "Verse": "1 Nephi 2:17",
-        "Idea": "Nephi tells Sam of his revelation and Sam believes",
+        "Idea": "Nephi tells Sam of his revelation; Sam believes.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/2/?lang=eng&id=17#p17"
     },
     {
-        "Source": 81,
-        "Target": 91,
+        "Source": 91,
+        "Target": 81,
         "Weight": 1,
-        "Speaker1": "Nephi",
-        "Speaker2": "Sariah",
+        "Speaker1": "Sariah",
+        "Speaker2": "Nephi",
         "Verse": "1 Nephi 5:8",
-        "Idea": "Sariah testifies that Lehi is being led by God",
+        "Idea": "Sariah testifies that Lehi is being led by God.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/5/?lang=eng&id=8#p8"
     },
     {
-        "Source": 81,
-        "Target": 101,
+        "Source": 101,
+        "Target": 81,
         "Weight": 1,
-        "Speaker1": "Nephi",
-        "Speaker2": "Sons of Ishmael",
+        "Speaker1": "Sons of Ishmael",
+        "Speaker2": "Nephi",
         "Verse": "2 Nephi 4:14",
-        "Idea": "Laman, Lemuel, and the Sons of Ishmael are angry with Nephi",
+        "Idea": "Laman, Lemuel, and the Sons of Ishmael are angry with Nephi.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/2-ne/4/?lang=eng&id=14#p14"
-    },
-    {
-        "Source": 81,
-        "Target": 31,
-        "Weight": 1,
-        "Speaker1": "Nephi",
-        "Speaker2": "Daughters of Ishmael",
-        "Verse": "1 Nephi 18:10",
-        "Idea": "Nephi's brothers defy him",
-        "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/18/?lang=eng&id=10#p10"
     },
     {
         "Source": 81,
@@ -3983,18 +4013,8 @@
         "Speaker1": "Nephi",
         "Speaker2": "Zoram",
         "Verse": "1 Nephi 4:32",
-        "Idea": "Nephi promises Zoram that they will spare his life if they go with them into the wilderness",
+        "Idea": "Nephi promises Zoram that they will spare his life if he will go with them into the wilderness.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/4/?lang=eng&id=32#p32"
-    },
-    {
-        "Source": 85,
-        "Target": 17,
-        "Weight": 1,
-        "Speaker1": "Omner",
-        "Speaker2": "Anti-Nephi-Lehi",
-        "Verse": "Alma 27:8",
-        "Idea": "Ammon converses with the king to go down to the Nephites",
-        "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/27/?lang=eng&id=8#p8"
     },
     {
         "Source": 85,
@@ -4003,17 +4023,17 @@
         "Speaker1": "Omner",
         "Speaker2": "Chief Judge",
         "Verse": "Alma 27:20",
-        "Idea": "Ammon and his brethren tell the Chief Judge everything that happened to them in the Land of Nephi",
+        "Idea": "Ammon and his brethren tell the Chief Judge everything that happened to them in the Land of Nephi.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/alma/27/?lang=eng&id=20#p20"
     },
     {
-        "Source": 101,
-        "Target": 63,
+        "Source": 63,
+        "Target": 101,
         "Weight": 1,
-        "Speaker1": "Sons of Ishmael",
-        "Speaker2": "Laman",
+        "Speaker1": "Laman",
+        "Speaker2": "Sons of Ishmael",
         "Verse": "1 Nephi 16:38",
-        "Idea": "Laman and Lemuel complain about Lehi and Nephi to the sons of Ishmael",
+        "Idea": "Laman complains about Lehi and Nephi to the sons of Ishmael.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/1-ne/16/?lang=eng&id=38#p38"
     },
     {
@@ -4023,7 +4043,7 @@
         "Speaker1": "Zeniff",
         "Speaker2": "King Laman",
         "Verse": "Mosiah 9:6",
-        "Idea": "Zeniff gives an account of his people",
+        "Idea": "Zeniff speaks to King Laman and receives permission to possess the land of Lehi-Nephi.",
         "Link": "https://www.churchofjesuschrist.org/study/scriptures/bofm/mosiah/9/?lang=eng&id=6#p6"
     }
 ]}

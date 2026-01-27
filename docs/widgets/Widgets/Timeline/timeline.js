@@ -665,21 +665,21 @@ let tabs = document.querySelectorAll('.tab');
 
 tabs[0].addEventListener('click', function() {
     let eventPage = document.querySelector('#event-page');
-    eventPage.style.display = 'none';
+    eventPage.style.display = 'block';
 
     let comparePage = document.querySelector('#compare-page');
-    comparePage.style.display = 'block';
-    showList();
+    comparePage.style.display = 'none';
     tabs[0].classList.add('selected');
     tabs[1].classList.remove('selected');
 });
 
 tabs[1].addEventListener('click', function() {
     let eventPage = document.querySelector('#event-page');
-    eventPage.style.display = 'block';
+    eventPage.style.display = 'none';
     
     let comparePage = document.querySelector('#compare-page');
-    comparePage.style.display = 'none';
+    comparePage.style.display = 'block';
+    showList();
 
     tabs[1].classList.add('selected');
     tabs[0].classList.remove('selected');
@@ -1063,12 +1063,15 @@ function createGrid(eventYears, eventDescriptions, originalEventYears, years) {
         }
         
         zoom.scaleTo(myRect.transition().duration(1000), 2);
+
     }
     
     drawChart();
     
     let tabs = document.querySelectorAll('.tab');
-    tabs[1].addEventListener('click', function() {
+    // Recompute chart layout when switching to the Events tab.
+    // Note: tab order is: [0] View significant events, [1] Compare with other speakers.
+    tabs[0].addEventListener('click', function() {
         setTimeout(() => {drawChart();}, 1);
     });
     
@@ -1157,3 +1160,4 @@ function createGrid(eventYears, eventDescriptions, originalEventYears, years) {
         drawChart();
     });
 }
+

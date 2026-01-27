@@ -3,8 +3,6 @@
 <html lang="en">
 
     <head>
-        <link rel="icon" href="../../../favicon.ico">
-
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width" initial-scale="1.0">
         <meta http-equiv="X-UA-Compatible" content="ie-edge">
@@ -85,38 +83,42 @@
             </defs>
         </svg>
 
-        <div class="main-description-container" style="display: none;">
-            <div class="main-description"> </div>
+        <div class="main-description-container" style="display: none;">  
+            <div class="main-description"></div>
         </div>
 
-        <div class="controls">
-            <select id='dropdown' class="author-select" onchange="loadNewDataset(this.value)">
+   <!--     <div class="text" style="font-size: 18px; font-weight: 500; margin-left: 55px">Select a person</div>
+   -->
+        <div class="controls" style="justify-content: start">
+                    <div>
+                      <select id='dropdown' class="author-select" onchange="loadNewDataset(this.value)">
                 <option disabled selected value> -- Select a speaker -- </option>
-            </select>
-        </div>
-
-        <div class="graph graph--zero-state" id="graph-container">
-            <div class="graph-tools-bar">
-                <div class="graph-speaker-container">
+                      </select>
+                    </div>
                     <div class="graph-speaker-image">
                         <img id="speaker-image" src="" alt="No Image" width="100">
                     </div>
+        </div>
+
+        <div class="graph graph--zero-state" id="graph-container">
+          <div class="graph-tools-bar">
+ <!--           <div class="graph-speaker-container">
 
                     <span class="graph-title" id="graph-title" style="text-align: center;">
-                        Select a chart type to begin
-                    </span>
-                </div>
+                      Select a chart type to begin 
+                    </span> 
+                </div> -->
 
                 <div class="graph-info">
+                  <button class="accordion" style="graph-info-title">Speaker Statistics</button>
+                          <div class="panel">
                     <table class="graph-stats-container graph-info-item graph-info-table">
                         <tr>
-                            <th class="graph-info-title" colspan="2">
-                                Speaker Statistics
-                            </th>
+                            <th class="graph-info-title" colspan="2"></th> 
                         </tr>
                         <tr class="graph-stat">
                             <td class='graph-info-subtitle'>
-                                Total number of words:
+                                Total Number of Words:
                             </td>
                             <td id="stat-1"></td>
                         </tr>
@@ -130,27 +132,28 @@
 
                         <tr class="graph-stat" >
                             <td class='graph-info-subtitle'>
-                                Rank out of all Speakers:
+                                Rank Out of All Speakers:
                             </td>
                             <td id="stat-3"></td>
                         </tr>
                     </table>
+                </div>
 
+                          <button class="accordion">Filters</button>
+                          <div class="panel">
                     <div class="user-input graph-info-item">
                         <div class="user-input__form user-parameters">
                             <table class="graph-info-table filter-item">
                                 <tr>
                                     <th 
                                         class="graph-info-title" 
-                                        colspan="2">
-                                            Filters
-                                    </th>
+                                        colspan="2"></th>
                                 </tr>
                                 <tr>
                                     <td class="start-range graph-info-subtitle">
                                         Display Words:
                                     </td>
-
+<!-- there's a resetRadio function in draw_graphs.js -->
                                     <td id="radio-selection-type" class="radio-selectors">
                                         <div>
                                             <input 
@@ -158,8 +161,7 @@
                                                 name="typeRadios" 
                                                 id="radio-all"
                                                 onChange='updateTypeRadios(this)'
-                                                value="all"
-                                                checked />
+                                                value="all" />
 
                                             <label for="radio-all">
                                                 All
@@ -172,10 +174,11 @@
                                                 name="typeRadios" 
                                                 id="radio-pink"
                                                 onChange='updateTypeRadios(this)'
-                                                value="noun" />
+                                                value="noun" 
+                                                checked />
 
                                             <label for="radio-pink">
-                                                Content
+                                                Key Words
                                             </label>
                                         </div>
 
@@ -187,7 +190,7 @@
                                                 onChange='updateTypeRadios(this)'
                                                 value="verb" />
                                             <label for="radio-blue">
-                                                Function
+                                                Connecting Words
                                             </label>
                                         </div>
                                     </td>
@@ -209,7 +212,7 @@
 
                                 <tr>
                                     <td colspan="2" class="range-select">
-                                        Number of words to display: 
+                                        Number of Words to Display: 
                                         <div 
                                             class="user-input__form-group"
                                             style="display: none;">
@@ -245,17 +248,20 @@
                                     </td>
                                 </tr>
                             </table>
-
+<!--
                             <div class="user-input__form-group filter-type filter-item">
                                 <div id="group-select-box" 
                                     class="group-select-container"></div>
                             </div>
+-->
+                            
 
-                            <button id='go-button' 
+<!--                            <button id='go-button' 
                                 class="button" 
                                 onclick="goButton(event);">
                                 Reset Display
-                            </button>
+</button>  -->
+                        </div>
                         </div>
                     </div>
                 </div>
@@ -271,5 +277,6 @@
         <script type="text/javascript" src="scripts/import_data.js"></script>
         <script type="text/javascript" src="scripts/main.js"></script>
         <script type="text/javascript" src="scripts/draw_graphs.js"></script>
-    </body>
+        <script type="text/javascript" src="scripts/accordion.js"></script>
+           </body>
 </html>

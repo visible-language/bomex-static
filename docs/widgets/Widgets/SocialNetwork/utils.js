@@ -23,7 +23,6 @@ var speakers = [
 	"BrotherJared",
 	"BrothersNephi",
 	"CaptainMoroni",
-	"ChiefJudge",
 	"ChiefJudgeAmmonihah",
 	"ChildrenLaman",
 	"Christ",
@@ -78,16 +77,17 @@ var speakers = [
 	"Moses",
 	"Mosiah",
 	"Mosiah2",
-	"MotherLamoni",
 	"Nehor",
 	"Nephi",
 	"Nephi2",
 	"Nephi3",
+	"Nephihah",
 	"Omer",
 	"Omner",
 	"Omni",
 	"Pahoran",
 	"PriestsNoah",
+	"MotherLamoni",
 	"Sam",
 	"SamuelLamanite",
 	"Sariah",
@@ -305,10 +305,6 @@ var checkboxes = `
 <input type="checkbox" id="CaptainMoroni" onclick="check(speakers2)">
 <span class="checkmark CaptainMoroni"></span>
 </label> 
-<label class="container">Chief Judge
-<input type="checkbox" id="ChiefJudge" onclick="check(speakers2)">
-<span class="checkmark ChiefJudge"></span>
-</label> 
 <label class="container">Chief Judge in Ammonihah
 <input type="checkbox" id="ChiefJudgeAmmonihah" onclick="check(speakers2)">
 <span class="checkmark ChiefJudgeAmmonihah"></span>
@@ -525,10 +521,6 @@ var checkboxes = `
 <input type="checkbox" id="Mosiah2" onclick="check(speakers2)">
 <span class="checkmark Mosiah2"></span>
 </label> 
-<label class="container">Mother of Lamoni
-<input type="checkbox" id="MotherLamoni" onclick="check(speakers2)">
-<span class="checkmark MotherLamoni"></span>
-</label> 
 <label class="container">Nehor
 <input type="checkbox" id="Nehor" onclick="check(speakers2)">
 <span class="checkmark Nehor"></span>
@@ -544,6 +536,10 @@ var checkboxes = `
 <label class="container">Nephi Son of Nephi Son of Helaman
 <input type="checkbox" id="Nephi3" onclick="check(speakers2)">
 <span class="checkmark Nephi3"></span>
+</label> 
+<label class="container">Nephihah
+<input type="checkbox" id="Nephihah" onclick="check(speakers2)">
+<span class="checkmark Nephihah"></span>
 </label> 
 <label class="container">Omer
 <input type="checkbox" id="Omer" onclick="check(speakers2)">
@@ -564,6 +560,10 @@ var checkboxes = `
 <label class="container">Priests of Noah
 <input type="checkbox" id="PriestsNoah" onclick="check(speakers2)">
 <span class="checkmark PriestsNoah"></span>
+</label> 
+<label class="container">Queen of Father of Lamoni
+<input type="checkbox" id="MotherLamoni" onclick="check(speakers2)">
+<span class="checkmark MotherLamoni"></span>
 </label> 
 <label class="container">Sam
 <input type="checkbox" id="Sam" onclick="check(speakers2)">

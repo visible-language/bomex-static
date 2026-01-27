@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <head>
-    <link rel="icon" href="../../../favicon.ico">
-
     <meta name='viewport' content='width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1'>
     <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel="stylesheet" href="styles.css"/>
@@ -10,12 +8,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&ampdisplay=swap" rel="stylesheet">
     <script src="//unpkg.com/3d-force-graph"></script>
     <script src="//unpkg.com/d3-force-3d"></script>
-    <title>Network Diagram</title>
+    <title>Similar-Topic Diagram</title>
     <meta charset="utf-8"/>
 </head>
 
 <body>
     <div id="widget">
+      <!--
         <div id="faq">
             <div id="head"> 
                 <div class="title"><h1>FAQ</h1></div>
@@ -90,10 +89,11 @@
             </div>
         </div>
         <div id="grey-out" onclick="faqDisappear()"></div>
-    <div id="page-container" style="grid-template-rows: 0px auto 50px">
-        <div id ="headbar" style="height: 0px;"> 
+      -->
+    <div id="page-container">
+        <div id ="headbar"> 
         <h1 style="display: none;">
-            Network Diagram
+            Similar-Topic Diagram
         </h1>
         </div>
         <div id="graph-3d">
@@ -140,24 +140,25 @@
                 </button>
                 <div class="panel">
                     <div id="legend" class = "contents">
-                        <h3><div id = "legend-title">Colored by Name</div></h3>
+                      <!--                        <h3><div id = "legend-title">Colored by Name</div></h3> -->
                         <br>
-                        <div id="checkbox-holder">
-                        </div>
+                        <div id="checkbox-holder"> </div>
+                        <!--
                         <br>
                         <div id = "button-holder">
                             <button id="checkButton" class='default-button' onclick = "checkAll(true)">Check All</button>
                             <button id="uncheckButton" class='default-button' onclick="checkAll(false)">Uncheck All</button>
                         </div>
+                        -->
                     </div>
                 </div>  
             </div>
             <div id="auxiliary">
-                <div id="nav-instructions">  
-                    Select Speaker:
-                </div>
+<!--                <div id="nav-instructions">  
+  Select a speaker 
+                </div>-->
                 <div id="node-select">
-                    <select id="bookSelect">
+                    <select id="bookSelect" onchange="flyToSpeaker()">
                         <option value="Abinadi">Abinadi</option>
                         <option value="Alma2">Alma the Younger</option>
                         <option value="Alma">Alma</option>
@@ -193,9 +194,11 @@
                         <option value="Zeniff">Zeniff</option>
                         <option value="Zenos">Zenos</option>
                     </select>
+                    <!--
                     <button id="goButton" class='default-button' onclick="flyToSpeaker()">
-                        Highlight
+                        Go
                     </button>
+                    -->
                 </div> 
             </div>  
         </div>
@@ -269,17 +272,22 @@
             .nodeId(["Id"])
             .linkSource(["Source"])
             .linkTarget(["Target"])
-            //since we are creating the graph here, we can't resize the canvas with media queries, so we have to do it here. 
-            .width((windowWidth < 500 ? windowWidth: graphWidth))
-            .height((windowWidth < 500 ? windowHeight - 25: graphHeight))
+
+            // Since we are creating the graph here, we can't resize the canvas with media queries.
+            // We keep an initial size here, and then resize precisely in resizeGraph().
+            .width((windowWidth <= 1024 ? windowWidth : graphWidth))
+            .height((windowWidth <= 1024 ? Math.max(320, Math.min(650, Math.floor(windowHeight * 0.55))) : graphHeight))
             .linkWidth(lineWidth)
             .backgroundColor('#222222')
+
+ /*   // this info isn't relevant here. It's from the Social Network
             .onLinkClick((link) => {
                 showLinkInfo(link);
                 closeAccordion();
                 openTab('infoTab');
                 dehighlightGraph();
             })
+*/
             .onLinkHover((link, link2) => {
                // linkHover(link, link2);
             })
@@ -360,21 +368,18 @@
         appHeight();
 
         function resizeGraph(){    
-            Graph.height(window.innerHeight - graphExtraHeight);
-
-            if (window.innerWidth > 850) {
-                Graph.width(window.innerWidth - graphExtraWidth);
-                sideSizeMin = window.innerHeight - graphExtraSideHeight;  
-                sideSizeMax = window.innerHeight - graphExtraSideHeight;  
-            } else if(window.innerWidth > 500) {
-                Graph.width(window.innerWidth - graphExtraWidthMed);
-                sideSizeMin = window.innerHeight - graphExtraSideHeight;  
-                sideSizeMax = window.innerHeight - graphExtraSideHeight;  
-            } else {
+            // Column layout for <= laptop width
+            if (window.innerWidth <= 1024) {
+                const desiredH = Math.floor(window.innerHeight * 0.55);
+                Graph.height(Math.max(320, Math.min(650, desiredH)));
                 Graph.width(window.innerWidth - graphExtraWidthSmall);
-                Graph.height(window.innerWidth - graphExtraWidthSmall);
-                sideSizeMin = 1;  
-                sideSizeMax = window.innerHeight;  
+                sideSizeMin = 1;
+                sideSizeMax = window.innerHeight;
+            } else {
+                Graph.height(window.innerHeight - graphExtraHeight);
+                Graph.width(window.innerWidth - graphExtraWidth);
+                sideSizeMin = window.innerHeight - graphExtraSideHeight;
+                sideSizeMax = window.innerHeight - graphExtraSideHeight;
             }
 
             populateInstructions();
@@ -775,37 +780,108 @@
             var info = document.getElementById('info');
             var url = getUrlFromSpeaker(node.Speaker);
 
+            var in_connections, out_connections;
+
+            // get the nodes structure
+            var nodes_struct = Graph.graphData().nodes;
+  
+            // get the incoming IDs
+            var In_IDs = node.Incoming_Ids.split(' ');
+            let size = In_IDs.length;
+
+            // check for empty array
+            if(In_IDs[0] == "None")
+            {
+              size = 0;
+              in_connections = "0<br>";
+            }
+            else
+              in_connections = "";
+
+            var last_speaker = "";
+
+            // copy the info into in_connections
+            for(let i = 0; i < size; i++)
+            {
+               // only print the speaker once
+               if(last_speaker != nodes_struct[In_IDs[i]].Speaker)
+               {
+                  last_speaker = nodes_struct[In_IDs[i]].Speaker;
+                  in_connections += "<b>" + nodes_struct[In_IDs[i]].Display_Speaker + ": </b><br>"; 
+               }
+
+                in_connections +=  nodes_struct[In_IDs[i]].Start_Link 
+                   + "--" + nodes_struct[In_IDs[i]].End_Link + "<br>";
+            }
+
+            // get the outgoing IDs
+            var Out_IDs = node.Outgoing_Ids.split(' ');
+            size = Out_IDs.length;
+
+            // check for empty array
+            if(Out_IDs[0] == "None")
+            {
+              size = 0;
+              out_connections = "0<br>";
+            }
+            else
+              out_connections = "";
+
+            last_speaker = "";
+
+            // copy the info into out_connections
+            for(let i = 0; i < size; i++)
+            {
+            // only print the speaker once
+               if(last_speaker != nodes_struct[Out_IDs[i]].Speaker)
+               {
+                  last_speaker = nodes_struct[Out_IDs[i]].Speaker;
+                  out_connections += "<b>" + nodes_struct[Out_IDs[i]].Display_Speaker + ": </b><br>"; 
+               }
+
+                out_connections +=  nodes_struct[Out_IDs[i]].Start_Link 
+                   + "--" + nodes_struct[Out_IDs[i]].End_Link + "<br>";
+            }
+            // assemble the info
             info.innerHTML =  `<div id ='nodeinfo'>
             <h3>Node:</h3>
             ${node.Display_Name}<br>
             <br>
-                <img src="${url}" alt="Portait of ${node.Speaker}"><br>
-            <br>
-            <h3>Incoming Connections:</h3>
-            ${node.Incoming_Docs}<br>
-            <br>    
-            <h3>Outgoing Connections:</h3>
-            ${node.Outgoing_Docs}<br>
-            <br>
-            <h3>Start Reference:</h3>
-            ${node.Start_Link}<br>
-            <br>    
-                <h3>End Reference:</h3>
-            ${node.End_Link}<br>
+            <h3>Reference:</h3>
+            ${node.Start_Link}--${node.End_Link}<br>
             <br>       
+                <img src="${url}" alt="Portrait of ${node.Speaker}"><br>
+            <br>
+            <h3>Incoming Connections</h3>
+            ${in_connections}
+            <br>    
+            <h3>Outgoing Connections</h3>
+            ${out_connections}
+            <br>
             </div>
             `; 
+        /*
+            if(info.childNodes.length > 1)
+            {
+               for(let i = 1; i < info.childNodes.length; i++)
+                 info.innerHTML += info.childNodes[i];
+            }
+            console.log(`childNodes = ${info.childNodes.length}`);
+                                  */
         }
 
+/*   // This isn't relevant here. It's from the Social Network
         //show info on click
         function showLinkInfo(link) {
             var info = document.getElementById('info');
             var href = `<a href="${link.Link}" target="blank">${link.Reference}</a>`;
 
+            var nodes_struct = Graph.graphData().nodes;
+
             info.innerHTML =  `<div id ='nodeinfo'>
-            <h3>Speakers:</h3>
-            ${link.Person1}<br>
-            ${link.Person2}<br>
+            <h3>Node:</h3>
+            ${nodes_struct[link.Source].Display_Name}<br>
+            ${nodes_struct[link.Target].Display_Name}<br>
             <br>
             <h3>Scripture:</h3>
             ${href}<br>
@@ -816,6 +892,7 @@
             </div>
             `; 
         }
+*/
         function showSpeakerInfo(speaker) {
             var info = document.getElementById('info');
             var url = getUrlFromSpeaker(speaker);
@@ -826,7 +903,7 @@
             <h3>Speaker:</h3>
             ${speakerToDisplay[speaker]}<br>
             <br>
-                <img src="${url}" alt="Portait of ${speakerToDisplay[speaker]}"><br>
+                <img src="${url}" alt="Portrait of ${speakerToDisplay[speaker]}"><br>
             <br>
             <br>
             <h3>Description:</h3>
@@ -850,6 +927,50 @@
             }
         }    
 
+        // --- Popup label tracking (keep the label next to the selected speaker) ---
+        let popupRafId = null;
+        let popupSpeaker = null;
+
+        function stopPopupTracking(){
+            if (popupRafId !== null) {
+                cancelAnimationFrame(popupRafId);
+                popupRafId = null;
+            }
+        }
+
+        function startPopupTracking(speaker){
+            stopPopupTracking();
+            popupSpeaker = speaker;
+
+            const tick = () => {
+                const label = document.getElementById('popup');
+                if (!label || !popupSpeaker) {
+                    popupRafId = null;
+                    return;
+                }
+
+                const canvas = document.querySelector('#graph-3d canvas');
+                if (!canvas) {
+                    popupRafId = requestAnimationFrame(tick);
+                    return;
+                }
+
+                // Keep text in sync in case selection changes without recreating the popup
+                const desiredText = speakerToDisplay[popupSpeaker] || popupSpeaker;
+                if (label.textContent !== desiredText) label.textContent = desiredText;
+                label.style.color = "#ffffff";
+
+                // graph2ScreenCoords is canvas-relative; convert to viewport coords with canvas rect.
+                const canvasRect = canvas.getBoundingClientRect();
+                const coords = calculateGeometricMean(popupSpeaker);
+                positionElement(label, canvasRect.left + coords.x + 12, canvasRect.top + coords.y - 12);
+
+                popupRafId = requestAnimationFrame(tick);
+            };
+
+            popupRafId = requestAnimationFrame(tick);
+        }
+
         //create label       
         function createLabel(speaker){     
             //get rid of old label
@@ -867,14 +988,10 @@
                 newDiv.style.backgroundColor = transparentlight;
             }
 
-            newDiv.style.color = speakerToColor[speaker];
+            newDiv.style.color = "#ffffff";
             document.body.append(newDiv); 
-            results = calculateGeometricMean(speaker);
-            screenX = results['x'];
-            screenY = results['y'];
-
-            // Set initial position
-            positionElement(newDiv, screenX, screenY);    
+            // Keep the popup pinned to the speaker while rotating/zooming/panning.
+            startPopupTracking(speaker);
         };
         //helper function for array averaging
         function calculateMeanOfArray(arr){
@@ -909,6 +1026,7 @@
 
         //get rid of label
         function destroyLabel(){
+            stopPopupTracking();
             var label = document.getElementById('popup');
 
             if (label) {

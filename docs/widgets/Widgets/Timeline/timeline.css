@@ -128,8 +128,12 @@ main {
     cursor: pointer;
 }
 
-#event-page {
+#compare-page {
     display: none;
+}
+
+#event-page {
+    display: block;
 }
 .selected:hover {
     background-color:var(--color-1);
@@ -173,15 +177,15 @@ main {
     font-family: Roboto;
 }
 .main-image-cont {
-    height: 100px;
-    width: 100px;
+    height: 90px;
+    width: 90px;
     border-radius: 100%;
     overflow: hidden;
     margin: 5px;
-    margin-left: 20px;
+    margin-right: 20px;
 }
 .main-image-cont img {
-    width: 100%;
+    width: 110%;
 }
 
 .alt-name, .temp-name {
@@ -319,6 +323,12 @@ main {
     }
     .instructions {
         visibility: hidden;
+    }
+
+    .zoom-box {
+        overflow: auto;
+        height: auto;
+        max-height: 70vh;
     }
 }
 

@@ -47,14 +47,14 @@ a:hover{
 }
 
 #page-container{
-    height: var(--app-height);
+/*    height: var(--app-height); */
     font-family: 'Roboto', sans-serif;
 	list-style: inside;
     display: grid;
-    grid-template-columns: auto 300px;
-	grid-template-rows:  50px auto 50px;
+    grid-template-columns: 300px auto;
+	grid-template-rows:  0px auto 50px;
 	grid-template-areas: 'headbar headbar'
-						 '3d-graph sidebar'
+						 'sidebar 3d-graph'
 						 'toolbar toolbar';
 }
 
@@ -62,7 +62,8 @@ a:hover{
 	grid-area: toolbar;
 	display: grid;
 	border-color: var(--navy_blue);
-	grid-template-columns: 20% 20% 20% 20% 20%;
+  text-align: center;
+	grid-template-columns: 15% 15% 15% 15% 15%;
 	grid-template-areas: 'button1 button2 button3 button4 button5';
 }
 
@@ -107,8 +108,8 @@ canvas{
     z-index: 1;
 	padding: 0;
 	color: black;	
-	/*border-bottom: 5px solid;*/
-    height:50px;
+	/*border-bottom: 5px solid;
+    height:50px;*/
 }
 h1{
 	display: inline;
@@ -120,8 +121,8 @@ h1{
 	grid-area: "side-menu";
     overflow: auto;
     scrollbar-width: thin;
-    border-top-right-radius: 20px;
-    border-top-left-radius: 20px;
+ /*   border-top-right-radius: 20px;
+    border-top-left-radius: 20px; */
 
 }
 #sidebar{
@@ -131,26 +132,33 @@ h1{
 	background-color:#fff;
 	display: grid;
 	grid-area: sidebar;
-	grid-template-rows: auto 100px;
-	grid-template-areas: 'side-menu'
-						 'auxiliary';
+	grid-template-rows: auto auto;  /* social says auto auto */
+	grid-template-areas: 'auxiliary'
+                        'side-menu';
 }
 
 #auxiliary{
 	grid-area: auxiliary;
-    height:100px;
-    border-bottom-right-radius: 20px;
-    border-bottom-left-radius: 20px;
+    height: auto;
+    min-height: 30px;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+	background-color: var(--color-1);
+     justify-content: center;
+     align-items: center;
+    color: #222222;
     /*border-top: 2px solid grey;
 	border-left: 2px solid grey;
     border-bottom: 2px solid gray;    */
 	display: grid;
-	background-color: var(--color-1);
+	grid-template-rows: auto ;
+	grid-template-areas: 'node-select';
+  /*
 	grid-template-rows: auto auto auto auto;
 	grid-template-areas: 'nav-instructions'
 						 'node-select'
                          'slide-instructions'
-						 'slider';	  
+						 'slider';	  */
 }
 #slide-instructions{
     display: flex;
@@ -195,23 +203,29 @@ h1{
     align-items: center;
     justify-content: center;
     font-weight: 500;
-    font-size: 20px;
+    font-size: 18px;
     color: #222222;
 }
 #node-select{
 	grid-area: node-select;
     width:100%;
 	display: grid;
-	grid-template-columns: auto auto;
-	grid-template-areas: 'book-select gobutton';
+	grid-template-columns: auto;
+	grid-template-areas: 'book-select';
+  font-size: 18px;
+    max-height: 40px;
 }
 #bookSelect{
     grid-area: book-select;
+    padding-top: 5px;
+    padding-bottom: 5px;
     margin:2px;
+    text-align: center;
+    font-size: 15px;
 }
 
 #button-holder{
-	min-height: 40px;
+	min-height: 5%;   /* copied from Social */
 	/*max-height: 40px;*/
 	display: grid;
     grid-template-areas: 
@@ -256,6 +270,7 @@ h1{
     margin: 2px;
     border: none;
     border-radius: 10px;
+    padding: 0px 10px 0px 10px;
 }
 .default-button:hover{
 	background-color: var(--color-3-shade);
@@ -278,6 +293,7 @@ h1{
     font-weight: 500;
     cursor: pointer;
     user-select: none;
+    padding: 0px 10px 0px 10px;
 }
 
 .button:hover{
@@ -293,7 +309,7 @@ h1{
     margin-top: 3px;
     margin-bottom: 3px;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 500;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -333,7 +349,8 @@ h2{
 }
 
 #popup{
-    position: absolute;
+    /* Use viewport positioning; we'll convert canvas-relative coords to viewport coords */
+    position: fixed;
     z-index: 1;
     background-color: var(--light-gray-blue);
     color: #222222;
@@ -467,7 +484,7 @@ h2{
     align-items: center;
     overflow-x: hidden;
     overflow-y: scroll;
-    max-height: 95%;
+    max-height: 105%;
 }
 
 .question{
@@ -593,32 +610,58 @@ h2{
 
 
     
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 800px) {
     h1{
         font-size: 30px;
     }
     #page-container{
         grid-template-columns: auto 250px;
     }
+    /*
     .button{
         font-size: 14px;
     }    
+    */
 
 }
-@media screen and (max-width: 500px) {
+
+/* Switch to column layout on any screen less than laptop width */
+@media screen and (max-width: 1024px) {
     #page-container{
         grid-template-columns: 100%;
-        grid-template-rows:  50px 50px auto auto 1fr;
+        grid-template-rows:  0px auto auto auto;
         grid-template-areas: 'headbar'
-                             'toolbar'                     
                              '3d-graph'
+                             'toolbar'
                              'sidebar';
     }
+
+    #toolbar{
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
+@media screen and (max-width: 600px) {
+    #page-container{
+        grid-template-columns: 100%;
+        grid-template-rows:  0px auto auto auto;
+        grid-template-areas: 'headbar'
+                             '3d-graph'
+                             'toolbar'
+                             'sidebar';
+    }
+    #auxiliary{
+    height: auto;   /* 100px; */
+    min-height: 30px;
+}
+    #toolbar{
+    height: auto;   /* 100px; */
+    min-height: 30px;
+}
     .button{
         margin:2px;
-        padding:1px 2px 1px 2px;
+        padding:1px 2% 1px 2%;
         font-weight: 500;
-        font-size: 12px;
+        font-size: 10px;
     }
     h1{
         font-size: 20px;
@@ -626,12 +669,25 @@ h2{
     #dummyPanel{
         height: 0px;
     }
+     #legendTab {
+      display: none;
+    }
+    #legend.contents {
+      display: none;
+    }
 
 }
 
-@media screen and (max-width: 340px) {
+@media screen and (max-width: 380px) {
+  #auxiliary{
+    height: auto;   /* 100px; */
+    min-height: 40px;
+}
+  #toolbar{
+	grid-template-columns: 20% 20% 20% 20% 20%;
+}
     .button{
         font-size: 10px;
-        font-weight: 800px;
+        font-weight: 800;
     }
 }

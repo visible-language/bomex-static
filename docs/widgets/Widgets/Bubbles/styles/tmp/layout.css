@@ -25,6 +25,7 @@ h1 {
 
 .header {
     grid-area: header;
+    justify-content: left;
 }
 
 /* Bubble Graph CSS */
@@ -278,3 +279,4 @@ label {
     fill: rgb(74, 74, 74);
     text-decoration: underline;
 }
+

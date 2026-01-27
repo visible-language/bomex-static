@@ -1,6 +1,6 @@
 *{
     box-sizing: border-box;
-    margin: 0;
+    margin: 0; 
     padding: 0;
 }
 body{
@@ -24,7 +24,7 @@ html{
     font-family: 'Roboto', sans-serif;
     overflow-x: hidden;
     overflow-y: hidden;
-    -ms-overflow-style: none;
+    -ms-overflow-style: none;  
     scrollbar-width: 10px;
     scroll-behavior: smooth;
     max-height: 100vh;
@@ -33,13 +33,13 @@ html{
 ::-webkit-scrollbar {
     width: 10px;
 }
-
+  
 ::-webkit-scrollbar-track {
-    background: #eee;
+    background: #eee; 
 }
-
+   
 ::-webkit-scrollbar-thumb {
-    background: #999;
+    background: #999; 
 }
 hr{
     height:1px;
@@ -59,7 +59,7 @@ select{
     justify-content: center;
     max-height:715px;
 }
-
+  
 #cover{
     position:absolute;
     z-index: 3;
@@ -90,7 +90,7 @@ select{
     align-items: center;
     justify-content: center;
 }
-
+  
 #head{
     display:grid;
     grid-template-columns: 1fr auto;
@@ -105,9 +105,9 @@ select{
 }
 
 #holder{
-    height: 100%;
+    height: 100%;  
     display: grid;
-    grid-template-rows: 85px auto;
+    grid-template-rows: 5% auto;
 	grid-template-areas: 'header'
 						 'content';
 }
@@ -124,23 +124,23 @@ select{
     justify-content: center;
     padding: 1rem;
     width: 100%;
-    height:85px;
+    height: 1%;
     z-index: 1;
 }
 
 .content{
     grid-area: content;
-    width:100vw;
-    min-height:100%;
-    display:flex;
+    width: 100vw;
+    min-height: 100%;
+    display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+/*    justify-content: center;  */
+    align-items: center; 
     overflow-x: hidden;
-    overflow-y:auto;
+    overflow-y: auto;
 }
 h1{
-    font-size: 45px;
+    font-size: 40px;
     font-weight: 1000;
 }
 #search{
@@ -182,12 +182,9 @@ h1{
     min-height: 100px;
     margin: 1rem;
     font-size: 20px;
-}
-#results{
     width:100%;
     overflow: hidden;
     border-bottom-right-radius: 20px;
-    color: var(--dark-shade);
 }
 .content{
     background-color: var(--color-2);
@@ -195,30 +192,23 @@ h1{
     border-bottom-left-radius: 20px;
 }
 .title{
-    height: 46px;
+    height: 40px;
     display:flex;
     align-items: center;
     justify-content: center;
 }
 #result-list{
-    width:100%;
+    width: 100%;
     max-height: 555px;
-    overflow-y:auto;
     overflow-x: hidden;
-    padding: 0.5rem;
-}
-
-#result-list p{
-    color: var(--dark-shade);
-    font-size: 16px;
-    line-height: 1.35;
+    overflow-y: auto;
 }
 
 input{
     margin-left:1rem;
     padding:.5rem;
     font-size: 18px;
-    color: var(--text-link-color);
+    border: 1px solid rgb(207, 205, 205);
     flex-grow: 1;
 }
 button{
@@ -269,39 +259,36 @@ button:hover{
 /*I got this from the internet */
 .accordion {
     background-color: var(--color-1);
-    color: var(--dark-shade);
+    color: #444;
     cursor: pointer;
-    padding: 14px 16px;
+    padding: 18px;
     width: 100%;
     text-align: left;
     border: none;
     outline: none;
     transition: 0.4s;
     transition-delay: 0.05s;
-    border-radius: 12px;
-    border: 1px solid var(--color-1-shade);
 }
 .active, .accordion:hover {
     background-color: var(--color-1-shade);
 }
 
 .panel {
-    margin: 0.5rem 0;
-    padding: 12px 16px;
-    background-color: var(--white-shade);
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+    padding: 0 18px;
+    background-color: white;
     display: none;
     overflow: hidden;
-    border-radius: 12px;
-    border: 1px solid var(--color-2-shade);
 }
 /*
 .accordion:after {
-    content: '\02c5';
+    content: '\02c5'; 
     color: #777;
     float: right;
     margin-left: 5px;
 }
-
+  
 .active:after {
     content: "\2013";
 }*/

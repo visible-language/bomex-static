@@ -1,7 +1,7 @@
 // some local data for display
-var imageFiles = ['Aaron', 'Abinadi', 'Abinadom', 'Akish', 'Alma', 'Alma2', 'Amaleki', 'Amalickiah', 'Amaron', 'Aminadab', 'Ammaron', 'Ammon', 'Ammon2', 'Ammoron', 'Amulek', 'Angels', 'AntiNephiLehi', 'Antionah', 'Benjamin', 'BrotherJared', 'BrothersNephi', 'CaptainMoroni', 'Chemish', 'Christ', 'ChristAmerica', 'Enos', 'Ether', 'FatherLamoni', 'Gid', 'Giddianhi', 'Giddonah', 'Giddonah2', 'Gideon', 'Gidgiddoni', 'Godhead', 'Helaman', 'Helaman2', 'Isaiah', 'Jacob', 'Jacob2', 'Jared', 'Jared2', 'Jarom', 'JohnBaptist', 'Joseph', 'Joseph2', 'Joshua', 'Korihor', 'Laban', 'Lachoneus', 'Laman2', 'Lamoni', 'Lehi', 'Lehi2', 'Lehi3', 'Limhi', 'Malachi', 'Micah', 'Mormon', 'Moroni', 'Moses', 'Mosiah', 'Nephi', 'Nephi2', 'Nephihah', 'Noah', 'Omni', 'Pahoran', 'SamuelLamanite', 'Sariah', 'Satan', 'Sherem', 'Zeezrom', 'Zeniff', 'Zenock', 'Zenos', 'Zerahemnah']
-const idNames = ['Aaron', 'Abinadi', 'Abinadom', 'Akish', 'Alma', 'Alma2', 'Amaleki', 'Amalickiah', 'Amaron', 'Aminadab', 'Ammaron', 'Ammon', 'Ammon2', 'Ammoron', 'Amulek', 'Angels', 'AntiNephiLehi', 'Antionah', 'Benjamin', 'BrotherJared', 'BrothersNephi', 'CaptainMoroni', 'Chemish', 'ChristAmerica', 'Enos', 'Ether', 'FatherLamoni', 'Gid', 'Giddianhi', 'Giddonah', 'Giddonah2', 'Gideon', 'Gidgiddoni', 'Godhead', 'Helaman', 'Helaman2', 'Isaiah', 'Jacob', 'Jacob2', 'Jared', 'Jared2', 'Jarom', 'JohnBaptist', 'Joseph', 'Joseph2', 'Joshua', 'Korihor', 'Laban', 'Lachoneus', 'Laman2', 'Lamoni', 'Lehi', 'Lehi2', 'Lehi3', 'Limhi', 'Malachi', 'Micah', 'Mormon', 'Moroni', 'Moses', 'Mosiah', 'Nephi', 'Nephi2', 'Nephihah', 'Noah', 'Omni', 'Pahoran', 'SamuelLamanite', 'Sariah', 'Satan', 'Sherem', 'Zeezrom', 'Zeniff', 'Zenock', 'Zenos', 'Zerahemnah']
-const displayNames = ['Aaron', 'Abinadi', 'Abinadom', 'Akish', 'Alma', 'Alma the Younger', 'Amaleki', 'Amalickiah', 'Amaron', 'Aminadab', 'Ammaron', 'Ammon', 'Ammon the Mulekite', 'Ammoron', 'Amulek', 'Angels', 'Anti-Nephi-Lehi', 'Antionah', 'Benjamin', 'Brother of Jared', 'Brothers of Nephi', 'Captain Moroni', 'Chemish', 'Christ in America', 'Enos', 'Ether', 'Father of Lamoni', 'Gid', 'Giddianhi', 'Giddonah the Priest', 'Giddonah Father of Amulek', 'Gideon', 'Gidgiddoni', 'Godhead', 'Helaman', 'Helaman, Son of Helaman', 'Isaiah', 'Jacob, Son of Lehi', 'Jacob, Son of Isaac', 'Jared', 'Jared, Son of Omer', 'Jarom', 'John the Baptist', 'Joseph in Egypt', 'Joseph', 'Joshua', 'Korihor', 'Laban', 'Lachoneus', 'Laman the Nephite Spy', 'Lamoni', 'Lehi', 'Lehi, Son of Helaman', 'Lehi, Son of Zoram', 'Limhi', 'Malachi', 'Micah', 'Mormon', 'Moroni', 'Moses', 'Mosiah', 'Nephi', 'Nephi, Son of Helaman', 'Nephihah', 'King Noah', 'Omni', 'Pahoran', 'Samuel the Lamanite', 'Sariah', 'Satan', 'Sherem', 'Zeezrom', 'Zeniff', 'Zenock', 'Zenos', 'Zerahemnah']
+var imageFiles = ['Aaron', 'Abinadi', 'Abinadom', 'Akish', 'Alma', 'Alma2', 'Amaleki', 'Amalickiah', 'Amaron', 'Aminadab', 'Ammaron', 'Ammon', 'Ammon2', 'Ammoron', 'Amulek', 'Angels', 'AntiNephiLehi', 'Antionah', 'Benjamin', 'BrotherJared', 'BrothersNephi', 'CaptainMoroni', 'Chemish', 'Christ', 'ChristAmerica', 'DaughterJared', 'Enos', 'Ether', 'FatherLamoni', 'Gid', 'Giddianhi', 'Giddonah', 'Giddonah2', 'Gideon', 'Gidgiddoni', 'Godhead', 'Helaman', 'Helaman2', 'Isaiah', 'Jacob', 'Jacob2', 'Jared', 'Jared2', 'Jarom', 'JohnBaptist', 'Joseph', 'Joseph2', 'Joshua', 'Korihor', 'Laban', 'Lachoneus', 'Laman2', 'Lamoni', 'Lehi', 'Lehi2', 'Lehi3', 'Limhi', 'Malachi', 'Micah', 'Mormon', 'Moroni', 'Moses', 'Mosiah', 'Nephi', 'Nephi2', 'Nephihah', 'Noah', 'Omni', 'Pahoran', 'SamuelLamanite', 'Sariah', 'Satan', 'Sherem', 'Zeezrom', 'Zeniff', 'Zenock', 'Zenos', 'Zerahemnah']
+const idNames = ['Aaron', 'Abinadi', 'Abinadom', 'Akish', 'Alma', 'Alma2', 'Amaleki', 'Amalickiah', 'Amaron', 'Aminadab', 'Ammaron', 'Ammon', 'Ammon2', 'Ammoron', 'Amulek', 'Angels', 'AntiNephiLehi', 'Antionah', 'Benjamin', 'BrotherJared', 'BrothersNephi', 'CaptainMoroni', 'Chemish', 'ChristAmerica', 'DaughterJared', 'Enos', 'Ether', 'FatherLamoni', 'Gid', 'Giddianhi', 'Giddonah', 'Giddonah2', 'Gideon', 'Gidgiddoni', 'Godhead', 'Helaman', 'Helaman2', 'Isaiah', 'Jacob', 'Jacob2', 'Jared', 'Jared2', 'Jarom', 'JohnBaptist', 'Joseph', 'Joseph2', 'Joshua', 'Korihor', 'Laban', 'Lachoneus', 'Laman2', 'Lamoni', 'Lehi', 'Lehi2', 'Lehi3', 'Limhi', 'Malachi', 'Micah', 'Mormon', 'Moroni', 'Moses', 'Mosiah', 'Nephi', 'Nephi2', 'Nephihah', 'Noah', 'Omni', 'Pahoran', 'SamuelLamanite', 'Sariah', 'Satan', 'Sherem', 'Zeezrom', 'Zeniff', 'Zenock', 'Zenos', 'Zerahemnah']
+const displayNames = ['Aaron', 'Abinadi', 'Abinadom', 'Akish', 'Alma', 'Alma the Younger', 'Amaleki', 'Amalickiah', 'Amaron', 'Aminadab', 'Ammaron', 'Ammon', 'Ammon the Mulekite', 'Ammoron', 'Amulek', 'Angels', 'Anti-Nephi-Lehi', 'Antionah', 'Benjamin', 'Brother of Jared', 'Brothers of Nephi', 'Captain Moroni', 'Chemish', 'Christ in America', 'Daughter of Jared', 'Enos', 'Ether', 'Father of Lamoni', 'Gid', 'Giddianhi', 'Giddonah the Priest', 'Giddonah Father of Amulek', 'Gideon', 'Gidgiddoni', 'Godhead', 'Helaman', 'Helaman, Son of Helaman', 'Isaiah', 'Jacob, Son of Lehi', 'Jacob, Son of Isaac', 'Jared', 'Jared, Son of Omer', 'Jarom', 'John the Baptist', 'Joseph in Egypt', 'Joseph', 'Joshua', 'Korihor', 'Laban', 'Lachoneus', 'Laman the Nephite Spy', 'Lamoni', 'Lehi', 'Lehi, Son of Helaman', 'Lehi, Son of Zoram', 'Limhi', 'Malachi', 'Micah', 'Mormon', 'Moroni', 'Moses', 'Mosiah', 'Nephi', 'Nephi, Son of Helaman', 'Nephihah', 'King Noah', 'Omni', 'Pahoran', 'Samuel the Lamanite', 'Sariah', 'Satan', 'Sherem', 'Zeezrom', 'Zeniff', 'Zenock', 'Zenos', 'Zerahemnah']
 
 function getDisplayName(idName) {
     return displayNames[idNames.indexOf(idName)];
@@ -238,17 +238,23 @@ function updateRelationshipInfoBox() {
     box.innerHTML = "";
     const current = relationshipData.find(obj => obj.name == state.speaker);    // gets speaker name
 
+    const typelist = ["Family", "Associate", "Divine", "Enemy"];
+    // We want to sort by type  
+  
     // for each speaker that the current speaker has a relation to, add an expandable to the selected box
-    for (let obj of current.relations) {
+   for (let reltype of typelist) {
+     for (let obj of current.relations) {
         if (!imageFiles.includes(obj.name)) continue;   // safety against unimplemented speakers
-        let icon = createSmallIcon('rel', obj.name, obj.connection);    
+        if (obj.type != reltype) continue;  // not the type we're looking for
+        let icon = createSmallIcon('rel', obj.name, obj.connection, obj.type);    
         box.append(icon);
     }
+  }
 }
 
 // Returns HTML for a brand new expandable list element of a connection,
 // given the name of the connected (not the selected) speaker and some descriptive text.
-function createSmallIcon(type, speaker, connection) {
+function createSmallIcon(type, speaker, connection, relationship) {
     // Create parent
     let icon = document.createElement('div');
     icon.setAttribute('class', 'icon-small');
@@ -266,9 +272,9 @@ function createSmallIcon(type, speaker, connection) {
     img.setAttribute('src', getImageLink(speaker));
     imgBox.appendChild(img);
 
-    // bundle image and name together
+    // bundle image and name together, with a color based on the relationship
     let imageAndName = document.createElement('div');
-    imageAndName.setAttribute('class', 'icon-small-speaker');
+    imageAndName.setAttribute('class', 'icon-small-speaker ' + relationship.toLowerCase());
     imageAndName.appendChild(imgBox);
     imageAndName.appendChild(speakerName);
 
@@ -279,17 +285,18 @@ function createSmallIcon(type, speaker, connection) {
 
     // bundle the image/name and v into one (clickable) header bar
     let header = document.createElement('div');
-    header.setAttribute('class', 'header');
+    header.setAttribute('class', 'header color-key');
     header.appendChild(imageAndName);
     header.appendChild(collapseIcon);
     header.setAttribute("onclick", "expandSmallIcon('" + type + "-col-" + speaker + "')");
+  
 
     // descriptive dropdown
     let content = document.createElement('div');
     content.setAttribute('class', 'content'); 
     content.innerHTML = connection;
 
-    // assmeble and return
+    // assemble and return
     icon.appendChild(header);
     icon.appendChild(content);
 

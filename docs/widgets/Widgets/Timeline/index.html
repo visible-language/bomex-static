@@ -2,9 +2,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="icon" href="../../../favicon.ico">
-
         <title>Timeline - Visible Language</title>
+        <meta viewport="width=device-width, initial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../colors.css">
         <link rel="stylesheet" href="./timeline.css">
         <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
@@ -17,22 +17,21 @@
         <div class="page">
             <div class="timeline-container main-container">
                 <div class="timeline-top-bar">
-                    <div style="z-index: -1;" class="main-title">Timeline</div>
                     <div class="main-speaker">
+                        <div class="main-image-cont">
+                            <img id="main-image" />
+                        </div>
                         <select id='dropdown' class="author-select" onchange="loadSpeaker(this.value)">
                             <option disabled selected value>
                                 -- Select a speaker --
                             </option>
                         </select>
-                        <div class="main-image-cont">
-                            <img id="main-image" />
-                        </div>
                     </div>
                 </div>
 
                 <div class='tab-holder'>
-                    <div class='tab selected'>Compare with other speakers</div>
-                    <div class='tab'>View significant events</div>
+                    <div class='tab selected'>View significant events</div>
+                    <div class='tab'>Compare with other speakers</div>
                 </div>
 
                 <main>
