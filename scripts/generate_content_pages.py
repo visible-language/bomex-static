@@ -90,6 +90,12 @@ def _load_fragment(path: Path) -> str:
     if not path.exists():
         return ""
     fragment = path.read_text(encoding="utf-8")
+    fragment = re.sub(
+        r'(<h4\s+class="analysis-heading">)\s*Practical\s+application\s*(</h4>)',
+        r"\1Personal application\2",
+        fragment,
+        flags=re.IGNORECASE,
+    )
     return _ensure_content_table_class(fragment)
 
 
