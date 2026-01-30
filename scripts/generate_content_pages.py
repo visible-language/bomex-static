@@ -372,10 +372,10 @@ def _person_detail(item: Item, *, output_dir: Path) -> str:
     brief = str(item.description or "").strip()
     year_line = _format_year_line(item.year)
     brief_parts: List[str] = []
-    if year_line:
-        brief_parts.append(f"  <p><em>{html.escape(year_line)}</em></p>\n")
     if brief and not _starts_with_did_you_know(brief):
         brief_parts.append("  <h2>Brief biography</h2>\n")
+        if year_line:
+            brief_parts.append(f"  <p><em>{html.escape(year_line)}</em></p>\n")
         brief_parts.append(f"  <p>{html.escape(brief)}</p>\n")
     if isinstance(item.word_count, int) and item.word_count > 0:
         brief_parts.append(f"  <p>Total recorded words -- {item.word_count}</p>\n")

@@ -495,7 +495,7 @@ footer {
 
 .content-subtitle {
     font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 1.5rem;
+    font-size: 1.1rem;
     line-height: 1.25;
     color: var(--primary-color);
     margin-bottom: 1.75rem;
@@ -662,6 +662,11 @@ footer {
     table-layout: fixed;
 }
 
+.content-table th,
+.content-table td {
+    border-bottom: 1px solid #000;
+}
+
 .accordion-body {
     background-color: var(--white);
     padding: 1rem;
@@ -695,6 +700,10 @@ footer {
 
 .analysis td + td {
     padding-left: 1rem;
+}
+
+ol {
+    margin-left: 5%;
 }
 
 /* Explore by Person */
