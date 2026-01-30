@@ -16,7 +16,7 @@
 <section class="page-content">
   <h1 class="content-title">Ammon, a Prophet Like Moses</h1>
   <p class="content-subtitle">In many ways, Ammon, the son of King Mosiah II, resembles the prophet Moses.</p>
-<div class="analysis"><p><table class="content-table">
+<details class="accordion" data-auto-open="true"><summary><span>Ammon, a Prophet Like Moses</span><i class="fas fa-chevron-down"></i></summary><div class="accordion-body"><div class="analysis"><p><table class="content-table">
   <tr>
     <th>Moses</th>
     <th>Ammon</th>
@@ -94,11 +94,18 @@ them (Alma 20:3).</td>
 </table>
 
     </p></div>
-
+</div></details>
 </section>
 
   <footer></footer>
   <script src="../js/main.js"></script>
-  
+  <script>
+(function(){
+  var single = document.querySelector('details.accordion[data-auto-open="true"]');
+  if(single){
+    single.open = true;
+  }
+})();
+</script>
 </body>
 </html>

@@ -65,6 +65,13 @@ family.<br><br> <b>After 586 B.C.</b> Sariah dies.
 
   <footer></footer>
   <script src="../js/main.js"></script>
-  
+  <script>
+(function(){
+  var single = document.querySelector('details.accordion[data-auto-open="true"]');
+  if(single){
+    single.open = true;
+  }
+})();
+</script>
 </body>
 </html>

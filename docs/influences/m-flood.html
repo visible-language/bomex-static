@@ -16,7 +16,7 @@
 <section class="page-content">
   <h1 class="content-title">Mormon, the Nephites, and the Flood</h1>
   <p class="content-subtitle">Mormon, the primary editor of the Nephite record, lived in a time of great wickedness and sorrow as he witnessed the disintegration of the moral fabric of Nephite society and their final destruction as a people. His own book in the record that carries his name is &quot;a small abridgment, daring not to give a full account of the things which I have seen, because of the commandment which I have received, and also that ye might not have too great sorrow because of the wickedness of this people&quot; (Mormon 5:9).</p>
-<div class="analysis">
+<details class="accordion" data-auto-open="true"><summary><span>Mormon, the Nephites, and the Flood</span><i class="fas fa-chevron-down"></i></summary><div class="accordion-body"><div class="analysis">
       <p>
 His longer account on the large plates of Nephi contains a more detailed account of the wickedness he witnessed, leading up to the final destruction of the Nephites as a people (Mormon 2:18; 4:11). While Mormon does not provide great detail about the wickedness of his people, he does underscore the fallen state of his people by alluding to one of the most wicked points in biblical history: the time preceding the Flood in the days of Noah. <br><br>
 At the time of wickedness before the Flood, Noah and his family were blessed by God. "But Noah found <b><i>grace</i></b> in the eyes of the Lord" (Genesis 6:8). Mormon lamented the wickedness of his unrepentant people and wrote, "I saw that the day of <b><i>grace</i></b> was passed with them, both temporally and spiritually" (Mormon 2:15). Unlike Noah and his family, the Nephites would not be spared destruction, because of their unwillingness to repent and return to God.<br><br>
@@ -63,11 +63,18 @@ Mormon’s words are a warning to us today of the dangers of pervasive and conti
 </table>
       </p>
     </div>
-
+</div></details>
 </section>
 
   <footer></footer>
   <script src="../js/main.js"></script>
-  
+  <script>
+(function(){
+  var single = document.querySelector('details.accordion[data-auto-open="true"]');
+  if(single){
+    single.open = true;
+  }
+})();
+</script>
 </body>
 </html>

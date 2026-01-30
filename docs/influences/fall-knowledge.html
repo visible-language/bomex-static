@@ -15,7 +15,7 @@
 
 <section class="page-content">
   <h1 class="content-title">Good Knowledge From the Tree</h1>
-<div class="analysis">
+<details class="accordion" data-auto-open="true"><summary><span>Good Knowledge From the Tree</span><i class="fas fa-chevron-down"></i></summary><div class="accordion-body"><div class="analysis">
       <p>
 Consider the language related to knowledge used by the Lord and Moroni in the story of the Brother of Jared. In Ether, divinely given knowledge brings salvation, rather than death. Previous to his remarkable vision, Jared’s brother "<b><i>knew</i></b> not" that the Lord had a body (Ether 3:8). Later, the Lord says, "Because thou <b><i>knowest</i></b> these things ye are redeemed from the fall" (Ether 3:13). Where previously, partaking of the fruit resulted in man’s fall, expulsion, and death, receiving the true knowledge of God through faith resulted in his redemption. That knowledge was given "that this man might <b><i>know</i></b> that he was God" (Ether 3:18). "And because of the <b><i>knowledge</i></b> of this man he could not be kept from beholding within the veil . . .  for he <b><i>knew</i></b>, nothing doubting" (Ether 3:19). He had "this perfect <b><i>knowledge</i></b> of God" (Ether 3:20), and "he <b><i>knew</i></b> that the Lord could show him all things" (Ether 3:26). <br><br>
 Moroni also reminds us that those who believe these things will also receive the Spirit, and "shall <b><i>know</i></b> and bear record. For because of my Spirit, he shall <b><i>know</i></b> that these things are true; for it persuadeth men to do <b><i>good.</i></b> And whatsoever thing persuadeth men to do <b><i>good</i></b> is of me; for <b><i>good</i></b> cometh of none save it be of me. I am the same that leadeth men to all <b><i>good"</i></b> (Ether 4:11-12).  <br><br>
@@ -23,11 +23,18 @@ The Lord also invites us, the readers of this account, to come unto Him, so that
 Moroni frames these blessings of knowledge in language from the Fall of Man, in which a knowledge of good things is not taken by man, but generously provided by the Lord, once a person has shown they are capable, willing, and worthy to receive it. As we read the story of Jared’s brother, we should ponder how we can wisely use the knowledge of good that the Lord provides to bless the lives of others.
    </p>
    </div>
-
+</div></details>
 </section>
 
   <footer></footer>
   <script src="../js/main.js"></script>
-  
+  <script>
+(function(){
+  var single = document.querySelector('details.accordion[data-auto-open="true"]');
+  if(single){
+    single.open = true;
+  }
+})();
+</script>
 </body>
 </html>

@@ -15,7 +15,7 @@
 
 <section class="page-content">
   <h1 class="content-title">Alma and the Words of Jacob on the Dangers of Pride and Riches</h1>
-<div class="analysis">
+<details class="accordion" data-auto-open="true"><summary><span>Alma and the Words of Jacob on the Dangers of Pride and Riches</span><i class="fas fa-chevron-down"></i></summary><div class="accordion-body"><div class="analysis">
       <p>
 Shortly before the death of King Mosiah II, Alma II was entrusted with all the records of the Nephites previously kept by the Nephite kings (Mosiah 28:20). King Mosiah “took the plates of brass, and all the things which he had kept, and conferred them upon Alma, who was the son of Alma; yea, all the records, and also the interpreters, and conferred them upon him, and commanded him that he should keep and preserve them, and also keep a record of the people, handing them down from one generation to another, even as they had been handed down from the time that Lehi left Jerusalem” (Mosiah 28:20). <br><br>
 A comparison of Alma’s teachings with those on the plates of Nephi show that he frequently drew upon the words of his prophetic ancestors. Examples of the influence of the plates of Nephi on Alma’s teachings can be found in his warnings about the dangers of pride and riches, allusions to Lehi’s visions, Nephi’s teachings about the plates and the Liahona, and the plan of happiness. <br><br>
@@ -39,11 +39,18 @@ Yea, will ye persist in <b>supposing that ye are better one than another;</b> ye
 </table>
       </p>
     </div>
-
+</div></details>
 </section>
 
   <footer></footer>
   <script src="../js/main.js"></script>
-  
+  <script>
+(function(){
+  var single = document.querySelector('details.accordion[data-auto-open="true"]');
+  if(single){
+    single.open = true;
+  }
+})();
+</script>
 </body>
 </html>

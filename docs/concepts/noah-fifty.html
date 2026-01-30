@@ -15,7 +15,7 @@
 
 <section class="page-content">
   <h1 class="content-title">Noah and His Fifty</h1>
-<div class="analysis">
+<details class="accordion" data-auto-open="true"><summary><span>Noah and His Fifty</span><i class="fas fa-chevron-down"></i></summary><div class="accordion-body"><div class="analysis">
       <p>
 In his words to his brothers, following an encounter with Laban, Nephi compared the powerful official and his servants to Pharaoh and the Egyptian armies. Nephi’s brothers complained that Laban could command fifty soldiers, who could easily slay them. "How is it possible," they wondered, "that the Lord will deliver Laban into our hands? Behold, he is a mighty man, and he can command <b><i>fifty,</i></b> yea, even he can slay <b><i>fifty;</i></b> then why not us?" (1 Nephi 3:31).
 <br><br>
@@ -32,11 +32,18 @@ Nephi also told his brothers that the Lord was able to <b><i>deliver</i></b> the
 <br><br><br><br>
 <sup>1</sup>  Laban was slain while drunk (1 Nephi 4:7, 18). Noah was a wine bibber (Mosiah 11:15). Like Laban, Noah would not keep the commandments (1 Nephi 4:11; Mosiah 11:2) and rejected the words of Abinadi (Mosiah 17:12), just as Laban had rejected the word of the Lord (1 Nephi 4:11).
    </div>
-
+</div></details>
 </section>
 
   <footer></footer>
   <script src="../js/main.js"></script>
-  
+  <script>
+(function(){
+  var single = document.querySelector('details.accordion[data-auto-open="true"]');
+  if(single){
+    single.open = true;
+  }
+})();
+</script>
 </body>
 </html>

@@ -15,7 +15,7 @@
 
 <section class="page-content">
   <h1 class="content-title">A Reversal of the Fall</h1>
-<div class="analysis">
+<details class="accordion" data-auto-open="true"><summary><span>A Reversal of the Fall</span><i class="fas fa-chevron-down"></i></summary><div class="accordion-body"><div class="analysis">
       <p>
 <table class="content-table">
 <tr>
@@ -93,11 +93,18 @@ In me shall all mankind have life, and that eternally </i>(Ether 3:13-14). </td>
       
    </p> 
    </div>
-
+</div></details>
 </section>
 
   <footer></footer>
   <script src="../js/main.js"></script>
-  
+  <script>
+(function(){
+  var single = document.querySelector('details.accordion[data-auto-open="true"]');
+  if(single){
+    single.open = true;
+  }
+})();
+</script>
 </body>
 </html>

@@ -133,6 +133,13 @@ And Nephi arose and went forth, and <b><i>bowed himself before the Lord</i></b> 
 
   <footer></footer>
   <script src="../js/main.js"></script>
-  
+  <script>
+(function(){
+  var single = document.querySelector('details.accordion[data-auto-open="true"]');
+  if(single){
+    single.open = true;
+  }
+})();
+</script>
 </body>
 </html>

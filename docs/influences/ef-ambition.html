@@ -15,7 +15,7 @@
 
 <section class="page-content">
   <h1 class="content-title">The Evil Fruit of Unrestrained Ambition and Desire</h1>
-<div class="analysis">
+<details class="accordion" data-auto-open="true"><summary><span>The Evil Fruit of Unrestrained Ambition and Desire</span><i class="fas fa-chevron-down"></i></summary><div class="accordion-body"><div class="analysis">
 In Genesis, when the woman saw that the tree of knowledge of good and evil "<i>was <b>pleasant</b> to the eyes, and a tree to be <b>desired</b> to make one wise, she took of the fruit thereof, and did eat, and gave also unto her husband with her; and he did eat" </i> (Genesis 3:6). In the Ether story, Jared’s daughter introduces her plan as follows:<br><br>
 <p style="margin-left: 5%;"><i>And now, therefore, let my father send for Akish, the son of Kimnor; and behold, I am fair, and I will dance before him, and I will <b>please</b> him, that he will <b>desire</b> me to wife; wherefore if he shall <b>desire</b> of thee that ye shall give unto him me to wife, then shall ye say: I will give her if ye will bring unto me the head of my father, the king. . . .  <br><br>
 When Jared had sent for Akish, the daughter of Jared danced before him that she <b>pleased</b> him, insomuch that he <b>desired</b> her to wife </i>(Ether 8:10-11).</p><br><br>
@@ -23,11 +23,18 @@ The evil plan described in Ether evokes words that echo Eve’s desire for the f
 As we read the story of the plot of Akish and Jared’s family, we should ponder how the principles and covenants of the gospel of Jesus Christ can help us to control our passions and desires, providing safety in our lives.
       
    </div>
-
+</div></details>
 </section>
 
   <footer></footer>
   <script src="../js/main.js"></script>
-  
+  <script>
+(function(){
+  var single = document.querySelector('details.accordion[data-auto-open="true"]');
+  if(single){
+    single.open = true;
+  }
+})();
+</script>
 </body>
 </html>

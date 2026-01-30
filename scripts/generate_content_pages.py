@@ -395,19 +395,17 @@ def _person_detail(item: Item, *, output_dir: Path) -> str:
         chronology_intro = "<p><em>All dates are approximate.</em></p>"
         panels.append(("Chronology", chronology_intro + "".join(chronology_blocks)))
 
-    if len(panels) == 1:
-        accordion_html = panels[0][1]
-    else:
-        accordion_html = "".join(
-            "<details class=\"accordion\">"
-            "<summary>"
-            f"<span>{html.escape(title)}</span>"
-            "<i class=\"fas fa-chevron-down\"></i>"
-            "</summary>"
-            f"<div class=\"accordion-body\">{body}</div>"
-            "</details>"
-            for title, body in panels
-        )
+    single_panel = len(panels) == 1
+    accordion_html = "".join(
+        "<details class=\"accordion\"" + (" data-auto-open=\"true\"" if single_panel else "") + ">"
+        "<summary>"
+        f"<span>{html.escape(title)}</span>"
+        "<i class=\"fas fa-chevron-down\"></i>"
+        "</summary>"
+        f"<div class=\"accordion-body\">{body}</div>"
+        "</details>"
+        for title, body in panels
+    )
 
     return (
         f"<section class=\"detail-hero\"{hero_style}><div class=\"detail-hero-title\"><h1>{name}</h1></div></section>\n"
@@ -443,19 +441,17 @@ def _concept_or_influence_detail(kind: str, item: Item) -> str:
             inner.append(_load_fragment(sec.html_fragment_path))
         panels.append((page.title or "Details", "".join(inner)))
 
-    if len(panels) == 1:
-        body.append(panels[0][1])
-    else:
-        for title, inner_html in panels:
-            body.append(
-                "<details class=\"accordion\">"
-                "<summary>"
-                f"<span>{html.escape(title)}</span>"
-                "<i class=\"fas fa-chevron-down\"></i>"
-                "</summary>"
-                f"<div class=\"accordion-body\">{inner_html}</div>"
-                "</details>"
-            )
+    single_panel = len(panels) == 1
+    for title, inner_html in panels:
+        body.append(
+            "<details class=\"accordion\"" + (" data-auto-open=\"true\"" if single_panel else "") + ">"
+            "<summary>"
+            f"<span>{html.escape(title)}</span>"
+            "<i class=\"fas fa-chevron-down\"></i>"
+            "</summary>"
+            f"<div class=\"accordion-body\">{inner_html}</div>"
+            "</details>"
+        )
 
     body.append("</section>")
     return "\n".join(body) + "\n"
@@ -581,21 +577,39 @@ def main(argv: Optional[List[str]] = None) -> int:
         fname = f"{_safe_filename(it.item_id)}.html"
         _write_text(
             src_root / "people" / fname,
-            _doc(it.display_name, _person_detail(it, output_dir=src_root / "people"), asset_prefix="../", root_prefix="../"),
+            _doc(
+                it.display_name,
+                _person_detail(it, output_dir=src_root / "people"),
+                scripts_html=_auto_open_single_accordion_script(),
+                asset_prefix="../",
+                root_prefix="../",
+            ),
         )
 
     for it in influences:
         fname = f"{_safe_filename(it.item_id)}.html"
         _write_text(
             src_root / "influences" / fname,
-            _doc(it.display_name, _concept_or_influence_detail("influences", it), asset_prefix="../", root_prefix="../"),
+            _doc(
+                it.display_name,
+                _concept_or_influence_detail("influences", it),
+                scripts_html=_auto_open_single_accordion_script(),
+                asset_prefix="../",
+                root_prefix="../",
+            ),
         )
 
     for it in concepts:
         fname = f"{_safe_filename(it.item_id)}.html"
         _write_text(
             src_root / "concepts" / fname,
-            _doc(it.display_name, _concept_or_influence_detail("concepts", it), asset_prefix="../", root_prefix="../"),
+            _doc(
+                it.display_name,
+                _concept_or_influence_detail("concepts", it),
+                scripts_html=_auto_open_single_accordion_script(),
+                asset_prefix="../",
+                root_prefix="../",
+            ),
         )
 
     print(f"Wrote: people={len(people)} concepts={len(concepts)} influences={len(influences)}")
@@ -640,6 +654,19 @@ def _list_search_script(kind: str) -> str:
         "      rows[i].style.display = (!q || name.indexOf(q) !== -1) ? '' : 'none';\n"
         "    }\n"
         "  });\n"
+        "})();\n"
+        "</script>"
+    )
+
+
+def _auto_open_single_accordion_script() -> str:
+    return (
+        "<script>\n"
+        "(function(){\n"
+        "  var single = document.querySelector('details.accordion[data-auto-open=\"true\"]');\n"
+        "  if(single){\n"
+        "    single.open = true;\n"
+        "  }\n"
         "})();\n"
         "</script>"
     )

@@ -15,7 +15,7 @@
 
 <section class="page-content">
   <h1 class="content-title">Lamanite kings: Bowing Down Before God</h1>
-<div class="analysis">
+<details class="accordion" data-auto-open="true"><summary><span>Bowing Down Before God</span><i class="fas fa-chevron-down"></i></summary><div class="accordion-body"><div class="analysis">
 Nephi taught his people, "And now, behold, I say unto you that the right way is to believe in Christ and deny him not; and Christ is the Holy One of Israel; wherefore ye must <b><i>bow down before him,</i></b> and worship him with all your might, mind, and strength, and your whole soul; and if ye do this ye shall in no wise be cast out" (2 Nephi 25:29).  <br><br>
 Aaron, the Nephite missionary, drew upon this very teaching from the plates of Nephi when he taught Lamoni’s father, who wanted to know how he could root out the dark influence of sin in his life. <br><br>
 <p style="margin-left: 5%"><i>If thou desirest this thing, if thou wilt <b>bow down before God,</b> yea, if thou wilt repent of thy sins, and will <b>bow down before God,</b> and call on his name in faith, believing that ye shall receive, then shalt thou receive the hope which thou desirest. <br><br> 
@@ -28,11 +28,18 @@ According to Alma, it was the records on the plates of Nephi, which described "t
 As we read about the success of the Nephite missionaries, we should strive to follow the example of this Lamanite king, and come to know God better each day by bowing down in prayer before Him.
       </p>
     </div>
-
+</div></details>
 </section>
 
   <footer></footer>
   <script src="../js/main.js"></script>
-  
+  <script>
+(function(){
+  var single = document.querySelector('details.accordion[data-auto-open="true"]');
+  if(single){
+    single.open = true;
+  }
+})();
+</script>
 </body>
 </html>
