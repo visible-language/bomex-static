@@ -243,6 +243,10 @@ def _format_year_line(year: str) -> str:
     return f"Circa {yr}"
 
 
+def _format_int_with_commas(value: int) -> str:
+    return f"{value:,}"
+
+
 def _hero(kind: str, title: str, subtitle: str) -> str:
     # For index pages: image first, then title/subtitle on white.
     hero_class = {
@@ -378,11 +382,12 @@ def _person_detail(item: Item, *, output_dir: Path) -> str:
             brief_parts.append(f"  <p><em>{html.escape(year_line)}</em></p>\n")
         brief_parts.append(f"  <p>{html.escape(brief)}</p>\n")
     if isinstance(item.word_count, int) and item.word_count > 0:
-        brief_parts.append(f"  <p>Total recorded words -- {item.word_count}</p>\n")
+        brief_parts.append(f"  <p>Total recorded words -- {_format_int_with_commas(item.word_count)}</p>\n")
     brief_html = "".join(brief_parts)
 
     if chronology_blocks:
-        panels.append(("Chronology", "".join(chronology_blocks)))
+        chronology_intro = "<p><em>All dates are approximate.</em></p>"
+        panels.append(("Chronology", chronology_intro + "".join(chronology_blocks)))
 
     if len(panels) == 1:
         accordion_html = panels[0][1]
