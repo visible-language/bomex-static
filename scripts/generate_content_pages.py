@@ -7,6 +7,7 @@ import html
 import json
 import os
 import re
+import shutil
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Tuple
@@ -14,6 +15,11 @@ from typing import Any, Dict, Iterable, List, Optional, Tuple
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 SRC_ROOT = REPO_ROOT / "docs"
+CONTENT_ROOT = REPO_ROOT / "content"
+IMAGE_COPY_ROOT = SRC_ROOT / "img"
+_COPIED_IMAGE_MAP: Dict[Path, str] = {}
+_IMAGE_NAME_SOURCES: Dict[str, Path] = {}
+_USED_IMAGE_NAMES: set[str] = set()
 
 
 @dataclass(frozen=True)
@@ -118,12 +124,37 @@ def _ensure_content_table_class(fragment: str) -> str:
     return re.sub(r"<table([^>]*)>", _repl, fragment, flags=re.IGNORECASE)
 
 
+def _ensure_unique_image_name(name: str, *, src: Path) -> str:
+    if name not in _USED_IMAGE_NAMES:
+        _USED_IMAGE_NAMES.add(name)
+        return name
+    prior = _IMAGE_NAME_SOURCES.get(name)
+    prior_str = str(prior) if prior is not None else "unknown source"
+    raise RuntimeError(
+        f"Image name collision for '{name}' in {IMAGE_COPY_ROOT}. "
+        f"Sources: {prior_str} and {src}"
+    )
+
+
+def _copy_image_to_docs(src: Path) -> str:
+    src = src.resolve()
+    if src in _COPIED_IMAGE_MAP:
+        return _COPIED_IMAGE_MAP[src]
+    IMAGE_COPY_ROOT.mkdir(parents=True, exist_ok=True)
+    dst_name = _ensure_unique_image_name(src.name, src=src)
+    dst_path = IMAGE_COPY_ROOT / dst_name
+    shutil.copy2(src, dst_path)
+    _IMAGE_NAME_SOURCES[dst_name] = src
+    _COPIED_IMAGE_MAP[src] = dst_name
+    return dst_name
+
+
 def _resolve_asset_ref(details_path: Path, output_dir: Path, ref: str) -> str:
     """Resolve an asset path stored in details JSON into a link relative to the output HTML.
 
     Details JSONs store local assets as './main.jpg' (relative to the details folder).
-    Generated HTML pages live in docs/{people,concepts,influences}/, so we must rewrite these to e.g.
-    '../content/people/<id>/main.jpg'.
+    Generated HTML pages live in docs/{people,concepts,influences}/, so we rewrite local assets
+    into docs/img-copied/ to keep all paths inside docs/.
     """
 
     ref = (ref or "").strip()
@@ -132,11 +163,27 @@ def _resolve_asset_ref(details_path: Path, output_dir: Path, ref: str) -> str:
     if ref.startswith("http://") or ref.startswith("https://"):
         return ref
 
-    # If already rooted at docs/ (e.g., 'img/...', 'content/...'), translate to a relative path.
-    for prefix in ("content/", "img/", "css/", "js/"):
+    # If already rooted at docs/ (e.g., 'img/...'), copy into docs/img-copied/.
+    if ref.startswith("img/"):
+        src = (SRC_ROOT / ref).resolve()
+        if src.exists():
+            dst_name = _copy_image_to_docs(src)
+            abs_target = (IMAGE_COPY_ROOT / dst_name).resolve()
+            rel = os.path.relpath(abs_target, output_dir.resolve())
+            return rel.replace(os.sep, "/")
+
+    # Keep css/js references in-place inside docs/.
+    for prefix in ("css/", "js/"):
         if ref.startswith(prefix):
-            # output_dir is typically docs/{people,concepts,influences}/
             abs_target = (output_dir.parent / ref).resolve()
+            rel = os.path.relpath(abs_target, output_dir.resolve())
+            return rel.replace(os.sep, "/")
+
+    if ref.startswith("content/"):
+        src = (REPO_ROOT / ref).resolve()
+        if src.exists():
+            dst_name = _copy_image_to_docs(src)
+            abs_target = (IMAGE_COPY_ROOT / dst_name).resolve()
             rel = os.path.relpath(abs_target, output_dir.resolve())
             return rel.replace(os.sep, "/")
 
@@ -144,6 +191,11 @@ def _resolve_asset_ref(details_path: Path, output_dir: Path, ref: str) -> str:
     if ref.startswith("./"):
         ref = ref[2:]
     abs_target = (details_path.parent / ref).resolve()
+    if abs_target.exists():
+        dst_name = _copy_image_to_docs(abs_target)
+        abs_target = (IMAGE_COPY_ROOT / dst_name).resolve()
+        rel = os.path.relpath(abs_target, output_dir.resolve())
+        return rel.replace(os.sep, "/")
     rel = os.path.relpath(abs_target, output_dir.resolve())
     return rel.replace(os.sep, "/")
 
@@ -489,7 +541,7 @@ def _remove_generated(src_root: Path) -> None:
 def main(argv: Optional[List[str]] = None) -> int:
     parser = argparse.ArgumentParser(
         description=(
-            "Generate People/Influences/Concepts index + detail pages from docs/content. "
+            "Generate People/Influences/Concepts index + detail pages from content/. "
             "Outputs HTML files into docs/people/, docs/concepts/, and docs/influences/."
         )
     )
@@ -500,8 +552,8 @@ def main(argv: Optional[List[str]] = None) -> int:
     )
     parser.add_argument(
         "--data-root",
-        default=str(SRC_ROOT / "content"),
-        help="Path to docs/content (default: <repo>/docs/content)",
+        default=str(CONTENT_ROOT),
+        help="Path to content (default: <repo>/content)",
     )
     args = parser.parse_args(argv)
 
@@ -513,6 +565,7 @@ def main(argv: Optional[List[str]] = None) -> int:
     influences_root = data_root / "influences"
 
     _remove_generated(src_root)
+
 
     # Clear subdir outputs to avoid stale pages.
     for out_subdir in ("people", "concepts", "influences"):

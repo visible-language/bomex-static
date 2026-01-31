@@ -1,6 +1,6 @@
 *{
   box-sizing: border-box;
-  margin: 0; 
+  margin: 0;
   padding: 0;
 }
 
@@ -35,11 +35,11 @@ border-left:.005rem #ddd solid;
 }
 
 ::-webkit-scrollbar-thumb {
-background: rgba(161, 161, 161,0.8); 
+background: rgba(161, 161, 161,0.8);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-background: rgba(136, 136, 136,0.8); 
+background: rgba(136, 136, 136,0.8);
 }
 
 
@@ -117,7 +117,7 @@ text-overflow: ellipsis;
 color: black;
 outline: none;
 border: none;
-background-image: url(https://alexlyman.org/img/search.svg);
+background-image: url(../../../img/search.svg);
 background-size: 1.4rem;
 background-position: left 1.05rem top 0.8rem;
 background-repeat: no-repeat;
