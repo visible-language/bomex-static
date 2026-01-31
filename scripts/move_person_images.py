@@ -159,15 +159,15 @@ def process_person(
 def main(argv: Optional[List[str]] = None) -> int:
     parser = argparse.ArgumentParser(
         description=(
-            "Copy/move person images referenced in docs/content/people/*/person-details.json "
+            "Copy/move person images referenced in content/people/*/person-details.json "
             "from old/bomex-webstructure/public/Images into each person directory as main.jpg, "
             "and update JSON to point to ./main.jpg."
         )
     )
     parser.add_argument(
         "--people-root",
-        default="docs/content/people",
-        help="Root directory containing person folders (default: docs/content/people)",
+        default="content/people",
+        help="Root directory containing person folders (default: content/people)",
     )
     parser.add_argument(
         "--images-root",

@@ -14,7 +14,7 @@ Output (new static layout):
 - `<out>/influences/<influence_id>/influence-details.json`
 - `<out>/influences/<influence_id>/*.html`
 
-By default this script is non-destructive: it writes to `docs/content/`.
+By default this script is non-destructive: it writes to `content/`.
 
 Usage:
   python3 scripts/convert_people_to_static.py
@@ -638,7 +638,7 @@ def main(argv: Optional[List[str]] = None) -> int:
         default="old/bomex-webstructure/cameo jsons",
         help="Input people dir (default: old/bomex-webstructure/cameo jsons)",
     )
-    parser.add_argument("--out", dest="out_dir", default="docs/content", help="Output dir (default: docs/content)")
+    parser.add_argument("--out", dest="out_dir", default="content", help="Output dir (default: content)")
     parser.add_argument(
         "--images-root",
         default="old/bomex-webstructure/public/Images",

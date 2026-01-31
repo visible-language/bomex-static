@@ -7,7 +7,7 @@ It intentionally does not parse subcommand flags itself; the underlying scripts 
 
 Examples:
     uv run scripts/bomex.py build --steps pages
-    uv run scripts/bomex.py convert --in "old/bomex-webstructure/cameo jsons" --out docs/content
+    uv run scripts/bomex.py convert --in "old/bomex-webstructure/cameo jsons" --out content
     uv run scripts/bomex.py images --copy
     uv run scripts/bomex.py pages
     uv run scripts/bomex.py fix --check
@@ -41,7 +41,7 @@ def _build_main(argv: Optional[List[str]] = None) -> int:
     parser = argparse.ArgumentParser(
         prog="bomex.py build",
         description=(
-            "Build the BomEx static site. Optionally rebuild docs/content from legacy sources, "
+            "Build the BomEx static site. Optionally rebuild content from legacy sources, "
             "consolidate images, regenerate docs pages, and fix mojibake/apostrophes."
         ),
     )
@@ -65,8 +65,8 @@ def _build_main(argv: Optional[List[str]] = None) -> int:
     parser.add_argument(
         "--out",
         dest="out_dir",
-        default="docs/content",
-        help="Output dir for convert step (default: docs/content)",
+        default="content",
+        help="Output dir for convert step (default: content)",
     )
     parser.add_argument(
         "--include",
@@ -78,8 +78,8 @@ def _build_main(argv: Optional[List[str]] = None) -> int:
     # move_person_images.py args
     parser.add_argument(
         "--people-root",
-        default="docs/content/people",
-        help="People root for images step (default: docs/content/people)",
+        default="content/people",
+        help="People root for images step (default: content/people)",
     )
     parser.add_argument(
         "--images-root",
@@ -110,8 +110,8 @@ def _build_main(argv: Optional[List[str]] = None) -> int:
     )
     parser.add_argument(
         "--data-root",
-        default="docs/content",
-        help="Data root for page generation (default: docs/content)",
+        default="content",
+        help="Data root for page generation (default: content)",
     )
 
     # fix_apostrophes.py args
