@@ -378,6 +378,9 @@
         var connectionDisplay = 1;
         var dimensions = 3;
         var lineWidth = 1;
+        var pendingTapNodeId = null;
+        const isTouchDevice =
+          window.matchMedia && window.matchMedia("(pointer: coarse)").matches;
 
         // Legend mode:
         // - "all": show global legend categories (current behavior)
@@ -434,6 +437,18 @@
             linkHover(link, link2);
           })
           .onNodeClick((node, event) => {
+            if (isTouchDevice) {
+              if (pendingTapNodeId === node.Id) {
+                pendingTapNodeId = null;
+                destroyLabel();
+                highlightSpeaker(node.Label);
+              } else {
+                pendingTapNodeId = node.Id;
+                selectedNode = node;
+                createLabel(node.Label);
+              }
+              return;
+            }
             highlightSpeaker(node.Label);
           })
           .onNodeRightClick((node) => {
@@ -521,6 +536,7 @@
         function dehighlightGraph() {
           highlightMode = false;
           selectedNode = null;
+          pendingTapNodeId = null;
           // return nodes to proper color
           if (coloring == 1) {
             Graph.nodeColor("Color1");
@@ -1472,6 +1488,8 @@
 
         // Highlight a given speaker's node and edges
         function highlightSpeaker(speaker) {
+          pendingTapNodeId = null;
+          destroyLabel();
           var nodes = Graph.graphData().nodes;
           var node;
 
@@ -1532,6 +1550,8 @@
 
         // Highlight a given node and its edges
         function highlightNode(label) {
+          pendingTapNodeId = null;
+          destroyLabel();
           var node = label;
 
           // Set the selected node for highlighting
