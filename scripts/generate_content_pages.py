@@ -41,7 +41,7 @@ class Page:
 
 @dataclass(frozen=True)
 class Item:
-    kind: str  # people|concepts|influences
+    kind: str  # people|concepts|echoes
     item_id: str
     display_name: str
     year: str
@@ -153,7 +153,7 @@ def _resolve_asset_ref(details_path: Path, output_dir: Path, ref: str) -> str:
     """Resolve an asset path stored in details JSON into a link relative to the output HTML.
 
     Details JSONs store local assets as './main.jpg' (relative to the details folder).
-    Generated HTML pages live in docs/{people,concepts,influences}/, so we rewrite local assets
+    Generated HTML pages live in docs/{people,concepts,echoes}/, so we rewrite local assets
     into docs/img-copied/ to keep all paths inside docs/.
     """
 
@@ -205,8 +205,8 @@ def _iter_details(kind: str, root: Path) -> Iterable[Path]:
         yield from sorted(root.glob("*/person-details.json"))
     elif kind == "concepts":
         yield from sorted(root.glob("*/concept-details.json"))
-    elif kind == "influences":
-        yield from sorted(root.glob("*/influence-details.json"))
+    elif kind == "echoes":
+        yield from sorted(root.glob("*/echo-details.json"))
     else:
         return
 
@@ -309,7 +309,7 @@ def _hero(kind: str, title: str, subtitle: str) -> str:
     # For index pages: image first, then title/subtitle on white.
     hero_class = {
         "people": "page-hero page-hero--people",
-        "influences": "page-hero page-hero--influences",
+        "echoes": "page-hero page-hero--echoes",
         "concepts": "page-hero page-hero--concepts",
     }[kind]
 
@@ -469,9 +469,9 @@ def _person_detail(item: Item, *, output_dir: Path) -> str:
     )
 
 
-def _concept_or_influence_detail(kind: str, item: Item) -> str:
+def _concept_or_echo_detail(kind: str, item: Item) -> str:
     title = html.escape(item.display_name)
-    # Use a generic hero (same as index) since concepts/influences don't always have per-item art.
+    # Use a generic hero (same as index) since concepts/echoes don't always have per-item art.
     hero = f"<section class=\"page-hero page-hero--{kind}\"></section>\n"
 
     body = [
@@ -483,7 +483,7 @@ def _concept_or_influence_detail(kind: str, item: Item) -> str:
     if item.description.strip():
         body.append(f"  <p class=\"content-subtitle\">{html.escape(item.description.strip())}</p>")
 
-    # Render one accordion per page (sub-JSON), for both concepts and influences.
+    # Render one accordion per page (sub-JSON), for both concepts and echoes.
     panels: List[Tuple[str, str]] = []
     for page in item.pages:
         inner: List[str] = []
@@ -527,8 +527,8 @@ def _remove_generated(src_root: Path) -> None:
         "people-*.html",
         "concepts.html",
         "concept-*.html",
-        "influences.html",
-        "influence-*.html",
+        "echoes.html",
+        "echo-*.html",
     ]
     for pat in patterns:
         for p in src_root.glob(pat):
@@ -541,8 +541,8 @@ def _remove_generated(src_root: Path) -> None:
 def main(argv: Optional[List[str]] = None) -> int:
     parser = argparse.ArgumentParser(
         description=(
-            "Generate People/Influences/Concepts index + detail pages from content/. "
-            "Outputs HTML files into docs/people/, docs/concepts/, and docs/influences/."
+            "Generate People/Echoes/Concepts index + detail pages from content/. "
+            "Outputs HTML files into docs/people/, docs/concepts/, and docs/echoes/."
         )
     )
     parser.add_argument(
@@ -562,13 +562,13 @@ def main(argv: Optional[List[str]] = None) -> int:
 
     people_root = data_root / "people"
     concepts_root = data_root / "concepts"
-    influences_root = data_root / "influences"
+    echoes_root = data_root / "echoes"
 
     _remove_generated(src_root)
 
 
     # Clear subdir outputs to avoid stale pages.
-    for out_subdir in ("people", "concepts", "influences"):
+    for out_subdir in ("people", "concepts", "echoes"):
         out_dir = src_root / out_subdir
         out_dir.mkdir(parents=True, exist_ok=True)
         for p in out_dir.glob("*.html"):
@@ -579,7 +579,7 @@ def main(argv: Optional[List[str]] = None) -> int:
 
     people = _collect_items("people", people_root)
     concepts = _collect_items("concepts", concepts_root)
-    influences = _collect_items("influences", influences_root)
+    echoes = _collect_items("echoes", echoes_root)
 
     # Index pages
     _write_text(
@@ -593,17 +593,17 @@ def main(argv: Optional[List[str]] = None) -> int:
         ),
     )
     _write_text(
-        src_root / "influences" / "index.html",
+        src_root / "echoes" / "index.html",
         _doc(
-            "Influences",
+            "Echoes",
             _list_index(
-                "influences",
-                "Influences",
-                "Learn how the People in the Book of Mormon Influenced the Messages of Others",
-                influences,
+                "echoes",
+                "Echoes",
+                "Learn how the people in the Book of Mormon were influenced by others",
+                echoes,
                 enable_search=True,
             ),
-            scripts_html=_list_search_script("influences"),
+            scripts_html=_list_search_script("echoes"),
             asset_prefix="../",
             root_prefix="../",
         ),
@@ -639,13 +639,13 @@ def main(argv: Optional[List[str]] = None) -> int:
             ),
         )
 
-    for it in influences:
+    for it in echoes:
         fname = f"{_safe_filename(it.item_id)}.html"
         _write_text(
-            src_root / "influences" / fname,
+            src_root / "echoes" / fname,
             _doc(
                 it.display_name,
-                _concept_or_influence_detail("influences", it),
+                _concept_or_echo_detail("echoes", it),
                 scripts_html=_auto_open_single_accordion_script(),
                 asset_prefix="../",
                 root_prefix="../",
@@ -658,14 +658,14 @@ def main(argv: Optional[List[str]] = None) -> int:
             src_root / "concepts" / fname,
             _doc(
                 it.display_name,
-                _concept_or_influence_detail("concepts", it),
+                _concept_or_echo_detail("concepts", it),
                 scripts_html=_auto_open_single_accordion_script(),
                 asset_prefix="../",
                 root_prefix="../",
             ),
         )
 
-    print(f"Wrote: people={len(people)} concepts={len(concepts)} influences={len(influences)}")
+    print(f"Wrote: people={len(people)} concepts={len(concepts)} echoes={len(echoes)}")
     return 0
 
 
