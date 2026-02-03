@@ -57,4 +57,57 @@ document.addEventListener("DOMContentLoaded", function() {
 
         el.textContent = String(new Date().getFullYear());
     }
+
+    function initHelpTooltips() {
+        const helpIcons = document.querySelectorAll('.help-icon');
+        if (!helpIcons.length) return;
+
+        function closeAll(except) {
+            helpIcons.forEach(icon => {
+                if (icon !== except) icon.classList.remove('is-tooltip-open');
+            });
+            document.querySelectorAll('.nav-button--suppress').forEach(btn => {
+                btn.classList.remove('nav-button--suppress');
+            });
+        }
+
+        helpIcons.forEach(icon => {
+            icon.addEventListener('pointerdown', function () {
+                const parent = icon.closest('.nav-button');
+                if (!parent) return;
+                parent.classList.add('nav-button--suppress');
+                setTimeout(function () {
+                    parent.classList.remove('nav-button--suppress');
+                }, 200);
+            });
+            icon.addEventListener('touchstart', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                const parent = icon.closest('.nav-button');
+                if (!parent) return;
+                parent.classList.add('nav-button--suppress');
+                setTimeout(function () {
+                    parent.classList.remove('nav-button--suppress');
+                }, 200);
+                const willOpen = !icon.classList.contains('is-tooltip-open');
+                closeAll();
+                if (willOpen) icon.classList.add('is-tooltip-open');
+            }, { passive: false });
+            icon.addEventListener('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                const willOpen = !icon.classList.contains('is-tooltip-open');
+                closeAll();
+                if (willOpen) icon.classList.add('is-tooltip-open');
+                const parent = icon.closest('.nav-button');
+                if (parent) parent.classList.add('nav-button--suppress');
+            });
+        });
+
+        document.addEventListener('click', function () {
+            closeAll();
+        });
+    }
+
+    initHelpTooltips();
 });

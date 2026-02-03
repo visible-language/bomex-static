@@ -167,6 +167,10 @@ header {
     background-color: #dcdcdc;
 }
 
+.nav-button.nav-button--suppress:hover {
+    background-color: #E8E8E8;
+}
+
 .nav-button i {
     color: var(--primary-color);
     font-size: 1.2rem;
@@ -294,6 +298,7 @@ header {
     position: relative;
     display: inline-flex;
     align-items: center;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .help-icon:focus {
@@ -301,7 +306,8 @@ header {
 }
 
 .help-icon:hover::after,
-.help-icon:focus::after {
+.help-icon:focus::after,
+.help-icon.is-tooltip-open::after {
     content: attr(data-tooltip);
     position: absolute;
     top: 1.4rem;
@@ -314,12 +320,25 @@ header {
     color: #fff;
     font-size: 0.85rem;
     line-height: 1.2;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, Helvetica, sans-serif;
     z-index: 10;
 }
 
 .help-icon--nav {
     margin-left: auto;
     color: rgba(255, 255, 255, 0.85);
+}
+
+.nav-button.nav-button--suppress {
+    background-color: #E8E8E8 !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.nav-button.nav-button--suppress:active,
+.nav-button.nav-button--suppress:focus-within {
+    background-color: #E8E8E8 !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
 }
 
 .select-input, .text-input {
