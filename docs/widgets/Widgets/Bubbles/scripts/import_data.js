@@ -6,10 +6,8 @@ When you inevitably run into problems with this, you'll need to change lines 9 a
 */
 
 function getChartData(dataset, chartType) {
-  const urlBase = '/Widgets/Bubbles/json/json'; // Online Server
-  // const urlBase = './graphs/json/json'; // local Server
-  const url = `${location.origin}/${urlBase}/${dataset}/${chartType}.json`; 
-  // const url = `${location.origin}/${urlBase}/Nephi/${chartType}.json`; 
+  const urlBase = './json/json'; // relative to widget root
+  const url = new URL(`${urlBase}/${dataset}/${chartType}.json`, window.location.href).toString();
   
   const req = new XMLHttpRequest();
 
@@ -21,9 +19,8 @@ function getChartData(dataset, chartType) {
 
 function getSpeakerDataJSON(dataset) {
   // dataset is speaker
-  // const urlBase = './graphs/speakerData';
-  const urlBase = '/Widgets/Bubbles/speakerData';
-  const url = `${location.origin}/${urlBase}/${dataset}.json`; 
+  const urlBase = './speakerData';
+  const url = new URL(`${urlBase}/${dataset}.json`, window.location.href).toString();
   const req = new XMLHttpRequest();
 
   req.open("GET", url, false);

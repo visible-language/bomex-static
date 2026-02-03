@@ -522,9 +522,8 @@ function updateChartTitle() {
     
     // update Image as well
     // const urlBase = 'PackedBubble/graphs/json/json'; // Online Server
-    const urlBase = '/Widgets/Bubbles/images/'; // local Server
-
-    imageString = urlBase + state.currentDataSet + ".jpg"
+    const urlBase = './images';
+    const imageString = new URL(`${urlBase}/${state.currentDataSet}.jpg`, window.location.href).toString();
     document.getElementById('speaker-image').setAttribute('src', imageString)
 }
 
