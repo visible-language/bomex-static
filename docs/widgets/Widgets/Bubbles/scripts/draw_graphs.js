@@ -23,6 +23,7 @@ let state =  {
     loaded: false
 }
 const urlParams = new URLSearchParams(window.location.search);
+const DEFAULT_SPEAKER = "nephi1";
 
 // Get speaker
 function getSpeaker() {
@@ -35,8 +36,9 @@ function getSpeaker() {
             return;
         }
     } else {
-        console.log("Bad URL parameter for speaker. Default to Nephi.");
+        console.log("No URL parameter for speaker. Default to Nephi.");
     }
+    state.currentDataSet = DEFAULT_SPEAKER;
     loadNewDataset(state.currentDataSet);
 }
 

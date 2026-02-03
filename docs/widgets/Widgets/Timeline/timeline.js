@@ -131,6 +131,7 @@ class TimeLineState {
 }
 
 let state = new TimeLineState();
+const DEFAULT_SPEAKER = "Nephi";
 
 let parameters = new URLSearchParams(window.location.search);
 let path = location.pathname.split("/");
@@ -148,7 +149,7 @@ function normalizeSpeakerParam(list, raw) {
 
 const paramSpeaker = normalizeSpeakerParam(Dropdown.idNames, parameters.get("speaker"));
 const pathSpeaker = normalizeSpeakerParam(Dropdown.idNames, path[3]);
-const initialSpeaker = paramSpeaker || pathSpeaker || "Mormon";
+const initialSpeaker = paramSpeaker || pathSpeaker || DEFAULT_SPEAKER;
 
 Dropdown.fillDropDown('dropdown', initialSpeaker);
 state.speaker = initialSpeaker;

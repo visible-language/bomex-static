@@ -21,6 +21,7 @@ let state = {
 }
 let path = location.pathname.split("/");
 let parameters = new URLSearchParams(window.location.search);
+const DEFAULT_SPEAKER = "Nephi";
 
 function normalizeSpeakerParam(list, raw) {
     if (!raw) return null;
@@ -35,7 +36,7 @@ function normalizeSpeakerParam(list, raw) {
 
 const paramSpeaker = normalizeSpeakerParam(imageFiles, parameters.get("speaker"));
 const pathSpeaker = normalizeSpeakerParam(imageFiles, path[3]);
-state.speaker = paramSpeaker || pathSpeaker || "Mormon";
+state.speaker = paramSpeaker || pathSpeaker || DEFAULT_SPEAKER;
 function updateSpeakerSelect(value) {
     const selectEl = document.getElementById("speaker-names");
     if (selectEl) {

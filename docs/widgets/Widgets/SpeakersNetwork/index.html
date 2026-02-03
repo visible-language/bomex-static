@@ -1142,8 +1142,10 @@
         }
 
         //go to speaker from url query
+        const DEFAULT_SPEAKER = "Nephi";
+
         function goToURLSpeaker(){
-            speaker = getQueryVariable('speaker');
+            speaker = getQueryVariable('speaker') || DEFAULT_SPEAKER;
             
             if (speaker && speakers.includes(speaker)) {
                 document.getElementById("bookSelect").value = speaker;
