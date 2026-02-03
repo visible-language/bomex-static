@@ -2,15 +2,15 @@
   "item_id": "alma-y-abinadi",
   "category": "echoes",
   "group": "Alma II/alma-y-abinadi",
-  "display_name": "Alma’s Counsel to His Son and the Words of Abinadi",
+  "display_name": "Alma the Younger and Abinadi: Judement",
   "year": "144 B.C.-73 B.C.",
   "word_count": 0,
   "image": "",
-  "description": "",
+  "description": "Alma the Younger's father, Alma, had been one of King Noah's priests at the time when Abinadi was brought before King Noah’s court. He was converted by Abinadi’s words and recorded Abinadi’s teachings and testimony (Mosiah 17:2; 18:1-3).",  
   "pages": [
     {
       "slug": "alma-y-abinadi",
-      "title": "Alma’s Counsel to His Son and the Words of Abinadi",
+      "title": "Alma’s Counsel",
       "year": "144 B.C.-73 B.C.",
       "word_count": 0,
       "description": "",
@@ -21,16 +21,29 @@
           "heading": "",
           "analysis_id": "alma-y-abinadi",
           "html": "./alma-y-abinadi.html"
-        },
+        }
+      ],
+      "source": {
+        "json": "../bomex-webstructure/cameo jsons/Influences/Alma II/alma-y-abinadi.json"
+      }
+    },
+    {
+      "slug": "alma-y-abinadi2",
+      "title": "Side-by-side Verse Comparison",
+      "year": "144 B.C.-73 B.C.",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
         {
-          "order": 2,
-          "heading": "Comparison of Abinadi's and Alma's words",
+          "order": 1,
+          "heading": "",
           "analysis_id": "alma-y-abinadi2",
           "html": "./alma-y-abinadi2.html"
         }
       ],
       "source": {
-        "json": "../bomex-webstructure/cameo jsons/Influences/Alma II/alma-y-abinadi.json"
+        "json": "../bomex-webstructure/cameo jsons/Influences/Alma II/alma-y-abinadi2.json"
       }
     }
   ]
