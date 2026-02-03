@@ -2,15 +2,15 @@
   "item_id": "alma-y-lehi",
   "category": "echoes",
   "group": "Alma II/alma-y-lehi",
-  "display_name": "Alma’s Words and Lehi’s Visions",
+  "display_name": "Alma the Younger and Lehi",
   "year": "144 B.C.-73 B.C.",
   "word_count": 0,
   "image": "",
-  "description": "",
+  "description": "As Alma the Younger taught his sons, he shared similar words and ideas to those taught by Lehi and recorded by Nephi hundreds of years earlier.",
   "pages": [
     {
       "slug": "alma-y-lehi",
-      "title": "Alma’s Words and Lehi’s Visions",
+      "title": "Visionary Language",
       "year": "144 B.C.-73 B.C.",
       "word_count": 0,
       "description": "",
@@ -24,13 +24,38 @@
         },
         {
           "order": 2,
-          "heading": "Alma and the Small Plates",
+          "heading": "",
           "analysis_id": "alma-y-lehi2",
           "html": "./alma-y-lehi2.html"
         }
       ],
       "source": {
         "json": "../bomex-webstructure/cameo jsons/Influences/Alma II/alma-y-lehi.json"
+      }
+    },
+    {
+      "slug": "alma-y-plan",
+      "title": "The Plan of Happiness",
+      "year": "144 B.C.-73 B.C.",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "",
+          "analysis_id": "alma-y-plan",
+          "html": "./alma-y-plan.html"
+        },
+        {
+          "order": 2,
+          "heading": "",
+          "analysis_id": "alma-y-plan2",
+          "html": "./alma-y-plan2.html"
+        }
+      ],
+      "source": {
+        "json": "../bomex-webstructure/cameo jsons/Influences/Alma II/alma-y-plan.json"
       }
     }
   ]
