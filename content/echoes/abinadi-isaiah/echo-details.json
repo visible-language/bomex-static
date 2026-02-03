@@ -2,15 +2,15 @@
   "item_id": "abinadi-isaiah",
   "category": "echoes",
   "group": "Abinadi/abinadi-isaiah",
-  "display_name": "Abinadi and Isaiah: Who Are the Lord’s People?",
+  "display_name": "Abinadi and Isaiah: The Lord's People",
   "year": "200 B.C.-148 B.C.",
   "word_count": 0,
   "image": "",
-  "description": "",
+  "description": "Those who read Abinadi’s words may wonder how his teachings and his response to the priests’ questions relate to the words of Isaiah.",
   "pages": [
     {
       "slug": "abinadi-isaiah",
-      "title": "Abinadi and Isaiah: Who Are the Lord’s People?",
+      "title": "Who are the Lord's People?",
       "year": "200 B.C.-148 B.C.",
       "word_count": 0,
       "description": "",
@@ -25,6 +25,31 @@
       ],
       "source": {
         "json": "../bomex-webstructure/cameo jsons/Influences/Abinadi/abinadi-isaiah.json"
+      }
+    },
+    {
+      "slug": "abinadi-isaiah-chart",
+      "title": "Side-by-side Verse Comparison",
+      "year": "200 B.C.-148 B.C.",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "Below are additional examples where Abinadi may be drawing upon Isaiah’s words, phrases, and ideas.",
+          "analysis_id": "abinadi-isaiah-chart",
+          "html": "./abinadi-isaiah-chart.html"
+        },
+        {
+          "order": 2,
+          "heading": "",
+          "analysis_id": "abinadi-isaiah-chart2",
+          "html": "./abinadi-isaiah-chart2.html"
+        }
+      ],
+      "source": {
+        "json": "../bomex-webstructure/cameo jsons/Influences/Abinadi/abinadi-isaiah-chart.json"
       }
     }
   ]
