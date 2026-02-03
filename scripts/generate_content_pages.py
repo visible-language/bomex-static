@@ -442,6 +442,8 @@ def _person_detail(item: Item, *, output_dir: Path) -> str:
     if isinstance(item.word_count, int) and item.word_count > 0:
         brief_parts.append(f"  <p>Total recorded words -- {_format_int_with_commas(item.word_count)}</p>\n")
     brief_html = "".join(brief_parts)
+    if brief_html:
+        brief_html = f"<div id=\"brief-bio\">{brief_html}</div>"
 
     if chronology_blocks:
         chronology_intro = "<p><em>All dates are approximate.</em></p>"

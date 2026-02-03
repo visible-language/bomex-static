@@ -1113,17 +1113,30 @@
         }
 
         //get query variable from url
+        function normalizeSpeakerParam(list, raw) {
+            if (!raw) return null;
+            const value = String(raw).trim();
+            if (!value) return null;
+            const direct = list.find(name => name === value);
+            if (direct) return direct;
+            const lower = value.toLowerCase();
+            const ci = list.find(name => String(name).toLowerCase() === lower);
+            return ci || null;
+        }
+
         function getQueryVariable(variable){
             const urlParams = new URLSearchParams(window.location.search);
+            const list = (typeof idNames !== "undefined" && idNames.length)
+                ? idNames
+                : ((typeof speakers !== "undefined" && speakers.length) ? speakers : []);
             if (urlParams.get("speaker") !== null) {
-                speaker = urlParams.get("speaker");
-                return speaker;
+                return normalizeSpeakerParam(list, urlParams.get("speaker"));
             } else {
                 let path = window.location.pathname;
                 let pathArray = path.substr(1).split("/");
                 
-                if (pathArray[1] == "speaker" && idNames.includes(pathArray[2])) {
-                    return pathArray[2];
+                if (pathArray[1] == "speaker") {
+                    return normalizeSpeakerParam(list, pathArray[2]);
                 }
             }
         }
@@ -1132,16 +1145,13 @@
         function goToURLSpeaker(){
             speaker = getQueryVariable('speaker');
             
-            if (speaker) {
-                speaker = speaker.charAt(0).toUpperCase() + speaker.slice(1)
-                
-            }  // force first letter uppercase
-            if (speakers.includes(speaker)) {
+            if (speaker && speakers.includes(speaker)) {
                 document.getElementById("bookSelect").value = speaker;
-                goToSpeaker(speaker);
+                return true;
             } else {
                 console.log("URL param not valid");
             }
+            return false;
         }
 
         function faqDisappear(){
@@ -1159,7 +1169,12 @@
         }
 
         // We wait a few seconds after page load before we set all of these things
-        setTimeout(() => { goToURLSpeaker(); }, 2500);
+        const hasParam = goToURLSpeaker();
+        if (hasParam) {
+          setTimeout(() => { goToSpeaker(speaker); }, 2500);
+        } else {
+          setTimeout(() => { goToURLSpeaker(); }, 2500);
+        }
         setTimeout( () => { resetGraph(); }, 2000);
         setTimeout( () => { check(); }, 3000);
         setTimeout( () => { updateVisibleLinks(); }, 3500);

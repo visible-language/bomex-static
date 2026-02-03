@@ -31,12 +31,13 @@ function getSpeaker() {
         if (idNames.includes(paramSpeaker)) {
             state.currentDataSet = paramSpeaker;
             console.log("Successfully retrieved speaker from parameters");
+            loadNewDataset(paramSpeaker);
+            return;
         }
     } else {
-        // the conditions that were here appear to be redundant
-        loadNewDataset(state.currentDataSet);
         console.log("Bad URL parameter for speaker. Default to Nephi.");
-    }  
+    }
+    loadNewDataset(state.currentDataSet);
 }
 
 
@@ -585,6 +586,10 @@ function createChart(dataset = state.currentDataSet) {
 
 // Function to run when a "name" of a speaker on the right sidebar is clicked.
 function loadNewDataset(name) {
+    const dropdown = document.getElementById('dropdown');
+    if (dropdown) {
+        dropdown.value = name;
+    }
     updateSpeakerData(name);
     createChart(name);
 }

@@ -22,25 +22,27 @@ let state = {
 let path = location.pathname.split("/");
 let parameters = new URLSearchParams(window.location.search);
 
-// get from url query
-if (parameters.get("speaker")) {
-    paramSpeaker = parameters.get("speaker").charAt(0).toUpperCase() + parameters.get("speaker").slice(1)
-    if (imageFiles.includes(paramSpeaker)) {
-        state.speaker = paramSpeaker
-    } else {
-        state.speaker = "Mormon";
-        console.log("Bad URL parameter for speaker. Default to Mormon.")
+function normalizeSpeakerParam(list, raw) {
+    if (!raw) return null;
+    const value = String(raw).trim();
+    if (!value) return null;
+    const direct = list.find(name => name === value);
+    if (direct) return direct;
+    const lower = value.toLowerCase();
+    const ci = list.find(name => String(name).toLowerCase() === lower);
+    return ci || null;
+}
+
+const paramSpeaker = normalizeSpeakerParam(imageFiles, parameters.get("speaker"));
+const pathSpeaker = normalizeSpeakerParam(imageFiles, path[3]);
+state.speaker = paramSpeaker || pathSpeaker || "Mormon";
+function updateSpeakerSelect(value) {
+    const selectEl = document.getElementById("speaker-names");
+    if (selectEl) {
+        selectEl.value = value;
     }
 }
-// get from url path (never used so far)
-else if (imageFiles.includes(path[3])){
-    state.speaker = path[3];    
-}
-// default to Mormon
-else {
-    state.speaker = "Mormon";
-    console.log("No query detected. Default to Mormon.")
-}
+updateSpeakerSelect(state.speaker);
 
 
 const horzGap = 67;     // Spacing in between each icon
@@ -86,6 +88,7 @@ updateMainInfo();
 
 // Selects a new speaker and re-renders graphics. Used by icon click and html dropdown.
 function updateSpeaker(speaker) {
+    updateSpeakerSelect(speaker);
     if (!(speaker == "Godhead" || speaker == "Satan")) {
         // store speaker name in state 
         state.speaker = speaker;

@@ -135,19 +135,23 @@ let state = new TimeLineState();
 let parameters = new URLSearchParams(window.location.search);
 let path = location.pathname.split("/");
 
-if (parameters.get('speaker')) {
-    paramSpeaker = parameters.get("speaker").charAt(0).toUpperCase() + parameters.get("speaker").slice(1)
-    if (Dropdown.idNames.includes(paramSpeaker)) {
-        Dropdown.fillDropDown('dropdown', paramSpeaker);
-        state.speaker = paramSpeaker;
-    }
-} else if (Dropdown.idNames.includes(path[3])) {
-    Dropdown.fillDropDown('dropdown', path[3]);
-    state.speaker = path[3];    
-} else {
-    Dropdown.fillDropDown('dropdown', "Mormon");
-    state.speaker = "Mormon";
+function normalizeSpeakerParam(list, raw) {
+    if (!raw) return null;
+    const value = String(raw).trim();
+    if (!value) return null;
+    const direct = list.find(name => name === value);
+    if (direct) return direct;
+    const lower = value.toLowerCase();
+    const ci = list.find(name => String(name).toLowerCase() === lower);
+    return ci || null;
 }
+
+const paramSpeaker = normalizeSpeakerParam(Dropdown.idNames, parameters.get("speaker"));
+const pathSpeaker = normalizeSpeakerParam(Dropdown.idNames, path[3]);
+const initialSpeaker = paramSpeaker || pathSpeaker || "Mormon";
+
+Dropdown.fillDropDown('dropdown', initialSpeaker);
+state.speaker = initialSpeaker;
 
 function numToDate(num) {
     var result;
@@ -1160,4 +1164,3 @@ function createGrid(eventYears, eventDescriptions, originalEventYears, years) {
         drawChart();
     });
 }
-

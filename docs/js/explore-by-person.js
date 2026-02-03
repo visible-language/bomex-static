@@ -172,10 +172,27 @@
           iframe.loading = 'lazy';
           iframe.title = 'Widget';
           iframe.setAttribute('referrerpolicy', 'no-referrer');
+          iframe.style.width = '100%';
+          iframe.style.border = '0';
           target.appendChild(iframe);
         });
       })(accordions[i]);
     }
+  }
+
+  function wireIframeResize() {
+    window.addEventListener('message', function (event) {
+      if (!event || !event.data || typeof event.data !== 'object') return;
+      var height = event.data.height;
+      if (!height || isNaN(height)) return;
+      var iframes = document.querySelectorAll('.explore-widget-frame iframe');
+      for (var i = 0; i < iframes.length; i++) {
+        if (iframes[i].contentWindow === event.source) {
+          iframes[i].style.height = Math.ceil(height) + 'px';
+          break;
+        }
+      }
+    });
   }
 
   function setActiveTab(tab) {
@@ -196,7 +213,7 @@
 
     img.alt = '';
 
-    var contentImg = rootPrefix + 'content/people/' + slug + '/main.jpg';
+    var contentImg = rootPrefix + '/img/' + slug + '.jpg';
     var ids = getWidgetIdsForSlug(slug);
     var fallbackKey = ids.avatar || ids.timeline || ids.connections || '';
     var fallbackImg = fallbackKey ? (rootPrefix + 'widgets/Images/' + fallbackKey + '.jpg') : '';
@@ -226,11 +243,17 @@
 
     setAvatar(rootPrefix, slug);
 
-    var detailsUrl = rootPrefix + 'content/people/' + slug + '/person-details.json';
-    fetch(detailsUrl)
-      .then(function (r) { return r.json(); })
-      .then(function (data) {
-        bioEl.innerHTML = renderBio(data && data.description);
+    var detailUrl = rootPrefix + 'people/' + slug + '.html';
+    fetch(detailUrl)
+      .then(function (r) { return r.text(); })
+      .then(function (html) {
+        var doc = new DOMParser().parseFromString(html, 'text/html');
+        var brief = doc.querySelector('#brief-bio');
+        if (brief) {
+          bioEl.innerHTML = brief.innerHTML;
+        } else {
+          bioEl.innerHTML = '<p>Biography not available.</p>';
+        }
       })
       .catch(function () {
         bioEl.innerHTML = '<p>Biography not available.</p>';
@@ -269,6 +292,7 @@
 
     var tab = getParam('tab') === 'life' ? 'life' : 'message';
     setActiveTab(tab);
+    wireIframeResize();
 
     fetchPeopleList(rootPrefix)
       .then(function (people) {
