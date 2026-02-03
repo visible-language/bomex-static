@@ -524,6 +524,16 @@ footer {
     margin-bottom: 1rem;
 }
 
+.people-search,
+.concepts-search,
+.influences-search {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    background-color: var(--white);
+    padding: 0.5rem 0;
+}
+
 .people-search .text-input {
     background-color: var(--secondary-color);
     border: none;
