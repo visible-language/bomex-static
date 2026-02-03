@@ -2,15 +2,15 @@
   "item_id": "abinadi-reversal",
   "category": "echoes",
   "group": "Abinadi/abinadi-reversal",
-  "display_name": "Abinadi’s Warning to Noah and His People: A Reversal of the Exodus",
+  "display_name": "Abinadi and Moses: Lessons from the Exodus",
   "year": "200 B.C.-148 B.C.",
   "word_count": 0,
   "image": "",
-  "description": "",
+  "description": "As Abinadi testified before King Noah and his priests, he used images and words found in the story of the exodus. However, instead of a message of hope, Abinadi's used the story of exodus to show Noah and his priests that their choices were leading to bondage and suffering.",
   "pages": [
     {
       "slug": "abinadi-reversal",
-      "title": "Abinadi’s Warning to Noah and His People: A Reversal of the Exodus",
+      "title": "Into Bondage",
       "year": "200 B.C.-148 B.C.",
       "word_count": 0,
       "description": "",
@@ -25,6 +25,25 @@
       ],
       "source": {
         "json": "../bomex-webstructure/cameo jsons/Influences/Abinadi/abinadi-reversal.json"
+      }
+    },
+    {
+      "slug": "abinadi-smitten",
+      "title": "Plagues and Pestilence",
+      "year": "200 B.C.-148 B.C.",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "",
+          "analysis_id": "abinadi-smitten",
+          "html": "./abinadi-smitten.html"
+        }
+      ],
+      "source": {
+        "json": "../bomex-webstructure/cameo jsons/Influences/Abinadi/abinadi-smitten.json"
       }
     }
   ]
