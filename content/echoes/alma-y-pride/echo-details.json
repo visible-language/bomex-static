@@ -2,7 +2,7 @@
   "item_id": "alma-y-pride",
   "category": "echoes",
   "group": "Alma II/alma-y-pride",
-  "display_name": "Alma and the Words of Jacob on the Dangers of Pride and Riches",
+  "display_name": "Alma the Younger and Jacob",
   "year": "144 B.C.-73 B.C.",
   "word_count": 0,
   "image": "",
@@ -10,7 +10,7 @@
   "pages": [
     {
       "slug": "alma-y-pride",
-      "title": "Alma and the Words of Jacob on the Dangers of Pride and Riches",
+      "title": "The Dangers of Pride and Riches",
       "year": "144 B.C.-73 B.C.",
       "word_count": 0,
       "description": "",
@@ -24,7 +24,7 @@
         },
         {
           "order": 2,
-          "heading": "Alma and the Words of Jacob",
+          "heading": "",
           "analysis_id": "alma-y-pride2",
           "html": "./alma-y-pride2.html"
         }

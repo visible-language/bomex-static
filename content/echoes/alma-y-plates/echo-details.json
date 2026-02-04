@@ -2,7 +2,7 @@
   "item_id": "alma-y-plates",
   "category": "echoes",
   "group": "Alma II/alma-y-plates",
-  "display_name": "Alma and Nephi’s Teachings about the Plates and the Liahona",
+  "display_name": "Alma and Nephi",
   "year": "144 B.C.-73 B.C.",
   "word_count": 0,
   "image": "",
@@ -10,7 +10,7 @@
   "pages": [
     {
       "slug": "alma-y-plates",
-      "title": "Alma and Nephi’s Teachings about the Plates and the Liahona",
+      "title": "The Plates and The Liahona",
       "year": "144 B.C.-73 B.C.",
       "word_count": 0,
       "description": "",
@@ -24,7 +24,7 @@
         },
         {
           "order": 2,
-          "heading": "Alma and the Small Plates",
+          "heading": "",
           "analysis_id": "alma-y-plates2",
           "html": "./alma-y-plates2.html"
         }
