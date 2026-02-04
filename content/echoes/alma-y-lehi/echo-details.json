@@ -57,6 +57,31 @@
       "source": {
         "json": "../bomex-webstructure/cameo jsons/Influences/Alma II/alma-y-plan.json"
       }
+    },
+    {
+      "slug": "alma-y-plates",
+      "title": "Plates of Brass",
+      "year": "144 B.C.-73 B.C.",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "",
+          "analysis_id": "alma-y-plates",
+          "html": "./alma-y-plates.html"
+        },
+        {
+          "order": 2,
+          "heading": "",
+          "analysis_id": "alma-y-plates2",
+          "html": "./alma-y-plates2.html"
+        }
+      ],
+      "source": {
+        "json": "../bomex-webstructure/cameo jsons/Influences/Alma II/alma-y-plates.json"
+      }
     }
   ]
 }
