@@ -35,7 +35,7 @@
     },
     {
       "slug": "ef-daughter",
-      "title": "Jared’s Daughter and the Serpent",
+      "title": "The Serpent",
       "year": "",
       "word_count": 0,
       "description": "",
@@ -56,6 +56,31 @@
       ],
       "source": {
         "json": "../bomex-webstructure/cameo jsons/Influences/Book of Ether/Evil Fruit of the Jaredites/ef-daughter.json"
+      }
+    },
+    {
+      "slug": "ef-ambition",
+      "title": "Evil Fruit",
+      "year": "",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "",
+          "analysis_id": "ef-ambition",
+          "html": "./ef-ambition.html"
+        },
+        {
+          "order": 2,
+          "heading": "",
+          "analysis_id": "evil-fruit-jaredites4",
+          "html": "./evil-fruit-jaredites4.html"
+        }
+      ],
+      "source": {
+        "json": "../bomex-webstructure/cameo jsons/Influences/Book of Ether/Evil Fruit of the Jaredites/ef-ambition.json"
       }
     }
   ]
