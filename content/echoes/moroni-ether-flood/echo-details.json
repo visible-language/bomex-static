@@ -9,25 +9,6 @@
   "description": "One of the ways that the writings of prophets help us is to draw our attention to other stories from the scriptures, which support, strengthen, and encourage us to act with faith and do what those prophets teach that we should do. One example of this can be found in Moroni’s abridgment of the record of Ether. Moroni’s selection of words in this account of the Jaredites points the reader to similar language in the story of the Flood.",
   "pages": [
     {
-      "slug": "ether-flood",
-      "title": "The Flood and the Book of Ether",
-      "year": "",
-      "word_count": 0,
-      "description": "",
-      "image": "",
-      "sections": [
-        {
-          "order": 1,
-          "heading": "",
-          "analysis_id": "ether-flood",
-          "html": "./ether-flood.html"
-        }
-      ],
-      "source": {
-        "json": "../bomex-webstructure/cameo jsons/Influences/Book of Ether/Book of Ether and the Flood/ether-flood.json"
-      }
-    },
-    {
       "slug": "secret-flood",
       "title": "Secret Combinations",
       "year": "",
