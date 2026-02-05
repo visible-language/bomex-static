@@ -2,15 +2,15 @@
   "item_id": "helaman-h-proverbs",
   "category": "echoes",
   "group": "helaman-h-proverbs",
-  "display_name": "Helaman’s Counsel to His Sons",
+  "display_name": "Helaman and Proverbs",
   "year": "",
   "word_count": 0,
   "image": "",
-  "description": "",
+  "description": "Helaman, son of Helaman, lived in a time of great wickedness. He however, stayed righteous and was given the responsibility to keep the records. He was also chief judge for 11 years. Perhaps some of his advice he gave to his sons is a reflection of the trying times he had experienced and the comfort he found in the records passed down to him.",
   "pages": [
     {
       "slug": "helaman-h-proverbs",
-      "title": "Helaman’s Counsel to His Sons",
+      "title": "Helaman’s Counsel",
       "year": "",
       "word_count": 0,
       "description": "",
@@ -21,7 +21,20 @@
           "heading": "",
           "analysis_id": "helaman-h-proverbs",
           "html": "./helaman-h-proverbs.html"
-        },
+        }
+      ],
+      "source": {
+        "json": "../bomex-webstructure/cameo jsons/Influences/helaman-h-proverbs.json"
+      }
+    },
+    {
+      "slug": "helaman-h-proverbs",
+      "title": "Side-by-side Verse Comparison",
+      "year": "",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
         {
           "order": 2,
           "heading": "",
