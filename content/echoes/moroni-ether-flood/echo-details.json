@@ -45,6 +45,25 @@
       "source": {
         "json": "../bomex-webstructure/cameo jsons/Influences/Book of Ether/Book of Ether and the Flood/secret-flood.json"
       }
+    },
+    {
+      "slug": "bojandnoah",
+      "title": "Another Noah",
+      "year": "",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "",
+          "analysis_id": "bojandnoah",
+          "html": "./bojandnoah.html"
+        }
+      ],
+      "source": {
+        "json": "../bomex-webstructure/cameo jsons/Influences/Book of Ether/Book of Ether and the Flood/bojandnoah.json"
+      }
     }
   ]
 }
