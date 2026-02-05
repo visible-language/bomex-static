@@ -1,12 +1,12 @@
 {
-  "item_id": "evil-fruit-jaredites",
+  "item_id": "moroni-ether-fall",
   "category": "echoes",
   "group": "Book of Ether/Evil Fruit of the Jaredites/evil-fruit-jaredites",
-  "display_name": "The Evil Fruit of the Jaredites",
+  "display_name": "Moroni, Ether and the Fall",
   "year": "",
   "word_count": 0,
   "image": "",
-  "description": "In the story of the brother of Jared, Moroni uses language from the account of the Fall of Man to teach how man can be redeemed. He also draws upon this language to teach about the dangers and awful consequences of rejecting good knowledge revealed by God, and acting upon evil knowledge given by the devil. Moroni does this through the story of the daughter of unrighteous Jared, who introduced secret combinations to the Jaredites. Examples of this can be seen in \"Jared’s Daughter and the Serpent,\" \"The Evil Fruit of Unrestrained Ambition and Desire,\" \"Putting It into the Heart,\" \"That Which is Forbidden,\" \"Eyes Opened,\" and \"Enmity.\"",
+  "description": "In the story of the brother of Jared, Moroni uses language from the account of the Fall of Man to teach about the dangers and awful consequences of rejecting good knowledge revealed by God, and acting upon evil knowledge given by the devil. Moroni uses the story of the daughter of unrighteous Jared.",
   "pages": [
     {
       "slug": "evil-fruit-jaredites",
@@ -31,6 +31,31 @@
       ],
       "source": {
         "json": "../bomex-webstructure/cameo jsons/Influences/Book of Ether/Evil Fruit of the Jaredites/evil-fruit-jaredites.json"
+      }
+    },
+    {
+      "slug": "ef-daughter",
+      "title": "Jared’s Daughter and the Serpent",
+      "year": "",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "",
+          "analysis_id": "ef-daughter",
+          "html": "./ef-daughter.html"
+        },
+        {
+          "order": 2,
+          "heading": "",
+          "analysis_id": "evil-fruit-jaredites3",
+          "html": "./evil-fruit-jaredites3.html"
+        }
+      ],
+      "source": {
+        "json": "../bomex-webstructure/cameo jsons/Influences/Book of Ether/Evil Fruit of the Jaredites/ef-daughter.json"
       }
     }
   ]
