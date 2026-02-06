@@ -82,6 +82,31 @@
       "source": {
         "json": "../bomex-webstructure/cameo jsons/Influences/Book of Ether/Evil Fruit of the Jaredites/ef-ambition.json"
       }
+    },
+    {
+      "slug": "ef-heart",
+      "title": "Into the Heart",
+      "year": "",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "",
+          "analysis_id": "ef-heart",
+          "html": "./ef-heart.html"
+        },
+        {
+          "order": 2,
+          "heading": "",
+          "analysis_id": "evil-fruit-jaredites5",
+          "html": "./evil-fruit-jaredites5.html"
+        }
+      ],
+      "source": {
+        "json": "../bomex-webstructure/cameo jsons/Influences/Book of Ether/Evil Fruit of the Jaredites/ef-heart.json"
+      }
     }
   ]
 }
