@@ -102,6 +102,25 @@
       "source": {
         "json": "../bomex-webstructure/cameo jsons/Influences/Book of Ether/Reversal of the Fall/fall-knowledge.json"
       }
+    },
+    {
+      "slug": "fall-reversal",
+      "title": "Side-by-side Verses",
+      "year": "",
+      "word_count": 0,
+      "description": "Compare the similarities between the language in the book of Genesis and the language in the book of Ether.",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "",
+          "analysis_id": "fall-reversal",
+          "html": "./fall-reversal.html"
+        }
+      ],
+      "source": {
+        "json": "../bomex-webstructure/cameo jsons/Influences/Book of Ether/Reversal of the Fall/fall-reversal.json"
+      }
     }
   ]
 }
