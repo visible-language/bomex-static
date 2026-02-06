@@ -107,6 +107,56 @@
       "source": {
         "json": "../bomex-webstructure/cameo jsons/Influences/Book of Ether/Evil Fruit of the Jaredites/ef-heart.json"
       }
+    },
+    {
+      "slug": "ef-forbidden",
+      "title": "That Which is Forbidden",
+      "year": "",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "",
+          "analysis_id": "ef-forbidden",
+          "html": "./ef-forbidden.html"
+        },
+        {
+          "order": 2,
+          "heading": "",
+          "analysis_id": "evil-fruit-jaredites6",
+          "html": "./evil-fruit-jaredites6.html"
+        }
+      ],
+      "source": {
+        "json": "../bomex-webstructure/cameo jsons/Influences/Book of Ether/Evil Fruit of the Jaredites/ef-forbidden.json"
+      }
+    },
+    {
+      "slug": "ef-open",
+      "title": "Eyes Opened",
+      "year": "",
+      "word_count": 0,
+      "description": "",
+      "image": "",
+      "sections": [
+        {
+          "order": 1,
+          "heading": "",
+          "analysis_id": "ef-open",
+          "html": "./ef-open.html"
+        },
+        {
+          "order": 2,
+          "heading": "",
+          "analysis_id": "evil-fruit-jaredites7",
+          "html": "./evil-fruit-jaredites7.html"
+        }
+      ],
+      "source": {
+        "json": "../bomex-webstructure/cameo jsons/Influences/Book of Ether/Evil Fruit of the Jaredites/ef-open.json"
+      }
     }
   ]
 }
