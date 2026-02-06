@@ -343,11 +343,11 @@ def _people_index(items: List[Item], *, output_dir: Path) -> str:
         _hero(
             "people",
             "People",
-            "Insights into the Messages of the Book of Mormon",
+            "Explore insights into the Messages of the people of the Book of Mormon",
         )
         + "\n<section class=\"page-content page-content--wide\">\n"
         "  <div class=\"input-wrapper people-search\">\n"
-        "    <input id=\"people-search\" type=\"text\" class=\"text-input\" placeholder=\"Search a person\" autocomplete=\"off\">\n"
+        "    <input id=\"people-search\" type=\"text\" class=\"text-input\" placeholder=\"Search People\" autocomplete=\"off\">\n"
         "    <button class=\"search-icon-btn\" type=\"button\"><i class=\"fas fa-search\"></i></button>\n"
         "  </div>\n"
         "  <div id=\"people-grid\" class=\"people-grid\">\n"
@@ -601,7 +601,7 @@ def main(argv: Optional[List[str]] = None) -> int:
             _list_index(
                 "echoes",
                 "Echoes",
-                "Learn how the people in the Book of Mormon were influenced by others",
+                "Explore how earlier messages echo in the words and ideas of later speakers and writers",
                 echoes,
                 enable_search=True,
             ),
