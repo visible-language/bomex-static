@@ -1,8 +1,8 @@
 {
-  "item_id": "moroni-ether-fall",
+  "item_id": "moroni-ether-fruit",
   "category": "echoes",
   "group": "Book of Ether/Evil Fruit of the Jaredites/evil-fruit-jaredites",
-  "display_name": "Moroni, Ether and the Fall",
+  "display_name": "Moroni, Ether and Evil Fruit",
   "year": "",
   "word_count": 0,
   "image": "",
@@ -35,7 +35,7 @@
     },
     {
       "slug": "ef-ambition",
-      "title": "Evil Fruit",
+      "title": "Pleasant to the Eyes",
       "year": "",
       "word_count": 0,
       "description": "",
