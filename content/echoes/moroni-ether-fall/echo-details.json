@@ -9,25 +9,6 @@
   "description": "At the commencement of his abridgement of the Jaredite record, Moroni explains that, while that record contained an account from the time of Adam down to the story of the tower, he omitted that material from his abridgement because he knew that we would have a similar account in our scriptures (Ether 1:3-4). However, Moroni does make use of and allude to the account of the Fall of Adam that was on both the plates of brass and Ether’s plates.",
   "pages": [
     {
-      "slug": "fall-redemption",
-      "title": "The Redemption of the Brother of Jared",
-      "year": "",
-      "word_count": 0,
-      "description": "At the commencement of his abridgement of the Jaredite record, Moroni explains that, while that record contained an account from the time of Adam down to the story of the tower, he omitted that material from his abridgement because he knew that we would have a similar account in our scriptures (Ether 1:3-4). However, Moroni does make use of and allude to the account of the Fall of Adam that was on both the plates of brass and Ether’s plates. The following cameos, \"Shut Out From the Lord’s Presence,\" \"Calling Upon the Name of the Lord,\" \"Returning to the Tree,\" \"Good Knowledge from the Tree,\" and the accompanying chart, \"A Reversal of the Fall,\" show how Moroni uses words from the story of Adam and Eve in his account of the Brother of Jared to teach us how we can find redemption and enduring happiness through Jesus Christ.",
-      "image": "",
-      "sections": [
-        {
-          "order": 1,
-          "heading": "",
-          "analysis_id": "fall-redemption",
-          "html": "./fall-redemption.html"
-        }
-      ],
-      "source": {
-        "json": "../bomex-webstructure/cameo jsons/Influences/Book of Ether/Reversal of the Fall/fall-redemption.json"
-      }
-    },
-    {
       "slug": "fall-shut-out",
       "title": "Shut Out",
       "year": "",
