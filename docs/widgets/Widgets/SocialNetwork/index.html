@@ -1267,7 +1267,7 @@
         // Display info about a given node (usually when clicked)
         function showNodeInfo(node) {
           var info = document.getElementById("info");
-          var url = "../../Images/" + node.Label + ".jpg";
+          var url = "../../Images/" + node.Name + ".jpg";
 
           // get the nodes structure
           var nodes_struct = Graph.graphData().nodes;
@@ -1277,70 +1277,12 @@
           var IDs = node.Ids.split(" ");
           let size = IDs.length;
 
-          /*    // Niki trying to make the checkboxes match the selected node
-          // It's not working.
-
-            colorNodes.clear();
-          
-            // make a list of connections
-            var list = [];
-            var listcnt = 0;
-
-            var legend_checkboxes = "<div id=\"checkbox-holder\">";
-
-             // include the selected speaker
-                legend_checkboxes += "<label class=\"container\">"
-                + node.Label 
-                + "<input type=\"checkbox\" id=\"" + 
-                + node.Name 
-                + "\" onclick=\"check(speakers2)\"><span class=\"checkmark " 
-                + node.Name 
-                + "\"></span> </label> ";
-
-                // add the selected node to the list
-                list[listcnt] = node.Name;
-                listcnt++;
-                colorNodes.add(node.ID);
-           
-            // make the other checkboxes
-            for(let i = 0; i < size; i++)
-            {
-                colorNodes.add(IDs[i]);
-                legend_checkboxes += "<label class=\"container\">"
-                + nodes_struct[IDs[i]].Label 
-                + "<input type=\"checkbox\" id=\"" + 
-                + nodes_struct[IDs[i]].Name 
-                + "\" onclick=\"check(" + nodes_struct[IDs[i]].Name 
-                + ")\"><span class=\"checkmark " 
-                + nodes_struct[IDs[i]].Name 
-                + "\"></span> </label> ";
-
-                list[listcnt] = nodes_struct[IDs[i]].Name;
-                listcnt++;
-            }
-            legend_checkboxes += "</div>";
-
-            for (var i = 0; i < listcnt; i++) {
-              document.getElementById(list[i]).checked = true;
-            }
-            // iterate over links, add correct ones to the set
-            for (index = 0; index < links.length; index++) {
-                link = links[index];                
-                
-                if (colorNodes.has(link.source)) {
-                        if (colorNodes.has(link.target)) {
-                            highlightLinks.add(link);   
-                        }
-                }
-            }
-// End Niki trying to get the checkboxes to work
-                             */
 
           info.innerHTML = `<div id ='nodeinfo'>
                 <h3>Speaker:</h3>
                 ${node.Label}<br>
                 <br>
-                    <img src="${url}" alt="Portrait of ${node.Label}"><br>
+                    <img src="${url}" alt="Portrait of ${node.Name}"><br>
                 <br>
                 <h3>Basic Info:</h3>
                 ${node.Blurb}<br>
@@ -1502,6 +1444,7 @@
 
           // Set the selected node for highlighting
           selectedNode = node;
+
           // Keep the main speaker dropdown in sync with the currently selected node.
           // This does not dispatch a change event (so it won't trigger flyToNode loops).
           if (selectedNode && selectedNode.Name) {
