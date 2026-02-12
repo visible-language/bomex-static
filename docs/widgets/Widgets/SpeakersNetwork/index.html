@@ -135,9 +135,11 @@
                 <div class="panel">
                     <div id="info" class="contents">No speaker selected.</div>
                 </div>  
+                <!--
                 <button class="accordion" id="legendTab" onclick="openTab('legendTab')">
                     Legend
                 </button>
+                -->
                 <div class="panel">
                     <div id="legend" class = "contents">
                       <!--                        <h3><div id = "legend-title">Colored by Name</div></h3> -->
@@ -775,6 +777,26 @@
             }
         }
 
+        function showSpeakerInfo(speaker) {
+            var info = document.getElementById('info');
+            var url = getUrlFromSpeaker(speaker);
+
+            par = speaker+'Paragraph';
+
+            info.innerHTML =  `<div id ='nodeinfo'>
+            <h3>Speaker:</h3>${speakerToDisplay[speaker]}<br>
+            <br>
+                <img src="${url}" alt="Portrait of ${speakerToDisplay[speaker]}"><br>
+            <br>
+            <br>
+            <h3>Description:</h3>
+                ${myDict[par]}<br>
+            <br>        
+            </div>
+            `; 
+        }
+    
+
         //populate info in info tab
         function showNodeInfo(node) {
             var info = document.getElementById('info');
@@ -844,13 +866,16 @@
             }
             // assemble the info
             info.innerHTML =  `<div id ='nodeinfo'>
-            <h3>Node:</h3>
-            ${node.Display_Name}<br>
+<!--            <h3>Node:</h3> 
+            ${node.Display_Name}<br>-->
+
+            <h3>Speaker:</h3>
+            ${node.Display_Speaker}<br>
+            <br>       
+                <img src="${url}" alt="Portrait of ${node.Speaker}"><br>
             <br>
             <h3>Reference:</h3>
             ${node.Start_Link}--${node.End_Link}<br>
-            <br>       
-                <img src="${url}" alt="Portrait of ${node.Speaker}"><br>
             <br>
             <h3>Incoming Connections</h3>
             ${in_connections}
@@ -870,49 +895,6 @@
                                   */
         }
 
-/*   // This isn't relevant here. It's from the Social Network
-        //show info on click
-        function showLinkInfo(link) {
-            var info = document.getElementById('info');
-            var href = `<a href="${link.Link}" target="blank">${link.Reference}</a>`;
-
-            var nodes_struct = Graph.graphData().nodes;
-
-            info.innerHTML =  `<div id ='nodeinfo'>
-            <h3>Node:</h3>
-            ${nodes_struct[link.Source].Display_Name}<br>
-            ${nodes_struct[link.Target].Display_Name}<br>
-            <br>
-            <h3>Scripture:</h3>
-            ${href}<br>
-            <br>
-            <h3>Idea:</h3>
-            ${link.Topic}<br>
-            <br>        
-            </div>
-            `; 
-        }
-*/
-        function showSpeakerInfo(speaker) {
-            var info = document.getElementById('info');
-            var url = getUrlFromSpeaker(speaker);
-
-            par = speaker+'Paragraph';
-
-            info.innerHTML =  `<div id ='nodeinfo'>
-            <h3>Speaker:</h3>
-            ${speakerToDisplay[speaker]}<br>
-            <br>
-                <img src="${url}" alt="Portrait of ${speakerToDisplay[speaker]}"><br>
-            <br>
-            <br>
-            <h3>Description:</h3>
-                ${myDict[par]}<br>
-            <br>        
-            </div>
-            `; 
-        }
-    
         function getUrlFromSpeaker(speaker){
             return "../../Images/"+speaker+".jpg";
         }
@@ -1036,6 +1018,28 @@
 
         //highlight a given speaker
         function highlightSpeaker(speaker){
+
+            var nodes = Graph.graphData().nodes;
+            var node;
+
+        for (index = 0; index < nodes.length; index++) {
+            node = nodes[index];
+            if (node["Label"] == speaker) {
+              break;
+            }
+          }
+
+          // Set the selected node for highlighting
+          selectedNode = node;
+
+          // Keep the main speaker dropdown in sync with the currently selected node.
+          // This does not dispatch a change event (so it won't trigger flyToNode loops).
+          if (selectedNode && selectedNode.Name) {
+            const selectEl = document.getElementById("bookSelect");
+            if (selectEl) selectEl.value = selectedNode.Name;
+          }
+
+
             // loop over all nodes
             // if speaker matches speaker, set to colored, else grey
             // do the same with links
@@ -1047,7 +1051,6 @@
             incomingNodes.clear();
             outgoingNodes.clear();	
 
-            var nodes = Graph.graphData().nodes;
 
             for (index = 0; index < nodes.length; index++) {
                 node = nodes[index];
@@ -1067,6 +1070,17 @@
         //highlight a given node
         function highlightNode(node){
             destroyLabel();    // remove any existing labels
+
+        // Set the selected node for highlighting
+          selectedNode = node;
+          // Keep the main speaker dropdown in sync with the currently selected node.
+          if (selectedNode && selectedNode.Name) {
+            const selectEl = document.getElementById("bookSelect");
+            if (selectEl) selectEl.value = selectedNode.Name;
+          }
+
+
+
             highlightMode = true;
             targetNodes.clear();
                 targetNodes.add(node);		
