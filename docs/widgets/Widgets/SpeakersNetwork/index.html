@@ -1034,11 +1034,10 @@
 
           // Keep the main speaker dropdown in sync with the currently selected node.
           // This does not dispatch a change event (so it won't trigger flyToNode loops).
-          if (selectedNode && selectedNode.Name) {
+          if (selectedNode && selectedNode.Speaker) {
             const selectEl = document.getElementById("bookSelect");
-            if (selectEl) selectEl.value = selectedNode.Name;
+            if (selectEl) selectEl.value = selectedNode.Speaker;
           }
-
 
             // loop over all nodes
             // if speaker matches speaker, set to colored, else grey
@@ -1074,9 +1073,9 @@
         // Set the selected node for highlighting
           selectedNode = node;
           // Keep the main speaker dropdown in sync with the currently selected node.
-          if (selectedNode && selectedNode.Name) {
+          if (selectedNode && selectedNode.Speaker) {
             const selectEl = document.getElementById("bookSelect");
-            if (selectEl) selectEl.value = selectedNode.Name;
+            if (selectEl) selectEl.value = selectedNode.Speaker;
           }
 
 
@@ -1165,7 +1164,7 @@
                 document.getElementById("bookSelect").value = speaker;
                 return true;
             } else {
-                console.log("URL param not valid");
+                return null;
             }
             return false;
         }
