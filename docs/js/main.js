@@ -56,17 +56,36 @@ document.addEventListener("DOMContentLoaded", function() {
             icon.setAttribute('src', resolveIconSrc(closedSrc));
         }
 
-        if (menuToggle && mobileMenu) {
-            menuToggle.addEventListener('click', function() {
-                mobileMenu.classList.toggle('active');
+        function setMenuOpen(isOpen) {
+            if (!mobileMenu) return;
+            mobileMenu.classList.toggle('active', isOpen);
+            if (!icon) return;
+            if (isOpen) {
+                if (openSrc) icon.setAttribute('src', resolveIconSrc(openSrc));
+            } else {
+                if (closedSrc) icon.setAttribute('src', resolveIconSrc(closedSrc));
+            }
+        }
 
-                if (!icon) return;
-                if (mobileMenu.classList.contains('active')) {
-                    if (openSrc) icon.setAttribute('src', resolveIconSrc(openSrc));
-                } else {
-                    if (closedSrc) icon.setAttribute('src', resolveIconSrc(closedSrc));
-                }
+        if (menuToggle && mobileMenu) {
+            menuToggle.addEventListener('click', function(event) {
+                event.stopPropagation();
+                setMenuOpen(!mobileMenu.classList.contains('active'));
             });
+
+            document.addEventListener('click', function(event) {
+                if (!mobileMenu.classList.contains('active')) return;
+                if (menuToggle.contains(event.target)) return;
+                if (mobileMenu.contains(event.target)) return;
+                setMenuOpen(false);
+            });
+
+            document.addEventListener('touchstart', function(event) {
+                if (!mobileMenu.classList.contains('active')) return;
+                if (menuToggle.contains(event.target)) return;
+                if (mobileMenu.contains(event.target)) return;
+                setMenuOpen(false);
+            }, { passive: true });
         }
     }
 
