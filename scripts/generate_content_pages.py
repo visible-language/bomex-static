@@ -68,7 +68,17 @@ def _safe_filename(s: str) -> str:
     return s or "item"
 
 
+def _indent_lines(text: str, spaces: int) -> str:
+    if not text:
+        return ""
+    pad = " " * spaces
+    return "\n".join((pad + line) if line.strip() else "" for line in text.splitlines())
+
+
 def _doc(title: str, body_html: str, scripts_html: str = "", *, asset_prefix: str, root_prefix: str) -> str:
+    body_block = _indent_lines(body_html.rstrip("\n"), 2)
+    scripts_block = _indent_lines(scripts_html.rstrip("\n"), 2)
+    scripts_line = f"{scripts_block}\n" if scripts_block else ""
     return (
         "<!DOCTYPE html>\n"
         f"<html lang=\"en\" data-root=\"{html.escape(root_prefix)}\">\n"
@@ -78,15 +88,14 @@ def _doc(title: str, body_html: str, scripts_html: str = "", *, asset_prefix: st
         f"  <title>{html.escape(title)}</title>\n"
         f"  <link rel=\"icon\" href=\"{html.escape(asset_prefix)}favicon.ico\">\n"
         f"  <link rel=\"stylesheet\" href=\"{html.escape(asset_prefix)}css/main.css\">\n"
-        "  <link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css\">\n"
         "</head>\n"
         "<body>\n"
         "  <!-- GENERATED FILE: re-run scripts/generate_content_pages.py -->\n"
         "  <header></header>\n"
-        f"  {body_html}\n"
+        f"{body_block}\n"
         "  <footer></footer>\n"
         f"  <script src=\"{html.escape(asset_prefix)}js/main.js\"></script>\n"
-        f"  {scripts_html}\n"
+        f"{scripts_line}"
         "</body>\n"
         "</html>\n"
     )
@@ -322,7 +331,7 @@ def _hero(kind: str, title: str, subtitle: str) -> str:
     )
 
 
-def _people_index(items: List[Item], *, output_dir: Path) -> str:
+def _people_index(items: List[Item], *, output_dir: Path, asset_prefix: str) -> str:
     cards = []
     for it in items:
         img_src_raw = _resolve_asset_ref(it.details_path, output_dir, it.image)
@@ -330,13 +339,20 @@ def _people_index(items: List[Item], *, output_dir: Path) -> str:
         name = html.escape(it.display_name)
         name_key = (it.display_name or "").lower()
         href = _internal_href(f"{_safe_filename(it.item_id)}.html")
+        thumb_html = (
+            f"      <img class=\"person-thumb\" src=\"{img_src}\" alt=\"{name}\">"
+            if img_src
+            else "      <div class=\"person-thumb person-thumb--empty\"></div>"
+        )
         cards.append(
-            "<a class=\"person-card\" href=\""
-            + href
-            + f"\" data-name=\"{html.escape(name_key)}\">"
-            + (f"<img class=\"person-thumb\" src=\"{img_src}\" alt=\"{name}\">" if img_src else "<div class=\"person-thumb person-thumb--empty\"></div>")
-            + f"<div class=\"person-name\">{name}</div>"
-            + "</a>"
+            "\n".join(
+                [
+                    f"    <a class=\"person-card\" href=\"{href}\" data-name=\"{html.escape(name_key)}\">",
+                    thumb_html,
+                    f"      <div class=\"person-name\">{name}</div>",
+                    "    </a>",
+                ]
+            )
         )
 
     return (
@@ -348,36 +364,47 @@ def _people_index(items: List[Item], *, output_dir: Path) -> str:
         + "\n<section class=\"page-content page-content--wide\">\n"
         "  <div class=\"input-wrapper people-search\">\n"
         "    <input id=\"people-search\" type=\"text\" class=\"text-input\" placeholder=\"Search People\" autocomplete=\"off\">\n"
-        "    <button class=\"search-icon-btn\" type=\"button\"><i class=\"fas fa-search\"></i></button>\n"
+        f"    <button class=\"search-icon-btn\" type=\"button\" aria-label=\"Search\"><img class=\"icon\" src=\"{html.escape(asset_prefix)}img/search.svg\" alt=\"\" aria-hidden=\"true\"></button>\n"
         "  </div>\n"
         "  <div id=\"people-grid\" class=\"people-grid\">\n"
-        + "\n".join(cards)
-        + "\n  </div>\n"
+        + ("\n".join(cards) + "\n" if cards else "")
+        + "  </div>\n"
         "</section>\n"
     )
 
 
-def _list_index(kind: str, title: str, subtitle: str, items: List[Item], *, enable_search: bool = False) -> str:
+def _list_index(
+    kind: str,
+    title: str,
+    subtitle: str,
+    items: List[Item],
+    *,
+    asset_prefix: str,
+    enable_search: bool = False,
+) -> str:
     rows = []
     for it in items:
         href = _internal_href(f"{_safe_filename(it.item_id)}.html")
         name_key = (it.display_name or "").lower()
         rows.append(
-            "<a class=\"list-row\" href=\""
-            + href
-            + f"\" data-name=\"{html.escape(name_key)}\">"
-            + f"<span>{html.escape(it.display_name)}</span>"
-            + "<i class=\"fas fa-chevron-right\"></i>"
-            + "</a>"
+            "\n".join(
+                [
+                    f"    <a class=\"list-row\" href=\"{href}\" data-name=\"{html.escape(name_key)}\">",
+                    f"      <span>{html.escape(it.display_name)}</span>",
+                    f"      <img class=\"icon\" src=\"{html.escape(asset_prefix)}img/chevron-right.svg\" alt=\"\" aria-hidden=\"true\">",
+                    "    </a>",
+                ]
+            )
         )
 
     search_html = ""
     list_id = f"{kind}-list"
     if enable_search:
+        placeholder = html.escape(f"Search {title}")
         search_html = (
             f"  <div class=\"input-wrapper {kind}-search\">\n"
-            f"    <input id=\"{kind}-search\" type=\"text\" class=\"text-input\" placeholder=\"Search {kind[:-1]}\" autocomplete=\"off\">\n"
-            "    <button class=\"search-icon-btn\" type=\"button\"><i class=\"fas fa-search\"></i></button>\n"
+            f"    <input id=\"{kind}-search\" type=\"text\" class=\"text-input\" placeholder=\"{placeholder}\" autocomplete=\"off\">\n"
+            f"    <button class=\"search-icon-btn\" type=\"button\" aria-label=\"Search\"><img class=\"icon\" src=\"{html.escape(asset_prefix)}img/search.svg\" alt=\"\" aria-hidden=\"true\"></button>\n"
             "  </div>\n"
         )
 
@@ -386,13 +413,13 @@ def _list_index(kind: str, title: str, subtitle: str, items: List[Item], *, enab
         + "\n<section class=\"page-content page-content--wide\">\n"
         + search_html
         + f"  <div id=\"{list_id}\" class=\"list\">\n"
-        + "\n".join(rows)
-        + "\n  </div>\n"
+        + ("\n".join(rows) + "\n" if rows else "")
+        + "  </div>\n"
         "</section>\n"
     )
 
 
-def _person_detail(item: Item, *, output_dir: Path) -> str:
+def _person_detail(item: Item, *, output_dir: Path, asset_prefix: str) -> str:
     name = html.escape(item.display_name)
     hero_style = ""
     # People detail pages live in docs/people/
@@ -450,34 +477,53 @@ def _person_detail(item: Item, *, output_dir: Path) -> str:
         panels.append(("Chronology", chronology_intro + "".join(chronology_blocks)))
 
     single_panel = len(panels) == 1
-    accordion_html = "".join(
-        "<details class=\"accordion\"" + (" data-auto-open=\"true\"" if single_panel else "") + ">"
-        "<summary>"
-        f"<span>{html.escape(title)}</span>"
-        "<i class=\"fas fa-chevron-down\"></i>"
-        "</summary>"
-        f"<div class=\"accordion-body\">{body}</div>"
-        "</details>"
-        for title, body in panels
-    )
+    chevron_down = f"{html.escape(asset_prefix)}img/chevron-down.svg"
+    accordion_blocks: List[str] = []
+    for title, body in panels:
+        body_lines = _indent_lines(body, 6) if body else ""
+        block_lines = [
+            "  <details class=\"accordion\"" + (" data-auto-open=\"true\"" if single_panel else "") + ">",
+            "    <summary>",
+            f"      <span>{html.escape(title)}</span>",
+            f"      <img class=\"icon\" src=\"{chevron_down}\" alt=\"\" aria-hidden=\"true\">",
+            "    </summary>",
+            "    <div class=\"accordion-body\">",
+        ]
+        if body_lines:
+            block_lines.append(body_lines)
+        block_lines.extend([
+            "    </div>",
+            "  </details>",
+        ])
+        accordion_blocks.append("\n".join(block_lines))
+    accordion_html = "\n".join(accordion_blocks)
 
     return (
-        f"<section class=\"detail-hero\"{hero_style}><div class=\"detail-hero-title\"><h1>{name}</h1></div></section>\n"
-        "<section class=\"page-content\">\n"
-        "  <div class=\"detail-actions\"><a class=\"back-link\" href=\"index.html\" aria-label=\"Back to people\" title=\"Back to people\"><i class=\"fas fa-arrow-left\"></i></a></div>\n"
-        + brief_html
-        + accordion_html
-        + "\n</section>\n"
+        "\n".join(
+            [
+                f"<section class=\"detail-hero\"{hero_style}>",
+                "  <div class=\"detail-hero-title\">",
+                f"    <h1>{name}</h1>",
+                "  </div>",
+                "</section>",
+                "<section class=\"page-content\">",
+                f"  <div class=\"detail-actions\"><a class=\"back-link\" href=\"index.html\" aria-label=\"Back to people\" title=\"Back to people\"><img class=\"icon\" src=\"{html.escape(asset_prefix)}img/chevron-left.svg\" alt=\"\" aria-hidden=\"true\"></a></div>",
+                brief_html.rstrip("\n") if brief_html else "",
+                accordion_html,
+                "</section>",
+                "",
+            ]
+        )
     )
 
 
-def _concept_or_echo_detail(kind: str, item: Item) -> str:
+def _concept_or_echo_detail(kind: str, item: Item, *, asset_prefix: str) -> str:
     title = html.escape(item.display_name)
     # Use a generic hero (same as index) since concepts/echoes don't always have per-item art.
     hero = f"<section class=\"page-hero page-hero--{kind}\"></section>\n"
 
     body = [
-        hero,
+        hero.rstrip("\n"),
         "<section class=\"page-content\">",
         f"  <h1 class=\"content-title\">{title}</h1>",
     ]
@@ -496,15 +542,25 @@ def _concept_or_echo_detail(kind: str, item: Item) -> str:
         panels.append((page.title or "Details", "".join(inner)))
 
     single_panel = len(panels) == 1
+    chevron_down = f"{html.escape(asset_prefix)}img/chevron-down.svg"
     for title, inner_html in panels:
+        inner_lines = _indent_lines(inner_html, 6) if inner_html else ""
+        block_lines = [
+            "  <details class=\"accordion\"" + (" data-auto-open=\"true\"" if single_panel else "") + ">",
+            "    <summary>",
+            f"      <span>{html.escape(title)}</span>",
+            f"      <img class=\"icon\" src=\"{chevron_down}\" alt=\"\" aria-hidden=\"true\">",
+            "    </summary>",
+            "    <div class=\"accordion-body\">",
+        ]
+        if inner_lines:
+            block_lines.append(inner_lines)
+        block_lines.extend([
+            "    </div>",
+            "  </details>",
+        ])
         body.append(
-            "<details class=\"accordion\"" + (" data-auto-open=\"true\"" if single_panel else "") + ">"
-            "<summary>"
-            f"<span>{html.escape(title)}</span>"
-            "<i class=\"fas fa-chevron-down\"></i>"
-            "</summary>"
-            f"<div class=\"accordion-body\">{inner_html}</div>"
-            "</details>"
+            "\n".join(block_lines)
         )
 
     body.append("</section>")
@@ -588,7 +644,7 @@ def main(argv: Optional[List[str]] = None) -> int:
         src_root / "people" / "index.html",
         _doc(
             "People",
-            _people_index(people, output_dir=src_root / "people"),
+            _people_index(people, output_dir=src_root / "people", asset_prefix="../"),
             scripts_html=_people_search_script(),
             asset_prefix="../",
             root_prefix="../",
@@ -603,6 +659,7 @@ def main(argv: Optional[List[str]] = None) -> int:
                 "Echoes",
                 "Explore how earlier messages echo in the words and ideas of later speakers and writers",
                 echoes,
+                asset_prefix="../",
                 enable_search=True,
             ),
             scripts_html=_list_search_script("echoes"),
@@ -619,6 +676,7 @@ def main(argv: Optional[List[str]] = None) -> int:
                 "Concepts",
                 "Explore key concepts and phrases in the Book of Mormon",
                 concepts,
+                asset_prefix="../",
                 enable_search=True,
             ),
             scripts_html=_list_search_script("concepts"),
@@ -634,7 +692,7 @@ def main(argv: Optional[List[str]] = None) -> int:
             src_root / "people" / fname,
             _doc(
                 it.display_name,
-                _person_detail(it, output_dir=src_root / "people"),
+                _person_detail(it, output_dir=src_root / "people", asset_prefix="../"),
                 scripts_html=_auto_open_single_accordion_script(),
                 asset_prefix="../",
                 root_prefix="../",
@@ -647,7 +705,7 @@ def main(argv: Optional[List[str]] = None) -> int:
             src_root / "echoes" / fname,
             _doc(
                 it.display_name,
-                _concept_or_echo_detail("echoes", it),
+                _concept_or_echo_detail("echoes", it, asset_prefix="../"),
                 scripts_html=_auto_open_single_accordion_script(),
                 asset_prefix="../",
                 root_prefix="../",
@@ -660,7 +718,7 @@ def main(argv: Optional[List[str]] = None) -> int:
             src_root / "concepts" / fname,
             _doc(
                 it.display_name,
-                _concept_or_echo_detail("concepts", it),
+                _concept_or_echo_detail("concepts", it, asset_prefix="../"),
                 scripts_html=_auto_open_single_accordion_script(),
                 asset_prefix="../",
                 root_prefix="../",

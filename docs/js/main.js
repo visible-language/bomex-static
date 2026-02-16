@@ -29,6 +29,13 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
 
+        document.querySelectorAll('[data-root-src]').forEach(el => {
+            const src = el.getAttribute('data-root-src');
+            if (src) {
+                el.setAttribute('src', prefix + src);
+            }
+        });
+
     }
 
     function initMenu() {
