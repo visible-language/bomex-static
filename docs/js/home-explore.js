@@ -28,31 +28,50 @@
 
   document.addEventListener('DOMContentLoaded', function () {
     var selectEl = document.getElementById('home-person-select');
-    if (!selectEl) return;
+    var spotlightLink = document.getElementById('spotlight-link');
+    if (!selectEl && !spotlightLink) return;
 
     fetchPeopleList()
       .then(function (people) {
-        // Preserve the first option ("Select a Name")
-        while (selectEl.options.length > 1) {
-          selectEl.remove(1);
+        if (selectEl) {
+          // Preserve the first option ("Select a Name")
+          while (selectEl.options.length > 1) {
+            selectEl.remove(1);
+          }
+
+          for (var i = 0; i < people.length; i++) {
+            var opt = document.createElement('option');
+            opt.value = people[i].slug;
+            opt.textContent = people[i].name;
+            selectEl.appendChild(opt);
+          }
         }
 
-        for (var i = 0; i < people.length; i++) {
-          var opt = document.createElement('option');
-          opt.value = people[i].slug;
-          opt.textContent = people[i].name;
-          selectEl.appendChild(opt);
-        }
+        if (!spotlightLink || !people.length) return;
+
+        var dayIndex = Math.floor(Date.now() / 86400000);
+        var person = people[dayIndex % people.length];
+        spotlightLink.setAttribute('href', 'people/' + person.slug + '.html');
+        spotlightLink.textContent = 'Meet ' + person.name + ' ';
+
+        var icon = document.createElement('img');
+        icon.className = 'icon';
+        icon.src = './img/chevron-right.svg';
+        icon.alt = '';
+        icon.setAttribute('aria-hidden', 'true');
+        spotlightLink.appendChild(icon);
       })
       .catch(function () {
         // Leave the default option if fetch fails.
       });
 
-    selectEl.addEventListener('change', function () {
-      var slug = selectEl.value;
-      if (!slug) return;
-      window.location.href = 'explore-by-person/?person=' + encodeURIComponent(slug) + '&tab=message';
-    });
+    if (selectEl) {
+      selectEl.addEventListener('change', function () {
+        var slug = selectEl.value;
+        if (!slug) return;
+        window.location.href = 'explore-by-person/?person=' + encodeURIComponent(slug) + '&tab=message';
+      });
+    }
   });
 })();
 

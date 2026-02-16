@@ -88,6 +88,11 @@ header {
 
 .logo span {
     font-family: 'Vollkorn SC', 'Vollkorn SC Local', Georgia, serif;
+    flex: 1;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: clamp(0.8rem, 4.3vw, 1.6rem);
 }
 
 .menu-icon {
@@ -97,8 +102,8 @@ header {
 }
 
 .logo .icon {
-    width: 2.1rem;
-    height: 2.1rem;
+    width: 3rem;
+    height: 3rem;
 }
 
 .menu-icon .icon {
@@ -169,19 +174,22 @@ header {
     line-height: 1.2;
 }
 
-.spotlight h2 {
+.spotlight-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     margin-bottom: 0.5rem;
     color: var(--white);
-    font-weight: normal;
+    font-weight: 600;
+    text-decoration: none;
 }
 
-.read-more {
-    display: block;
-    text-align: right;
-    font-size: 0.9rem;
-    margin-top: 0.5rem;
+.spotlight-link .icon {
+    width: 1.15rem;
+    height: 1.15rem;
+    filter: brightness(0) invert(1);
 }
 
 /* Understand Section */
