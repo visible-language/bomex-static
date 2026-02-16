@@ -525,6 +525,7 @@ def _concept_or_echo_detail(kind: str, item: Item, *, asset_prefix: str) -> str:
     body = [
         hero.rstrip("\n"),
         "<section class=\"page-content\">",
+        f"  <div class=\"detail-actions\"><a class=\"back-link\" href=\"index.html\" aria-label=\"Back to {html.escape(kind)}\" title=\"Back to {html.escape(kind)}\"><img class=\"icon\" src=\"{html.escape(asset_prefix)}img/chevron-left.svg\" alt=\"\" aria-hidden=\"true\"></a></div>",
         f"  <h1 class=\"content-title\">{title}</h1>",
     ]
 
