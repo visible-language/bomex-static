@@ -79,6 +79,13 @@ def _doc(title: str, body_html: str, scripts_html: str = "", *, asset_prefix: st
     body_block = _indent_lines(body_html.rstrip("\n"), 2)
     scripts_block = _indent_lines(scripts_html.rstrip("\n"), 2)
     scripts_line = f"{scripts_block}\n" if scripts_block else ""
+    scroll_button = (
+        "  <button class=\"scroll-top-btn\" type=\"button\" aria-label=\"Back to top\">\n"
+        f"    <img class=\"icon\" src=\"{html.escape(asset_prefix)}img/chevron-up.svg\" alt=\"\" aria-hidden=\"true\">\n"
+        f"    <img class=\"icon\" src=\"{html.escape(asset_prefix)}img/chevron-up.svg\" alt=\"\" aria-hidden=\"true\">\n"
+        f"    <img class=\"icon\" src=\"{html.escape(asset_prefix)}img/chevron-up.svg\" alt=\"\" aria-hidden=\"true\">\n"
+        "  </button>\n"
+    )
     return (
         "<!DOCTYPE html>\n"
         f"<html lang=\"en\" data-root=\"{html.escape(root_prefix)}\">\n"
@@ -94,6 +101,7 @@ def _doc(title: str, body_html: str, scripts_html: str = "", *, asset_prefix: st
         "  <header></header>\n"
         f"{body_block}\n"
         "  <footer></footer>\n"
+        f"{scroll_button}"
         f"  <script src=\"{html.escape(asset_prefix)}js/main.js\"></script>\n"
         f"{scripts_line}"
         "</body>\n"

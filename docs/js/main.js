@@ -148,4 +148,23 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     initHelpTooltips();
+    initScrollTopButton();
+
+    function initScrollTopButton() {
+        const btn = document.querySelector('.scroll-top-btn');
+        if (!btn) return;
+
+        function updateVisibility() {
+            const shouldShow = window.scrollY > (window.innerHeight * 4);
+            btn.classList.toggle('is-visible', shouldShow);
+        }
+
+        btn.addEventListener('click', function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        updateVisibility();
+        window.addEventListener('scroll', updateVisibility, { passive: true });
+        window.addEventListener('resize', updateVisibility);
+    }
 });
