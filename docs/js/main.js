@@ -28,24 +28,36 @@ document.addEventListener("DOMContentLoaded", function() {
                 el.setAttribute('href', prefix + href);
             }
         });
+
     }
 
     function initMenu() {
         const menuToggle = document.getElementById('menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
-        const icon = menuToggle.querySelector('i');
+        const icon = menuToggle ? menuToggle.querySelector('img') : null;
+        const rootPrefix = document.documentElement.getAttribute('data-root') || '';
+        const closedSrc = icon ? icon.getAttribute('data-closed-src') : '';
+        const openSrc = icon ? icon.getAttribute('data-open-src') : '';
+
+        function resolveIconSrc(value) {
+            if (!value) return '';
+            if (value.charAt(0) === '/' || value.startsWith('./') || value.startsWith('../')) return value;
+            return rootPrefix + value;
+        }
+
+        if (icon && closedSrc) {
+            icon.setAttribute('src', resolveIconSrc(closedSrc));
+        }
 
         if (menuToggle && mobileMenu) {
             menuToggle.addEventListener('click', function() {
                 mobileMenu.classList.toggle('active');
 
-                // Toggle icon between bars and times (X)
+                if (!icon) return;
                 if (mobileMenu.classList.contains('active')) {
-                    icon.classList.remove('fa-bars');
-                    icon.classList.add('fa-times');
+                    if (openSrc) icon.setAttribute('src', resolveIconSrc(openSrc));
                 } else {
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
+                    if (closedSrc) icon.setAttribute('src', resolveIconSrc(closedSrc));
                 }
             });
         }

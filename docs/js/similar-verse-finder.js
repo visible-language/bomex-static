@@ -126,13 +126,14 @@
     return out;
   }
 
-  function renderBooks(container, onPick) {
+  function renderBooks(container, rootPrefix, onPick) {
     var books = getBooks();
+    var chevronSrc = rootPrefix + 'img/chevron-right.svg';
     var rows = books.map(function (b) {
       return (
         '<button type="button" class="list-row svf-row" data-book="' + escapeText(b.key) + '">' +
           '<span>' + escapeText(b.name) + '</span>' +
-          '<i class="fas fa-chevron-right" aria-hidden="true"></i>' +
+          '<img class="icon" src="' + escapeText(chevronSrc) + '" alt="" aria-hidden="true">' +
         '</button>'
       );
     }).join('');
@@ -194,7 +195,7 @@
       if (!state.bookKey) {
         inputEl.value = '';
         setQueryParam('reference', '');
-        renderBooks(panelEl, function (s) {
+        renderBooks(panelEl, rootPrefix, function (s) {
           inputEl.value = titleCaseBookKey(s.bookKey);
           setState(s);
         });
