@@ -96,7 +96,7 @@ def _doc(title: str, body_html: str, scripts_html: str = "", *, asset_prefix: st
         f"  <link rel=\"icon\" href=\"{html.escape(asset_prefix)}favicon.ico\">\n"
         f"  <link rel=\"stylesheet\" href=\"{html.escape(asset_prefix)}css/main.css\">\n"
         "</head>\n"
-        "<body>\n"
+        "<body class=\"content-page\">\n"
         "  <!-- GENERATED FILE: re-run scripts/generate_content_pages.py -->\n"
         "  <header></header>\n"
         f"{body_block}\n"
@@ -429,11 +429,7 @@ def _list_index(
 
 def _person_detail(item: Item, *, output_dir: Path, asset_prefix: str) -> str:
     name = html.escape(item.display_name)
-    hero_style = ""
-    # People detail pages live in docs/people/
-    img_ref = _resolve_asset_ref(item.details_path, output_dir, item.image)
-    if img_ref:
-        hero_style = f" style=\"background-image: url('{html.escape(img_ref)}')\""
+    hero_class = "detail-hero detail-hero--people"
 
     chronology_blocks: List[str] = []
     panels: List[Tuple[str, str]] = []
@@ -509,11 +505,10 @@ def _person_detail(item: Item, *, output_dir: Path, asset_prefix: str) -> str:
     return (
         "\n".join(
             [
-                f"<section class=\"detail-hero\"{hero_style}>",
-                "  <div class=\"detail-hero-title\">",
-                f"    <h1>{name}</h1>",
-                "  </div>",
-                "</section>",
+                f"<section class=\"{hero_class}\"></section>",
+                "<div class=\"detail-hero-title\">",
+                f"  <h1>{name}</h1>",
+                "</div>",
                 "<section class=\"page-content\">",
                 f"  <div class=\"detail-actions\"><a class=\"back-link\" href=\"index.html\" aria-label=\"Back to people\" title=\"Back to people\"><img class=\"icon\" src=\"{html.escape(asset_prefix)}img/chevron-left.svg\" alt=\"\" aria-hidden=\"true\"></a></div>",
                 brief_html.rstrip("\n") if brief_html else "",
@@ -527,8 +522,7 @@ def _person_detail(item: Item, *, output_dir: Path, asset_prefix: str) -> str:
 
 def _concept_or_echo_detail(kind: str, item: Item, *, asset_prefix: str) -> str:
     title = html.escape(item.display_name)
-    # Use a generic hero (same as index) since concepts/echoes don't always have per-item art.
-    hero = f"<section class=\"page-hero page-hero--{kind}\"></section>\n"
+    hero = f"<section class=\"detail-hero detail-hero--{kind}\"></section>\n"
 
     body = [
         hero.rstrip("\n"),

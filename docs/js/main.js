@@ -167,4 +167,6 @@ document.addEventListener("DOMContentLoaded", function() {
         window.addEventListener('scroll', updateVisibility, { passive: true });
         window.addEventListener('resize', updateVisibility);
     }
+
+
 });

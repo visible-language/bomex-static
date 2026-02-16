@@ -655,6 +655,15 @@ footer {
     margin-bottom: 0.5rem;
 }
 
+.content-page .content-title,
+.detail-hero-title {
+    position: sticky;
+    top: 0;
+    z-index: 6;
+    background-color: var(--white);
+    padding: 0.35rem 0.75rem;
+}
+
 .content-subtitle {
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 1.1rem;
@@ -756,20 +765,38 @@ footer {
 }
 
 .detail-hero {
-    height: 160px;
+    --detail-hero-height: 160px;
+    height: var(--detail-hero-height);
     background-size: cover;
     background-position: center 33%;
     position: relative;
 }
 
+.detail-hero--people {
+    background-image: url('../img/angel-moroni-statue.png');
+}
+
+.detail-hero--echoes {
+    background-image: url('../img/scripture-page.png');
+}
+
+.detail-hero--concepts {
+    background-image: url('../img/open-book-on-table.png');
+}
+
 .detail-hero-title {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    position: sticky;
+    top: 0;
+    z-index: 6;
     background-color: rgba(224, 224, 224, 0.75);
-    padding: 0.75rem 1rem;
+    --detail-title-height: clamp(3.5rem, 6vw, 4.5rem);
+    min-height: var(--detail-title-height);
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
+    margin-top: calc(-1 * var(--detail-hero-height) / 2 - var(--detail-title-height) / 2 - 0.5rem);
 }
 
 .detail-hero-title h1 {
