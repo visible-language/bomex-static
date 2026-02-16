@@ -278,6 +278,7 @@ header {
 }
 
 .tool-row {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -286,6 +287,20 @@ header {
     border: 1px solid var(--secondary-color);
     border-radius: 8px;
     color: var(--text-color);
+}
+
+.tool-row-link {
+    position: absolute;
+    inset: 0;
+    border-radius: 8px;
+    z-index: 1;
+    display: block;
+}
+
+.tool-row > :not(.tool-row-link) {
+    position: relative;
+    z-index: 2;
+    pointer-events: none;
 }
 
 .tool-row:hover {
