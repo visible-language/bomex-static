@@ -367,7 +367,7 @@ def _people_index(items: List[Item], *, output_dir: Path, asset_prefix: str) -> 
         _hero(
             "people",
             "People",
-            "Explore insights into the Messages of the people of the Book of Mormon",
+            "Explore insights into the messages of the people of the Book of Mormon.",
         )
         + "\n<section class=\"page-content page-content--wide\">\n"
         "  <div class=\"input-wrapper people-search\">\n"
@@ -660,7 +660,7 @@ def main(argv: Optional[List[str]] = None) -> int:
             _list_index(
                 "echoes",
                 "Echoes",
-                "Explore how earlier messages echo in the words and ideas of later speakers and writers",
+                "Explore how earlier messages echo in the words and ideas of later speakers and writers.",
                 echoes,
                 asset_prefix="../",
                 enable_search=True,
@@ -677,7 +677,7 @@ def main(argv: Optional[List[str]] = None) -> int:
             _list_index(
                 "concepts",
                 "Concepts",
-                "Explore key concepts and phrases in the Book of Mormon",
+                "Explore key concepts and phrases in the Book of Mormon.",
                 concepts,
                 asset_prefix="../",
                 enable_search=True,
