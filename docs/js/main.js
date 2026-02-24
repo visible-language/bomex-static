@@ -28,26 +28,64 @@ document.addEventListener("DOMContentLoaded", function() {
                 el.setAttribute('href', prefix + href);
             }
         });
+
+        document.querySelectorAll('[data-root-src]').forEach(el => {
+            const src = el.getAttribute('data-root-src');
+            if (src) {
+                el.setAttribute('src', prefix + src);
+            }
+        });
+
     }
 
     function initMenu() {
         const menuToggle = document.getElementById('menu-toggle');
         const mobileMenu = document.getElementById('mobile-menu');
-        const icon = menuToggle.querySelector('i');
+        const icon = menuToggle ? menuToggle.querySelector('img') : null;
+        const rootPrefix = document.documentElement.getAttribute('data-root') || '';
+        const closedSrc = icon ? icon.getAttribute('data-closed-src') : '';
+        const openSrc = icon ? icon.getAttribute('data-open-src') : '';
+
+        function resolveIconSrc(value) {
+            if (!value) return '';
+            if (value.charAt(0) === '/' || value.startsWith('./') || value.startsWith('../')) return value;
+            return rootPrefix + value;
+        }
+
+        if (icon && closedSrc) {
+            icon.setAttribute('src', resolveIconSrc(closedSrc));
+        }
+
+        function setMenuOpen(isOpen) {
+            if (!mobileMenu) return;
+            mobileMenu.classList.toggle('active', isOpen);
+            if (!icon) return;
+            if (isOpen) {
+                if (openSrc) icon.setAttribute('src', resolveIconSrc(openSrc));
+            } else {
+                if (closedSrc) icon.setAttribute('src', resolveIconSrc(closedSrc));
+            }
+        }
 
         if (menuToggle && mobileMenu) {
-            menuToggle.addEventListener('click', function() {
-                mobileMenu.classList.toggle('active');
-
-                // Toggle icon between bars and times (X)
-                if (mobileMenu.classList.contains('active')) {
-                    icon.classList.remove('fa-bars');
-                    icon.classList.add('fa-times');
-                } else {
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                }
+            menuToggle.addEventListener('click', function(event) {
+                event.stopPropagation();
+                setMenuOpen(!mobileMenu.classList.contains('active'));
             });
+
+            document.addEventListener('click', function(event) {
+                if (!mobileMenu.classList.contains('active')) return;
+                if (menuToggle.contains(event.target)) return;
+                if (mobileMenu.contains(event.target)) return;
+                setMenuOpen(false);
+            });
+
+            document.addEventListener('touchstart', function(event) {
+                if (!mobileMenu.classList.contains('active')) return;
+                if (menuToggle.contains(event.target)) return;
+                if (mobileMenu.contains(event.target)) return;
+                setMenuOpen(false);
+            }, { passive: true });
         }
     }
 
@@ -110,4 +148,25 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     initHelpTooltips();
+    initScrollTopButton();
+
+    function initScrollTopButton() {
+        const btn = document.querySelector('.scroll-top-btn');
+        if (!btn) return;
+
+        function updateVisibility() {
+            const shouldShow = window.scrollY > (window.innerHeight * 4);
+            btn.classList.toggle('is-visible', shouldShow);
+        }
+
+        btn.addEventListener('click', function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        updateVisibility();
+        window.addEventListener('scroll', updateVisibility, { passive: true });
+        window.addEventListener('resize', updateVisibility);
+    }
+
+
 });

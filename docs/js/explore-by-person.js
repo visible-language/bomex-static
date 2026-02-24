@@ -93,14 +93,14 @@
         key: 'bubbles',
         title: 'Word Bubbles',
         subtitle: 'Uncover key words of this speaker and their impact',
-        icon: 'fa-circle-nodes',
+        icon: 'word-bubbles.svg',
         src: withSpeaker(rootPrefix + 'widgets/Widgets/Bubbles/index.html', ids.bubbles)
       },
       {
         key: 'topic',
         title: 'Similar Topic Diagram',
         subtitle: 'Explore how topics cluster together',
-        icon: 'fa-diagram-project',
+        icon: 'similar-topic-diagram.svg',
         src: withSpeaker(rootPrefix + 'widgets/Widgets/SpeakersNetwork/index.html', ids.timeline)
       }
     ];
@@ -110,21 +110,21 @@
         key: 'timeline',
         title: 'Timeline',
         subtitle: 'Explore connections between this speaker and events',
-        icon: 'fa-clock',
+        icon: 'timeline.svg',
         src: withSpeaker(rootPrefix + 'widgets/Widgets/Timeline/index.html', ids.timeline)
       },
       {
         key: 'conversation',
         title: 'Conversation Network',
         subtitle: 'Find who this speaker talked to',
-        icon: 'fa-share-nodes',
+        icon: 'conversation-network.svg',
         src: withSpeaker(rootPrefix + 'widgets/Widgets/SocialNetwork/index.html', ids.social)
       },
       {
         key: 'connections',
         title: 'Connections',
         subtitle: 'View social and spiritual connections',
-        icon: 'fa-people-group',
+        icon: 'connections.svg',
         src: withSpeaker(rootPrefix + 'widgets/Widgets/Connections/index.html', ids.connections)
       }
     ];
@@ -132,17 +132,19 @@
     var list = tab === 'life' ? widgetsLife : widgetsMessage;
 
     return list.map(function (w) {
+      var iconSrc = rootPrefix + 'img/' + w.icon;
+      var chevronSrc = rootPrefix + 'img/chevron-down.svg';
       return (
         '<details class="accordion" data-widget>' +
           '<summary>' +
             '<div class="explore-widget-summary">' +
-              '<i class="fa-solid ' + w.icon + '" aria-hidden="true"></i>' +
+              '<img class="icon" src="' + escapeText(iconSrc) + '" alt="" aria-hidden="true">' +
               '<div class="explore-widget-text">' +
                 '<div class="explore-widget-title">' + escapeText(w.title) + '</div>' +
                 '<div class="explore-widget-subtitle">' + escapeText(w.subtitle) + '</div>' +
               '</div>' +
             '</div>' +
-            '<i class="fas fa-chevron-down" aria-hidden="true"></i>' +
+            '<img class="icon" src="' + escapeText(chevronSrc) + '" alt="" aria-hidden="true">' +
           '</summary>' +
           '<div class="accordion-body">' +
             '<div class="explore-widget-frame" data-src="' + escapeText(w.src) + '"></div>' +

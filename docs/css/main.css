@@ -1,3 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Vollkorn+SC:wght@400;600;700&display=swap');
+
+@font-face {
+    font-family: 'Vollkorn SC Local';
+    src: url('../fonts/j8_v6-zQ3rXpceZj9cqnVhF5.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Vollkorn SC Local';
+    src: url('../fonts/j8_y6-zQ3rXpceZj9cqnVimhGluq.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Vollkorn SC Local';
+    src: url('../fonts/j8_y6-zQ3rXpceZj9cqnVinFG1uq.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
 :root {
     --primary-color: #2C4B55;
     --secondary-color: #E0E0E0;
@@ -30,6 +56,14 @@ a {
     color: inherit;
 }
 
+.icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    display: inline-block;
+    object-fit: contain;
+}
+
+
 /* Header */
 header {
     background-color: var(--light-bg);
@@ -47,17 +81,34 @@ header {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    font-family: Georgia, serif;
-    text-transform: uppercase;
     letter-spacing: 1px;
-    font-size: 0.9rem;
+    font-size: 1.3rem;
     color: var(--primary-color);
-    font-weight: bold;
+}
+
+.logo span {
+    font-family: 'Vollkorn SC', 'Vollkorn SC Local', Georgia, serif;
+    flex: 1;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    font-size: clamp(0.8rem, 4.3vw, 1.6rem);
 }
 
 .menu-icon {
-    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
     cursor: pointer;
+}
+
+.logo .icon {
+    width: 3rem;
+    height: 3rem;
+}
+
+.menu-icon .icon {
+    width: 1.5rem;
+    height: 1.5rem;
 }
 
 /* Simple inner pages */
@@ -123,19 +174,22 @@ header {
     line-height: 1.2;
 }
 
-.spotlight h2 {
+.spotlight-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     margin-bottom: 0.5rem;
     color: var(--white);
-    font-weight: normal;
+    font-weight: 600;
+    text-decoration: none;
 }
 
-.read-more {
-    display: block;
-    text-align: right;
-    font-size: 0.9rem;
-    margin-top: 0.5rem;
+.spotlight-link .icon {
+    width: 1.15rem;
+    height: 1.15rem;
+    filter: brightness(0) invert(1);
 }
 
 /* Understand Section */
@@ -171,11 +225,10 @@ header {
     background-color: #E8E8E8;
 }
 
-.nav-button i {
+.nav-button .icon {
     color: var(--primary-color);
-    font-size: 1.2rem;
     width: 24px;
-    text-align: center;
+    height: 24px;
 }
 
 .nav-button span {
@@ -197,7 +250,7 @@ header {
 }
 
 .tool-card {
-    background-color: var(--white);
+    background-color: var(--secondary-color);
     border-radius: 8px;
     padding: 1rem;
     margin-bottom: 1rem;
@@ -225,6 +278,7 @@ header {
 }
 
 .tool-row {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -233,6 +287,20 @@ header {
     border: 1px solid var(--secondary-color);
     border-radius: 8px;
     color: var(--text-color);
+}
+
+.tool-row-link {
+    position: absolute;
+    inset: 0;
+    border-radius: 8px;
+    z-index: 1;
+    display: block;
+}
+
+.tool-row > :not(.tool-row-link) {
+    position: relative;
+    z-index: 2;
+    pointer-events: none;
 }
 
 .tool-row:hover {
@@ -292,13 +360,25 @@ header {
     font-size: 1.1rem;
 }
 
+.card-title .icon {
+    width: 1.2rem;
+    height: 1.2rem;
+}
+
 .help-icon {
-    color: #999;
     cursor: pointer;
     position: relative;
     display: inline-flex;
     align-items: center;
     -webkit-tap-highlight-color: transparent;
+    width: 1.1rem;
+    height: 1.1rem;
+}
+
+.help-icon .icon {
+    width: 100%;
+    height: 100%;
+    display: block;
 }
 
 .help-icon:focus {
@@ -376,6 +456,11 @@ header {
     transform: translateY(-50%);
 }
 
+.search-icon-btn .icon {
+    width: 1.1rem;
+    height: 1.1rem;
+}
+
 .input-wrapper {
     position: relative;
     flex-grow: 1;
@@ -392,6 +477,11 @@ header {
     cursor: pointer;
 }
 
+.book-btn .icon {
+    width: 1.2rem;
+    height: 1.2rem;
+}
+
 /* Image Links Section */
 .image-link-section {
     position: relative;
@@ -405,6 +495,14 @@ header {
     background-size: cover;
     background-position: center;
     padding: 1rem;
+    width: calc(100% + 2rem);
+    margin-left: -1rem;
+    margin-right: -1rem;
+    border-top: 4px solid #fff;
+}
+
+.image-link-section:last-of-type {
+    border-bottom: 4px solid #fff;
 }
 
 .bg-read {
@@ -434,6 +532,11 @@ header {
     font-size: 0.9rem;
 }
 
+.action-btn .icon {
+    width: 1rem;
+    height: 1rem;
+}
+
 /* Footer */
 footer {
     background-color: var(--primary-color);
@@ -443,8 +546,11 @@ footer {
 }
 
 .footer-icon {
-    font-size: 2rem;
+    width: 2.75rem;
+    height: 2.75rem;
     margin-bottom: 1rem;
+    margin-left: auto;
+    margin-right: auto;
     display: block;
 }
 
@@ -474,6 +580,43 @@ footer {
     margin-top: 2rem;
     font-size: 0.9rem;
     color: var(--white);
+}
+
+.back-to-top .icon {
+    width: 0.95rem;
+    height: 0.95rem;
+}
+
+.scroll-top-btn {
+    position: fixed;
+    right: 1.25rem;
+    bottom: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    padding: 0.55rem 0.6rem;
+    border: 1px solid rgba(44, 75, 85, 0.35);
+    border-radius: 999px;
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+    z-index: 999;
+}
+
+.scroll-top-btn.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.scroll-top-btn .icon {
+    width: 0.85rem;
+    height: 0.85rem;
+    opacity: 0.7;
+}
+
+.scroll-top-btn .icon + .icon {
+    margin-top: -0.35rem;
 }
 
 .copyright {
@@ -510,6 +653,15 @@ footer {
     line-height: 1.15;
     color: var(--primary-color);
     margin-bottom: 0.5rem;
+}
+
+.content-page .content-title,
+.detail-hero-title {
+    position: sticky;
+    top: 0;
+    z-index: 6;
+    background-color: var(--white);
+    padding: 0.35rem 0.75rem;
 }
 
 .content-subtitle {
@@ -605,26 +757,46 @@ footer {
     text-decoration: none;
 }
 
-.list-row i {
+.list-row .icon {
     opacity: 0.65;
     margin-left: 1rem;
+    width: 1rem;
+    height: 1rem;
 }
 
 .detail-hero {
-    height: 160px;
+    --detail-hero-height: 160px;
+    height: var(--detail-hero-height);
     background-size: cover;
     background-position: center 33%;
     position: relative;
 }
 
+.detail-hero--people {
+    background-image: url('../img/angel-moroni-statue.png');
+}
+
+.detail-hero--echoes {
+    background-image: url('../img/scripture-page.png');
+}
+
+.detail-hero--concepts {
+    background-image: url('../img/open-book-on-table.png');
+}
+
 .detail-hero-title {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    position: sticky;
+    top: 0;
+    z-index: 6;
     background-color: rgba(224, 224, 224, 0.75);
-    padding: 0.75rem 1rem;
+    --detail-title-height: clamp(3.5rem, 6vw, 4.5rem);
+    min-height: var(--detail-title-height);
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
+    margin-top: calc(-1 * var(--detail-hero-height) / 2 - var(--detail-title-height) / 2 - 0.5rem);
 }
 
 .detail-hero-title h1 {
@@ -648,8 +820,10 @@ footer {
     font-size: 0.95rem;
 }
 
-.back-link i {
+.back-link .icon {
     margin-right: 0;
+    width: 0.95rem;
+    height: 0.95rem;
 }
 
 .back-link:hover {
@@ -679,12 +853,14 @@ footer {
     display: none;
 }
 
-.accordion[open] summary i {
+.accordion[open] summary .icon {
     transform: rotate(180deg);
 }
 
-.accordion summary i {
+.accordion summary .icon {
     transition: transform 0.15s;
+    width: 1rem;
+    height: 1rem;
 }
 
 .content-table {
@@ -833,16 +1009,18 @@ button.list-row.svf-row {
 
 .explore-person-tab {
     border: none;
-    background: transparent;
+    background: var(--light-bg);
     padding: 0.55rem 0.9rem;
     font-family: Georgia, 'Times New Roman', Times, serif;
     font-size: 1.05rem;
     color: var(--primary-color);
     cursor: pointer;
+    transition: background 0.2s;
 }
 
 .explore-person-tab.is-active {
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: #eee; /* Match .accordion background */
+    color: var(--primary-color);
 }
 
 .explore-widget-summary {
@@ -851,7 +1029,7 @@ button.list-row.svf-row {
     gap: 0.8rem;
 }
 
-.explore-widget-summary > i {
+.explore-widget-summary .icon {
     opacity: 0.8;
 }
 
@@ -891,7 +1069,7 @@ button.list-row.svf-row {
     top: 100%;
     left: 0;
     width: 100%;
-    background-color: rgba(176, 196, 205, 0.95); /* Light blue-ish overlay */
+    background-color: #d9d9d9;
     z-index: 1000;
     padding: 1rem;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
@@ -937,9 +1115,9 @@ button.list-row.svf-row {
     background-color: rgba(255,255,255,0.3);
 }
 
-.menu-item i {
-    width: 30px;
-    text-align: center;
+.menu-item .icon {
+    width: 20px;
+    height: 20px;
     margin-right: 10px;
     border-bottom: 1px solid rgba(255,255,255,0.3);
 }
@@ -950,7 +1128,10 @@ button.list-row.svf-row {
 
 .menu-item .arrow {
     margin-left: auto;
-    font-size: 0.9rem;
+    margin-right: 0;
+    border-bottom: none;
+    width: 0.9rem;
+    height: 0.9rem;
     opacity: 0.6;
 }
 
