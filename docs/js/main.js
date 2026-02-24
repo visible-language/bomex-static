@@ -18,6 +18,10 @@ document.addEventListener("DOMContentLoaded", function() {
             document.querySelector('footer').innerHTML = data;
             applyRootLinks(rootPrefix);
             updateCopyrightYear();
+            // Dynamically load footer.js after footer.html is injected
+            var s = document.createElement('script');
+            s.src = rootPrefix + 'js/footer.js';
+            document.body.appendChild(s);
         })
         .catch(error => console.error('Error loading footer:', error));
 

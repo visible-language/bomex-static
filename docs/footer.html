@@ -31,7 +31,21 @@
   /></a>
 </section>
 
+
 <div class="footer-section footer-section--after-cards">
+  <img
+    class="footer-icon"
+    src="./img/light-bulb.svg"
+    data-root-src="img/light-bulb.svg"
+    alt=""
+    aria-hidden="true"
+  />
+  <p>
+    <a href="javascript:void(0)" id="suggest-idea-link" role="button" tabindex="0" style="color: #d4a373; text-decoration: none">Suggest an idea for improvement</a>
+  </p>
+</div>
+
+<div class="footer-section">
   <img
     class="footer-icon"
     src="./img/about.svg"
@@ -66,8 +80,8 @@
       >Contact us</a
     >
     at<br />
-    <a href="mailto:explorer@visiblelanguage.info" class="footer-link"
-      >explorer@visiblelanguage.info</a
+    <a href="mailto:bomexplorer@visiblelanguage.info" class="footer-link"
+    >bomexplorer@visiblelanguage.info</a
     >
   </p>
 </div>
@@ -84,3 +98,19 @@
 <p class="copyright">
   Website copyright <span id="copyright-year">2024</span> VisibleLanguage
 </p>
+
+<!-- Suggest an idea modal -->
+<div id="suggest-modal" style="display:none;position:fixed;z-index:1000;left:0;top:0;width:100vw;height:100vh;background:rgba(0,0,0,0.4);align-items:center;justify-content:center;">
+  <div style="background:#fff;padding:1.5em 1.5em 1em 1.5em;max-width:400px;width:90vw;border-radius:8px;box-shadow:0 2px 8px #0002;position:relative;color:#2c4b55;text-align:left;">
+    <button id="close-modal" style="position:absolute;top:0.5em;right:0.5em;background:none;border:none;font-size:1.2em;cursor:pointer;">&times;</button>
+    <h3 style="text-align: center; font-size: 18px;">Suggest an idea or report a problem</h3>
+    <!-- <div style="font-size:0.95em;margin-bottom:0.5em;">Please provide a brief subject and detailed description. Include what you were trying to do, what you expected, and what change(s) would help you most.</div> -->
+    <br>
+    <form id="suggest-form">
+      <label>Subject<br><input id="suggest-title" type="text" maxlength="80" required style="width:100%;margin-bottom:0.5em;color:#2c4b55;"></label><br>
+      <label>Detailed description<br><textarea id="suggest-details" rows="5" required style="width:100%;margin-bottom:0.5em;color:#2c4b55;"></textarea></label><br>
+      <button id="suggest-submit" type="submit" style="width:100%;background:#2c4b55;color:#fff;padding:0.5em 0;border:none;border-radius:4px;font-size:1em;">Submit</button>
+      <div id="suggest-status" style="margin-top:0.5em;height:1.5em;"></div>
+    </form>
+  </div>
+</div>
