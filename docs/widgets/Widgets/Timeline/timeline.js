@@ -1,3 +1,11 @@
+;(function () {
+const timelineNs = window.TimelineWidget || (window.TimelineWidget = {});
+const Dropdown = timelineNs.Dropdown || window.TimelineWidgetDropdown;
+const eventsData = timelineNs.eventsData || window.TimelineWidgetData || [];
+if (!Dropdown || !eventsData.length) {
+    return;
+}
+
 const timelineBoxHeight = 30;
 const timelineStart = 700;
 const tickHeight = 200;
@@ -132,9 +140,17 @@ class TimeLineState {
 
 let state = new TimeLineState();
 const DEFAULT_SPEAKER = "Nephi";
-
-let parameters = new URLSearchParams(window.location.search);
-let path = location.pathname.split("/");
+const TIMELINE_DEFAULT_OPTIONS = {
+    speaker: '',
+    allowSpeakerSelect: true
+};
+let timelineInitComplete = false;
+let timelineInitRoot = null;
+let dropdownChangeHandler = null;
+let tabMessageClickHandler = null;
+let tabLifeClickHandler = null;
+let resetButtonClickHandler = null;
+let resizeHandler = null;
 
 function normalizeSpeakerParam(list, raw) {
     if (!raw) return null;
@@ -147,12 +163,35 @@ function normalizeSpeakerParam(list, raw) {
     return ci || null;
 }
 
-const paramSpeaker = normalizeSpeakerParam(Dropdown.idNames, parameters.get("speaker"));
-const pathSpeaker = normalizeSpeakerParam(Dropdown.idNames, path[3]);
-const initialSpeaker = paramSpeaker || pathSpeaker || DEFAULT_SPEAKER;
+function getSearchParams() {
+    return new URLSearchParams(window.location.search);
+}
 
-Dropdown.fillDropDown('dropdown', initialSpeaker);
-state.speaker = initialSpeaker;
+function getTimelineOptions() {
+    const params = getSearchParams();
+    const options = (window.TimelineWidgetOptions || {});
+    const merged = { ...TIMELINE_DEFAULT_OPTIONS, ...options };
+    if (options.speaker === undefined) {
+        merged.speaker = params.get('speaker') || '';
+    }
+    if (typeof merged.allowSpeakerSelect !== 'boolean') {
+        const paramAllow = params.get('allowSpeakerSelect');
+        if (paramAllow !== null) {
+            merged.allowSpeakerSelect = String(paramAllow) !== '0';
+        } else {
+            merged.allowSpeakerSelect = String(merged.allowSpeakerSelect) !== '0';
+        }
+    }
+    return merged;
+}
+
+function resolveInitialSpeaker() {
+    const options = getTimelineOptions();
+    const path = location.pathname.split("/");
+    const paramSpeaker = normalizeSpeakerParam(Dropdown.idNames, options.speaker);
+    const pathSpeaker = normalizeSpeakerParam(Dropdown.idNames, path[3]);
+    return paramSpeaker || pathSpeaker || DEFAULT_SPEAKER;
+}
 
 function numToDate(num) {
     var result;
@@ -168,22 +207,27 @@ function numToDate(num) {
 }
 
 function getImageLink(name) {
-    return "../../Images/" + name + ".jpg";
+    const assetBase = window.TimelineWidgetAssetBase || '.';
+    const imageBase = new URL('../../Images/', `${assetBase}/`).toString();
+    return new URL(`${name}.jpg`, imageBase).toString();
 }
 
 // Opens/closes the list of alternate speaker buttons
 function showList() {
     let list = document.querySelector('.horizontal-scroll')
+    if (!list) return;
     list.style.maxHeight = '110px';
 }
 
 function updateMainInfo() {
     let image = document.getElementById('main-image');
+    if (!image) return;
     image.setAttribute('src', getImageLink(state.speaker));
 }
 
 function createAltSpeakerList() {
     let list = document.getElementById('name-list');
+    if (!list) return;
 
     while (list.firstChild) {
         list.removeChild(list.firstChild);
@@ -214,6 +258,7 @@ function createAltSpeakerList() {
 }
 
 function loadSpeaker(name) {
+    if (!name) return;
     if (state.altSpeakers.includes(name)) {
         removeAltTimelineBox(name);
     } else if (!state.initialized) {
@@ -229,15 +274,12 @@ function loadSpeaker(name) {
     createAltSpeakerList();
 }
 
-loadSpeaker(state.speaker);
-
-
 // Create timeline framework from object
 function createTimelineFramework() {
     state.initialized = true;
     let svg = d3.select("#svg-lifespan");
     
-    xAxis = svg.append('path')
+    let xAxis = svg.append('path')
         .attr('class', 'horz-line')
         .attr('d', 'M 0 ' + state.xAxisLevel() + ' L 1200 ' + state.xAxisLevel());
 
@@ -600,7 +642,7 @@ function removeAltTimelineBox(speaker) {
         if (after) {
             // All speakers that were placed after the speaker that 
             // is being removed need to be moved up one spot.
-            newYLevel = timelineOffsetY + boxOffsetY + i*timelineBoxHeight;
+            let newYLevel = timelineOffsetY + boxOffsetY + i*timelineBoxHeight;
             d3.select(`#${state.altSpeakers[i]}-rect`).attr('y', newYLevel);
             d3.select(`#${state.altSpeakers[i]}-text`).attr('y', newYLevel + timelineBoxHeight/1.5);
         }
@@ -666,39 +708,104 @@ function getNumFromDate(date) {
     return num;
 }
 
-let tabs = document.querySelectorAll('.tab');
-
-tabs[0].addEventListener('click', function() {
+function onEventsTabClick() {
     let eventPage = document.querySelector('#event-page');
-    eventPage.style.display = 'block';
-
     let comparePage = document.querySelector('#compare-page');
+    let tabs = document.querySelectorAll('.tab');
+    if (!eventPage || !comparePage || tabs.length < 2) return;
+
+    eventPage.style.display = 'block';
     comparePage.style.display = 'none';
     tabs[0].classList.add('selected');
     tabs[1].classList.remove('selected');
-});
+    if (state._eventDrawChart) {
+        setTimeout(function () { state._eventDrawChart(); }, 1);
+    }
+}
 
-tabs[1].addEventListener('click', function() {
+function onCompareTabClick() {
     let eventPage = document.querySelector('#event-page');
-    eventPage.style.display = 'none';
-    
     let comparePage = document.querySelector('#compare-page');
+    let tabs = document.querySelectorAll('.tab');
+    if (!eventPage || !comparePage || tabs.length < 2) return;
+
+    eventPage.style.display = 'none';
     comparePage.style.display = 'block';
     showList();
-
     tabs[1].classList.add('selected');
     tabs[0].classList.remove('selected');
-});
+}
 
+function bindTimelineEvents() {
+    const dropdown = document.getElementById('dropdown');
+    if (dropdown) {
+        dropdownChangeHandler = function () {
+            loadSpeaker(this.value);
+        };
+        dropdown.addEventListener('change', dropdownChangeHandler);
+    }
 
-window.addEventListener('load', function() {
-    let message = {
-        height: document.body.scrollHeight,
-        width: document.body.scrollWidth
+    const tabs = document.querySelectorAll('.tab');
+    if (tabs.length >= 2) {
+        tabMessageClickHandler = onEventsTabClick;
+        tabLifeClickHandler = onCompareTabClick;
+        tabs[0].addEventListener('click', tabMessageClickHandler);
+        tabs[1].addEventListener('click', tabLifeClickHandler);
+    }
+
+    const resetButton = document.querySelector('#reset-button');
+    if (resetButton) {
+        resetButtonClickHandler = function() {
+            if (state._eventDrawChart) {
+                state._eventDrawChart();
+            }
+        };
+        resetButton.addEventListener('click', resetButtonClickHandler);
+    }
+
+    resizeHandler = function() {
+        if (state._eventDrawChart) {
+            state._eventDrawChart();
+        }
     };
+    window.addEventListener('resize', resizeHandler);
+}
 
-    window.top.postMessage(message, "*");
-});
+function unbindTimelineEvents() {
+    const dropdown = document.getElementById('dropdown');
+    if (dropdown && dropdownChangeHandler) {
+        dropdown.removeEventListener('change', dropdownChangeHandler);
+    }
+    dropdownChangeHandler = null;
+
+    const tabs = document.querySelectorAll('.tab');
+    if (tabs.length >= 2 && tabMessageClickHandler && tabLifeClickHandler) {
+        tabs[0].removeEventListener('click', tabMessageClickHandler);
+        tabs[1].removeEventListener('click', tabLifeClickHandler);
+    }
+    tabMessageClickHandler = null;
+    tabLifeClickHandler = null;
+
+    const resetButton = document.querySelector('#reset-button');
+    if (resetButton && resetButtonClickHandler) {
+        resetButton.removeEventListener('click', resetButtonClickHandler);
+    }
+    resetButtonClickHandler = null;
+
+    if (resizeHandler) {
+        window.removeEventListener('resize', resizeHandler);
+    }
+    resizeHandler = null;
+}
+
+function applyControlVisibility() {
+    const options = getTimelineOptions();
+    const dropdown = document.getElementById('dropdown');
+    if (dropdown) {
+        dropdown.disabled = !options.allowSpeakerSelect;
+        dropdown.style.display = options.allowSpeakerSelect ? '' : 'none';
+    }
+}
 
 function convertYears(eventYears) {
     let convertedYears = [];
@@ -828,17 +935,19 @@ function createGrid(eventYears, eventDescriptions, originalEventYears, years) {
     eventYears.forEach((year, i) => {
         total += parseInt(year);
     })
-    averageYear = total / years.length;
+    let averageYear = total / years.length;
 
-    var margin = {top: 10, right: 40, bottom: 80, left: 30},
-    height = 400 - margin.top - margin.bottom;
+    var margin = {top: 56, right: 40, bottom: 80, left: 30},
+    height = Math.max(240, (eventYears.length * 22) + 80);
 
     // append the SVG object to the body of the page
+    var currentWidth = parseInt(document.querySelector(".zoom-box").clientWidth) || 564;
     var SVG = d3.select(".zoom-box")
     .append("svg")
         .attr("width", "100%")
         .attr("height", height + margin.top + margin.bottom)
         .attr("class", "events-timeline")
+        .style("touch-action", "none")
     .append("g")
         .style("fill", "black")
         .style("pointer-events", "all")
@@ -885,24 +994,32 @@ function createGrid(eventYears, eventDescriptions, originalEventYears, years) {
 
     SVG.append('text')
         .attr('class', 'timeline-title')
-        .attr('x', "50%")
-        .attr('y', 15)
-        .style("text-anchor", "middle")
-        .style("dominant-baseline", "middle")
-        .style("font-size", "20px")
+        .attr('x', 0)
+        .attr('y', -32)
+        .style("text-anchor", "start")
+        .style("dominant-baseline", "hanging")
+        .style("font-size", "18px")
         .style("font-weight", "bold")
         .text(Dropdown.idNameToDisplayName(state.speaker) + " (" + originalEventYears[0] + " - " + originalEventYears[originalEventYears.length - 1] + ")");
 
     SVG.append('text')
         .attr("class", "instructions")
-        .attr('x', -15)
-        .attr('y', 10)
+        .attr('x', 0)
+        .attr('y', -10)
         .style("font-size", "12px")
-        .text('(scroll in and out to zoom / click and drag to pan)')
+        .text('Pinch or scroll to zoom; drag to pan')
 
     // Set the zoom and Pan features: how much you can zoom, on which part, and what to do when there is a zoom
     var zoom = d3.zoom()
         .scaleExtent([1, 20])  // This control how much you can unzoom (x1) and zoom (x20)
+        // Keep default behaviors, but allow ctrl+wheel so pinch emulation behaves like wheel zoom.
+        .filter(function() {
+            var event = d3.event;
+            if (!event) return true;
+            if (event.type === 'wheel') return true;
+            if (event.type && event.type.indexOf('touch') === 0) return true;
+            return !event.button;
+        })
         .on("zoom", updateChart);
 
     // This add an invisible rect on top of the chart area. This rect can recover pointer events: necessary to understand when the user zooms
@@ -910,6 +1027,7 @@ function createGrid(eventYears, eventDescriptions, originalEventYears, years) {
         .attr("height", height)
         .style("fill", "none")
         .style("pointer-events", "all")
+        .style("touch-action", "none")
         .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')')
         .call(zoom)
 
@@ -1072,21 +1190,15 @@ function createGrid(eventYears, eventDescriptions, originalEventYears, years) {
     }
     
     drawChart();
-    
-    let tabs = document.querySelectorAll('.tab');
-    // Recompute chart layout when switching to the Events tab.
-    // Note: tab order is: [0] View significant events, [1] Compare with other speakers.
-    tabs[0].addEventListener('click', function() {
-        setTimeout(() => {drawChart();}, 1);
-    });
-    
-    window.addEventListener('resize', drawChart);
+    state._eventDrawChart = drawChart;
 
     let text = document.querySelector('.description-box-text');
-    text.innerHTML += '<p>* - estimated date</p>';
-    originalEventYears.forEach((year, i) => {
-        text.innerHTML += "<p>" + originalEventYears[i] + " - " + eventDescriptions[i] + "</p>";
-    });
+    if (text) {
+        text.innerHTML += '<p>* - estimated date</p>';
+        originalEventYears.forEach((year, i) => {
+            text.innerHTML += "<p>" + originalEventYears[i] + " - " + eventDescriptions[i] + "</p>";
+        });
+    }
 
     function drawLines() {
         d3.selectAll("g.tick line").each(function(d) {
@@ -1160,8 +1272,61 @@ function createGrid(eventYears, eventDescriptions, originalEventYears, years) {
         }
     }
 
-    let resetButton = document.querySelector('#reset-button');
-    resetButton.addEventListener('click', function() {
-        drawChart();
-    });
 }
+
+function initializeTimelineWidget() {
+    const dropdown = document.getElementById('dropdown');
+    if (!dropdown) return;
+    const currentRoot = dropdown.closest('.vl-timeline-root') || document.body;
+    if (timelineInitComplete && timelineInitRoot === currentRoot) return;
+
+    timelineInitComplete = true;
+    timelineInitRoot = currentRoot;
+    state = new TimeLineState();
+    state.speaker = resolveInitialSpeaker();
+    state._eventDrawChart = null;
+
+    Dropdown.fillDropDown('dropdown', state.speaker);
+    applyControlVisibility();
+    bindTimelineEvents();
+    loadSpeaker(state.speaker);
+
+    let message = {
+        height: document.body.scrollHeight,
+        width: document.body.scrollWidth
+    };
+    window.top.postMessage(message, "*");
+}
+
+function destroyTimelineWidget() {
+    unbindTimelineEvents();
+    state = new TimeLineState();
+    timelineInitComplete = false;
+    timelineInitRoot = null;
+}
+
+window.TimelineWidgetApi = {
+    init: initializeTimelineWidget,
+    destroy: destroyTimelineWidget,
+    resize: function() {
+        if (state._eventDrawChart) {
+            state._eventDrawChart();
+        }
+    },
+    setOptions: function(options) {
+        window.TimelineWidgetOptions = { ...(window.TimelineWidgetOptions || {}), ...(options || {}) };
+        applyControlVisibility();
+        const nextSpeaker = resolveInitialSpeaker();
+        if (timelineInitComplete && nextSpeaker && nextSpeaker !== state.speaker) {
+            loadSpeaker(nextSpeaker);
+        }
+    }
+};
+timelineNs.api = window.TimelineWidgetApi;
+
+if (document.readyState === 'complete') {
+    initializeTimelineWidget();
+} else {
+    window.addEventListener('load', initializeTimelineWidget);
+}
+})();

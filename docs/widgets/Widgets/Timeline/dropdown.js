@@ -1,3 +1,4 @@
+;(function () {
 // Populates dropdown menu with speaker names
 class Dropdown {
     static displayNames = [
@@ -128,6 +129,10 @@ class Dropdown {
 
     static fillDropDown(dropdownID, currentSelection) {
         let dropdown = document.getElementById(dropdownID);
+        if (!dropdown) return null;
+        while (dropdown.options.length > 1) {
+            dropdown.remove(1);
+        }
         for (let id of Dropdown.idNames) {
             let option = document.createElement('option');
             option.setAttribute('value', id);
@@ -138,3 +143,7 @@ class Dropdown {
         return dropdown;
     }
 }
+const timelineNs = window.TimelineWidget || (window.TimelineWidget = {});
+timelineNs.Dropdown = Dropdown;
+window.TimelineWidgetDropdown = Dropdown;
+})();

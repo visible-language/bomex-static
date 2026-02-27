@@ -1,3 +1,4 @@
+;(function () {
 // JS Object containing speaker names, life events, and associated dates
 var eventsData = [
   {name: "Aaron",
@@ -471,4 +472,8 @@ var eventsData = [
   lifespan_start: "123 B.C.",
   lifespan_end: "74 B.C.",
   events: [{year: "123 B.C. *", description: "Zerahemnah is born."},
-	  {year: "74 B.C.", description: "Zerahemnah leads an attack against the Nephites and fights until his armies are surrounded. Moroni demands that they drop their weapons and covenant not to come to war anymore. Zerahemnah refuses to make a covenant that he will not keep. He attacks Moroni and is scalped by a soldier. The fight continues until Zerahemnah surrenders and agrees to make the covenant."}]}]
+	  {year: "74 B.C.", description: "Zerahemnah leads an attack against the Nephites and fights until his armies are surrounded. Moroni demands that they drop their weapons and covenant not to come to war anymore. Zerahemnah refuses to make a covenant that he will not keep. He attacks Moroni and is scalped by a soldier. The fight continues until Zerahemnah surrenders and agrees to make the covenant."}]}];
+const timelineNs = window.TimelineWidget || (window.TimelineWidget = {});
+timelineNs.eventsData = eventsData;
+window.TimelineWidgetData = eventsData;
+})();

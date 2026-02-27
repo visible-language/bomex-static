@@ -280,6 +280,9 @@ main {
 .events-timeline .tick {
     stroke: none;
 }
+.events-timeline {
+    touch-action: none;
+}
 #svg-events {
     display: none;
 }
