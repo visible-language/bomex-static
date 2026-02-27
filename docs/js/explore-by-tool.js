@@ -66,5 +66,9 @@
       }
       window.location.href = rootPrefix + 'explore-by-tool/' + v + '.html';
     });
+
+    if (window.WidgetShell && typeof window.WidgetShell.initExploreByToolPage === 'function') {
+      window.WidgetShell.initExploreByToolPage();
+    }
   });
 })();

@@ -7,7 +7,7 @@
   <title>Semantic Map</title>
   <link rel="stylesheet" href="../css/main.css">
 </head>
-<body data-tool="semantic-map">
+<body data-tool="semantic-map" data-widget-key="semantic-map">
   <header></header>
 
   <section class="page-hero page-hero--people"></section>
@@ -25,7 +25,7 @@
     </div>
 
     <div class="tool-widget">
-      <iframe class="tool-iframe" title="Semantic Map" loading="lazy" referrerpolicy="no-referrer" src="../widgets/Widgets/SemanticMaps/BOMSemanticMap/index.html"></iframe>
+      <div class="tool-widget-host" data-widget-title="Semantic Map" data-widget-src="../widgets/Widgets/SemanticMaps/BOMSemanticMap/index.html"></div>
     </div>
 
     <p class="tool-hint">For an enhanced experience, try this on a computer</p>
@@ -34,6 +34,8 @@
   <footer></footer>
 
   <script src="../js/main.js"></script>
-  <script src="../js/explore-by-tool.js"></script>
+  <script src="../js/widget-shell.js"></script>
+    <script src="../js/widgets/bubbles.mount.js"></script>
+<script src="../js/explore-by-tool.js"></script>
 </body>
 </html>

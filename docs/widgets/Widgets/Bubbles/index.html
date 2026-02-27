@@ -8,6 +8,7 @@
         <meta http-equiv="X-UA-Compatible" content="ie-edge">
 
         <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link type="text/css" rel="stylesheet" href="../../../css/main.css">
         <link type="text/css" rel="stylesheet" href="../colors.css">
         <link type="text/css" rel="stylesheet" href="styles/packedbubbles.css">
         <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
@@ -89,9 +90,9 @@
 
    <!--     <div class="text" style="font-size: 18px; font-weight: 500; margin-left: 55px">Select a person</div>
    -->
-        <div class="controls" style="justify-content: start">
+        <div class="controls">
                     <div>
-                      <select id='dropdown' class="author-select" onchange="loadNewDataset(this.value)">
+                      <select id='dropdown' class="author-select">
                 <option disabled selected value> -- Select a speaker -- </option>
                       </select>
                     </div>
@@ -110,8 +111,12 @@
                 </div> -->
 
                 <div class="graph-info">
-                  <button class="accordion" style="graph-info-title">Speaker Statistics</button>
-                          <div class="panel">
+                  <details class="accordion">
+                    <summary>
+                      Speaker Statistics
+                      <img class="icon" src="../../../img/chevron-down.svg" alt="" aria-hidden="true">
+                    </summary>
+                    <div class="accordion-body">
                     <table class="graph-stats-container graph-info-item graph-info-table">
                         <tr>
                             <th class="graph-info-title" colspan="2"></th> 
@@ -137,10 +142,15 @@
                             <td id="stat-3"></td>
                         </tr>
                     </table>
-                </div>
+                    </div>
+                  </details>
 
-                          <button class="accordion">Filters</button>
-                          <div class="panel">
+                  <details class="accordion">
+                    <summary>
+                      Filters
+                      <img class="icon" src="../../../img/chevron-down.svg" alt="" aria-hidden="true">
+                    </summary>
+                    <div class="accordion-body">
                     <div class="user-input graph-info-item">
                         <div class="user-input__form user-parameters">
                             <table class="graph-info-table filter-item">
@@ -160,7 +170,6 @@
                                                 type="radio" 
                                                 name="typeRadios" 
                                                 id="radio-all"
-                                                onChange='updateTypeRadios(this)'
                                                 value="all" />
 
                                             <label for="radio-all">
@@ -173,7 +182,6 @@
                                                 type="radio" 
                                                 name="typeRadios" 
                                                 id="radio-pink"
-                                                onChange='updateTypeRadios(this)'
                                                 value="noun" 
                                                 checked />
 
@@ -187,7 +195,6 @@
                                                 type="radio" 
                                                 name="typeRadios" 
                                                 id="radio-blue"
-                                                onChange='updateTypeRadios(this)'
                                                 value="verb" />
                                             <label for="radio-blue">
                                                 Connecting Words
@@ -256,15 +263,12 @@
 -->
                             
 
-<!--                            <button id='go-button' 
-                                class="button" 
-                                onclick="goButton(event);">
-                                Reset Display
-</button>  -->
+<!--                            <button id='go-button' class="button">Reset Display</button>  -->
                         </div>
                         </div>
                     </div>
-                </div>
+                    </div>
+                  </details>
             </div>
 
             <div class="graph-display" id="graph-display"></div>
@@ -277,6 +281,5 @@
         <script type="text/javascript" src="scripts/import_data.js"></script>
         <script type="text/javascript" src="scripts/main.js"></script>
         <script type="text/javascript" src="scripts/draw_graphs.js"></script>
-        <script type="text/javascript" src="scripts/accordion.js"></script>
            </body>
 </html>

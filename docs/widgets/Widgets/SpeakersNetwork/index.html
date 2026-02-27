@@ -445,18 +445,27 @@
         //change background color and link color
         function changeBackgroundColor() {
             buttonText = document.getElementById("button3");
+            var navInfo = document.getElementsByClassName("scene-nav-info")[0];
             if (backgroundColor === 'dark') {
                 backgroundColor = 'light'
                 Graph.backgroundColor(lightBackgroundColor);
                 Graph.linkColor(link => '#888888');
-                buttonText.innerHTML = "Dark Mode";
-                document.getElementsByClassName("scene-nav-info")[0].style.color = "#222222";
+                if (buttonText) {
+                    buttonText.innerHTML = "Dark Mode";
+                }
+                if (navInfo) {
+                    navInfo.style.color = "#222222";
+                }
             } else {
                 Graph.backgroundColor(darkBackgroundColor);	
                 backgroundColor = 'dark';
                 Graph.linkColor(link => '#ffffff');
-                document.getElementsByClassName("scene-nav-info")[0].style.color = "#fafafa";
-                buttonText.innerHTML = "Light Mode";            
+                if (navInfo) {
+                    navInfo.style.color = "#fafafa";
+                }
+                if (buttonText) {
+                    buttonText.innerHTML = "Light Mode";
+                }
             }
 
             if(highlightMode == true) {
@@ -470,6 +479,9 @@
         //tooltip color has to be updated seperately
         function updateTooltipColor(){
             var tooltip = document.getElementsByClassName("scene-tooltip")[0]; 
+            if (!tooltip || !tooltip.style) {
+                return;
+            }
             if (backgroundColor === 'dark') {
                 tooltip.style.backgroundColor = transparentDark;
                 tooltip.style.color = "#ffffff";

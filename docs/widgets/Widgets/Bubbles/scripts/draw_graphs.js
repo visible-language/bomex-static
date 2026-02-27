@@ -17,18 +17,52 @@ let state =  {
     currentFilteredData: {},
     isFiltered: false,
     isInitialized: false,
-    showTooltip: false,
     currentSpeakerData: {},
     type: 'all',
-    loaded: false
+    loaded: false,
+    _resizeTimer: null,
+    _rerenderTimer: null
 }
 const urlParams = new URLSearchParams(window.location.search);
 const DEFAULT_SPEAKER = "nephi1";
+const BUBBLES_DEFAULT_OPTIONS = {
+    speaker: '',
+    allowSpeakerSelect: true,
+    shellManagedResize: false
+};
+let bubblesInitComplete = false;
+let wordmaxKeypressHandler = null;
+let uniqueButtonClickHandler = null;
+
+function getBubblesOptions() {
+    const params = getSearchParams();
+    const options = (window.BubblesWidgetOptions || {});
+    const merged = { ...BUBBLES_DEFAULT_OPTIONS, ...options };
+    if (options.speaker === undefined) {
+        merged.speaker = params.get('speaker') || '';
+    }
+    if (typeof merged.allowSpeakerSelect !== 'boolean') {
+        const paramAllow = params.get('allowSpeakerSelect');
+        if (paramAllow !== null) {
+            merged.allowSpeakerSelect = String(paramAllow) !== '0';
+        } else {
+            merged.allowSpeakerSelect = String(merged.allowSpeakerSelect) !== '0';
+        }
+    }
+    return merged;
+}
+
+function getSearchParams() {
+    return new URLSearchParams(window.location.search);
+}
 
 // Get speaker
 function getSpeaker() {
-    if (urlParams.get('speaker')) {
-        const paramSpeaker = urlParams.get("speaker").charAt(0).toLowerCase() + urlParams.get("speaker").slice(1);
+    const options = getBubblesOptions();
+    const params = getSearchParams();
+    const requestedSpeaker = options.speaker || params.get('speaker');
+    if (requestedSpeaker) {
+        const paramSpeaker = requestedSpeaker.charAt(0).toLowerCase() + requestedSpeaker.slice(1);
         if (idNames.includes(paramSpeaker)) {
             state.currentDataSet = paramSpeaker;
             console.log("Successfully retrieved speaker from parameters");
@@ -54,6 +88,11 @@ const chartId = '#graph-display';
 
 function fillDropDown() {
     let dropdown = document.getElementById('dropdown');
+    if (!dropdown) return;
+
+    while (dropdown.options.length > 1) {
+        dropdown.remove(1);
+    }
 
     for (id of idNames) {
         let option = document.createElement('option');
@@ -64,8 +103,6 @@ function fillDropDown() {
     
     dropdown.value = state.currentDataSet; // dropdown should default to speaker
 }
-
-fillDropDown();
 
 const updateTypeRadios = (el) => {
     state.type = el.value;
@@ -131,24 +168,6 @@ function resetUISettings() {
     }
 }
 
-// Creates tooltip at mouse
-function tooltipEventListener(e) {
-    const toolTip = document.querySelector('.tooltip');
-
-    if (toolTip == null) return;
-
-    toolTip.style.left = e.offsetX + 'px';
-    toolTip.style.top = e.offsetY + 'px';
-}
-
-function createTooltipEventListener() {
-    document.addEventListener('mousemove', tooltipEventListener);
-}
-
-function destroyTooltipEventListener() {
-    document.removeEventListener("mousemove", tooltipEventListener);
-}
-
 function showText(text, fontSize, y = 0, radius = 0) {
     const textWidth = getTextWidth(fontSize, String(text), 10);
     const textAnchor = getTextHeight(fontSize, String(text)) / 2;
@@ -156,50 +175,8 @@ function showText(text, fontSize, y = 0, radius = 0) {
     return textWidth < (getInnerCircleDistance(radius, y + textAnchor) * 80);
 }
 
-function mouseOver(event, data) {
-    const tooltip = d3.select(".tooltip");
-
-    d3.select(this)
-        .select('circle')
-        .attr('class', `${getClassName(data.data.partOfSpeech)} bubble-hover`);
-
-    // Adds tooltip if text will overflow
-    if (true) {	
-        tooltip
-            .attr('class', 'tooltip tooltip--visible');	
-        tooltip
-            .html(data.data.name + "<br/>"  + data.data.size);
-            state.showTooltip = true;
-
-        createTooltipEventListener();
-    }
-}
-
-function mouseOut(event, data) {
-    const tooltip = d3.select(".tooltip");
-
-    d3.select(this).select('circle')
-        .attr('class', getClassName(data.data.partOfSpeech));
-
-    // Hides tooltip
-    state.showTooltip = false;
-    destroyTooltipEventListener();
-
-    tooltip
-        .attr('class', 'tooltip');
-}
-
 function onClick(event, data) {
-    const tooltip = d3.select(".tooltip");
-
-    if (state.showTooltip) {
-        state.showTooltip = false;
-        destroyTooltipEventListener();
-    }
-
-    // clear tooltip in the case that the user is clicking while hovering
-    tooltip
-        .attr('class', 'tooltip');
+    if (Date.now() < (state._suppressClickUntil || 0)) return;
 
     if (state.isDrillDown) {
         exitDrillDown();
@@ -267,6 +244,15 @@ function resetRadiosToBlue(){
 }
 
 function renderChart(data = state.currentChartData) {
+    if (state._simulation) {
+        state._simulation.stop();
+        state._simulation = null;
+    }
+    if (state._renderInterval) {
+        state._renderInterval.stop();
+        state._renderInterval = null;
+    }
+
     clearChart();
 
     if (data.children.length == 0) return;
@@ -311,25 +297,20 @@ function renderChart(data = state.currentChartData) {
         document.getElementById('graph-container').className = "graph graph--initialized";
     }
     
-    const width = 900;
-    const height = 750;
+    const graphDisplay = document.getElementById('graph-display');
+    const rect = graphDisplay ? graphDisplay.getBoundingClientRect() : { width: 900, height: 750 };
+    const width = Math.max(320, Math.floor(rect.width || 900));
+    const height = Math.max(320, Math.floor(rect.height || 750));
+    const edgePadding = 12;
 
     const svg = d3.select(chartId).append('svg')
                     .attr("viewBox", `0 0 ${width} ${height}`)
                     .attr("preserveAspectRatio", "xMinYMin meet")
                     .attr("class", "svg-graph")
-                    .attr('style', state.isDrillDown ? `clip-path: circle(${800/2}px at 50% 50%)` : '')
+                    .attr('style', '')
                     .attr('id', 'svg-graph')
 
     
-    // create tooltip
-    if (!state.isDrillDown) {
-        d3.select(chartId)
-            .append('div')
-            .attr('class', 'tooltip');
-    }
-
-
     // Creates bubble pack instance
     const bubblePack = d3.pack()
                     .size([width, height])
@@ -342,141 +323,221 @@ function renderChart(data = state.currentChartData) {
 
     // Creates bubble pack with data
     const nodes = bubblePack(rootNode);
-    
-    const maxRadius = d3.max(nodes, (node) => node.r);
-    
-    let count = 0;
+    const packedNodes = nodes.children || [];
 
-    let currentNodes = determineNodeInit();
-    
-    var graph, circles, texts;
-    
-    function determineNodeInit() {
-        if (state.loaded) {
-            return nodes.children;
-        } else {
-            return [nodes.children[count]]
+    // Uniformly scale bubble radii to increase space utilization in the rectangle.
+    // Keep a conservative cap so labels remain readable and collisions remain stable.
+    if (packedNodes.length) {
+        const usableArea = Math.max(1, (width - edgePadding * 2) * (height - edgePadding * 2));
+        let totalCircleArea = 0;
+        for (let i = 0; i < packedNodes.length; i++) {
+            totalCircleArea += Math.PI * packedNodes[i].r * packedNodes[i].r;
+        }
+        const targetFillRatio = 0.68;
+        const rawScale = Math.sqrt((usableArea * targetFillRatio) / Math.max(1, totalCircleArea));
+        const radiusScale = Math.max(0.85, Math.min(1.45, rawScale));
+        for (let i = 0; i < packedNodes.length; i++) {
+            packedNodes[i].r = packedNodes[i].r * radiusScale;
+        }
+    }
+
+    if (packedNodes.length === 1) {
+        const only = packedNodes[0];
+        only.tx = width / 2;
+        only.ty = height / 2;
+        const maxRadius = Math.max(60, Math.floor((Math.min(width, height) / 2) - (edgePadding * 2)));
+        only.r = Math.min(only.r, maxRadius);
+    } else if (packedNodes.length) {
+        const xExtent = d3.extent(packedNodes, (n) => n.x);
+        const yExtent = d3.extent(packedNodes, (n) => n.y);
+        const xSpan = Math.max(1, (xExtent[1] || 0) - (xExtent[0] || 0));
+        const ySpan = Math.max(1, (yExtent[1] || 0) - (yExtent[0] || 0));
+        const usableWidth = Math.max(1, width - edgePadding * 2);
+        const usableHeight = Math.max(1, height - edgePadding * 2);
+
+        for (let i = 0; i < packedNodes.length; i++) {
+            const node = packedNodes[i];
+            node.tx = edgePadding + ((node.x - xExtent[0]) / xSpan) * usableWidth;
+            node.ty = edgePadding + ((node.y - yExtent[0]) / ySpan) * usableHeight;
         }
     }
     
+    const currentNodes = packedNodes;
+    
+    var graph, circles, texts;
+    let activePointer = null;
+
     const initializeNodes = () => {
         graph = svg.selectAll('g')
             .data(currentNodes)
             .enter()
             .append('g')
                 .attr('class', 'bubble-element')
-                .on('mouseover', mouseOver)
-                .on('mouseout', mouseOut)
+                .style('touch-action', 'none')
                 .on('click', onClick)
-                .call(d3.drag() // call specific function when circle is dragged
-                    .on("start", dragstarted)
-                    .on("drag", dragged)
-                    .on("end", dragended));
+                .on('pointerdown', pointerDown)
+                .on('pointermove', pointerMove)
+                .on('pointerup pointercancel', pointerUpOrCancel)
+                .on('touchstart', preventTouchScrollOnBubble, { passive: false })
+                .on('touchmove', preventTouchScrollOnBubble, { passive: false })
+            ;
 
         circles = graph.append('circle')
             .attr('class', (d) => getClassName(d.data.partOfSpeech));
             
         texts = textContainerAppend(graph)
     }
-    
-    const restart = () => {
-        d3.selectAll(".bubble-element").remove();
-
-        simulation.nodes(currentNodes);
-        
-        initializeNodes();
-        simulation.restart();
-    }
-
-    if (!state.loaded) {
-        const interval = d3.interval(() => {
-            if (count >= nodes.children.length) {
-                state.loaded = true;
-                interval.stop();
-            } else if (count > 0) {
-                currentNodes.push(nodes.children[count]);
-                restart();
-            }
-            
-            count += 1;
-        }, 50)   
-    }
-
-        // Simulation to remove pack()
-    var simulation = d3.forceSimulation(currentNodes)
-      .force('charge', d3.forceManyBody().strength(-10))
-      .force('center', d3.forceCenter(width / 2, height / 2).strength(0.9))
-      .force("collide", d3.forceCollide()
-          .radius((d) => d.r - d.r/10)
-          .strength(0.8)
-          .iterations(5))
-      .on('tick', ticked);
       
     initializeNodes();
     
-    function distanceBoundary(dim, rad) {
-        if (dim > width - rad) {
-            return width - rad;
-        } else if (dim < rad) {
-            return rad;
+    function distanceBoundary(dim, rad, maxDim) {
+        const min = rad + edgePadding;
+        const max = maxDim - rad - edgePadding;
+
+        if (max <= min) {
+            return maxDim / 2;
+        }
+
+        if (dim > max) {
+            return max;
+        } else if (dim < min) {
+            return min;
         } else {
             return dim;
         }        
     }
 
-    function ticked() {
-        circles.data(currentNodes)
-            .join('circle')
+    function positionNodes() {
+        circles
             .attr('r', (d) => d.r)
             .attr('cx', function(d) {
-                return distanceBoundary(d.x, d.r);
+                return distanceBoundary((d.tx || d.x || width / 2), d.r, width);
             })
             .attr('cy', function(d) {
-                return distanceBoundary(d.y, d.r);
+                return distanceBoundary((d.ty || d.y || height / 2), d.r, height);
             })
             
-        texts.data(currentNodes)
-            .join('text')
+        texts
             .attr('transform', (d) => {
-                const x = distanceBoundary(d.x, d.r);
-                const y = distanceBoundary(d.y, d.r);
+                const boxSize = state.isDrillDown ? (d.r * 2.2) : (d.r * 1.5);
+                const x = distanceBoundary((d.tx || d.x || width / 2), d.r, width);
+                const y = distanceBoundary((d.ty || d.y || height / 2), d.r, height);
                 
-                return `translate(${x - (d.r / 1.25)}, ${y - (d.r / 1.25)})`
+                return `translate(${x - (boxSize / 2)}, ${y - (boxSize / 2)})`
             })
     }
-    
-    function dragstarted(d) {
-      if (!d.active) simulation.alphaTarget(.03).restart();
-      if (dragConditions(d.x, d.y, width, height)) {
-          d.subject.fx = d.subject.x;
-          d.subject.fy = d.subject.y;
-      }
+
+    function viewportToSvg(clientX, clientY) {
+        const svgEl = svg.node();
+        if (!svgEl) return [width / 2, height / 2];
+        const rect = svgEl.getBoundingClientRect();
+        if (!rect.width || !rect.height) return [width / 2, height / 2];
+        const px = ((clientX - rect.left) / rect.width) * width;
+        const py = ((clientY - rect.top) / rect.height) * height;
+        return [px, py];
     }
-    
-    function dragged(d) {
-        if (dragConditions(d.x, d.y, width, height)) {
-            d.subject.fx = d.x;
-            d.subject.fy = d.y;   
+
+    function updatePointerPosition(clientX, clientY, d) {
+        if (!Number.isFinite(clientX) || !Number.isFinite(clientY)) return;
+        const [px, py] = viewportToSvg(clientX, clientY);
+        d.tx = distanceBoundary(px, d.r, width);
+        d.ty = distanceBoundary(py, d.r, height);
+        positionNodes();
+    }
+
+    function pointerDown(event, d) {
+        if (event.pointerType === 'mouse' && event.button !== 0) return;
+        activePointer = {
+            id: event.pointerId,
+            node: d,
+            target: event.currentTarget,
+            startX: event.clientX,
+            startY: event.clientY,
+            moved: false
+        };
+        if (event.currentTarget?.setPointerCapture) {
+            event.currentTarget.setPointerCapture(event.pointerId);
         }
+        updatePointerPosition(event.clientX, event.clientY, d);
+        if (event.cancelable) event.preventDefault();
     }
-    
-    function dragended(d) {
-      if (!d.active) simulation.alphaTarget(.03);
-      d.subject.fx = null;
-      d.subject.fy = null;
+
+    function pointerMove(event, d) {
+        if (!activePointer) return;
+        if (activePointer.id !== event.pointerId || activePointer.node !== d) return;
+
+        if (!activePointer.moved && Number.isFinite(event.clientX) && Number.isFinite(event.clientY)) {
+            const dx = event.clientX - activePointer.startX;
+            const dy = event.clientY - activePointer.startY;
+            if ((dx * dx) + (dy * dy) > 9) {
+                activePointer.moved = true;
+            }
+        }
+
+        updatePointerPosition(event.clientX, event.clientY, d);
+        if (event.cancelable) event.preventDefault();
+    }
+
+    function pointerUpOrCancel(event, d) {
+        if (!activePointer) return;
+        if (activePointer.id !== event.pointerId || activePointer.node !== d) return;
+
+        if (activePointer.moved) {
+            state._suppressClickUntil = Date.now() + 250;
+        }
+        if (event.currentTarget?.releasePointerCapture) {
+            event.currentTarget.releasePointerCapture(event.pointerId);
+        }
+        activePointer = null;
+    }
+
+    function preventTouchScrollOnBubble(event) {
+        if (event.cancelable) event.preventDefault();
+    }
+
+    positionNodes();
+    state.loaded = true;
+}
+
+function rerenderCurrentChart() {
+    if (!state.currentChartData || !state.currentChartData.children) return;
+    if (state.isDrillDown) {
+        return;
+    }
+    if (state.isFiltered) {
+        setFilteredChartContent();
+    } else {
+        renderChart(state.currentChartData);
     }
 }
 
-function dragConditions(x, y, width, height) {
-    return x < width && y < height && x > 0 && y > 0;
+function scheduleRerender(delayMs) {
+    const delay = typeof delayMs === 'number' ? delayMs : 260;
+    if (state._rerenderTimer) {
+        clearTimeout(state._rerenderTimer);
+    }
+    state._rerenderTimer = setTimeout(() => {
+        rerenderCurrentChart();
+        state._rerenderTimer = null;
+    }, delay);
+}
+
+function onBubblesResize() {
+    if (state._resizeTimer) {
+        clearTimeout(state._resizeTimer);
+    }
+    state._resizeTimer = setTimeout(() => {
+        scheduleRerender(0);
+    }, 280);
 }
 
 function textContainerAppend(graph){
+    const getTextBoxSize = (d) => state.isDrillDown ? (d.r * 2.2) : (d.r * 1.5);
     const textContainer = graph.append('g')
         
     const text = textContainer.append('foreignObject')
-        .attr("width", d => (d.r * 1.5 ) + "px" )
-        .attr("height", d => (d.r * 1.5 ) + "px")
+        .attr("width", d => getTextBoxSize(d) + "px" )
+        .attr("height", d => getTextBoxSize(d) + "px")
         .append("xhtml:div")
         .attr('text-anchor', 'middle')
         .attr('class', state.isDrillDown ? 'bubble-text--drilldown' : 'bubble-text')
@@ -513,7 +574,7 @@ function displayDrillDownText(d) {
     const name = d.data?.name;
     const text = d.data.sourceText;
     const ref = d.data.sourceReference;
-    const numChar = 500;
+    const numChar = Math.max(120, Math.min(900, Math.floor((d.r || 120) * 3.2)));
     const str = text.length > numChar ? text.substr(0, numChar) + "..." : text;
 
     return `<p class="bubble-title">${name}</p><p>${str}</p><p>- ${ref}</p>`;
@@ -525,7 +586,8 @@ function updateChartTitle() {
     
     // update Image as well
     // const urlBase = 'PackedBubble/graphs/json/json'; // Online Server
-    const urlBase = './images';
+    const assetBase = window.BubblesWidgetAssetBase || '.';
+    const urlBase = `${assetBase}/images`;
     const imageString = new URL(`${urlBase}/${state.currentDataSet}.jpg`, window.location.href).toString();
     document.getElementById('speaker-image').setAttribute('src', imageString)
 }
@@ -641,24 +703,91 @@ function setFilteredChartContent() {
 }
 
 window.addEventListener('load', function(){
+    initializeBubblesWidget();
+});
+
+function applyControlVisibility() {
+    const options = getBubblesOptions();
+    const controls = document.querySelector('.controls');
+    const dropdown = document.getElementById('dropdown');
+    const graphContainer = document.getElementById('graph-container');
+    if (dropdown) {
+        dropdown.disabled = !options.allowSpeakerSelect;
+    }
+    if (controls && !options.allowSpeakerSelect) {
+        controls.style.display = 'none';
+    } else if (controls) {
+        controls.style.display = '';
+    }
+    if (graphContainer) {
+        graphContainer.classList.add('graph--stacked');
+    }
+}
+
+function initializeBubblesWidget() {
+    if (bubblesInitComplete) return;
+    bubblesInitComplete = true;
+    fillDropDown();
+    applyControlVisibility();
+
     let message = { height: document.body.scrollHeight, width: document.body.scrollWidth };
     window.top.postMessage(message, "*");
-    
-    document.getElementById('unique-button').addEventListener("click", (e) => {
-        e.preventDefault();
-        
-        updateUniqueButton(e)
-    });
-    
-    document.getElementById('wordmax').value = 25;
-    
-    document.getElementById('wordmax').addEventListener("keypress", (e) => {
-        if (e.key === "Enter") {
-            // Trigger the button element with a click
+
+    const uniqueButton = document.getElementById('unique-button');
+    if (uniqueButton) {
+        uniqueButtonClickHandler = (e) => {
             e.preventDefault();
-            goButton();
-        }
-    });
+            updateUniqueButton(e);
+        };
+        uniqueButton.addEventListener("click", uniqueButtonClickHandler);
+    }
+
+    const dropdown = document.getElementById('dropdown');
+    if (dropdown) {
+        dropdown.addEventListener('change', function() {
+            loadNewDataset(this.value);
+        });
+    }
+
+    const typeRadios = document.querySelectorAll('input[name="typeRadios"]');
+    if (typeRadios && typeRadios.length) {
+        typeRadios.forEach((radio) => {
+            radio.addEventListener('change', function() {
+                updateTypeRadios(this);
+            });
+        });
+    }
+
+    const wordmax = document.getElementById('wordmax');
+    if (wordmax) {
+        wordmax.value = 25;
+        wordmaxKeypressHandler = (e) => {
+            if (e.key === "Enter") {
+                e.preventDefault();
+                goButton();
+            }
+        };
+        wordmax.addEventListener("keypress", wordmaxKeypressHandler);
+    }
 
     getSpeaker();
-});
+    const options = getBubblesOptions();
+    if (!options.shellManagedResize) {
+        window.addEventListener('resize', onBubblesResize);
+    }
+}
+
+window.BubblesWidgetApi = {
+    init: initializeBubblesWidget,
+    resize: function() {
+        scheduleRerender(280);
+    },
+    setOptions: function(options) {
+        window.BubblesWidgetOptions = { ...(window.BubblesWidgetOptions || {}), ...(options || {}) };
+        applyControlVisibility();
+    }
+};
+
+if (document.readyState === 'complete') {
+    initializeBubblesWidget();
+}

@@ -1,4 +1,4 @@
-/* General layout and styling */ 
+/* General layout and styling */
 * {
     font-family: 'Roboto';
 }
@@ -41,8 +41,10 @@ text {
     display: flex;
     -webkit-box-pack: justify;
         -ms-flex-pack: justify;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
 }
 
 .user-input {
@@ -55,9 +57,8 @@ text {
             /* justify-content: space-between; */
     -webkit-box-align: center;
         -ms-flex-align: center;
-            align-items: start;  
+            align-items: start;
     flex-direction: column;
-    margin-top: 10px;
 }
 
 .user-input__form-group {
@@ -97,7 +98,7 @@ text {
     padding: 5px;
     text-align: center;
     justify-content: center;
-    margin-left: 19px;
+    margin-left: 0;
  /*   width: 90%;
     text-align: center;
     margin-right: auto; */
@@ -136,12 +137,12 @@ h1 {
 
 .graph-tools-bar {
     padding: 10px;
-    width: 25%; 
+    width: 25%;
     min-width: 285px;
     align-items: center;
     justify-content: center;
     border-radius: 5px;
-    background-color: var(--color-2);   
+    background-color: var(--color-2);
     box-shadow: 0 6px 8px 0 var(--box-shadow-color);
 }
 
@@ -153,9 +154,11 @@ h1 {
 }
 .graph-speaker-image {
     background-color: lightpink;
-    margin-left: 20px; 
+    margin-left: 0;
     height: 100px;
     width: 100px;
+    min-width: 100px;
+    flex: 0 0 auto;
     overflow: hidden;
     border-radius: 50px;
     text-align: center;
@@ -341,6 +344,7 @@ h1 {
     border-radius: 10px;
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
+    overflow: hidden;
 }
 
 .graph--zero-state {
@@ -351,6 +355,26 @@ h1 {
     -webkit-box-direction: normal !important;
         -ms-flex-direction: row !important;
             flex-direction: row !important;
+}
+
+.graph--stacked {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+}
+
+.graph--stacked .graph-tools-bar {
+    width: 100%;
+    min-width: 0;
+    max-width: 720px;
+}
+
+.graph--stacked .graph-display {
+    width: 100%;
 }
 
 .graph-display {
@@ -368,6 +392,9 @@ h1 {
         -ms-flex-align: center;
             align-items: center;
     flex-grow: 2;
+    min-width: 0;
+    width: 100%;
+    overflow: hidden;
 }
 
 .graph-title{
@@ -380,7 +407,14 @@ h1 {
 .svg-graph {
     position: relative;
     height: 100%;
-    width: auto;
+    width: 100%;
+    max-width: 100%;
+    display: block;
+}
+
+.bubble-element,
+.bubble-element * {
+    touch-action: none;
 }
 /* Classes for legend - same color scheme */
 .graph-legend {
@@ -405,7 +439,7 @@ h1 {
     height: 16px;
     margin-right: 10px;
     border: solid 1px black;
-    
+
 }
 
 @media screen and (max-width: 1072px) {
@@ -491,7 +525,7 @@ h1 {
             -ms-flex-direction: column;
                 flex-direction: column;
     }
-    
+
     .control-button {
         margin-top: 10px;
     }
@@ -505,7 +539,7 @@ h1 {
     }
 
     .svg-graph {
-        height: auto;
+        height: 100%;
         width: 100%;
     }
 
@@ -514,7 +548,7 @@ h1 {
         width: 100%;
         height: auto;
         display: flex;
-        flex-grow: 2; 
+        flex-grow: 2;
         justify-content: center;
         align-items: start;
     }
@@ -542,7 +576,7 @@ h1 {
 
 @media screen and (max-width: 580px) {
     .svg-graph {
-        height: auto;
+        height: 100%;
         width: 100%;
     }
     .graph-info {
@@ -559,7 +593,7 @@ h1 {
 /* Niki trying something */
 @media screen and (max-width: 430) {
     .svg-graph {
-        height: auto;
+        height: 100%;
         width: 100%;
     }
     .graph-info {
@@ -575,7 +609,7 @@ h1 {
 
 @media screen and (max-width: 350) {
     .svg-graph {
-        height: auto;
+        height: 100%;
         width: 100%;
     }
     .graph-info {
@@ -591,19 +625,19 @@ h1 {
 
 /*
 * Tooltip and bubble text
-*/ 
+*/
 
-.tooltip {	
-    position: absolute;			
-    text-align: center;			
-    width: auto;										
-    padding: 10px;				
+.tooltip {
+    position: absolute;
+    text-align: center;
+    width: auto;
+    padding: 10px;
     font-family: 'Roboto';
     background: rgb(40, 39, 39);
-    border-radius: 8px;			
-    pointer-events: none;	
+    border-radius: 8px;
+    pointer-events: none;
     color: white;
-    font-size: 1rem;		
+    font-size: 1rem;
     opacity: 0;
     -webkit-transition: opacity .5s;
     -o-transition: opacity .5s;
@@ -660,18 +694,29 @@ foreignObject {
 }
 
 .bubble-text--drilldown {
+    width: 100%;
     height: 100%;
-    font-size: 1.75rem;
+    font-size: clamp(0.75rem, 1.2vw, 1.1rem);
     display: flex;
     flex-flow: column;
     text-align: center;
+    align-items: center;
     justify-content: center;
+    box-sizing: border-box;
+    padding: 8% 10%;
+    overflow: visible;
 }
- 
+
 .bubble-title {
-     font-size: 2.2rem;
+     font-size: clamp(1rem, 2vw, 1.6rem);
 }
- 
+
+.bubble-text--drilldown p {
+    margin: 0.25rem 0;
+    line-height: 1.25;
+    overflow-wrap: anywhere;
+}
+
  .bubble-hover {
     stroke: rgb(59, 59, 59) !important;
     opacity: .8 !important;
@@ -680,13 +725,13 @@ foreignObject {
  .read-more {
      fill: black;
  }
- 
+
  .read-more:hover {
      fill: rgb(74, 74, 74);
      text-decoration: underline;
  }
 
-/* 
+/*
 * Colors for parts of speech/themes - bubbles
 */
 
@@ -757,11 +802,11 @@ foreignObject {
 
 .article-legend, .teaching-legend {
     background-color: white;
-} 
+}
 
 .pronoun-legend, .miscellaneous-legend {
     background-color: rgb(238, 204, 102);
-} 
+}
 
 .auxiliary-verb-legend, .history-legend {
     background-color: lightgray;
@@ -805,11 +850,11 @@ foreignObject {
 .article-filter, .teaching-filter {
     background-color: black;
     color: white;
-} 
+}
 
 .pronoun-filter, .miscellaneous-filter {
     background-color: rgb(238, 204, 102);
-} 
+}
 
 .auxiliary-verb-filter, .function-filter {
     background-color: rgb(196, 196, 196);
@@ -822,31 +867,4 @@ foreignObject {
 .quote-div p {
     font-size: 1.5rem;
     text-align: center;
-}
-.accordion {
-  font-family: 'Roboto';
-  align-self: center;
-  background-color: white;
-  cursor: pointer;
-  padding: 10px; 
- /* font-weight: bold;*/
-  width: 100%;
-/*  border: none; */
-  border: solid black 1px;
-  text-align: center;
-  font-size: 1.1rem;
-  outline: none;
-  transition: 0.4s;
-}
-
-.active, .accordion:hover {
-/* background-color: var(--color-1-shade); */
-    background-color: #f2f2f2;
-}
-
-.panel {
-  padding: 0 12px;
-  display: none;
-  background-color: white;
-  overflow: hidden;
 }

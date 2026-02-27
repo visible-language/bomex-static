@@ -6,7 +6,8 @@ When you inevitably run into problems with this, you'll need to change lines 9 a
 */
 
 function getChartData(dataset, chartType) {
-  const urlBase = './json/json'; // relative to widget root
+  const assetBase = window.BubblesWidgetAssetBase || '.';
+  const urlBase = `${assetBase}/json/json`;
   const url = new URL(`${urlBase}/${dataset}/${chartType}.json`, window.location.href).toString();
   
   const req = new XMLHttpRequest();
@@ -19,7 +20,8 @@ function getChartData(dataset, chartType) {
 
 function getSpeakerDataJSON(dataset) {
   // dataset is speaker
-  const urlBase = './speakerData';
+  const assetBase = window.BubblesWidgetAssetBase || '.';
+  const urlBase = `${assetBase}/speakerData`;
   const url = new URL(`${urlBase}/${dataset}.json`, window.location.href).toString();
   const req = new XMLHttpRequest();
 

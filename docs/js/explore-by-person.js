@@ -94,6 +94,7 @@
         title: 'Word Bubbles',
         subtitle: 'Uncover key words of this speaker and their impact',
         icon: 'word-bubbles.svg',
+        speaker: ids.bubbles,
         src: withSpeaker(rootPrefix + 'widgets/Widgets/Bubbles/index.html', ids.bubbles)
       },
       {
@@ -101,6 +102,7 @@
         title: 'Similar Topic Diagram',
         subtitle: 'Explore how topics cluster together',
         icon: 'similar-topic-diagram.svg',
+        speaker: ids.timeline,
         src: withSpeaker(rootPrefix + 'widgets/Widgets/SpeakersNetwork/index.html', ids.timeline)
       }
     ];
@@ -111,6 +113,7 @@
         title: 'Timeline',
         subtitle: 'Explore connections between this speaker and events',
         icon: 'timeline.svg',
+        speaker: ids.timeline,
         src: withSpeaker(rootPrefix + 'widgets/Widgets/Timeline/index.html', ids.timeline)
       },
       {
@@ -118,6 +121,7 @@
         title: 'Conversation Network',
         subtitle: 'Find who this speaker talked to',
         icon: 'conversation-network.svg',
+        speaker: ids.social,
         src: withSpeaker(rootPrefix + 'widgets/Widgets/SocialNetwork/index.html', ids.social)
       },
       {
@@ -125,6 +129,7 @@
         title: 'Connections',
         subtitle: 'View social and spiritual connections',
         icon: 'connections.svg',
+        speaker: ids.connections,
         src: withSpeaker(rootPrefix + 'widgets/Widgets/Connections/index.html', ids.connections)
       }
     ];
@@ -147,7 +152,7 @@
             '<img class="icon" src="' + escapeText(chevronSrc) + '" alt="" aria-hidden="true">' +
           '</summary>' +
           '<div class="accordion-body">' +
-            '<div class="explore-widget-frame" data-src="' + escapeText(w.src) + '"></div>' +
+            '<div class="explore-widget-frame" data-widget-key="' + escapeText(w.key) + '" data-widget-title="' + escapeText(w.title) + '" data-speaker="' + escapeText(w.speaker || '') + '" data-src="' + escapeText(w.src) + '"></div>' +
           '</div>' +
         '</details>'
       );
@@ -164,19 +169,33 @@
           if (!detailsEl.open) return;
           var target = detailsEl.querySelector('.explore-widget-frame');
           if (!target) return;
-          if (target.querySelector('iframe')) return;
+          if (target.querySelector('iframe') || target.querySelector('.widget-shell')) return;
 
           var src = target.getAttribute('data-src');
           if (!src) return;
 
-          var iframe = document.createElement('iframe');
-          iframe.src = src;
-          iframe.loading = 'lazy';
-          iframe.title = 'Widget';
-          iframe.setAttribute('referrerpolicy', 'no-referrer');
-          iframe.style.width = '100%';
-          iframe.style.border = '0';
-          target.appendChild(iframe);
+          if (window.WidgetShell && typeof window.WidgetShell.renderFrame === 'function') {
+            window.WidgetShell.renderFrame(target, {
+              title: target.getAttribute('data-widget-title') || 'Widget',
+              src: src,
+              widgetKey: target.getAttribute('data-widget-key') || '',
+              speaker: target.getAttribute('data-speaker') || '',
+              context: 'person',
+              allowSpeakerSelect: false,
+              allowFullscreen: true,
+              showModeToggle: false
+            });
+          } else {
+            var iframe = document.createElement('iframe');
+            iframe.src = src;
+            iframe.loading = 'lazy';
+            iframe.title = 'Widget';
+            iframe.setAttribute('referrerpolicy', 'no-referrer');
+            iframe.style.width = '100%';
+            iframe.style.border = '0';
+            iframe.className = 'widget-shell-frame';
+            target.appendChild(iframe);
+          }
         });
       })(accordions[i]);
     }
@@ -187,7 +206,7 @@
       if (!event || !event.data || typeof event.data !== 'object') return;
       var height = event.data.height;
       if (!height || isNaN(height)) return;
-      var iframes = document.querySelectorAll('.explore-widget-frame iframe');
+      var iframes = document.querySelectorAll('.explore-widget-frame iframe, .widget-shell-frame');
       for (var i = 0; i < iframes.length; i++) {
         if (iframes[i].contentWindow === event.source) {
           iframes[i].style.height = Math.ceil(height) + 'px';
