@@ -1,6 +1,7 @@
 body {
     margin: 0px;
     font-family: Roboto;
+    line-height: 1.2;
     /* padding-bottom: 10px; */
     /* background-color: rgb(255, 255, 255); */
     display: flex;
@@ -101,7 +102,10 @@ main {
 .horizontal-scroll {
     display: flex;
     flex-direction: row;
+    overflow-x: auto;
     overflow-y: hidden;
+    max-width: 100%;
+    padding-bottom: 4px;
     transition: max-height .2s ease-out;
 }
 
@@ -115,6 +119,11 @@ main {
     background-color: var(--color-3);
     width: 50%;
     padding: 15px;
+    text-align: center;
+    line-height: 1.2;
+    font-size: 1rem;
+    font-family: Roboto, sans-serif;
+    color: #222;
     font-weight: 500;
 }
 
@@ -130,6 +139,8 @@ main {
 
 #compare-page {
     display: none;
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 #event-page {
@@ -138,7 +149,7 @@ main {
 .selected:hover {
     background-color:var(--color-1);
 }
-.name {
+.horizontal-scroll .name {
     background-color: #ffffff;
     box-shadow: 0 0 3px var(--box-shadow-color);
     border-radius: 5%;
@@ -151,9 +162,16 @@ main {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    min-width: 70px;
-    max-width: 90px;
+    min-width: 96px;
+    max-width: 128px;
     font-size: medium;
+    line-height: 1.1;
+    font-family: Roboto, sans-serif;
+    font-weight: 500;
+    color: #222;
+    word-break: normal;
+    overflow-wrap: normal;
+    hyphens: none;
 }
 
 .name:hover {
@@ -194,6 +212,10 @@ main {
 
 #svg-lifespan {
     margin-top: 20px;
+    display: block;
+    width: 1200px;
+    min-width: 1200px;
+    max-width: none;
 }
 .horz-line {
     stroke: var(--framework-line-color);
@@ -290,6 +312,12 @@ main {
     width: 100%;
 }
 
+.graphic {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
 
 
 @media screen and (max-width: 1100px) {
@@ -307,11 +335,11 @@ main {
     .tab{
         font-size: small;
     }
-    .name{
-        font-size: small;
-        height: 50px;
-        min-width: 50px;
-        max-width: 70px;
+    .horizontal-scroll .name{
+        font-size: 1rem;
+        height: 58px;
+        min-width: 92px;
+        max-width: 122px;
     }
     .timeline-top-bar {
         flex-direction: column;

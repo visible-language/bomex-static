@@ -10,6 +10,7 @@ const timelineBoxHeight = 30;
 const timelineStart = 700;
 const tickHeight = 200;
 const markerNums = [-700, -600, -500, -400, -300, -200, -100, 1, 100, 200, 300, 400, 500]
+const sparseMarkerNums = [-700, -500, -300, -100, 1, 100, 300, 500];
 const timelineAnchors = [-600, -589, -587, -580, -550, -225, 1, 34, 231, 385, 421]
 const anchorDescriptions = [
     "Lehites leave Jerusalem",
@@ -291,7 +292,7 @@ function createTimelineFramework() {
             .attr('d', function(d) { return getTickPath(d) })
 
     let dates = svg.selectAll(".date")
-    dates.data(markerNums)
+    dates.data(sparseMarkerNums)
         .enter()
         .append('text')
             .attr('class', 'date')
@@ -847,7 +848,7 @@ function createTimelineFrameworkEvents() {
             .attr('d', function(d) { return getEventTickPath(d) })
 
     let dates = svg.selectAll(".date-event")
-    dates.data(markerNums)
+    dates.data(sparseMarkerNums)
         .enter()
         .append('text')
             .attr('class', 'date-event')
@@ -959,7 +960,7 @@ function createGrid(eventYears, eventDescriptions, originalEventYears, years) {
     var xAxis = SVG.append("g")
         .attr("transform", "translate(0," + height + ")")
         .style("font-size", "14px")
-        .call(d3.axisBottom(x));
+        .call(d3.axisBottom(x).tickValues(sparseMarkerNums));
 
     // Add Y axis
     var y = d3.scaleLinear()
@@ -1039,7 +1040,7 @@ function createGrid(eventYears, eventDescriptions, originalEventYears, years) {
         var newY = d3.event.transform.rescaleY(y);
 
         // update axes with these new boundaries
-        xAxis.call(d3.axisBottom(newX))
+        xAxis.call(d3.axisBottom(newX).tickValues(sparseMarkerNums))
         yAxis.call(d3.axisLeft(newY))
 
         // update circle position
@@ -1146,7 +1147,7 @@ function createGrid(eventYears, eventDescriptions, originalEventYears, years) {
     function drawChart() {
         currentWidth = parseInt(document.querySelector(".zoom-box").clientWidth);
         x.range([0, currentWidth - margin.left - margin.right]);
-        xAxis.call(d3.axisBottom(x));
+        xAxis.call(d3.axisBottom(x).tickValues(sparseMarkerNums));
         zoom.extent([[0, 0], [currentWidth, height]]);
         zoom.translateExtent([[0, 0], [currentWidth, height]]);
         myRect.attr("width", currentWidth);

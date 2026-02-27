@@ -11,12 +11,12 @@
 
 <body>
     <div id="widget">
-        <div id="cover" onclick="helpDisappear()"></div>
+        <div id="cover"></div>
         <div id="faq-holder">
             <div id="faq">
                 <div id ="head"> 
                     <div class="title"><h1>FAQ</h1></div>
-                    <div class="exit" onclick="helpDisappear()">X</div>
+                    <div class="exit" id="faq-close">X</div>
                 </div>
                 <div class="question">
                     <h3>What does this do?</h3>
@@ -51,7 +51,7 @@
                         </div>
                         <div class="line">
                             <input type="text" id="ref" placeholder="Type reference here">
-                            <button onclick="buttonFunction()" id="submit">Submit</button>
+                            <button id="submit">Submit</button>
                         </div>
                         <div id="verse">
                             <p></p>
@@ -80,106 +80,5 @@
 
     </div>
     <script src="utils.js"></script>
-    <script>
-        // this is inline index.js
-
-        // functionality for FAQ box
-        function helpAppear(){
-            menuOn = true;
-            help = document.getElementById('faq-holder');
-            background = document.getElementById('cover');
-            help.style.visibility = "visible";
-            background.style.visibility = "visible";
-        }
-
-        function helpDisappear(){
-            menuOn = false;
-            help = document.getElementById('faq-holder');
-            background = document.getElementById('cover');
-            help.style.visibility = "hidden";
-            background.style.visibility = "hidden";
-        }
-
-        // input functionality
-        var input = document.getElementById("ref");
-        input.addEventListener("keypress", function(event) {
-            if (event.key === "Enter") {
-                event.preventDefault();
-                buttonFunction();
-            }
-        });
-
-        // standardize input from some common forms
-        function validateInput(rawInput){
-            text = rawInput.trim();
-            text = text.toLowerCase();
-            text = text.replaceAll(';', ':');
-            text = text.replaceAll('.', '');
-            text = text.replace(/\s\s+/g, ' ');
-
-            return text;
-        }
-
-        // create accordion element for results area
-        function createTab(idx){
-            verseText = idx2txt[idx];
-            reference = idx2ref[idx];
-            html =  `<button class="accordion">${reference}</button>
-                    <div class="panel">
-                    <p>${verseText}</p>
-                    </div>`;
-            return html;
-        }
-
-        // submit button functionality
-        function buttonFunction(){
-            var rawInput = document.getElementById('ref').value;
-            var ref = validateInput(rawInput);
-            var verseSpot = document.getElementById("verse");
-
-            if (Object.keys(ref2idx).includes(ref)) {
-                // populate verse text area
-                verseSpot.innerHTML = '<p>'+idx2txt[ref2idx[ref]]+'</p>';
-
-                // populate results area
-                var nNeighbors = neighbors[ref2idx[ref]];
-                var guy = ''
-                for(i=0;i<nNeighbors.length; i++){
-                    guy+=createTab(nNeighbors[i]);
-                };
-                resultArea = document.getElementById("result-list");
-                resultArea.innerHTML = guy;
-                accordionEventListeners();
-            }
-        }
-
-        // event listeners for accordion (expandable results on right side)
-        function accordionEventListeners(){
-            var acc = document.getElementsByClassName("accordion");
-            for ( let i = 0; i < acc.length; i++) {
-                acc[i].addEventListener("click", function() {
-                    this.classList.toggle("active");
-                    var panel = this.nextElementSibling;
-                        if (panel.style.display === "block") {
-                        panel.style.display = "none";
-                    } else {
-                        panel.style.display = "block";
-                    }
-                });
-            }
-        }
-
-        accordionEventListeners();
-
-        // If reference is passed in URL query string (from a widget), open that reference.
-        // NB: spaces are passed in URLs with the character code `%20`
-        const parameters = new URLSearchParams(window.location.search);
-        let paramRef = parameters.get('reference');
-        if (paramRef) {
-            input.value = paramRef;
-            buttonFunction();
-        } else {
-            console.log('No URL parameters detected');
-        }
-    </script>
+    <script src="main.js"></script>
 </body>
