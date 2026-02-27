@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Book of Mormon Connections</title>
+  <link rel="stylesheet" href="../../../css/main.css">
   <link rel="stylesheet" href="../colors.css">
   <link rel="stylesheet" href="./connections.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,7 +18,7 @@
       
       <!-- Speaker Dropdown -->
       <div class="speaker-select">
-        <select name="speaker-names" id="speaker-names" onchange="updateSpeaker(this.value)">
+        <select name="speaker-names" id="speaker-names">
           <option value="Aaron">Aaron</option>
           <option value="Abinadi">Abinadi</option>
           <option value="Abinadom">Abinadom</option>
@@ -114,19 +115,19 @@
         <div class="connections-inner-top-bar">
           <div class="legend" id="legend">
             <div class="color-keys">
-              <div class="color-key" onclick="check('Family')">
+              <div class="color-key" data-option="Family">
                 <div class="color-box family" id="check-family"></div>
                 <div>Family</div>
               </div>
-              <div class="color-key" onclick="check('Associate')">
+              <div class="color-key" data-option="Associate">
                 <div class="color-box associate" id="check-associate"></div>
                 <div>Associate</div>
               </div>
-              <div class="color-key" onclick="check('Enemy')">
+              <div class="color-key" data-option="Enemy">
                 <div class="color-box enemy" id="check-enemy"></div>
                 <div>Adversary</div>
               </div>
-              <div class="color-key" onclick="check('Divine')">
+              <div class="color-key" data-option="Divine">
                 <div class="color-box divine" id="check-divine"></div>
                 <div>Divine</div>
               </div>

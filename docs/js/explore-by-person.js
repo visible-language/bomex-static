@@ -257,10 +257,24 @@
     selectEl.value = slug;
   }
 
+  function cleanupMountedWidgets(container) {
+    if (!container) return;
+    var frames = container.querySelectorAll('.explore-widget-frame');
+    for (var i = 0; i < frames.length; i++) {
+      var frame = frames[i];
+      if (typeof frame.__widgetShellCleanup === 'function') {
+        frame.__widgetShellCleanup();
+      }
+    }
+  }
+
+  var personLoadVersion = 0;
+
   function loadPerson(rootPrefix, slug, tab) {
     var bioEl = document.getElementById('person-bio');
     var listEl = document.getElementById('widget-list');
     if (!bioEl || !listEl) return;
+    var loadVersion = ++personLoadVersion;
 
     setAvatar(rootPrefix, slug);
 
@@ -268,6 +282,7 @@
     fetch(detailUrl)
       .then(function (r) { return r.text(); })
       .then(function (html) {
+        if (loadVersion !== personLoadVersion) return;
         var doc = new DOMParser().parseFromString(html, 'text/html');
         var brief = doc.querySelector('#brief-bio');
         if (brief) {
@@ -277,9 +292,12 @@
         }
       })
       .catch(function () {
+        if (loadVersion !== personLoadVersion) return;
         bioEl.innerHTML = '<p>Biography not available.</p>';
       })
       .finally(function () {
+        if (loadVersion !== personLoadVersion) return;
+        cleanupMountedWidgets(listEl);
         listEl.innerHTML = buildWidgetList(rootPrefix, slug, tab);
         wireAccordions(listEl);
       });

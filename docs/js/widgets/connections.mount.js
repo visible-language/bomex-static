@@ -5,7 +5,7 @@
 
   function getAssetBase() {
     var rootPrefix = getRootPrefix();
-    var url = new URL(rootPrefix + 'widgets/Widgets/Bubbles', global.location.href).toString();
+    var url = new URL(rootPrefix + 'widgets/Widgets/Connections', global.location.href).toString();
     return url.replace(/\/$/, '');
   }
 
@@ -58,16 +58,13 @@
   }
 
   function applyScopedStyles(root, assetBase) {
-    return fetch(assetBase + '/styles/packedbubbles.css')
+    return fetch(assetBase + '/connections.css')
       .then(function (response) { return response.text(); })
       .then(function (cssText) {
         var style = document.createElement('style');
-        style.setAttribute('data-widget-style', 'bubbles');
-        var prefix = '.vl-bubbles-root';
+        style.setAttribute('data-widget-style', 'connections');
+        var prefix = '.vl-connections-root';
         var vars = prefix + ' {' +
-          'height: 100%;' +
-          'display: flex;' +
-          'flex-direction: column;' +
           '--color-1:#c1cdd3;' +
           '--color-1-shade:#aeb9be;' +
           '--color-2:#dfecf2;' +
@@ -75,14 +72,12 @@
           '--color-3:#a7b0b5;' +
           '--color-3-shade:#959fa5;' +
           '--box-shadow-color: rgba(109, 109, 109, 0.3);' +
-          '--text-link-color: #2A85F4;' +
           '--white-shade: #fff;' +
           '--dark-shade:#222;' +
           '}\n';
         var layoutOverrides = '' +
-          prefix + ' .widget {height: 100%; display: flex; flex-direction: column;}\n' +
-          prefix + ' #graph-container {flex: 1; min-height: 0;}\n' +
-          prefix + ' #graph-display {height: 100%; min-height: 420px;}\n';
+          prefix + ' {height: 100%; display: block;}\n' +
+          prefix + ' .page {min-height: 0;}\n';
         style.textContent = vars + layoutOverrides + scopeCss(cssText, prefix);
         root.appendChild(style);
       });
@@ -111,78 +106,39 @@
     return String(raw).trim();
   }
 
-  function mountBubbles(container, options) {
+  function mountConnections(container, options) {
     var opts = options || {};
     var assetBase = getAssetBase();
     var root = document.createElement('div');
-    root.className = 'vl-bubbles-root';
-    root.innerHTML = '<div class="widget-loading">Loading Word Bubbles...</div>';
+    root.className = 'vl-connections-root';
+    root.innerHTML = '<div class="widget-loading">Loading Connections...</div>';
     container.innerHTML = '';
     container.appendChild(root);
 
     var speaker = normalizeSpeaker(opts.speaker);
-    global.BubblesWidgetAssetBase = assetBase;
-    global.BubblesWidgetOptions = {
+    global.ConnectionsWidgetAssetBase = assetBase;
+    global.ConnectionsWidgetOptions = {
       speaker: speaker,
-      allowSpeakerSelect: opts.allowSpeakerSelect !== false,
-      shellManagedResize: true
+      allowSpeakerSelect: opts.allowSpeakerSelect !== false
     };
 
     var scripts = [
       'https://d3js.org/d3.v6.min.js',
-      assetBase + '/scripts/utilities.js',
-      assetBase + '/scripts/import_data.js',
-      assetBase + '/scripts/main.js',
-      assetBase + '/scripts/draw_graphs.js'
+      assetBase + '/data.js',
+      assetBase + '/connections.js'
     ];
-    var resizeState = {
-      timer: null,
-      lastWidth: 0,
-      lastHeight: 0,
-      ignoreUntil: 0
-    };
-
-    function measureContainer() {
-      var rect = container.getBoundingClientRect();
-      return {
-        width: Math.max(0, Math.round(rect.width)),
-        height: Math.max(0, Math.round(rect.height))
-      };
-    }
-
-    function hasMeaningfulSizeChange(nextSize) {
-      return Math.abs(nextSize.width - resizeState.lastWidth) > 1 ||
-        Math.abs(nextSize.height - resizeState.lastHeight) > 1;
-    }
+    var resizeTimer = null;
 
     function requestWidgetResize() {
-      var now = Date.now();
-      if (now < resizeState.ignoreUntil) {
-        return;
+      if (resizeTimer) {
+        clearTimeout(resizeTimer);
       }
-
-      if (resizeState.timer) {
-        clearTimeout(resizeState.timer);
-      }
-      resizeState.timer = setTimeout(function () {
-        resizeState.timer = null;
-        var ts = Date.now();
-        if (ts < resizeState.ignoreUntil) {
-          return;
+      resizeTimer = setTimeout(function () {
+        resizeTimer = null;
+        if (global.ConnectionsWidgetApi && typeof global.ConnectionsWidgetApi.resize === 'function') {
+          global.ConnectionsWidgetApi.resize();
         }
-        var nextSize = measureContainer();
-        if (!hasMeaningfulSizeChange(nextSize)) {
-          return;
-        }
-        resizeState.lastWidth = nextSize.width;
-        resizeState.lastHeight = nextSize.height;
-        if (global.BubblesWidgetApi && typeof global.BubblesWidgetApi.resize === 'function') {
-          global.BubblesWidgetApi.resize();
-          // ResizeObserver can emit a second callback after re-layout.
-          // Suppress immediate follow-up callbacks to avoid double transitions.
-          resizeState.ignoreUntil = Date.now() + 900;
-        }
-      }, 320);
+      }, 300);
     }
 
     buildTemplate(root, assetBase)
@@ -197,22 +153,18 @@
         return chain;
       })
       .then(function () {
-        var initialSize = measureContainer();
-        resizeState.lastWidth = initialSize.width;
-        resizeState.lastHeight = initialSize.height;
-        if (global.BubblesWidgetApi && typeof global.BubblesWidgetApi.setOptions === 'function') {
-          global.BubblesWidgetApi.setOptions({
+        if (global.ConnectionsWidgetApi && typeof global.ConnectionsWidgetApi.setOptions === 'function') {
+          global.ConnectionsWidgetApi.setOptions({
             speaker: speaker,
-            allowSpeakerSelect: opts.allowSpeakerSelect !== false,
-            shellManagedResize: true
+            allowSpeakerSelect: opts.allowSpeakerSelect !== false
           });
         }
-        if (global.BubblesWidgetApi && typeof global.BubblesWidgetApi.init === 'function') {
-          global.BubblesWidgetApi.init();
+        if (global.ConnectionsWidgetApi && typeof global.ConnectionsWidgetApi.init === 'function') {
+          global.ConnectionsWidgetApi.init();
         }
       })
       .catch(function (err) {
-        root.innerHTML = '<p>Unable to load Word Bubbles.</p>';
+        root.innerHTML = '<p>Unable to load Connections.</p>';
         console.error(err);
       });
 
@@ -221,12 +173,12 @@
         requestWidgetResize();
       },
       destroy: function () {
-        if (resizeState.timer) {
-          clearTimeout(resizeState.timer);
-          resizeState.timer = null;
+        if (resizeTimer) {
+          clearTimeout(resizeTimer);
+          resizeTimer = null;
         }
-        if (global.BubblesWidgetApi && typeof global.BubblesWidgetApi.destroy === 'function') {
-          global.BubblesWidgetApi.destroy();
+        if (global.ConnectionsWidgetApi && typeof global.ConnectionsWidgetApi.destroy === 'function') {
+          global.ConnectionsWidgetApi.destroy();
         }
         container.innerHTML = '';
       }
@@ -234,6 +186,5 @@
   }
 
   var registry = ensureRegistry();
-  registry['word-bubbles'] = { mount: mountBubbles };
-  registry['bubbles'] = { mount: mountBubbles };
+  registry.connections = { mount: mountConnections };
 })(window);

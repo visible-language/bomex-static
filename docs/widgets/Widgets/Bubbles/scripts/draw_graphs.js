@@ -8,8 +8,13 @@ bubble charts. The javascript to draw the tree charts is found in the treecharts
 a separate js file. I intended to separate it from the html, but never reached that point.
 */
 
+;(function () {
+const bubblesNs = window.BubblesWidget || (window.BubblesWidget = {});
+const idNames = bubblesNs.idNames || [];
+const idNameToDisplayName = bubblesNs.idNameToDisplayName || function(idName) { return idName; };
+
 // Initialization of Bubbles app state, including query parameter extraction
-let state =  {
+const INITIAL_BUBBLES_STATE = {
     currentDataSet: "nephi1",
     currentChartType: "content",
     currentChartData: {},
@@ -22,6 +27,11 @@ let state =  {
     loaded: false,
     _resizeTimer: null,
     _rerenderTimer: null
+};
+let state = { ...INITIAL_BUBBLES_STATE };
+
+function resetBubblesState() {
+    state = { ...INITIAL_BUBBLES_STATE };
 }
 const urlParams = new URLSearchParams(window.location.search);
 const DEFAULT_SPEAKER = "nephi1";
@@ -31,6 +41,7 @@ const BUBBLES_DEFAULT_OPTIONS = {
     shellManagedResize: false
 };
 let bubblesInitComplete = false;
+let bubblesInitRoot = null;
 let wordmaxKeypressHandler = null;
 let uniqueButtonClickHandler = null;
 
@@ -80,8 +91,13 @@ function getSpeaker() {
 // Get word. If no word, stay on default.
 const paramWord = urlParams.get("word");
 
-let filter = {
-    uniqueFilter: "All", // other options "Unique"
+const INITIAL_FILTER = {
+    uniqueFilter: "All" // other options "Unique"
+};
+let filter = { ...INITIAL_FILTER };
+
+function resetBubblesFilter() {
+    filter = { ...INITIAL_FILTER };
 }
 
 const chartId = '#graph-display';
@@ -244,6 +260,9 @@ function resetRadiosToBlue(){
 }
 
 function renderChart(data = state.currentChartData) {
+    const graphDisplay = document.getElementById('graph-display');
+    if (!graphDisplay || !data || !data.children) return;
+
     if (state._simulation) {
         state._simulation.stop();
         state._simulation = null;
@@ -261,8 +280,10 @@ function renderChart(data = state.currentChartData) {
     // Change dataset depending on user parameters
     var dataArrayFinal = [];
 
-    var min = Number(document.getElementById("wordmin").value);
-    var max = Number(document.getElementById("wordmax").value);
+    const wordMinEl = document.getElementById("wordmin");
+    const wordMaxEl = document.getElementById("wordmax");
+    var min = Number(wordMinEl ? wordMinEl.value : 0);
+    var max = Number(wordMaxEl ? wordMaxEl.value : 100);
     
     if(max > 100) {
         max = 100;
@@ -294,10 +315,13 @@ function renderChart(data = state.currentChartData) {
 
     if (!state.isInitialized) {
         state.isInitialized = true;
-        document.getElementById('graph-container').className = "graph graph--initialized";
+        const graphContainer = document.getElementById('graph-container');
+        if (graphContainer) {
+            graphContainer.classList.add('graph--initialized');
+            graphContainer.classList.remove('graph--zero-state');
+        }
     }
     
-    const graphDisplay = document.getElementById('graph-display');
     const rect = graphDisplay ? graphDisplay.getBoundingClientRect() : { width: 900, height: 750 };
     const width = Math.max(320, Math.floor(rect.width || 900));
     const height = Math.max(320, Math.floor(rect.height || 750));
@@ -500,6 +524,7 @@ function renderChart(data = state.currentChartData) {
 }
 
 function rerenderCurrentChart() {
+    if (!document.getElementById('graph-display')) return;
     if (!state.currentChartData || !state.currentChartData.children) return;
     if (state.isDrillDown) {
         return;
@@ -670,6 +695,7 @@ function goButton(event) {
 }
 
 function setFilteredChartContent() {
+    if (!document.getElementById('graph-display')) return;
     if (state.currentChartData.children && !state.isDrillDown) {
         let filteredData = [];
         
@@ -725,8 +751,14 @@ function applyControlVisibility() {
 }
 
 function initializeBubblesWidget() {
-    if (bubblesInitComplete) return;
+    const graphDisplay = document.getElementById('graph-display');
+    if (!graphDisplay) return;
+    const currentRoot = graphDisplay.closest('.vl-bubbles-root') || document.body;
+    if (bubblesInitComplete && bubblesInitRoot === currentRoot) return;
     bubblesInitComplete = true;
+    bubblesInitRoot = currentRoot;
+    resetBubblesState();
+    resetBubblesFilter();
     fillDropDown();
     applyControlVisibility();
 
@@ -777,8 +809,33 @@ function initializeBubblesWidget() {
     }
 }
 
+function destroyBubblesWidget() {
+    if (state._resizeTimer) {
+        clearTimeout(state._resizeTimer);
+        state._resizeTimer = null;
+    }
+    if (state._rerenderTimer) {
+        clearTimeout(state._rerenderTimer);
+        state._rerenderTimer = null;
+    }
+    if (state._simulation) {
+        state._simulation.stop();
+        state._simulation = null;
+    }
+    if (state._renderInterval) {
+        state._renderInterval.stop();
+        state._renderInterval = null;
+    }
+    window.removeEventListener('resize', onBubblesResize);
+    resetBubblesState();
+    resetBubblesFilter();
+    bubblesInitComplete = false;
+    bubblesInitRoot = null;
+}
+
 window.BubblesWidgetApi = {
     init: initializeBubblesWidget,
+    destroy: destroyBubblesWidget,
     resize: function() {
         scheduleRerender(280);
     },
@@ -791,3 +848,5 @@ window.BubblesWidgetApi = {
 if (document.readyState === 'complete') {
     initializeBubblesWidget();
 }
+bubblesNs.api = window.BubblesWidgetApi;
+})();

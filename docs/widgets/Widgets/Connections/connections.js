@@ -1,3 +1,5 @@
+;(function () {
+const connectionsNs = window.ConnectionsWidget || (window.ConnectionsWidget = {});
 // some local data for display
 var imageFiles = ['Aaron', 'Abinadi', 'Abinadom', 'Akish', 'Alma', 'Alma2', 'Amaleki', 'Amalickiah', 'Amaron', 'Aminadab', 'Ammaron', 'Ammon', 'Ammon2', 'Ammoron', 'Amulek', 'Angels', 'AntiNephiLehi', 'Antionah', 'Benjamin', 'BrotherJared', 'BrothersNephi', 'CaptainMoroni', 'Chemish', 'Christ', 'ChristAmerica', 'DaughterJared', 'Enos', 'Ether', 'FatherLamoni', 'Gid', 'Giddianhi', 'Giddonah', 'Giddonah2', 'Gideon', 'Gidgiddoni', 'Godhead', 'Helaman', 'Helaman2', 'Isaiah', 'Jacob', 'Jacob2', 'Jared', 'Jared2', 'Jarom', 'JohnBaptist', 'Joseph', 'Joseph2', 'Joshua', 'Korihor', 'Laban', 'Lachoneus', 'Laman2', 'Lamoni', 'Lehi', 'Lehi2', 'Lehi3', 'Limhi', 'Malachi', 'Micah', 'Mormon', 'Moroni', 'Moses', 'Mosiah', 'Nephi', 'Nephi2', 'Nephihah', 'Noah', 'Omni', 'Pahoran', 'SamuelLamanite', 'Sariah', 'Satan', 'Sherem', 'Zeezrom', 'Zeniff', 'Zenock', 'Zenos', 'Zerahemnah']
 const idNames = ['Aaron', 'Abinadi', 'Abinadom', 'Akish', 'Alma', 'Alma2', 'Amaleki', 'Amalickiah', 'Amaron', 'Aminadab', 'Ammaron', 'Ammon', 'Ammon2', 'Ammoron', 'Amulek', 'Angels', 'AntiNephiLehi', 'Antionah', 'Benjamin', 'BrotherJared', 'BrothersNephi', 'CaptainMoroni', 'Chemish', 'ChristAmerica', 'DaughterJared', 'Enos', 'Ether', 'FatherLamoni', 'Gid', 'Giddianhi', 'Giddonah', 'Giddonah2', 'Gideon', 'Gidgiddoni', 'Godhead', 'Helaman', 'Helaman2', 'Isaiah', 'Jacob', 'Jacob2', 'Jared', 'Jared2', 'Jarom', 'JohnBaptist', 'Joseph', 'Joseph2', 'Joshua', 'Korihor', 'Laban', 'Lachoneus', 'Laman2', 'Lamoni', 'Lehi', 'Lehi2', 'Lehi3', 'Limhi', 'Malachi', 'Micah', 'Mormon', 'Moroni', 'Moses', 'Mosiah', 'Nephi', 'Nephi2', 'Nephihah', 'Noah', 'Omni', 'Pahoran', 'SamuelLamanite', 'Sariah', 'Satan', 'Sherem', 'Zeezrom', 'Zeniff', 'Zenock', 'Zenos', 'Zerahemnah']
@@ -13,15 +15,46 @@ let linesData = [];
 let iconsData = [];
 let svgLangLines = [];
 let svgRelLines = [];
+const DEFAULT_SPEAKER = "Nephi";
+const CONNECTIONS_DEFAULT_OPTIONS = {
+    speaker: '',
+    allowSpeakerSelect: true
+};
+const INITIAL_CONNECTIONS_STATE = {
+    speaker: DEFAULT_SPEAKER,
+    typeLines: ["Language", "Family", "Associate", "Enemy", "Divine"]
+};
+let connectionsInitComplete = false;
+let connectionsInitRoot = null;
+let connectionsBoundRoot = null;
+let connectionsSpeakerSelectHandler = null;
+let connectionsLegendClickHandlers = [];
 
 // set current speaker
-let state = {
-    speaker: "Nephi1",
-    typeLines: ["Language", "Family", "Associate", "Enemy", "Divine"]
-}
+let state = { ...INITIAL_CONNECTIONS_STATE };
 let path = location.pathname.split("/");
-let parameters = new URLSearchParams(window.location.search);
-const DEFAULT_SPEAKER = "Nephi";
+
+function getSearchParams() {
+    return new URLSearchParams(window.location.search);
+}
+
+function getConnectionsOptions() {
+    const params = getSearchParams();
+    const options = (window.ConnectionsWidgetOptions || {});
+    const merged = { ...CONNECTIONS_DEFAULT_OPTIONS, ...options };
+    if (options.speaker === undefined) {
+        merged.speaker = params.get('speaker') || '';
+    }
+    if (typeof merged.allowSpeakerSelect !== 'boolean') {
+        const paramAllow = params.get('allowSpeakerSelect');
+        if (paramAllow !== null) {
+            merged.allowSpeakerSelect = String(paramAllow) !== '0';
+        } else {
+            merged.allowSpeakerSelect = String(merged.allowSpeakerSelect) !== '0';
+        }
+    }
+    return merged;
+}
 
 function normalizeSpeakerParam(list, raw) {
     if (!raw) return null;
@@ -34,16 +67,34 @@ function normalizeSpeakerParam(list, raw) {
     return ci || null;
 }
 
-const paramSpeaker = normalizeSpeakerParam(imageFiles, parameters.get("speaker"));
-const pathSpeaker = normalizeSpeakerParam(imageFiles, path[3]);
-state.speaker = paramSpeaker || pathSpeaker || DEFAULT_SPEAKER;
+function resolveInitialSpeaker() {
+    const paramSpeaker = normalizeSpeakerParam(imageFiles, getConnectionsOptions().speaker);
+    const pathSpeaker = normalizeSpeakerParam(imageFiles, path[3]);
+    return paramSpeaker || pathSpeaker || DEFAULT_SPEAKER;
+}
+
+function resetConnectionsState() {
+    state = { ...INITIAL_CONNECTIONS_STATE, speaker: resolveInitialSpeaker() };
+}
+
+resetConnectionsState();
 function updateSpeakerSelect(value) {
     const selectEl = document.getElementById("speaker-names");
     if (selectEl) {
         selectEl.value = value;
     }
 }
-updateSpeakerSelect(state.speaker);
+function syncLegendChecks() {
+    const options = ["family", "associate", "enemy", "divine"];
+    for (let i = 0; i < options.length; i++) {
+        const key = options[i];
+        const el = document.getElementById("check-" + key);
+        if (!el) continue;
+        const typeName = key.charAt(0).toUpperCase() + key.slice(1);
+        const enabled = state.typeLines.includes(typeName);
+        el.classList.toggle('unchecked', !enabled);
+    }
+}
 
 
 const horzGap = 67;     // Spacing in between each icon
@@ -68,12 +119,11 @@ function makeCoordinates() {
     }
 }
 
-makeCoordinates();
-
 // find the name's image in the widget's image folder
 function getImageLink(name) {
-    folder = "../../Images/"
-    return folder + name + ".jpg";
+    const assetBase = window.ConnectionsWidgetAssetBase || '.';
+    const imageBase = new URL('../../Images/', `${assetBase}/`).toString();
+    return new URL(`${name}.jpg`, imageBase).toString();
 }
 
 // Use the state to update the upper right corner with the current speaker
@@ -84,8 +134,6 @@ function updateMainInfo() {
     let image = document.getElementById('main-image')
     image.setAttribute('src', getImageLink(state.speaker))
 }
-
-updateMainInfo();
 
 // Selects a new speaker and re-renders graphics. Used by icon click and html dropdown.
 function updateSpeaker(speaker) {
@@ -133,9 +181,6 @@ function convertDataForSVGLines() {
     // stopX = xCoorMap.get(speakerObj.name);
 }
 
-convertDataForSVGLines();
-
-// For initialization
 function createConnectionsDiagram() {
     // create lines
     drawLines();
@@ -143,7 +188,6 @@ function createConnectionsDiagram() {
     // create icons
     createIcons();
 }
-createConnectionsDiagram();
 
 // Renders icons
 function createIcons() {
@@ -234,8 +278,6 @@ function updateInfoBoxes() {
     updateRelationshipInfoBox();
 }
 
-updateInfoBoxes();
-
 // Populates the info box with expandable information bars on each connection
 function updateRelationshipInfoBox() {
     const box = document.getElementById('social');
@@ -292,7 +334,9 @@ function createSmallIcon(type, speaker, connection, relationship) {
     header.setAttribute('class', 'header color-key');
     header.appendChild(imageAndName);
     header.appendChild(collapseIcon);
-    header.setAttribute("onclick", "expandSmallIcon('" + type + "-col-" + speaker + "')");
+    header.addEventListener('click', function() {
+        expandSmallIcon(type + "-col-" + speaker);
+    });
   
 
     // descriptive dropdown
@@ -360,3 +404,120 @@ function check(option) {
 
     updateLines();
 }
+
+function applyControlVisibility() {
+    const options = getConnectionsOptions();
+    const speakerSelect = document.querySelector('.speaker-select');
+    const speakerDropdown = document.getElementById('speaker-names');
+    if (speakerDropdown) {
+        speakerDropdown.disabled = !options.allowSpeakerSelect;
+    }
+    if (speakerSelect && !options.allowSpeakerSelect) {
+        speakerSelect.style.display = 'none';
+    } else if (speakerSelect) {
+        speakerSelect.style.display = '';
+    }
+}
+
+function bindConnectionsEvents() {
+    const root = connectionsInitRoot || document;
+    connectionsBoundRoot = root;
+    const speakerSelect = root.querySelector('#speaker-names');
+    if (speakerSelect) {
+        connectionsSpeakerSelectHandler = function() {
+            updateSpeaker(this.value);
+        };
+        speakerSelect.addEventListener('change', connectionsSpeakerSelectHandler);
+    }
+
+    const legendKeys = root.querySelectorAll('.color-key[data-option]');
+    connectionsLegendClickHandlers = [];
+    legendKeys.forEach((el) => {
+        const handler = function() {
+            const option = this.getAttribute('data-option');
+            if (option) check(option);
+        };
+        connectionsLegendClickHandlers.push({ el: el, handler: handler });
+        el.addEventListener('click', handler);
+    });
+}
+
+function unbindConnectionsEvents() {
+    if (!connectionsBoundRoot) return;
+    const speakerSelect = connectionsBoundRoot.querySelector('#speaker-names');
+    if (speakerSelect && connectionsSpeakerSelectHandler) {
+        speakerSelect.removeEventListener('change', connectionsSpeakerSelectHandler);
+    }
+    for (let i = 0; i < connectionsLegendClickHandlers.length; i++) {
+        const item = connectionsLegendClickHandlers[i];
+        if (item && item.el && item.handler) {
+            item.el.removeEventListener('click', item.handler);
+        }
+    }
+    connectionsBoundRoot = null;
+    connectionsSpeakerSelectHandler = null;
+    connectionsLegendClickHandlers = [];
+}
+
+function rerenderConnectionsWidget() {
+    makeCoordinates();
+    convertDataForSVGLines();
+    updateSpeakerSelect(state.speaker);
+    updateMainInfo();
+    syncLegendChecks();
+    createConnectionsDiagram();
+    updateInfoBoxes();
+}
+
+function initializeConnectionsWidget() {
+    const social = document.getElementById('social');
+    if (!social) return;
+    const currentRoot = social.closest('.vl-connections-root') || document.body;
+    if (connectionsInitComplete && connectionsInitRoot === currentRoot) return;
+    connectionsInitComplete = true;
+    connectionsInitRoot = currentRoot;
+    resetConnectionsState();
+
+    const options = getConnectionsOptions();
+    const requested = normalizeSpeakerParam(imageFiles, options.speaker);
+    if (requested) {
+        state.speaker = requested;
+    }
+
+    bindConnectionsEvents();
+    applyControlVisibility();
+    rerenderConnectionsWidget();
+}
+
+function destroyConnectionsWidget() {
+    unbindConnectionsEvents();
+    resetConnectionsState();
+    connectionsInitComplete = false;
+    connectionsInitRoot = null;
+}
+
+window.ConnectionsWidgetApi = {
+    init: initializeConnectionsWidget,
+    destroy: destroyConnectionsWidget,
+    resize: function() {},
+    setOptions: function(options) {
+        window.ConnectionsWidgetOptions = { ...(window.ConnectionsWidgetOptions || {}), ...(options || {}) };
+        const merged = getConnectionsOptions();
+        const requested = normalizeSpeakerParam(imageFiles, merged.speaker);
+        if (requested && requested !== state.speaker) {
+            state.speaker = requested;
+            if (connectionsInitComplete) {
+                rerenderConnectionsWidget();
+            }
+        }
+        applyControlVisibility();
+    }
+};
+connectionsNs.api = window.ConnectionsWidgetApi;
+
+if (document.readyState === 'complete') {
+    initializeConnectionsWidget();
+} else {
+    window.addEventListener('load', initializeConnectionsWidget);
+}
+})();

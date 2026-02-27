@@ -2,6 +2,9 @@
  © Copyright 2021 Visiblelanguage
 */
 
+;(function () {
+const bubblesNs = window.BubblesWidget || (window.BubblesWidget = {});
+
 const idNames = [
     "aaron",
     "abinadi",
@@ -193,3 +196,8 @@ function idNameToDisplayName(idName) {
     return displayNames[idNames.indexOf(idName)];
 }
 
+bubblesNs.idNames = idNames;
+bubblesNs.displayNames = displayNames;
+bubblesNs.idNameToDisplayName = idNameToDisplayName;
+bubblesNs.init = init;
+})();
