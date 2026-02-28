@@ -1065,7 +1065,12 @@ button.list-row.svf-row {
 .svf-widget {
     background-color: var(--secondary-color);
     border-radius: 30px;
-    padding: 1rem;
+    padding: 0;
+}
+
+.svf-widget-host {
+    display: block;
+    width: 100%;
 }
 
 .svf-iframe {

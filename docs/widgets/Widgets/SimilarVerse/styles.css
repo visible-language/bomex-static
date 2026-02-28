@@ -1,16 +1,21 @@
 *{
     box-sizing: border-box;
-    margin: 0; 
+    margin: 0;
     padding: 0;
 }
 body{
     height: 100%;
 }
 #widget{
-    margin:2px;
+    margin:0;
     box-shadow: 0 3px 5px 0 var(--box-shadow-color);
     background-color: var(--color-2);
     border-radius: 30px;
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    overflow-y: visible;
 }
 a{
 	/*text-decoration: none;
@@ -23,23 +28,24 @@ a{
 html{
     font-family: 'Roboto', sans-serif;
     overflow-x: hidden;
-    overflow-y: hidden;
-    -ms-overflow-style: none;  
+    overflow-y: visible;
+    -ms-overflow-style: none;
     scrollbar-width: 10px;
     scroll-behavior: smooth;
-    max-height: 100vh;
-    height: 100%;
+    max-height: none;
+    height: auto;
+    min-height: 100%;
 }
 ::-webkit-scrollbar {
     width: 10px;
 }
-  
+
 ::-webkit-scrollbar-track {
-    background: #eee; 
+    background: #eee;
 }
-   
+
 ::-webkit-scrollbar-thumb {
-    background: #999; 
+    background: #999;
 }
 hr{
     height:1px;
@@ -53,15 +59,20 @@ select{
     height: 100%;
     width: 100%;
     position: absolute;
+    left: 0;
+    top: 0;
     display: flex;
     visibility: hidden;
     align-items: center;
     justify-content: center;
     max-height:715px;
+    max-width: 100%;
 }
-  
+
 #cover{
     position:absolute;
+    left: 0;
+    top: 0;
     z-index: 3;
     background: rgba(255,255,255, 0.8);
     border: 1px solid #d1d1d1;
@@ -69,6 +80,7 @@ select{
     height: 100%;
     width: 100%;
     max-height:715px;
+    max-width: 100%;
     border-radius: 20px;
 }
 #faq{
@@ -90,7 +102,7 @@ select{
     align-items: center;
     justify-content: center;
 }
-  
+
 #head{
     display:grid;
     grid-template-columns: 1fr auto;
@@ -105,11 +117,11 @@ select{
 }
 
 #holder{
-    height: 100%;  
-    display: grid;
-    grid-template-rows: 5% auto;
-	grid-template-areas: 'header'
-						 'content';
+    height: auto;
+    min-height: 100%;
+    width: 100%;
+    max-width: 100%;
+    display: block;
 }
 
 .header{
@@ -129,15 +141,16 @@ select{
 }
 
 .content{
-    grid-area: content;
-    width: 100vw;
-    min-height: 100%;
+    width: 100%;
+    max-width: 100%;
+    min-height: 0;
+    height: auto;
+    max-height: none;
     display: flex;
     flex-direction: column;
 /*    justify-content: center;  */
-    align-items: center; 
-    overflow-x: hidden;
-    overflow-y: auto;
+    align-items: center;
+    overflow: visible !important;
 }
 h1{
     font-size: 40px;
@@ -145,34 +158,41 @@ h1{
 }
 #search{
     width:65%;
+    max-width: 100%;
+    min-width: 0;
     display: grid;
     grid-template-columns: 60% 40%;
     grid-template-areas: "left right";
     box-shadow: 0 6px 10px 0 var(--box-shadow-color);
     background-color:var(--white-shade);
     border-radius: 20px;
-    height:600px;
-    max-height:600px;
-    margin-bottom: 30px;
+    height:auto;
+    min-height:600px;
+    max-height:none;
+    margin: 15px;
 }
 #ref{
     width:auto;
+    min-width: 0;
 }
 .line{
     width: 100%;
     display: flex;
+    min-width: 0;
 }
 #left{
     grid-area: left;
     width:100%;
+    min-width: 0;
     height:100%;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    overflow: visible;
 }
 #right{
     grid-area: right;
     width:100%;
+    min-width: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -182,9 +202,17 @@ h1{
     min-height: 100px;
     margin: 1rem;
     font-size: 20px;
-    width:100%;
-    overflow: hidden;
+    width: calc(100% - 2rem);
+    max-width: calc(100% - 2rem);
+    overflow: visible;
+    overflow-wrap: anywhere;
+    word-break: normal;
     border-bottom-right-radius: 20px;
+}
+#verse p, #verse a{
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    word-break: break-word;
 }
 .content{
     background-color: var(--color-2);
@@ -199,9 +227,9 @@ h1{
 }
 #result-list{
     width: 100%;
-    max-height: 555px;
+    max-height: none;
     overflow-x: hidden;
-    overflow-y: auto;
+    overflow-y: visible;
 }
 
 input{
@@ -221,6 +249,7 @@ button:hover{
     background-color: var(--color-1-shade);
 }
 #submit{
+    flex: 0 0 auto;
     margin-left: .5rem;
     margin-right: .5rem;
     border-radius: 5px;
@@ -283,12 +312,12 @@ button:hover{
 }
 /*
 .accordion:after {
-    content: '\02c5'; 
+    content: '\02c5';
     color: #777;
     float: right;
     margin-left: 5px;
 }
-  
+
 .active:after {
     content: "\2013";
 }*/
