@@ -182,7 +182,6 @@
               speaker: target.getAttribute('data-speaker') || '',
               context: 'person',
               allowSpeakerSelect: false,
-              allowFullscreen: true,
               showModeToggle: false
             });
           } else {

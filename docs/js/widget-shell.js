@@ -100,116 +100,7 @@
     if (options && typeof options.allowSpeakerSelect === 'boolean') {
       url.searchParams.set('allowSpeakerSelect', options.allowSpeakerSelect ? '1' : '0');
     }
-    if (options && typeof options.allowFullscreen === 'boolean') {
-      url.searchParams.set('allowFullscreen', options.allowFullscreen ? '1' : '0');
-    }
     return url.toString();
-  }
-
-  function isFullscreenActive(node) {
-    return document.fullscreenElement === node || document.webkitFullscreenElement === node;
-  }
-
-  function hasNativeFullscreenSupport(node) {
-    if (!node) return false;
-    return !!(
-      node.requestFullscreen ||
-      node.webkitRequestFullscreen ||
-      document.exitFullscreen ||
-      document.webkitExitFullscreen
-    );
-  }
-
-  function requestNativeFullscreen(node) {
-    if (!node) return Promise.reject(new Error('missing node'));
-    if (node.requestFullscreen) return node.requestFullscreen();
-    if (node.webkitRequestFullscreen) {
-      node.webkitRequestFullscreen();
-      return Promise.resolve();
-    }
-    return Promise.reject(new Error('fullscreen not supported'));
-  }
-
-  function exitNativeFullscreen() {
-    if (document.exitFullscreen) return document.exitFullscreen();
-    if (document.webkitExitFullscreen) {
-      document.webkitExitFullscreen();
-      return Promise.resolve();
-    }
-    return Promise.resolve();
-  }
-
-  function setFullscreenButtonText(button, active) {
-    button.textContent = active ? 'Exit Fullscreen' : 'Fullscreen';
-  }
-
-  function wireFullscreen(button, shell, onResize) {
-    var pseudoFullscreenActive = false;
-
-    function setPageScrollLock(enabled) {
-      var action = enabled ? 'add' : 'remove';
-      if (document.documentElement && document.documentElement.classList) {
-        document.documentElement.classList[action]('widget-shell-lock');
-      }
-      if (document.body && document.body.classList) {
-        document.body.classList[action]('widget-shell-lock');
-      }
-    }
-
-    function setPseudoFullscreen(enabled) {
-      pseudoFullscreenActive = !!enabled;
-      if (shell && shell.classList) {
-        shell.classList.toggle('widget-shell--pseudo-fullscreen', pseudoFullscreenActive);
-      }
-      setPageScrollLock(pseudoFullscreenActive);
-    }
-
-    function isActive() {
-      return isFullscreenActive(shell) || pseudoFullscreenActive;
-    }
-
-    function sync() {
-      if (pseudoFullscreenActive && isFullscreenActive(shell)) {
-        setPseudoFullscreen(false);
-      }
-      setFullscreenButtonText(button, isActive());
-      if (typeof onResize === 'function') onResize();
-    }
-
-    button.addEventListener('click', function () {
-      if (isActive()) {
-        if (isFullscreenActive(shell)) {
-          exitNativeFullscreen().catch(function () {
-            setPseudoFullscreen(false);
-            sync();
-          });
-        } else {
-          setPseudoFullscreen(false);
-          sync();
-        }
-        return;
-      }
-
-      if (!hasNativeFullscreenSupport(shell)) {
-        setPseudoFullscreen(true);
-        sync();
-        return;
-      }
-
-      requestNativeFullscreen(shell).catch(function () {
-        setPseudoFullscreen(true);
-        sync();
-      });
-    });
-
-    document.addEventListener('fullscreenchange', sync);
-    document.addEventListener('webkitfullscreenchange', sync);
-    sync();
-    return function () {
-      document.removeEventListener('fullscreenchange', sync);
-      document.removeEventListener('webkitfullscreenchange', sync);
-      setPseudoFullscreen(false);
-    };
   }
 
   function getModeForWidget(widgetKey) {
@@ -229,8 +120,9 @@
     return entry.mount(host, {
       speaker: config.speaker || '',
       allowSpeakerSelect: config.allowSpeakerSelect !== false,
-      allowFullscreen: config.allowFullscreen !== false,
-      context: config.context || 'tool'
+      context: config.context || 'tool',
+      src: config.src || '',
+      title: config.title || ''
     });
   }
 
@@ -282,14 +174,6 @@
     modeStatus.className = 'widget-shell-mode-label';
     modeStatus.textContent = mode === MODE_MOUNT ? 'Mount Mode' : 'Iframe Mode';
     controls.appendChild(modeStatus);
-
-    if (config.allowFullscreen !== false) {
-      var fullscreenButton = document.createElement('button');
-      fullscreenButton.type = 'button';
-      fullscreenButton.className = 'widget-shell-btn';
-      controls.appendChild(fullscreenButton);
-      widgetResizeHandlers.push(wireFullscreen(fullscreenButton, shell, notifyWidgetResize));
-    }
 
     var activeMode = mode;
     if (mode === MODE_MOUNT) {
@@ -386,7 +270,6 @@
         widgetKey: host.getAttribute('data-widget-key') || pageKey,
         context: 'tool',
         allowSpeakerSelect: true,
-        allowFullscreen: true,
         showModeToggle: true
       });
     }

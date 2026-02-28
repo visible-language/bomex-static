@@ -396,21 +396,74 @@ color:inherit;
   }
 }
 
-@media screen and (max-width: 500px) {
-#reset-button{
-  inset: auto auto 1rem 1rem;
+@media (hover: none) and (pointer: coarse), screen and (max-width: 900px) {
+html, body {
+  overflow: auto;
+  height: auto;
+  min-height: 100%;
 }
 
-#autoComplete{
-  visibility: hidden;
-}
-.autoComplete_wrapper{
-  visibility: hidden;
-}
-#info-box{
-  width: 90%;
-  min-height:150px;
-
+body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0.75rem;
 }
 
+#plot {
+  position: relative;
+  width: 100%;
+  height: min(52vh, 420px);
+  min-height: 320px;
+  max-height: 420px;
+  border-width: 1px;
+}
+
+#cover {
+  position: absolute;
+  inset: 0;
+}
+
+#reset-button {
+  position: static;
+  inset: auto;
+  align-self: flex-end;
+  margin: 0;
+}
+
+#holder {
+  position: static;
+  left: auto;
+  top: auto;
+  width: 100%;
+  z-index: auto;
+}
+
+#info-box,
+.info-box {
+  width: 100%;
+  max-height: none;
+  min-height: 0;
+  overflow: visible;
+}
+
+#legend {
+  position: static;
+  inset: auto;
+  width: 100%;
+  max-height: none;
+  overflow: visible;
+  align-items: flex-start;
+}
+
+#autoComplete,
+.autoComplete_wrapper {
+  visibility: visible;
+  width: 100%;
+}
+
+.autoComplete_wrapper > input {
+  width: 100%;
+}
 }
