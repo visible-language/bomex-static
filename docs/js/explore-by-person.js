@@ -185,15 +185,7 @@
               showModeToggle: false
             });
           } else {
-            var iframe = document.createElement('iframe');
-            iframe.src = src;
-            iframe.loading = 'lazy';
-            iframe.title = 'Widget';
-            iframe.setAttribute('referrerpolicy', 'no-referrer');
-            iframe.style.width = '100%';
-            iframe.style.border = '0';
-            iframe.className = 'widget-shell-frame';
-            target.appendChild(iframe);
+            target.innerHTML = '<p class="widget-shell-error">Widget shell is unavailable.</p>';
           }
         });
       })(accordions[i]);

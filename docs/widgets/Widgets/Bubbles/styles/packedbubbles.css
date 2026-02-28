@@ -47,6 +47,11 @@ text {
     flex-wrap: wrap;
 }
 
+.controls > div {
+    min-width: 0;
+    max-width: 100%;
+}
+
 .user-input {
     /* margin-top: 20px; */
     display: -webkit-box;
@@ -99,6 +104,11 @@ text {
     text-align: center;
     justify-content: center;
     margin-left: 0;
+    display: block;
+    width: min(100%, 22rem);
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
  /*   width: 90%;
     text-align: center;
     margin-right: auto; */

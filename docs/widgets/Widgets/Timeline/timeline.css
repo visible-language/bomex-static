@@ -66,6 +66,9 @@ svg {
     font-size: 16px;
     cursor: pointer;
     padding: 15px;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
 }
 
 .compare {
@@ -188,11 +191,25 @@ main {
     background-color:inherit;
     /* border-top: solid 3px var(--secondary-blue); */
     align-items: center;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+.timeline-top-bar > * {
+    min-width: 0;
+    max-width: 100%;
 }
 .main-speaker {
     display: flex;
     align-items: center;
     font-family: Roboto;
+    min-width: 0;
+    max-width: 100%;
+    flex: 1 1 auto;
+    overflow: hidden;
 }
 .main-image-cont {
     height: 90px;

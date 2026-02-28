@@ -346,35 +346,6 @@ header {
     flex-direction: column;
 }
 
-.widget-shell-controls {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.4rem 0.6rem;
-    border-bottom: 1px solid #ddd;
-    background-color: #f7f7f7;
-}
-
-.widget-shell-btn {
-    border: 1px solid #c7c7c7;
-    border-radius: 4px;
-    background-color: var(--white);
-    color: var(--primary-color);
-    font-size: 0.85rem;
-    padding: 0.25rem 0.5rem;
-    cursor: pointer;
-}
-
-.widget-shell-btn:hover {
-    background-color: #efefef;
-}
-
-.widget-shell-mode-label {
-    color: #555;
-    font-size: 0.8rem;
-}
-
 .widget-shell-body {
     flex: 1;
     min-height: 0;
@@ -387,6 +358,16 @@ header {
     height: 100%;
     border: 0;
     display: block;
+}
+
+.widget-shell-error {
+    margin: 1rem;
+    padding: 0.75rem 0.9rem;
+    border-radius: 8px;
+    border: 1px solid #e3b5b5;
+    background: #fff3f3;
+    color: #7f1d1d;
+    font-size: 0.9rem;
 }
 
 .tool-hint {

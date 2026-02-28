@@ -190,12 +190,7 @@
         return;
       }
     }
-
-    var src = rootPrefix + 'widgets/Widgets/SimilarVerse/index.html?reference=' + encodeURIComponent(reference);
-    container.innerHTML =
-      '<div class="svf-widget">' +
-        '<iframe class="svf-iframe" title="Similar Verse Finder" loading="lazy" referrerpolicy="no-referrer" src="' + escapeText(src) + '"></iframe>' +
-      '</div>';
+    container.innerHTML = '<div class="svf-widget"><p class="widget-shell-error">Similar Verse Finder mount is unavailable.</p></div>';
     container.__svfCleanup = null;
   }
 

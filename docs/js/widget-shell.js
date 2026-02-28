@@ -1,54 +1,13 @@
 (function (global) {
-  var MODE_PARAM = 'widget_mode';
-  var MODE_STORAGE_KEY = 'widget_mode';
   var MODE_IFRAME = 'iframe';
   var MODE_MOUNT = 'mount';
 
-  function safeLocalStorageGet(key) {
-    try {
-      return global.localStorage.getItem(key);
-    } catch (err) {
-      return null;
-    }
-  }
-
-  function safeLocalStorageSet(key, value) {
-    try {
-      global.localStorage.setItem(key, value);
-    } catch (err) {
-      /* noop */
-    }
-  }
-
   function getWidgetMode() {
-    var urlMode = new URLSearchParams(global.location.search).get(MODE_PARAM);
-    if (urlMode === MODE_MOUNT || urlMode === MODE_IFRAME) {
-      return urlMode;
-    }
-
-    var stored = safeLocalStorageGet(MODE_STORAGE_KEY);
-    if (stored === MODE_MOUNT || stored === MODE_IFRAME) {
-      return stored;
-    }
-
-    return MODE_IFRAME;
+    return MODE_MOUNT;
   }
 
-  function setWidgetMode(mode) {
-    if (mode !== MODE_MOUNT && mode !== MODE_IFRAME) return;
-    safeLocalStorageSet(MODE_STORAGE_KEY, mode);
-  }
-
-  function withModeInUrl(mode) {
-    var url = new URL(global.location.href);
-    url.searchParams.set(MODE_PARAM, mode);
-    return url.toString();
-  }
-
-  function toggleWidgetMode() {
-    var next = getWidgetMode() === MODE_MOUNT ? MODE_IFRAME : MODE_MOUNT;
-    setWidgetMode(next);
-    global.location.href = withModeInUrl(next);
+  function setWidgetMode() {
+    /* deprecated: mount mode is fixed for migrated widgets */
   }
 
   function createResizeObserver(target, onResize) {
@@ -140,13 +99,9 @@
     shell.className = 'widget-shell';
     shell.setAttribute('data-widget-mode', mode);
 
-    var controls = document.createElement('div');
-    controls.className = 'widget-shell-controls';
-
     var body = document.createElement('div');
     body.className = 'widget-shell-body';
 
-    shell.appendChild(controls);
     shell.appendChild(body);
     target.appendChild(shell);
 
@@ -161,30 +116,15 @@
       }
     }
 
-    if (config.showModeToggle) {
-      var modeButton = document.createElement('button');
-      modeButton.type = 'button';
-      modeButton.className = 'widget-shell-btn';
-      modeButton.textContent = mode === MODE_MOUNT ? 'Use Iframe Mode' : 'Use Mount Mode';
-      modeButton.addEventListener('click', toggleWidgetMode);
-      controls.appendChild(modeButton);
-    }
-
-    var modeStatus = document.createElement('span');
-    modeStatus.className = 'widget-shell-mode-label';
-    modeStatus.textContent = mode === MODE_MOUNT ? 'Mount Mode' : 'Iframe Mode';
-    controls.appendChild(modeStatus);
-
-    var activeMode = mode;
     if (mode === MODE_MOUNT) {
       mounted = tryMountWidget(body, config);
       if (!mounted) {
-        activeMode = MODE_IFRAME;
-        shell.classList.add('widget-shell--mount-fallback');
+        body.innerHTML = '<p class="widget-shell-error">Unable to mount this widget.</p>';
+        console.error('Widget mount entry not found for key:', config.widgetKey);
       }
     }
 
-    if (activeMode === MODE_IFRAME) {
+    if (mode === MODE_IFRAME) {
       frameEl = document.createElement('iframe');
       frameEl.className = 'tool-iframe widget-shell-frame';
       frameEl.title = config.title || 'Widget';
@@ -270,7 +210,7 @@
         widgetKey: host.getAttribute('data-widget-key') || pageKey,
         context: 'tool',
         allowSpeakerSelect: true,
-        showModeToggle: true
+        showModeToggle: false
       });
     }
   }
