@@ -107,31 +107,108 @@
   }
 
   function isFullscreenActive(node) {
-    return document.fullscreenElement === node;
+    return document.fullscreenElement === node || document.webkitFullscreenElement === node;
   }
 
-  function setFullscreenButtonText(button, shell) {
-    button.textContent = isFullscreenActive(shell) ? 'Exit Fullscreen' : 'Fullscreen';
+  function hasNativeFullscreenSupport(node) {
+    if (!node) return false;
+    return !!(
+      node.requestFullscreen ||
+      node.webkitRequestFullscreen ||
+      document.exitFullscreen ||
+      document.webkitExitFullscreen
+    );
+  }
+
+  function requestNativeFullscreen(node) {
+    if (!node) return Promise.reject(new Error('missing node'));
+    if (node.requestFullscreen) return node.requestFullscreen();
+    if (node.webkitRequestFullscreen) {
+      node.webkitRequestFullscreen();
+      return Promise.resolve();
+    }
+    return Promise.reject(new Error('fullscreen not supported'));
+  }
+
+  function exitNativeFullscreen() {
+    if (document.exitFullscreen) return document.exitFullscreen();
+    if (document.webkitExitFullscreen) {
+      document.webkitExitFullscreen();
+      return Promise.resolve();
+    }
+    return Promise.resolve();
+  }
+
+  function setFullscreenButtonText(button, active) {
+    button.textContent = active ? 'Exit Fullscreen' : 'Fullscreen';
   }
 
   function wireFullscreen(button, shell, onResize) {
+    var pseudoFullscreenActive = false;
+
+    function setPageScrollLock(enabled) {
+      var action = enabled ? 'add' : 'remove';
+      if (document.documentElement && document.documentElement.classList) {
+        document.documentElement.classList[action]('widget-shell-lock');
+      }
+      if (document.body && document.body.classList) {
+        document.body.classList[action]('widget-shell-lock');
+      }
+    }
+
+    function setPseudoFullscreen(enabled) {
+      pseudoFullscreenActive = !!enabled;
+      if (shell && shell.classList) {
+        shell.classList.toggle('widget-shell--pseudo-fullscreen', pseudoFullscreenActive);
+      }
+      setPageScrollLock(pseudoFullscreenActive);
+    }
+
+    function isActive() {
+      return isFullscreenActive(shell) || pseudoFullscreenActive;
+    }
+
     function sync() {
-      setFullscreenButtonText(button, shell);
+      if (pseudoFullscreenActive && isFullscreenActive(shell)) {
+        setPseudoFullscreen(false);
+      }
+      setFullscreenButtonText(button, isActive());
       if (typeof onResize === 'function') onResize();
     }
 
     button.addEventListener('click', function () {
-      if (isFullscreenActive(shell)) {
-        document.exitFullscreen().catch(function () { /* noop */ });
-      } else if (shell.requestFullscreen) {
-        shell.requestFullscreen().catch(function () { /* noop */ });
+      if (isActive()) {
+        if (isFullscreenActive(shell)) {
+          exitNativeFullscreen().catch(function () {
+            setPseudoFullscreen(false);
+            sync();
+          });
+        } else {
+          setPseudoFullscreen(false);
+          sync();
+        }
+        return;
       }
+
+      if (!hasNativeFullscreenSupport(shell)) {
+        setPseudoFullscreen(true);
+        sync();
+        return;
+      }
+
+      requestNativeFullscreen(shell).catch(function () {
+        setPseudoFullscreen(true);
+        sync();
+      });
     });
 
     document.addEventListener('fullscreenchange', sync);
+    document.addEventListener('webkitfullscreenchange', sync);
     sync();
     return function () {
       document.removeEventListener('fullscreenchange', sync);
+      document.removeEventListener('webkitfullscreenchange', sync);
+      setPseudoFullscreen(false);
     };
   }
 
