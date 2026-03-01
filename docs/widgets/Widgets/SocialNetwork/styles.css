@@ -445,8 +445,9 @@ h2 {
   padding: 10px;
 }
 #nodeinfo img {
-  max-width: 100%;
+  max-width: 50%;
   border: 3px black solid;
+  border-radius: 100%;
 }
 
 #grey-out {

@@ -600,7 +600,6 @@
             <br>
                 <img src="${url}" alt="Portrait of ${speakerToDisplay[speaker]}"><br>
             <br>
-            <br>
             <h3>Description:</h3>
                 ${myDict[par]}<br>
             <br>        
