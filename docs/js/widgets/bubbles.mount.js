@@ -103,7 +103,34 @@
         for (var j = 0; j < children.length; j++) {
           root.appendChild(children[j].cloneNode(true));
         }
+        absolutizeTemplateUrls(root, assetBase);
       });
+  }
+
+  function absolutizeTemplateUrls(root, assetBase) {
+    if (!root) return;
+
+    function toAbsoluteUrl(raw) {
+      var token = String(raw || '').trim();
+      if (!token) return token;
+      if (token.indexOf('data:') === 0) return token;
+      if (token.indexOf('http://') === 0 || token.indexOf('https://') === 0) return token;
+      if (token.indexOf('#') === 0) return token;
+      if (token.indexOf('/') === 0) return token;
+      return new URL(token, assetBase + '/').toString();
+    }
+
+    var srcNodes = root.querySelectorAll('[src]');
+    for (var i = 0; i < srcNodes.length; i++) {
+      var src = srcNodes[i].getAttribute('src');
+      srcNodes[i].setAttribute('src', toAbsoluteUrl(src));
+    }
+
+    var hrefNodes = root.querySelectorAll('[href]');
+    for (var j = 0; j < hrefNodes.length; j++) {
+      var href = hrefNodes[j].getAttribute('href');
+      hrefNodes[j].setAttribute('href', toAbsoluteUrl(href));
+    }
   }
 
   function normalizeSpeaker(raw) {
