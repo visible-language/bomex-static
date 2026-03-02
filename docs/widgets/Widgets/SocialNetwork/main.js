@@ -946,10 +946,13 @@
 
 
           info.innerHTML = `<div id ='nodeinfo'>
-                <h3>Speaker:</h3>
-                ${node.Label}<br>
-                <br>
-                    <img src="${url}" alt="Portrait of ${node.Name}"><br>
+                <div class="nodeinfo-speaker-row">
+                  <div class="nodeinfo-speaker-text">
+                    <h3>Speaker:</h3>
+                    ${node.Label}
+                  </div>
+                  <img src="${url}" alt="Portrait of ${node.Name}">
+                </div>
                 <br>
                 <h3>Basic Info:</h3>
                 ${node.Blurb}<br>

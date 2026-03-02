@@ -596,9 +596,12 @@
             par = speaker+'Paragraph';
 
             info.innerHTML =  `<div id ='nodeinfo'>
-            <h3>Speaker:</h3>${speakerToDisplay[speaker]}<br>
-            <br>
-                <img src="${url}" alt="Portrait of ${speakerToDisplay[speaker]}"><br>
+            <div class="nodeinfo-speaker-row">
+              <div class="nodeinfo-speaker-text">
+                <h3>Speaker:</h3>${speakerToDisplay[speaker]}
+              </div>
+              <img src="${url}" alt="Portrait of ${speakerToDisplay[speaker]}">
+            </div>
             <br>
             <h3>Description:</h3>
                 ${myDict[par]}<br>
@@ -680,10 +683,13 @@
 <!--            <h3>Node:</h3> 
             ${node.Display_Name}<br>-->
 
-            <h3>Speaker:</h3>
-            ${node.Display_Speaker}<br>
-            <br>       
-                <img src="${url}" alt="Portrait of ${node.Speaker}"><br>
+            <div class="nodeinfo-speaker-row">
+              <div class="nodeinfo-speaker-text">
+                <h3>Speaker:</h3>
+                ${node.Display_Speaker}
+              </div>
+              <img src="${url}" alt="Portrait of ${node.Speaker}">
+            </div>
             <br>
             <h3>Reference:</h3>
             ${node.Start_Link}--${node.End_Link}<br>

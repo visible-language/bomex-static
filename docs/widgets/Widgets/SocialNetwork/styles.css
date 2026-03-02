@@ -444,8 +444,22 @@ h2 {
   max-height: 300px;
   padding: 10px;
 }
+#nodeinfo .nodeinfo-speaker-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+#nodeinfo .nodeinfo-speaker-text {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
 #nodeinfo img {
-  max-width: 50%;
+  width: clamp(42px, 10vw, 56px);
+  max-width: 56px;
+  flex: 0 0 auto;
   border: 3px black solid;
   border-radius: 100%;
 }
