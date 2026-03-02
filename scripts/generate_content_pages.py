@@ -464,17 +464,43 @@ def _person_detail(item: Item, *, output_dir: Path, asset_prefix: str) -> str:
 
     brief = str(item.description or "").strip()
     year_line = _format_year_line(item.year)
-    brief_parts: List[str] = []
+    brief_intro_parts: List[str] = []
+    brief_body_parts: List[str] = []
     if brief and not _starts_with_did_you_know(brief):
-        brief_parts.append("  <h2>Brief biography</h2>\n")
+        brief_intro_parts.append("  <h2>Brief biography</h2>\n")
         if year_line:
-            brief_parts.append(f"  <p><em>{html.escape(year_line)}</em></p>\n")
-        brief_parts.append(f"  <p>{html.escape(brief)}</p>\n")
+            brief_intro_parts.append(f"  <p><em>{html.escape(year_line)}</em></p>\n")
+        brief_body_parts.append(f"  <p>{html.escape(brief)}</p>\n")
     if isinstance(item.word_count, int) and item.word_count > 0:
-        brief_parts.append(f"  <p>Total recorded words -- {_format_int_with_commas(item.word_count)}</p>\n")
-    brief_html = "".join(brief_parts)
-    if brief_html:
-        brief_html = f"<div id=\"brief-bio\">{brief_html}</div>"
+        brief_body_parts.append(f"  <p>Total recorded words -- {_format_int_with_commas(item.word_count)}</p>\n")
+    brief_intro_html = "".join(brief_intro_parts)
+    brief_body_html = "".join(brief_body_parts)
+    brief_image_html = ""
+    image_src_raw = _resolve_asset_ref(item.details_path, output_dir, item.image)
+    image_src = html.escape(image_src_raw) if image_src_raw else ""
+    if image_src:
+        brief_image_html = (
+            "    <div class=\"brief-bio-media\">"
+            f"<img class=\"brief-bio-thumb\" src=\"{image_src}\" alt=\"{name}\">"
+            "</div>\n"
+        )
+
+    brief_html = ""
+    if brief_intro_html or brief_body_html or brief_image_html:
+        brief_head_html = ""
+        if brief_intro_html or brief_image_html:
+            brief_head_html = (
+                "  <div class=\"brief-bio-head\">\n"
+                + ("    <div class=\"brief-bio-intro\">\n" + brief_intro_html + "    </div>\n" if brief_intro_html else "")
+                + brief_image_html
+                + "  </div>\n"
+            )
+        brief_html = (
+            "<div id=\"brief-bio\" class=\"brief-bio\">\n"
+            + brief_head_html
+            + brief_body_html
+            + "</div>"
+        )
 
     if chronology_blocks:
         chronology_intro = "<p><em>All dates are approximate.</em></p>"
