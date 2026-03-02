@@ -47,6 +47,25 @@
     }
   }
 
+  function wireSingleOpenAccordions(container) {
+    if (!container) return;
+    container.addEventListener('toggle', function (event) {
+      var target = event.target;
+      if (!target || target.tagName !== 'DETAILS' || !target.classList.contains('accordion')) return;
+      if (!target.open) return;
+      var parent = target.parentElement;
+      if (!parent) return;
+      var siblings = parent.children;
+      for (var i = 0; i < siblings.length; i++) {
+        var sibling = siblings[i];
+        if (sibling === target) continue;
+        if (sibling.tagName === 'DETAILS' && sibling.classList.contains('accordion') && sibling.open) {
+          sibling.open = false;
+        }
+      }
+    }, true);
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     var rootPrefix = getRootPrefix();
     var selectEl = document.getElementById('tool-select');
@@ -70,5 +89,7 @@
     if (window.WidgetShell && typeof window.WidgetShell.initExploreByToolPage === 'function') {
       window.WidgetShell.initExploreByToolPage();
     }
+
+    wireSingleOpenAccordions(document.querySelector('.tool-widget') || document.body);
   });
 })();

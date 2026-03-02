@@ -161,6 +161,7 @@
 
         //zoom to a good starting point
         function resetZoom(){
+            if (!htmlCanvas) return;
             var t = d3.zoomIdentity;
             d3.select(htmlCanvas).transition()
             .duration(300)
@@ -170,6 +171,7 @@
 
         // Draw plot on canvas
         function draw() {
+            if (!context || !x || !y) return;
             scaleX = transform.rescaleX(x);
             scaleY = transform.rescaleY(y);
             context.clearRect(0, 0, width, height);
@@ -234,6 +236,7 @@
         // Zoom/Drag handler
         const zoom_function = d3.zoom().scaleExtent([1, 1000])
         .on('zoom', (event) => {
+                if (!context) return;
                 transform = event.transform;
                 context.save();
                 draw(transform);
@@ -241,6 +244,7 @@
                 context = htmlCanvas.getContext('2d');
             });
         function resizeWindow(){
+            if (!htmlCanvas || !context || !graphData.length) return;
             syncCanvasSize();
             calculate_center();
             quadTree.extent([[-1, -1], [width + 1, height + 1]]);

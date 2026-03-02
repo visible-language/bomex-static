@@ -162,6 +162,27 @@
   function wireAccordions(container) {
     if (!container) return;
 
+    container.addEventListener('toggle', function (event) {
+      var target = event.target;
+      if (!target || target.tagName !== 'DETAILS' || !target.classList.contains('accordion') || !target.hasAttribute('data-widget')) return;
+      if (!target.open) return;
+      var parent = target.parentElement;
+      if (!parent) return;
+      var siblings = parent.children;
+      for (var i = 0; i < siblings.length; i++) {
+        var sibling = siblings[i];
+        if (sibling === target) continue;
+        if (sibling.tagName === 'DETAILS' && sibling.classList.contains('accordion') && sibling.hasAttribute('data-widget') && sibling.open) {
+          sibling.open = false;
+        }
+      }
+      window.requestAnimationFrame(function () {
+        if (typeof target.scrollIntoView === 'function') {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    }, true);
+
     var accordions = container.querySelectorAll('details[data-widget]');
     for (var i = 0; i < accordions.length; i++) {
       (function (detailsEl) {
