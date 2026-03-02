@@ -835,26 +835,22 @@
 
         // Add proper nav info based on screen size (for mobile). We only update the font size here since this label is already written by the library at load time.
         function populateNavInfo() {
+          var navInfo = document.getElementsByClassName("scene-nav-info")[0];
+          if (!navInfo) return;
           if (window.innerWidth > 500) {
-            document.getElementsByClassName(
-              "scene-nav-info",
-            )[0].style.fontSize = "15px";
-            document.getElementsByClassName("scene-nav-info")[0].innerHTML =
+            navInfo.style.fontSize = "15px";
+            navInfo.innerHTML =
               "Left-click: rotate, Mouse-wheel/middle-click: zoom, Right-click: pan.";
           } else {
-            document.getElementsByClassName(
-              "scene-nav-info",
-            )[0].style.fontSize = "12px";
-            document.getElementsByClassName("scene-nav-info")[0].innerHTML =
+            navInfo.style.fontSize = "12px";
+            navInfo.innerHTML =
               "Drag to rotate, Pinch to zoom, Two-finger drag to pan.";
           }
 
           if (backgroundColor === "dark") {
-            document.getElementsByClassName("scene-nav-info")[0].style.color =
-              "#fafafa";
+            navInfo.style.color = "#fafafa";
           } else {
-            document.getElementsByClassName("scene-nav-info")[0].style.color =
-              "#222222";
+            navInfo.style.color = "#222222";
           }
         }
 
@@ -887,7 +883,8 @@
         }
         // Write content to Explanation sidebar tab (responsive based on number of dimensions currently displayed)
         function populateExplanation() {
-          explanation = document.getElementById("explanation");
+          var explanation = document.getElementById("explanation");
+          if (!explanation) return;
           explanation.innerHTML = `
                 <h3>What am I looking at?</h3>
                 <br>
@@ -907,7 +904,8 @@
 
         // Decide. based on screen size, whether to show full or mobile-specific navigation instructions in the Instructions sidebar tab.
         function populateInstructions() {
-          instructions = document.getElementById("instructions");
+          var instructions = document.getElementById("instructions");
+          if (!instructions) return;
 
           if (window.innerWidth > 500) {
             instructions.innerHTML = `
