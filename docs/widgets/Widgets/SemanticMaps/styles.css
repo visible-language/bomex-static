@@ -213,7 +213,7 @@ text {
 }
 
 #reset-button{
-  inset: 1rem 1rem auto auto;
+  inset: 1rem auto auto 1rem;
 }
 
 .clickable{

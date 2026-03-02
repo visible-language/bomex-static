@@ -114,22 +114,65 @@
           'min-height:520px;' +
           '}\n';
         var layoutOverrides = '' +
+          prefix + ' .semantic-map-plot-wrap {position:relative; width:100%;}\n' +
           prefix + ' #plot {width:100%; height:100%;}\n' +
-          prefix + ' #loader {width:100%; height:100%;}\n';
+          prefix + ' #loader {width:100%; height:100%;}\n' +
+          prefix + ' #reset-button {position:absolute; top:0.5rem; left:0.5rem; right:auto; inset:auto; margin:0; z-index:4;}\n';
         var mobileOverrides =
-          '@media (hover: none) and (pointer: coarse), screen and (max-width: 900px) {' +
+          '@media (max-width: 1100px), (hover: none), (pointer: coarse) {' +
           prefix + ' {display:flex; flex-direction:column; gap:0.75rem; padding:0.75rem;}' +
-          prefix + ' #plot {position:relative !important; width:100% !important; height:min(52vh, 420px) !important; min-height:320px !important; max-height:420px !important;}' +
-          prefix + ' #holder {position:static !important; left:auto !important; top:auto !important; width:100% !important; z-index:auto !important;}' +
-          prefix + ' #legend {position:static !important; inset:auto !important; width:100% !important; max-height:none !important; overflow:visible !important; align-items:flex-start !important;}' +
-          prefix + ' #reset-button {position:static !important; inset:auto !important; align-self:flex-end !important; margin:0 !important;}' +
-          prefix + ' #info-box, ' + prefix + ' .info-box {width:100% !important; max-height:none !important; min-height:0 !important; overflow:visible !important;}' +
-          prefix + ' #autoComplete, ' + prefix + ' .autoComplete_wrapper {visibility:visible !important; width:100% !important;}' +
+          prefix + ' #holder {order:1; position:static !important; left:auto !important; top:auto !important; width:100% !important; z-index:auto !important; display:flex !important; flex-direction:column !important; gap:0.5rem;}' +
+          prefix + ' #holder > #autoComplete, ' + prefix + ' #holder > .autoComplete_wrapper {order:1; visibility:visible !important; width:100% !important;}' +
+          prefix + ' #holder > #info-box, ' + prefix + ' #holder > .info-box {order:2; width:100% !important; max-height:none !important; min-height:0 !important; overflow:visible !important;}' +
+          prefix + ' .semantic-map-plot-wrap {order:2; position:relative !important; width:100% !important; height:min(52vh, 420px) !important; min-height:320px !important; max-height:420px !important;}' +
+          prefix + ' #plot {position:relative !important; width:100% !important; height:100% !important; min-height:0 !important; max-height:none !important;}' +
+          prefix + ' #legend {order:3; position:static !important; inset:auto !important; width:100% !important; max-height:none !important; overflow:visible !important; align-items:flex-start !important;}' +
+          prefix + ' #reset-button {position:absolute !important; top:0.5rem !important; left:0.5rem !important; right:auto !important; inset:auto !important; margin:0 !important; z-index:4 !important;}' +
           prefix + ' .autoComplete_wrapper > input {width:100% !important;}' +
           '}';
-        style.textContent = vars + layoutOverrides + scopeCss(absolutizeCssUrls(cssText, assetBase), prefix) + mobileOverrides;
+        var finalOverrides = '' +
+          prefix + ' #reset-button {position:absolute !important; top:0.5rem !important; left:0.5rem !important; right:auto !important; inset:auto !important; margin:0 !important; z-index:4 !important;}\n';
+        style.textContent = vars + layoutOverrides + scopeCss(absolutizeCssUrls(cssText, assetBase), prefix) + mobileOverrides + finalOverrides;
         root.appendChild(style);
       });
+  }
+
+  function prepareTemplateLayout(root) {
+    if (!root) return;
+    var plot = root.querySelector('#plot');
+    if (!plot) return;
+
+    var wrap = root.querySelector('.semantic-map-plot-wrap');
+    if (!wrap) {
+      wrap = document.createElement('div');
+      wrap.className = 'semantic-map-plot-wrap';
+      plot.parentNode.insertBefore(wrap, plot);
+      wrap.appendChild(plot);
+    }
+
+    var resetButton = root.querySelector('#reset-button');
+    if (resetButton && resetButton.parentNode !== wrap) {
+      wrap.appendChild(resetButton);
+    }
+    enforceResetButtonPosition(root);
+  }
+
+  function enforceResetButtonPosition(root) {
+    if (!root) return;
+    var wrap = root.querySelector('.semantic-map-plot-wrap');
+    if (wrap) {
+      wrap.style.setProperty('position', 'relative', 'important');
+      wrap.style.setProperty('overflow', 'hidden', 'important');
+    }
+    var resetButton = root.querySelector('#reset-button');
+    if (!resetButton) return;
+    resetButton.style.setProperty('position', 'absolute', 'important');
+    resetButton.style.setProperty('inset', 'auto', 'important');
+    resetButton.style.setProperty('top', '0.5rem', 'important');
+    resetButton.style.setProperty('left', '0.5rem', 'important');
+    resetButton.style.setProperty('right', 'auto', 'important');
+    resetButton.style.setProperty('margin', '0', 'important');
+    resetButton.style.setProperty('z-index', '4', 'important');
   }
 
   function buildTemplate(root, assetBase, variant) {
@@ -148,6 +191,7 @@
         for (var j = 0; j < children.length; j++) {
           root.appendChild(children[j].cloneNode(true));
         }
+        prepareTemplateLayout(root);
       });
   }
 
@@ -186,6 +230,7 @@
 
     buildTemplate(root, assetBase, variant)
       .then(function () { return applyScopedStyles(root, assetBase); })
+      .then(function () { enforceResetButtonPosition(root); })
       .then(function () {
         var chain = Promise.resolve();
         for (var i = 0; i < bootScripts.length; i++) {
@@ -205,6 +250,7 @@
 
     return {
       update: function () {
+        enforceResetButtonPosition(root);
         if (typeof global.dispatchEvent === 'function') {
           global.dispatchEvent(new Event('resize'));
         }

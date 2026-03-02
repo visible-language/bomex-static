@@ -11,6 +11,8 @@
         var yTranslate = 0;
         var width = window.innerWidth-1;
         var height = window.innerHeight-1;
+        var htmlCanvas = null;
+        var context = null;
         var scaleX;
         var scaleY;
         var radius;

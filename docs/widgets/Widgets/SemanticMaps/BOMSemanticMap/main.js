@@ -11,6 +11,8 @@
         var yTranslate = 0;
         var width = window.innerWidth-1;
         var height = window.innerHeight-1;
+        var htmlCanvas = null;
+        var context = null;
         var scaleX;
         var scaleY;
         var radius;
@@ -268,6 +270,18 @@
             }
         }
 
+        function getPointSize(point) {
+            // Dataset points use index 7 for size; highlighted overlay points use index 5.
+            var size = Number(point[7]);
+            if (!Number.isFinite(size)) {
+                size = Number(point[5]);
+            }
+            if (!Number.isFinite(size) || size <= 0) {
+                size = 1;
+            }
+            return size;
+        }
+
         //function to draw points individually
         function drawPoint(point) {
             context.beginPath();
@@ -278,8 +292,9 @@
             }
             const px = scaleX(point[0]);
             const py = scaleY(point[1]);
+            var pointSize = getPointSize(point);
 
-            context.arc(px, py, point[5] * radius, 0, pi2, true);
+            context.arc(px, py, pointSize * radius, 0, pi2, true);
             context.stroke();
             context.fill();
         }
