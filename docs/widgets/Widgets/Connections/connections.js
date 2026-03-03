@@ -28,7 +28,6 @@ let connectionsInitComplete = false;
 let connectionsInitRoot = null;
 let connectionsBoundRoot = null;
 let connectionsSpeakerSelectHandler = null;
-let connectionsLegendClickHandlers = [];
 let mainImageLoadToken = 0;
 let mainImageRetryTimer = null;
 
@@ -515,17 +514,6 @@ function bindConnectionsEvents() {
         };
         speakerSelect.addEventListener('change', connectionsSpeakerSelectHandler);
     }
-
-    const legendKeys = root.querySelectorAll('.color-key[data-option]');
-    connectionsLegendClickHandlers = [];
-    legendKeys.forEach((el) => {
-        const handler = function() {
-            const option = this.getAttribute('data-option');
-            if (option) check(option);
-        };
-        connectionsLegendClickHandlers.push({ el: el, handler: handler });
-        el.addEventListener('click', handler);
-    });
 }
 
 function unbindConnectionsEvents() {
@@ -534,15 +522,8 @@ function unbindConnectionsEvents() {
     if (speakerSelect && connectionsSpeakerSelectHandler) {
         speakerSelect.removeEventListener('change', connectionsSpeakerSelectHandler);
     }
-    for (let i = 0; i < connectionsLegendClickHandlers.length; i++) {
-        const item = connectionsLegendClickHandlers[i];
-        if (item && item.el && item.handler) {
-            item.el.removeEventListener('click', item.handler);
-        }
-    }
     connectionsBoundRoot = null;
     connectionsSpeakerSelectHandler = null;
-    connectionsLegendClickHandlers = [];
 }
 
 function rerenderConnectionsWidget() {
