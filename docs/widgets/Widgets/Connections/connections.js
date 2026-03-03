@@ -29,6 +29,8 @@ let connectionsInitRoot = null;
 let connectionsBoundRoot = null;
 let connectionsSpeakerSelectHandler = null;
 let connectionsLegendClickHandlers = [];
+let mainImageLoadToken = 0;
+let mainImageRetryTimer = null;
 
 // set current speaker
 let state = { ...INITIAL_CONNECTIONS_STATE };
@@ -126,13 +128,97 @@ function getImageLink(name) {
     return new URL(`${name}.jpg`, imageBase).toString();
 }
 
+function getImageLinkWithCacheBust(name, bustValue) {
+    const url = new URL(getImageLink(name));
+    if (bustValue) {
+        url.searchParams.set('_', String(bustValue));
+    }
+    return url.toString();
+}
+
+function clearMainImageRetryTimer() {
+    if (mainImageRetryTimer) {
+        clearTimeout(mainImageRetryTimer);
+        mainImageRetryTimer = null;
+    }
+}
+
+function setMainImageForSpeaker(speakerId) {
+    const imageEl = document.getElementById('main-image');
+    if (!imageEl) return;
+    const displayName = getDisplayName(speakerId) || speakerId;
+    imageEl.alt = `Portrait of ${displayName}`;
+
+    const token = ++mainImageLoadToken;
+    clearMainImageRetryTimer();
+    const maxAttempts = 2;
+
+    function applyLoadedSource(src) {
+        if (token !== mainImageLoadToken) return;
+        const target = document.getElementById('main-image');
+        if (!target) return;
+        target.style.visibility = 'visible';
+        // Force a repaint reload when src is identical but previous decode stalled.
+        if (target.getAttribute('src') === src) {
+            target.removeAttribute('src');
+            requestAnimationFrame(function() {
+                if (token !== mainImageLoadToken) return;
+                const reTarget = document.getElementById('main-image');
+                if (reTarget) reTarget.setAttribute('src', src);
+            });
+            return;
+        }
+        target.setAttribute('src', src);
+    }
+
+    function attemptLoad(attempt) {
+        if (token !== mainImageLoadToken) return;
+        const src = getImageLinkWithCacheBust(
+            speakerId,
+            attempt > 0 ? `${Date.now()}-${attempt}` : ''
+        );
+        const probe = new Image();
+        let settled = false;
+
+        function failOver() {
+            if (settled) return;
+            settled = true;
+            if (attempt < maxAttempts) {
+                attemptLoad(attempt + 1);
+                return;
+            }
+            if (token !== mainImageLoadToken) return;
+            const target = document.getElementById('main-image');
+            if (target) {
+                // Final fallback: apply source directly with bust to avoid stale cache edge-cases.
+                target.setAttribute('src', getImageLinkWithCacheBust(speakerId, Date.now()));
+                target.style.visibility = 'visible';
+            }
+            console.warn('Connections main-image required fallback load for speaker:', speakerId);
+        }
+
+        mainImageRetryTimer = setTimeout(failOver, 1800);
+
+        probe.onload = function() {
+            if (settled) return;
+            settled = true;
+            clearMainImageRetryTimer();
+            applyLoadedSource(src);
+        };
+
+        probe.onerror = failOver;
+        probe.src = src;
+    }
+
+    attemptLoad(0);
+}
+
 // Use the state to update the upper right corner with the current speaker
 function updateMainInfo() {
     let name = document.getElementById('main-name')
     name.innerHTML = getDisplayName(state.speaker)
 
-    let image = document.getElementById('main-image')
-    image.setAttribute('src', getImageLink(state.speaker))
+    setMainImageForSpeaker(state.speaker);
 }
 
 // Selects a new speaker and re-renders graphics. Used by icon click and html dropdown.
@@ -490,6 +576,8 @@ function initializeConnectionsWidget() {
 }
 
 function destroyConnectionsWidget() {
+    ++mainImageLoadToken;
+    clearMainImageRetryTimer();
     unbindConnectionsEvents();
     resetConnectionsState();
     connectionsInitComplete = false;

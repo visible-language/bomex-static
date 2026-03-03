@@ -122,6 +122,13 @@
             dehighlightGraph();
           });
 
+        Graph.onEngineStop(() => {
+          // Final fit after simulation settles avoids occasional tiny-network startup states.
+          if (hasRenderableNodes()) {
+            runZoomToFit();
+          }
+        });
+
         // Update each link's visibility status
         function updateVisibleLinks() {
           visibleLinks.clear();
@@ -280,7 +287,6 @@
 
         // Set correct colors for highlighting selected nodes and edges
         function setHighlightColor() {
-          console.log(Graph.graphData().nodes[0]);
           // Combined highlight logic.
           Graph.nodeColor((node) => {
             // Selected node color depends on background for contrast
@@ -333,6 +339,27 @@
         // Return graph to default display
         function resetGraph() {
           destroyLabel();
+          runZoomToFit();
+        }
+
+        function hasRenderableNodes() {
+          var nodes = Graph.graphData().nodes || [];
+          if (!nodes.length) return false;
+          for (var i = 0; i < nodes.length; i++) {
+            var n = nodes[i];
+            if (
+              Number.isFinite(n.x) &&
+              Number.isFinite(n.y) &&
+              Number.isFinite(n.z)
+            ) {
+              return true;
+            }
+          }
+          return false;
+        }
+
+        function runZoomToFit() {
+          if (!hasRenderableNodes()) return;
           Graph.zoomToFit(500, -75);
         }
 
@@ -388,7 +415,7 @@
                 tooltip.style.color = "#ffffff";
             } else {
                 tooltip.style.backgroundColor = "rgba(228,237,240, 0.5)";
-                tooltip.style.color = "#000000";	  
+                tooltip.style.color = "#000000";
             }
         }
 */
@@ -773,19 +800,19 @@
             panel.style.minHeight = null;
           }
         }
-        // Move the graph to center a given node based on the select menu 
+        // Move the graph to center a given node based on the select menu
         function flyToNode(){
             selectedNode = null;
             var nodes = Graph.graphData().nodes;
             var book = document.getElementById("bookSelect").value;
             for (index = 0; index < nodes.length; index++) {
                 node = nodes[index]
-                
+
                 if (node.Name === book) {
                     selectedNode = node;
                     break;
                 }
-            } 
+            }
             const distance = 70;
         }
 
@@ -898,7 +925,7 @@
                 The connections ‘pull’ the nodes into their positions. The result is a ${dimensions}-D network grouped by similarity.
                 <br>
                 <br>
-                Find more information in the <div class="appear" onclick="faqAppear()">FAQ</a>.            
+                Find more information in the <div class="appear" onclick="faqAppear()">FAQ</a>.
                 `;
         }
 
@@ -910,7 +937,7 @@
           if (window.innerWidth > 500) {
             instructions.innerHTML = `
                     <h3>Navigation</h3>
-                    <br>Click and drag to rotate the network, or use the mouse wheel to zoom. 
+                    <br>Click and drag to rotate the network, or use the mouse wheel to zoom.
                     <br><br>Click a node to highlight its connections, or click the background without dragging to return the graph to normal.
                     <br>Right-click any node to see its information in the node-information tab below.
                     <br><br>Use the buttons in the bottom-right corner to specify a node, then click "Go!" and the selected node will appear in the center of the screen.
@@ -956,7 +983,7 @@
                 <br>
                 <h3>Basic Info:</h3>
                 ${node.Blurb}<br>
-                <br>        
+                <br>
                 <h3>Spoke With:</h3>
                 ${node.Docs}<br>
                 </div>
@@ -977,7 +1004,7 @@
                 <h3>Scripture:</h3>
                 ${href}<br>
                 ${link.Idea}<br>
-                <br>        
+                <br>
                 </div>
             `;
         }

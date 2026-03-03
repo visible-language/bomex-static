@@ -100,6 +100,13 @@
             .onBackgroundClick(() =>{
                 dehighlightGraph()
             });
+
+        Graph.onEngineStop(() => {
+            // Final fit after simulation settles avoids occasional tiny-network startup states.
+            if (hasRenderableNodes()) {
+                runZoomToFit();
+            }
+        });
     
         // Decide which links should be shown based on checkboxes    
         function updateVisibleLinks(){
@@ -235,7 +242,28 @@
         //zoom to proper size
         function resetGraph() {
             destroyLabel();
-            Graph.zoomToFit(500, -75)
+            runZoomToFit();
+        }
+
+        function hasRenderableNodes() {
+            var nodes = Graph.graphData().nodes || [];
+            if (!nodes.length) return false;
+            for (var i = 0; i < nodes.length; i++) {
+                var n = nodes[i];
+                if (
+                    Number.isFinite(n.x) &&
+                    Number.isFinite(n.y) &&
+                    Number.isFinite(n.z)
+                ) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        function runZoomToFit() {
+            if (!hasRenderableNodes()) return;
+            Graph.zoomToFit(500, -75);
         }
         
         //change background color and link color
