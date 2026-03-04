@@ -67,3 +67,31 @@
     }
   };
 })();
+
+// Make footer icons activate the same primary link in their section.
+(function () {
+  const sections = document.querySelectorAll('.footer-section');
+  if (!sections.length) return;
+
+  sections.forEach((section) => {
+    const icon = section.querySelector('.footer-icon');
+    const link = section.querySelector('a');
+    if (!icon || !link) return;
+
+    icon.style.cursor = 'pointer';
+    icon.setAttribute('tabindex', '0');
+    icon.setAttribute('role', 'link');
+
+    const activate = function () {
+      link.click();
+    };
+
+    icon.addEventListener('click', activate);
+    icon.addEventListener('keydown', function (event) {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        activate();
+      }
+    });
+  });
+})();
