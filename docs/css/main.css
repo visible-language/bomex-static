@@ -31,6 +31,8 @@
     --white: #fff;
     --light-bg: #f9f9f9;
     --card-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    --header-height: 3rem;
+    --sticky-header-offset: var(--header-height);
 }
 
 * {
@@ -71,9 +73,11 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: var(--header-height);
     border-bottom: 1px solid #ddd;
     width: 100%;
-    position: relative;
+    position: sticky;
+    top: 0;
     z-index: 1001;
 }
 
@@ -695,8 +699,9 @@ footer {
 .content-page .content-title,
 .detail-hero-title {
     position: sticky;
-    top: 0;
+    top: var(--sticky-header-offset);
     z-index: 6;
+    height: var(--header-height);
     background-color: var(--white);
     padding: 0.35rem 0.75rem;
 }
@@ -823,7 +828,7 @@ footer {
 
 .detail-hero-title {
     position: sticky;
-    top: 0;
+    top: var(--sticky-header-offset);
     z-index: 6;
     background-color: rgba(224, 224, 224, 0.75);
     --detail-title-height: clamp(3.5rem, 6vw, 4.5rem);
