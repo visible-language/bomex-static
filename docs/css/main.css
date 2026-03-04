@@ -666,19 +666,19 @@ footer {
 .page-hero {
     height: 160px;
     background-size: cover;
-    background-position: center;
+    background-position: center 33%;
 }
 
 .page-hero--people {
-    background-image: url('../img/book_glasses_type.png');
+    background-image: url('../img/angel-moroni-statue.png');
 }
 
 .page-hero--echoes {
-    background-image: url('../img/bom-on-leaves.png');
+    background-image: url('../img/scripture-page.png');
 }
 
 .page-hero--concepts {
-    background-image: url('../img/book_glasses_type.png');
+    background-image: url('../img/open-book-on-table.png');
 }
 
 .page-content--wide {
