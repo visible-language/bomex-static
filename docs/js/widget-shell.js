@@ -125,12 +125,20 @@
     }
 
     if (mode === MODE_IFRAME) {
+      body.style.display = 'flex';
+      body.style.flexDirection = 'column';
+      body.style.minHeight = '0';
+
       frameEl = document.createElement('iframe');
       frameEl.className = 'tool-iframe widget-shell-frame';
       frameEl.title = config.title || 'Widget';
       frameEl.loading = 'lazy';
       frameEl.setAttribute('referrerpolicy', 'no-referrer');
       frameEl.setAttribute('scrolling', 'no');
+      frameEl.style.flex = '1 1 auto';
+      frameEl.style.minHeight = '0';
+      frameEl.style.width = '100%';
+      frameEl.style.height = '100%';
       frameEl.src = appendWidgetQuery(config.src, config);
       body.appendChild(frameEl);
 

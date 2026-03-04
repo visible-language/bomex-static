@@ -506,7 +506,12 @@ function renderChart(data = state.currentChartData) {
         if (!activePointer) return;
         if (activePointer.id !== event.pointerId || activePointer.node !== d) return;
 
-        if (activePointer.moved) {
+        if (!activePointer.moved && event.type !== 'pointercancel') {
+            // Some touch browsers suppress synthetic click after pointer handling;
+            // open drilldown directly for tap/click-without-drag.
+            onClick(event, d);
+            state._suppressClickUntil = Date.now() + 250;
+        } else if (activePointer.moved) {
             state._suppressClickUntil = Date.now() + 250;
         }
         if (event.currentTarget?.releasePointerCapture) {
