@@ -196,10 +196,104 @@
 
   document.addEventListener('DOMContentLoaded', function () {
     var rootPrefix = getRootPrefix();
+    var inputEl = document.getElementById('svf-input');
+    var submitEl = document.getElementById('svf-submit');
     var panelEl = document.getElementById('svf-panel');
     if (!panelEl) return;
 
-    var initialRef = getQueryParam('reference') || '';
-    renderWidget(panelEl, rootPrefix, initialRef);
+    // Results page: no selector input, just render widget
+    if (!inputEl || !submitEl) {
+      var initialRef = getQueryParam('reference') || '';
+      renderWidget(panelEl, rootPrefix, initialRef);
+      return;
+    }
+
+    // Selector page
+    var initialRef = getQueryParam('reference');
+    if (initialRef) inputEl.value = initialRef;
+
+    var state = clampState(parseReference(inputEl.value));
+
+    function setState(next) {
+      state = clampState(next);
+
+      if (!state.bookKey) {
+        inputEl.value = '';
+        setQueryParam('reference', '');
+        renderBooks(panelEl, rootPrefix, function (s) {
+          inputEl.value = titleCaseBookKey(s.bookKey);
+          setState(s);
+        });
+        return;
+      }
+
+      var bookLabel = titleCaseBookKey(state.bookKey);
+
+      if (state.bookKey && state.chapter && state.verse) {
+        var ref = prettyRef(state);
+        window.location.href = 'results.html?reference=' + encodeURIComponent(ref);
+        return;
+      }
+
+      var books = getBooks();
+      var book = null;
+      for (var i = 0; i < books.length; i++) {
+        if (books[i].key === state.bookKey) book = books[i];
+      }
+      if (!book) {
+        setState({});
+        return;
+      }
+
+      if (state.bookKey && state.chapter) {
+        inputEl.value = bookLabel + ' ' + state.chapter;
+        setQueryParam('reference', '');
+        var verseCount = book.versesByChapter[state.chapter - 1] || 0;
+        renderGrid(panelEl, 'Verses', verseCount, state.verse, function (n) {
+          setState({ bookKey: state.bookKey, chapter: state.chapter, verse: n });
+        });
+        return;
+      }
+
+      inputEl.value = bookLabel;
+      setQueryParam('reference', '');
+      renderGrid(panelEl, 'Chapters', book.versesByChapter.length, state.chapter, function (n) {
+        setState({ bookKey: state.bookKey, chapter: n });
+      });
+    }
+
+    function submit() {
+      var parsed = parseReference(inputEl.value);
+      if (parsed && parsed.bookKey && parsed.chapter && parsed.verse) {
+        setState(parsed);
+        return;
+      }
+      if (parsed && parsed.bookKey && parsed.chapter && !parsed.verse) {
+        setState(parsed);
+        return;
+      }
+      if (parsed && parsed.bookKey && !parsed.chapter) {
+        setState(parsed);
+        return;
+      }
+      setState({});
+    }
+
+    submitEl.addEventListener('click', submit);
+    inputEl.addEventListener('keypress', function (e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        submit();
+      }
+    });
+    inputEl.addEventListener('input', function () {
+      if (!inputEl.value.trim()) {
+        setState({});
+      }
+    });
+
+    // First render
+    if (state && state.bookKey) setState(state);
+    else setState({});
   });
 })();

@@ -109,7 +109,6 @@
     var root = document.createElement('div');
     root.className = 'vl-similarverse-root';
     var shadow = root.attachShadow({ mode: 'open' });
-    shadow.innerHTML = '<div class="widget-loading">Loading Similar Verse Finder...</div>';
     container.innerHTML = '';
     container.appendChild(root);
 
@@ -127,6 +126,26 @@
     buildTemplate(shadow, assetBase)
       .then(function () { return applyScopedStyles(shadow, assetBase); })
       .then(function () {
+        // Inject spinner overlay over the widget content while scripts load
+        var spinnerStyle = document.createElement('style');
+        spinnerStyle.setAttribute('data-spinner-style', '1');
+        spinnerStyle.textContent =
+          '.svf-spinner-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:inherit;border-radius:inherit;z-index:10;}' +
+          '@keyframes svf-spin{to{transform:rotate(360deg)}}' +
+          '.svf-spinner{width:2.5rem;height:2.5rem;border:4px solid rgba(44,75,85,0.2);border-top-color:#2C4B55;border-radius:50%;animation:svf-spin 0.8s linear infinite;}';
+        shadow.appendChild(spinnerStyle);
+        var overlay = document.createElement('div');
+        overlay.className = 'svf-spinner-overlay';
+        overlay.innerHTML = '<div class="svf-spinner"></div>';
+        // Wrap the widget in a positioned container so the overlay works
+        var widget = shadow.getElementById ? shadow.getElementById('widget') : shadow.querySelector('#widget');
+        if (widget) {
+          widget.style.position = 'relative';
+          widget.appendChild(overlay);
+        } else {
+          shadow.appendChild(overlay);
+        }
+
         var chain = Promise.resolve();
         for (var i = 0; i < scripts.length; i++) {
           chain = chain.then((function (src) {
@@ -136,6 +155,12 @@
         return chain;
       })
       .then(function () {
+        // Remove spinner overlay
+        var overlays = shadow.querySelectorAll('.svf-spinner-overlay');
+        for (var k = 0; k < overlays.length; k++) { overlays[k].remove(); }
+        var spinnerStyles = shadow.querySelectorAll('style[data-spinner-style]');
+        for (var m = 0; m < spinnerStyles.length; m++) { spinnerStyles[m].remove(); }
+
         if (global.SimilarVerseWidgetApi && typeof global.SimilarVerseWidgetApi.setOptions === 'function') {
           global.SimilarVerseWidgetApi.setOptions({ reference: opts.reference || '' });
         }
