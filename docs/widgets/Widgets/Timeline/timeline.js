@@ -1192,6 +1192,7 @@ function createGrid(eventYears, eventDescriptions, originalEventYears, years) {
     
     drawChart();
     state._eventDrawChart = drawChart;
+    state._eventZoomState = { zoom, myRect };
 
     let text = document.querySelector('.description-box-text');
     if (text) {
@@ -1275,6 +1276,92 @@ function createGrid(eventYears, eventDescriptions, originalEventYears, years) {
 
 }
 
+function setupScrollChevrons(scopeRoot) {
+    const SCROLL_AMOUNT = 300;
+
+    function addChevrons(scrollEl) {
+        if (!scrollEl || !scrollEl.parentNode) return;
+        const wrapper = document.createElement('div');
+        wrapper.className = 'tl-scroll-wrapper';
+        const leftBtn = document.createElement('button');
+        leftBtn.type = 'button';
+        leftBtn.className = 'tl-scroll-chevron';
+        leftBtn.setAttribute('aria-label', 'Scroll left');
+        leftBtn.innerHTML = '&#8249;';
+        const rightBtn = document.createElement('button');
+        rightBtn.type = 'button';
+        rightBtn.className = 'tl-scroll-chevron';
+        rightBtn.setAttribute('aria-label', 'Scroll right');
+        rightBtn.innerHTML = '&#8250;';
+
+        scrollEl.parentNode.insertBefore(wrapper, scrollEl);
+        wrapper.appendChild(leftBtn);
+        wrapper.appendChild(scrollEl);
+        wrapper.appendChild(rightBtn);
+
+        function update() {
+            const atLeft = scrollEl.scrollLeft <= 1;
+            const atRight = scrollEl.scrollLeft + scrollEl.clientWidth >= scrollEl.scrollWidth - 1;
+            if (atLeft) leftBtn.setAttribute('data-hidden', '');
+            else leftBtn.removeAttribute('data-hidden');
+            if (atRight) rightBtn.setAttribute('data-hidden', '');
+            else rightBtn.removeAttribute('data-hidden');
+        }
+
+        leftBtn.addEventListener('click', () => scrollEl.scrollBy({ left: -SCROLL_AMOUNT, behavior: 'smooth' }));
+        rightBtn.addEventListener('click', () => scrollEl.scrollBy({ left: SCROLL_AMOUNT, behavior: 'smooth' }));
+        scrollEl.addEventListener('scroll', update);
+        new MutationObserver(() => setTimeout(update, 50)).observe(scrollEl, { childList: true, subtree: false });
+        update();
+        return update;
+    }
+
+    const nameList = scopeRoot.querySelector('#name-list');
+    const graphicEl = scopeRoot.querySelector('.graphic');
+    const updateNameList = nameList ? addChevrons(nameList) : null;
+    const updateGraphic = graphicEl ? addChevrons(graphicEl) : null;
+
+    const comparePage = scopeRoot.querySelector('#compare-page');
+    if (comparePage) {
+        new MutationObserver(() => {
+            setTimeout(() => {
+                if (updateNameList) updateNameList();
+                if (updateGraphic) updateGraphic();
+            }, 50);
+        }).observe(comparePage, { attributes: true, attributeFilter: ['style'] });
+    }
+
+    // Events tab: D3 programmatic pan buttons on .zoom-box
+    const zoomBoxEl = scopeRoot.querySelector('.zoom-box');
+    if (zoomBoxEl) {
+        const zoomWrapper = document.createElement('div');
+        zoomWrapper.className = 'tl-scroll-wrapper';
+        zoomBoxEl.parentNode.insertBefore(zoomWrapper, zoomBoxEl);
+        const zoomLeftBtn = document.createElement('button');
+        zoomLeftBtn.type = 'button';
+        zoomLeftBtn.className = 'tl-scroll-chevron';
+        zoomLeftBtn.setAttribute('aria-label', 'Pan left');
+        zoomLeftBtn.innerHTML = '&#8249;';
+        const zoomRightBtn = document.createElement('button');
+        zoomRightBtn.type = 'button';
+        zoomRightBtn.className = 'tl-scroll-chevron';
+        zoomRightBtn.setAttribute('aria-label', 'Pan right');
+        zoomRightBtn.innerHTML = '&#8250;';
+        zoomWrapper.appendChild(zoomLeftBtn);
+        zoomWrapper.appendChild(zoomBoxEl);
+        zoomWrapper.appendChild(zoomRightBtn);
+        const PAN_AMOUNT = 200;
+        zoomLeftBtn.addEventListener('click', () => {
+            const zs = state._eventZoomState;
+            if (zs) zs.myRect.call(zs.zoom.translateBy, PAN_AMOUNT, 0);
+        });
+        zoomRightBtn.addEventListener('click', () => {
+            const zs = state._eventZoomState;
+            if (zs) zs.myRect.call(zs.zoom.translateBy, -PAN_AMOUNT, 0);
+        });
+    }
+}
+
 function initializeTimelineWidget() {
     const dropdown = document.getElementById('dropdown');
     if (!dropdown) return;
@@ -1291,6 +1378,7 @@ function initializeTimelineWidget() {
     applyControlVisibility();
     bindTimelineEvents();
     loadSpeaker(state.speaker);
+    setupScrollChevrons(currentRoot);
 
     let message = {
         height: document.body.scrollHeight,

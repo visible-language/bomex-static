@@ -325,6 +325,11 @@ main {
 #svg-events {
     display: none;
 }
+.events-graphic {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
 .zoom-box {
     width: 100%;
 }
@@ -394,4 +399,40 @@ main {
 }
 .tooltip-hidden {
     display: none;
+}
+
+/* Scroll chevrons */
+.tl-scroll-wrapper {
+    position: relative;
+}
+.tl-scroll-chevron {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 5;
+    background: transparent;
+    border: none;
+    width: 2.2rem;
+    height: 2.2rem;
+    font-size: 2.5rem;
+    line-height: 1;
+    cursor: pointer;
+    color: #2C4B55;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    text-shadow: 0 0 4px rgba(255,255,255,0.9);
+}
+.tl-scroll-chevron:first-child {
+    left: 4px;
+}
+.tl-scroll-chevron:last-child {
+    right: 4px;
+}
+.tl-scroll-chevron:hover {
+    color: #111;
+}
+.tl-scroll-chevron[data-hidden] {
+    visibility: hidden;
 }
