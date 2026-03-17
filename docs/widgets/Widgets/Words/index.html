@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="../../../css/main.css">
+    <link type="text/css" rel="stylesheet" href="../colors.css">
+    <link type="text/css" rel="stylesheet" href="styles/packedbubbles.css">
+    <title>Book of Mormon Words</title>
+</head>
+<body>
+    <div class="widget">
+        <div class="controls">
+            <div>
+                <select id="dropdown" class="author-select">
+                    <option disabled selected value> -- Select a speaker -- </option>
+                </select>
+            </div>
+            <div class="graph-speaker-image">
+                <img id="speaker-image" src="" alt="" width="100">
+            </div>
+        </div>
+
+        <div class="words-info">
+            <details class="accordion">
+                <summary>
+                    Speaker Statistics
+                    <img class="icon" src="../../../img/chevron-down.svg" alt="" aria-hidden="true">
+                </summary>
+                <div class="accordion-body">
+                    <table class="graph-stats-container graph-info-item graph-info-table">
+                        <tr><th class="graph-info-title" colspan="2"></th></tr>
+                        <tr class="graph-stat">
+                            <td class="graph-info-subtitle">Total Number of Words:</td>
+                            <td id="stat-1"></td>
+                        </tr>
+                        <tr class="graph-stat">
+                            <td class="graph-info-subtitle">Percentage of Book of Mormon:</td>
+                            <td id="stat-2"></td>
+                        </tr>
+                        <tr class="graph-stat">
+                            <td class="graph-info-subtitle">Rank Out of All Speakers:</td>
+                            <td id="stat-3"></td>
+                        </tr>
+                    </table>
+                </div>
+            </details>
+
+            <details class="accordion">
+                <summary>
+                    Filters
+                    <img class="icon" src="../../../img/chevron-down.svg" alt="" aria-hidden="true">
+                </summary>
+                <div class="accordion-body">
+                    <div class="user-input graph-info-item">
+                        <div class="user-input__form user-parameters">
+                            <table class="graph-info-table filter-item">
+                                <tr><th class="graph-info-title" colspan="2"></th></tr>
+                                <tr>
+                                    <td class="start-range graph-info-subtitle">Display Words:</td>
+                                    <td id="radio-selection-type" class="radio-selectors">
+                                        <div>
+                                            <input type="radio" name="typeRadios" id="radio-all" value="all">
+                                            <label for="radio-all">All</label>
+                                        </div>
+                                        <div>
+                                            <input type="radio" name="typeRadios" id="radio-pink" value="noun" checked>
+                                            <label for="radio-pink">Key Words</label>
+                                        </div>
+                                        <div>
+                                            <input type="radio" name="typeRadios" id="radio-blue" value="verb">
+                                            <label for="radio-blue">Connecting Words</label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="start-range graph-info-subtitle">All/Unique</td>
+                                    <td class="range-type">
+                                        <button id="unique-button" class="button control-button-table">Unique Words: Off</button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </details>
+        </div>
+
+        <div id="words-table-container"></div>
+    </div>
+
+    <script type="text/javascript" src="scripts/import_data.js"></script>
+    <script type="text/javascript" src="scripts/main.js"></script>
+    <script type="text/javascript" src="scripts/words-table.js"></script>
+</body>
+</html>

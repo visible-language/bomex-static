@@ -91,11 +91,11 @@
     var widgetsMessage = [
       {
         key: 'bubbles',
-        title: 'Word Bubbles',
+        title: 'Words',
         subtitle: 'Uncover key words of this speaker and their impact',
-        icon: 'word-bubbles.svg',
+        icon: 'words.svg',
         speaker: ids.bubbles,
-        src: withSpeaker(rootPrefix + 'widgets/Widgets/Bubbles/index.html', ids.bubbles)
+        src: withSpeaker(rootPrefix + 'widgets/Widgets/Words/index.html', ids.bubbles)
       },
       {
         key: 'topic',

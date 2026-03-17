@@ -104,7 +104,7 @@
   var TOOLS = [
     { key: 'timeline', title: 'Timeline' },
     { key: 'connections', title: 'Connections' },
-    { key: 'word-bubbles', title: 'Word Bubbles' },
+    { key: 'words', title: 'Words' },
     { key: 'conversation-network', title: 'Conversation Network' },
     { key: 'similar-topic-diagram', title: 'Similar Topic Diagram' },
     { key: 'semantic-map', title: 'Semantic Map' },

@@ -5,7 +5,7 @@
 
   function getAssetBase() {
     var rootPrefix = getRootPrefix();
-    var url = new URL(rootPrefix + 'widgets/Widgets/Bubbles', global.location.href).toString();
+    var url = new URL(rootPrefix + 'widgets/Widgets/Words', global.location.href).toString();
     return url.replace(/\/$/, '');
   }
 
@@ -143,7 +143,7 @@
     var assetBase = getAssetBase();
     var root = document.createElement('div');
     root.className = 'vl-bubbles-root';
-    root.innerHTML = '<div class="widget-loading">Loading Word Bubbles...</div>';
+    root.innerHTML = '<div class="widget-loading">Loading Words...</div>';
     container.innerHTML = '';
     container.appendChild(root);
 
@@ -156,11 +156,9 @@
     };
 
     var scripts = [
-      'https://d3js.org/d3.v6.min.js',
-      assetBase + '/scripts/utilities.js',
       assetBase + '/scripts/import_data.js',
       assetBase + '/scripts/main.js',
-      assetBase + '/scripts/draw_graphs.js'
+      assetBase + '/scripts/words-table.js'
     ];
     var resizeState = {
       timer: null,
@@ -239,7 +237,7 @@
         }
       })
       .catch(function (err) {
-        root.innerHTML = '<p>Unable to load Word Bubbles.</p>';
+        root.innerHTML = '<p>Unable to load Words.</p>';
         console.error(err);
       });
 
@@ -261,6 +259,7 @@
   }
 
   var registry = ensureRegistry();
-  registry['word-bubbles'] = { mount: mountBubbles };
+  registry['words'] = { mount: mountBubbles };
   registry['bubbles'] = { mount: mountBubbles };
+  registry['word-bubbles'] = { mount: mountBubbles };
 })(window);

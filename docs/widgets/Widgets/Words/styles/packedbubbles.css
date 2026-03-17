@@ -901,3 +901,159 @@ foreignObject {
     font-size: 1.5rem;
     text-align: center;
 }
+
+
+/* ============================================================
+   Words Table
+   ============================================================ */
+
+.words-info {
+    padding: 0 10px 10px;
+}
+
+.words-info .accordion {
+    margin-bottom: 6px;
+}
+
+.accordion-body {
+    padding: 8px 4px 4px;
+}
+
+#words-table-container {
+    width: 100%;
+    overflow-x: auto;
+    padding: 0 10px 10px;
+    box-sizing: border-box;
+}
+
+.words-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+    table-layout: fixed;
+}
+
+.words-table thead th {
+    text-align: left;
+    padding: 0.5rem 0.75rem;
+    background: var(--color-1);
+    border-bottom: 2px solid var(--color-1-shade);
+    white-space: nowrap;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.words-table th.sortable {
+    cursor: pointer;
+    user-select: none;
+}
+
+.words-table th.sortable:hover {
+    background: var(--color-1-shade);
+}
+
+.words-table th[data-col="name"] { width: 27%; }
+.words-table th[data-col="size"] { width: 18%; }
+.words-table th[data-col="example"] { width: 55%; }
+
+.words-table tbody tr:nth-child(even) td {
+    background-color: var(--color-2);
+}
+
+.words-table td {
+    padding: 0.4rem 0.75rem;
+    border-bottom: 1px solid var(--color-2);
+    vertical-align: middle;
+    overflow: hidden;
+}
+
+/* Count column — proportional bar chart background */
+.wt-count {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    background: linear-gradient(
+        to right,
+        var(--color-1) var(--bar-pct, 0%),
+        transparent var(--bar-pct, 0%)
+    ) !important;
+}
+
+/* Example column — single line, truncated, clickable */
+.wt-example {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    color: var(--text-link-color);
+}
+
+.wt-example:hover {
+    text-decoration: underline;
+}
+
+/* Modal */
+#wt-modal {
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    width: min(90vw, 40rem);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+
+#wt-modal::backdrop {
+    background: rgba(0, 0, 0, 0.45);
+}
+
+.wt-modal-content {
+    position: relative;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.wt-modal-word {
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-transform: capitalize;
+    text-align: center;
+}
+
+.wt-modal-word::before { content: '\201C'; }
+.wt-modal-word::after  { content: '\201D'; }
+
+.wt-modal-text {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #333;
+}
+
+.wt-modal-cite {
+    font-size: 0.8rem;
+    color: #777;
+    text-align: right;
+    font-style: italic;
+    min-height: 0;
+}
+
+.wt-modal-close {
+    position: absolute;
+    top: 0.4rem;
+    right: 0.6rem;
+    background: transparent;
+    border: none;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+    color: #aaa;
+    padding: 0;
+}
+
+.wt-modal-close:hover {
+    color: #333;
+}
