@@ -1351,6 +1351,27 @@ function setupScrollChevrons(scopeRoot) {
         zoomWrapper.appendChild(zoomBoxEl);
         zoomWrapper.appendChild(zoomRightBtn);
         const PAN_AMOUNT = 200;
+
+        function updateZoomChevrons() {
+            const zs = state._eventZoomState;
+            if (!zs) return;
+            const t = d3.zoomTransform(zs.myRect.node());
+            const w = zoomBoxEl.clientWidth;
+            const atLeft = t.x >= -1;
+            const atRight = t.x <= w * (1 - t.k) + 1;
+            if (atLeft) zoomLeftBtn.setAttribute('data-hidden', '');
+            else zoomLeftBtn.removeAttribute('data-hidden');
+            if (atRight) zoomRightBtn.setAttribute('data-hidden', '');
+            else zoomRightBtn.removeAttribute('data-hidden');
+        }
+
+        function bindZoomChevrons() {
+            const zs = state._eventZoomState;
+            if (!zs) return;
+            zs.zoom.on('zoom.chevrons', updateZoomChevrons);
+            updateZoomChevrons();
+        }
+
         zoomLeftBtn.addEventListener('click', () => {
             const zs = state._eventZoomState;
             if (zs) zs.myRect.call(zs.zoom.translateBy, PAN_AMOUNT, 0);
@@ -1359,6 +1380,9 @@ function setupScrollChevrons(scopeRoot) {
             const zs = state._eventZoomState;
             if (zs) zs.myRect.call(zs.zoom.translateBy, -PAN_AMOUNT, 0);
         });
+
+        new MutationObserver(() => setTimeout(bindZoomChevrons, 100)).observe(zoomBoxEl, { childList: true, subtree: false });
+        bindZoomChevrons();
     }
 }
 

@@ -306,6 +306,18 @@ header {
     margin: 0.25rem 0 1rem;
 }
 
+.tool-back-link {
+    display: inline-block;
+    margin: 0.25rem 0 1rem;
+    color: var(--primary-color);
+    font-size: 0.9rem;
+    text-decoration: none;
+}
+
+.tool-back-link:hover {
+    text-decoration: underline;
+}
+
 .tool-section-title {
     margin: 1.25rem 0 0.75rem;
     color: var(--primary-color);

@@ -3,14 +3,25 @@
     return document.documentElement.getAttribute('data-root') || '';
   }
 
-  var TOOLS = [
-    { key: 'timeline', title: 'Timeline' },
-    { key: 'connections', title: 'Connections' },
-    { key: 'words', title: 'Words' },
-    { key: 'conversation-network', title: 'Conversation Network' },
-    { key: 'similar-topic-diagram', title: 'Similar Topic Diagram' },
-    { key: 'semantic-map', title: 'Semantic Map' },
-    { key: 'stylo-xr', title: 'Stylo XR' }
+  var TOOL_GROUPS = [
+    {
+      label: 'Main Tools',
+      tools: [
+        { key: 'timeline', title: 'Timeline' },
+        { key: 'connections', title: 'Connections' },
+        { key: 'words', title: 'Words' }
+      ]
+    },
+    {
+      label: 'Advanced Tools',
+      tools: [
+        { key: '__main__', title: '← Back to main tools' },
+        { key: 'conversation-network', title: 'Conversation Network' },
+        { key: 'similar-topic-diagram', title: 'Similar Topic Diagram' },
+        { key: 'semantic-map', title: 'Semantic Map' },
+        { key: 'stylo-xr', title: 'Stylo XR' }
+      ]
+    }
   ];
 
   function getCurrentTool() {
@@ -39,11 +50,17 @@
     optAll.textContent = 'See All';
     selectEl.appendChild(optAll);
 
-    for (var i = 0; i < TOOLS.length; i++) {
-      var opt = document.createElement('option');
-      opt.value = TOOLS[i].key;
-      opt.textContent = TOOLS[i].title;
-      selectEl.appendChild(opt);
+    for (var g = 0; g < TOOL_GROUPS.length; g++) {
+      var group = TOOL_GROUPS[g];
+      var optgroup = document.createElement('optgroup');
+      optgroup.label = group.label;
+      for (var i = 0; i < group.tools.length; i++) {
+        var opt = document.createElement('option');
+        opt.value = group.tools[i].key;
+        opt.textContent = group.tools[i].title;
+        optgroup.appendChild(opt);
+      }
+      selectEl.appendChild(optgroup);
     }
   }
 
@@ -68,6 +85,13 @@
 
   document.addEventListener('DOMContentLoaded', function () {
     var rootPrefix = getRootPrefix();
+
+    if (window.WidgetShell && typeof window.WidgetShell.initExploreByToolPage === 'function') {
+      window.WidgetShell.initExploreByToolPage();
+    }
+
+    wireSingleOpenAccordions(document.querySelector('.tool-widget') || document.body);
+
     var selectEl = document.getElementById('tool-select');
     if (!selectEl) return;
 
@@ -79,17 +103,11 @@
     selectEl.addEventListener('change', function () {
       var v = selectEl.value;
       if (!v) return;
-      if (v === '__all__') {
+      if (v === '__all__' || v === '__main__') {
         window.location.href = rootPrefix + 'explore-by-tool/';
         return;
       }
       window.location.href = rootPrefix + 'explore-by-tool/' + v + '.html';
     });
-
-    if (window.WidgetShell && typeof window.WidgetShell.initExploreByToolPage === 'function') {
-      window.WidgetShell.initExploreByToolPage();
-    }
-
-    wireSingleOpenAccordions(document.querySelector('.tool-widget') || document.body);
   });
 })();
