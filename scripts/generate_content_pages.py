@@ -18,6 +18,69 @@ SRC_ROOT = REPO_ROOT / "docs"
 CONTENT_ROOT = REPO_ROOT / "content"
 IMAGE_COPY_ROOT = SRC_ROOT / "img"
 _COPIED_IMAGE_MAP: Dict[Path, str] = {}
+
+# Maps content person slug -> widget speaker IDs (mirrors explore-by-person.js PERSON_WIDGET_MAP)
+PERSON_WIDGET_MAP: Dict[str, Dict[str, str]] = {
+    'abinadi-new':    {'bubbles': 'abinadi',          'timeline': 'Abinadi',        'connections': 'Abinadi'},
+    'alma-e':         {'bubbles': 'alma',              'timeline': 'Alma',           'connections': 'Alma'},
+    'alma-y-writing': {'bubbles': 'alma2',             'timeline': 'Alma2',          'connections': 'Alma2'},
+    'amaleki':        {'bubbles': 'amaleki',           'timeline': 'Amaleki',        'connections': 'Amaleki'},
+    'ammon-m':        {'bubbles': 'ammon1',            'timeline': 'Ammon',          'connections': 'Ammon'},
+    'ammon-z':        {'bubbles': 'ammon2',            'timeline': 'Ammon2',         'connections': 'Ammon2'},
+    'ammoron':        {'bubbles': 'ammoron',           'timeline': 'Ammoron',        'connections': 'Ammoron'},
+    'benjamin-new':   {'bubbles': 'benjamin',          'timeline': 'Benjamin',       'connections': 'Benjamin'},
+    'brother-jared':  {'bubbles': 'jared-brother',     'timeline': 'BrotherJared',   'connections': 'BrotherJared'},
+    'cap-moroni':     {'bubbles': 'moroni1',           'timeline': 'CaptainMoroni',  'connections': 'CaptainMoroni'},
+    'christ-america': {'bubbles': 'christ',            'timeline': 'Christ',         'connections': 'ChristAmerica'},
+    'enos':           {'bubbles': 'enos',              'timeline': 'Enos',           'connections': 'Enos'},
+    'giddianhi-new':  {'bubbles': 'giddianhi',         'timeline': 'Giddianhi',      'connections': 'Giddianhi'},
+    'gideon':         {'bubbles': 'gideon',            'timeline': 'Gideon',         'connections': 'Gideon'},
+    'helaman-a':      {'bubbles': 'helaman1',          'timeline': 'Helaman',        'connections': 'Helaman'},
+    'helaman-h':      {'bubbles': 'helaman2',          'timeline': 'Helaman2',       'connections': 'Helaman2'},
+    'isaiah-bofm':    {'bubbles': 'isaiah',            'timeline': 'Isaiah',         'connections': 'Isaiah'},
+    'jacob-l':        {'bubbles': 'jacob',             'timeline': 'Jacob',          'connections': 'Jacob'},
+    'jarom':          {'bubbles': 'jarom',             'timeline': 'Jarom',          'connections': 'Jarom'},
+    'korihor':        {'bubbles': 'korihor',           'timeline': 'Korihor',        'connections': 'Korihor'},
+    'lehi':           {'bubbles': 'lehi',              'timeline': 'Lehi',           'connections': 'Lehi'},
+    'limhi':          {'bubbles': 'limhi',             'timeline': 'Limhi',          'connections': 'Limhi'},
+    'mormon':         {'bubbles': 'mormon',            'timeline': 'Mormon',         'connections': 'Mormon'},
+    'moroni':         {'bubbles': 'moroni2',           'timeline': 'Moroni',         'connections': 'Moroni'},
+    'mosiah':         {'bubbles': 'mosiah',            'timeline': 'Mosiah',         'connections': 'Mosiah'},
+    'nephi-h':        {'bubbles': 'nephi2',            'timeline': 'Nephi2',         'connections': 'Nephi2'},
+    'nephi-l':        {'bubbles': 'nephi1',            'timeline': 'Nephi',          'connections': 'Nephi'},
+    'pahoran':        {'bubbles': 'pahoran',           'timeline': 'Pahoran',        'connections': 'Pahoran'},
+    'samuel':         {'bubbles': 'samuel-lamanite',   'timeline': 'SamuelLamanite', 'connections': 'SamuelLamanite'},
+    'sariah':         {'bubbles': 'sariah',            'timeline': 'Sariah',         'connections': 'Sariah'},
+    'zeniff':         {'bubbles': 'zeniff',            'timeline': 'Zeniff',         'connections': 'Zeniff'},
+    'zenos':          {'bubbles': 'zenos',             'timeline': 'Zenos',          'connections': 'Zenos'},
+}
+
+_WIDGET_TOOLS = [
+    {
+        'key': 'bubbles',
+        'title': 'Words',
+        'subtitle': 'Uncover key words of this speaker and their impact',
+        'icon': 'words.svg',
+        'speaker_field': 'bubbles',
+        'src_path': 'widgets/Widgets/Words/index.html',
+    },
+    {
+        'key': 'timeline',
+        'title': 'Timeline',
+        'subtitle': 'Explore connections between this speaker and events',
+        'icon': 'timeline.svg',
+        'speaker_field': 'timeline',
+        'src_path': 'widgets/Widgets/Timeline/index.html',
+    },
+    {
+        'key': 'connections',
+        'title': 'Connections',
+        'subtitle': 'View social and spiritual connections',
+        'icon': 'connections.svg',
+        'speaker_field': 'connections',
+        'src_path': 'widgets/Widgets/Connections/index.html',
+    },
+]
 _IMAGE_NAME_SOURCES: Dict[str, Path] = {}
 _USED_IMAGE_NAMES: set[str] = set()
 
@@ -427,6 +490,100 @@ def _list_index(
     )
 
 
+def _widget_accordions_html(item_id: str, asset_prefix: str) -> str:
+    ids = PERSON_WIDGET_MAP.get(item_id)
+    if not ids:
+        return ""
+    chevron = html.escape(asset_prefix + "img/chevron-down.svg")
+    blocks: List[str] = []
+    for tool in _WIDGET_TOOLS:
+        speaker = ids.get(tool["speaker_field"], "")
+        if not speaker:
+            continue
+        icon_src = html.escape(asset_prefix + "img/" + tool["icon"])
+        src = html.escape(asset_prefix + tool["src_path"] + "?speaker=" + speaker)
+        widget_key = html.escape(tool["key"])
+        title_e = html.escape(tool["title"])
+        subtitle_e = html.escape(tool["subtitle"])
+        speaker_e = html.escape(speaker)
+        blocks.append(
+            f'  <details class="accordion" data-widget>\n'
+            f'    <summary>\n'
+            f'      <div class="explore-widget-summary">\n'
+            f'        <img class="icon" src="{icon_src}" alt="" aria-hidden="true">\n'
+            f'        <div class="explore-widget-text">\n'
+            f'          <div class="explore-widget-title">{title_e}</div>\n'
+            f'          <div class="explore-widget-subtitle">{subtitle_e}</div>\n'
+            f'        </div>\n'
+            f'      </div>\n'
+            f'      <img class="icon" src="{chevron}" alt="" aria-hidden="true">\n'
+            f'    </summary>\n'
+            f'    <div class="accordion-body">\n'
+            f'      <div class="explore-widget-frame" data-widget-key="{widget_key}" data-widget-title="{title_e}" data-speaker="{speaker_e}" data-src="{src}"></div>\n'
+            f'    </div>\n'
+            f'  </details>'
+        )
+    return "\n".join(blocks)
+
+
+def _widget_wiring_script() -> str:
+    return (
+        "<script>\n"
+        "(function(){\n"
+        "  document.addEventListener('DOMContentLoaded',function(){\n"
+        "    var container=document.querySelector('section.page-content')||document.body;\n"
+        "    var accordions=container.querySelectorAll('details.accordion[data-widget]');\n"
+        "    for(var i=0;i<accordions.length;i++){\n"
+        "      (function(det){\n"
+        "        det.addEventListener('toggle',function(){\n"
+        "          if(!det.open) return;\n"
+        "          var par=det.parentElement;\n"
+        "          if(par){\n"
+        "            var sibs=par.querySelectorAll('details.accordion[data-widget]');\n"
+        "            for(var j=0;j<sibs.length;j++){\n"
+        "              if(sibs[j]!==det&&sibs[j].open) sibs[j].open=false;\n"
+        "            }\n"
+        "          }\n"
+        "          var frame=det.querySelector('.explore-widget-frame');\n"
+        "          if(!frame||frame.querySelector('.widget-shell')) return;\n"
+        "          var src=frame.getAttribute('data-src');\n"
+        "          if(!src) return;\n"
+        "          if(window.WidgetShell&&typeof window.WidgetShell.renderFrame==='function'){\n"
+        "            window.WidgetShell.renderFrame(frame,{\n"
+        "              title:frame.getAttribute('data-widget-title')||'',\n"
+        "              src:src,\n"
+        "              widgetKey:frame.getAttribute('data-widget-key')||'',\n"
+        "              speaker:frame.getAttribute('data-speaker')||'',\n"
+        "              context:'person',\n"
+        "              allowSpeakerSelect:false\n"
+        "            });\n"
+        "          }\n"
+        "        });\n"
+        "      })(accordions[i]);\n"
+        "    }\n"
+        "  });\n"
+        "})();\n"
+        "</script>"
+    )
+
+
+def _person_detail_scripts(item_id: str, asset_prefix: str) -> str:
+    has_widgets = item_id in PERSON_WIDGET_MAP
+    lines: List[str] = []
+    if has_widgets:
+        p = html.escape(asset_prefix)
+        lines += [
+            f'<script src="{p}js/widget-shell.js"></script>',
+            f'<script src="{p}js/widgets/words.mount.js"></script>',
+            f'<script src="{p}js/widgets/timeline.mount.js"></script>',
+            f'<script src="{p}js/widgets/connections.mount.js"></script>',
+        ]
+    lines.append(_auto_open_single_accordion_script())
+    if has_widgets:
+        lines.append(_widget_wiring_script())
+    return "\n".join(lines)
+
+
 def _person_detail(item: Item, *, output_dir: Path, asset_prefix: str) -> str:
     name = html.escape(item.display_name)
     hero_class = "detail-hero detail-hero--people"
@@ -539,6 +696,7 @@ def _person_detail(item: Item, *, output_dir: Path, asset_prefix: str) -> str:
                 f"  <div class=\"detail-actions\"><a class=\"back-link\" href=\"index.html\" aria-label=\"Back to people\" title=\"Back to people\"><img class=\"icon\" src=\"{html.escape(asset_prefix)}img/chevron-left.svg\" alt=\"\" aria-hidden=\"true\"></a></div>",
                 brief_html.rstrip("\n") if brief_html else "",
                 accordion_html,
+                _widget_accordions_html(item.item_id, asset_prefix),
                 "</section>",
                 "",
             ]
@@ -722,7 +880,7 @@ def main(argv: Optional[List[str]] = None) -> int:
             _doc(
                 it.display_name,
                 _person_detail(it, output_dir=src_root / "people", asset_prefix="../"),
-                scripts_html=_auto_open_single_accordion_script(),
+                scripts_html=_person_detail_scripts(it.item_id, "../"),
                 asset_prefix="../",
                 root_prefix="../",
             ),

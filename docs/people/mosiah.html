@@ -101,6 +101,51 @@
         </div>
       </div>
     </details>
+    <details class="accordion" data-widget>
+      <summary>
+        <div class="explore-widget-summary">
+          <img class="icon" src="../img/words.svg" alt="" aria-hidden="true">
+          <div class="explore-widget-text">
+            <div class="explore-widget-title">Words</div>
+            <div class="explore-widget-subtitle">Uncover key words of this speaker and their impact</div>
+          </div>
+        </div>
+        <img class="icon" src="../img/chevron-down.svg" alt="" aria-hidden="true">
+      </summary>
+      <div class="accordion-body">
+        <div class="explore-widget-frame" data-widget-key="bubbles" data-widget-title="Words" data-speaker="mosiah" data-src="../widgets/Widgets/Words/index.html?speaker=mosiah"></div>
+      </div>
+    </details>
+    <details class="accordion" data-widget>
+      <summary>
+        <div class="explore-widget-summary">
+          <img class="icon" src="../img/timeline.svg" alt="" aria-hidden="true">
+          <div class="explore-widget-text">
+            <div class="explore-widget-title">Timeline</div>
+            <div class="explore-widget-subtitle">Explore connections between this speaker and events</div>
+          </div>
+        </div>
+        <img class="icon" src="../img/chevron-down.svg" alt="" aria-hidden="true">
+      </summary>
+      <div class="accordion-body">
+        <div class="explore-widget-frame" data-widget-key="timeline" data-widget-title="Timeline" data-speaker="Mosiah" data-src="../widgets/Widgets/Timeline/index.html?speaker=Mosiah"></div>
+      </div>
+    </details>
+    <details class="accordion" data-widget>
+      <summary>
+        <div class="explore-widget-summary">
+          <img class="icon" src="../img/connections.svg" alt="" aria-hidden="true">
+          <div class="explore-widget-text">
+            <div class="explore-widget-title">Connections</div>
+            <div class="explore-widget-subtitle">View social and spiritual connections</div>
+          </div>
+        </div>
+        <img class="icon" src="../img/chevron-down.svg" alt="" aria-hidden="true">
+      </summary>
+      <div class="accordion-body">
+        <div class="explore-widget-frame" data-widget-key="connections" data-widget-title="Connections" data-speaker="Mosiah" data-src="../widgets/Widgets/Connections/index.html?speaker=Mosiah"></div>
+      </div>
+    </details>
   </section>
   <footer></footer>
   <button class="scroll-top-btn" type="button" aria-label="Back to top">
@@ -109,12 +154,52 @@
     <img class="icon" src="../img/chevron-up.svg" alt="" aria-hidden="true">
   </button>
   <script src="../js/main.js"></script>
+  <script src="../js/widget-shell.js"></script>
+  <script src="../js/widgets/words.mount.js"></script>
+  <script src="../js/widgets/timeline.mount.js"></script>
+  <script src="../js/widgets/connections.mount.js"></script>
   <script>
   (function(){
     var single = document.querySelector('details.accordion[data-auto-open="true"]');
     if(single){
       single.open = true;
     }
+  })();
+  </script>
+  <script>
+  (function(){
+    document.addEventListener('DOMContentLoaded',function(){
+      var container=document.querySelector('section.page-content')||document.body;
+      var accordions=container.querySelectorAll('details.accordion[data-widget]');
+      for(var i=0;i<accordions.length;i++){
+        (function(det){
+          det.addEventListener('toggle',function(){
+            if(!det.open) return;
+            var par=det.parentElement;
+            if(par){
+              var sibs=par.querySelectorAll('details.accordion[data-widget]');
+              for(var j=0;j<sibs.length;j++){
+                if(sibs[j]!==det&&sibs[j].open) sibs[j].open=false;
+              }
+            }
+            var frame=det.querySelector('.explore-widget-frame');
+            if(!frame||frame.querySelector('.widget-shell')) return;
+            var src=frame.getAttribute('data-src');
+            if(!src) return;
+            if(window.WidgetShell&&typeof window.WidgetShell.renderFrame==='function'){
+              window.WidgetShell.renderFrame(frame,{
+                title:frame.getAttribute('data-widget-title')||'',
+                src:src,
+                widgetKey:frame.getAttribute('data-widget-key')||'',
+                speaker:frame.getAttribute('data-speaker')||'',
+                context:'person',
+                allowSpeakerSelect:false
+              });
+            }
+          });
+        })(accordions[i]);
+      }
+    });
   })();
   </script>
 </body>
