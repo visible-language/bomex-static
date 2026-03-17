@@ -1190,7 +1190,8 @@ button.list-row.svf-row {
     position: absolute;
     top: 100%;
     left: 0;
-    width: 100%;
+    width: calc(100% - 2rem);
+    margin-left: 2rem;
     background-color: #d9d9d9;
     z-index: 1000;
     padding: 1rem;
@@ -1200,24 +1201,6 @@ button.list-row.svf-row {
 
 .mobile-menu.active {
     display: block;
-}
-
-.menu-section {
-    margin-bottom: 1rem;
-    border-bottom: 1px solid rgba(0,0,0,0.1);
-    padding-bottom: 0.5rem;
-}
-
-.menu-section:last-child {
-    border-bottom: none;
-}
-
-.menu-section h3 {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    font-size: 1rem;
-    color: #2C4B55;
-    margin-bottom: 0.5rem;
-    padding-left: 0.5rem;
 }
 
 .mobile-menu a.menu-item,

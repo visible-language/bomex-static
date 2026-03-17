@@ -107,7 +107,7 @@ class TimeLineState {
     }
 
     currentEventRectLevel() {
-        return timelineOffsetY + boxOffsetY + this.speakerEvents.length*timelineBoxHeight; 
+        return timelineOffsetY + boxOffsetY + this.speakerEvents.length*timelineBoxHeight;
     }
 
     eventEventLabelLevel() {
@@ -270,7 +270,7 @@ function loadSpeaker(name) {
     state.speakerEvents = [];
     updateMainInfo();
     createTimelineBox();
-    
+
     createTimelineBoxEvents();
     createAltSpeakerList();
 }
@@ -279,7 +279,7 @@ function loadSpeaker(name) {
 function createTimelineFramework() {
     state.initialized = true;
     let svg = d3.select("#svg-lifespan");
-    
+
     let xAxis = svg.append('path')
         .attr('class', 'horz-line')
         .attr('d', 'M 0 ' + state.xAxisLevel() + ' L 1200 ' + state.xAxisLevel());
@@ -339,7 +339,7 @@ function createTimelineFramework() {
             .style('transform', 'translateY(0px)')
             .duration(1000)
             .delay(2900)
-    
+
 }
 
 function createCompareAnchors(svg) {
@@ -364,7 +364,7 @@ function createCompareAnchors(svg) {
         .append('rect')
             .attr('x', d => d.dateNum + timelineStart -1)
             .attr('class', 'lowerhalf-marker')
-            .attr('y', d => getAnchorMarkerYLevel(d)) 
+            .attr('y', d => getAnchorMarkerYLevel(d))
             .attr('width', 2)
             .attr('height', d => getAnchorMarkerHeight(d))
 }
@@ -542,9 +542,9 @@ function adjustTimelineFramework() {
     d3.selectAll('.lowerhalf-date').attr('y', state.eventDateLevel());
     d3.selectAll('.lowerhalf-marker').attr('y', d => getAnchorMarkerYLevel(d));
     d3.select('.peacefulYears').attr('y', state.eventTickLevel() + 4.4);
-    
+
     d3.selectAll('.date').attr('y', state.xTickLabelLevel());
-    
+
     d3.selectAll(".tick").attr('d', function(d) { return getTickPath(d) });
 
     d3.select('.horz-line')
@@ -632,7 +632,7 @@ function removeAltTimelineBox(speaker) {
     document.querySelector(`#${speaker}-button`).style.backgroundColor = '#ffffff';
     d3.select(`#${speaker}-rect`).remove();
     d3.select(`#${speaker}-text`).remove();
-    
+
     let after = false;
 
     for (let i = 0; i < state.altSpeakers.length; i++) {
@@ -641,7 +641,7 @@ function removeAltTimelineBox(speaker) {
             continue;
         }
         if (after) {
-            // All speakers that were placed after the speaker that 
+            // All speakers that were placed after the speaker that
             // is being removed need to be moved up one spot.
             let newYLevel = timelineOffsetY + boxOffsetY + i*timelineBoxHeight;
             d3.select(`#${state.altSpeakers[i]}-rect`).attr('y', newYLevel);
@@ -690,7 +690,7 @@ function removeTempTimelineBox(speaker) {
     if (state.altSpeakers.includes(speaker)) {
         document.querySelector(`#${speaker}-rect`).style.strokeWidth = '1px';
         return;
-    } 
+    }
 }
 
 function getNumFromDate(date) {
@@ -835,7 +835,7 @@ function createTimelineFrameworkEvents() {
     let svg = d3.select("#svg-events")
         .attr("preserveAspectRation", "xMidYmid meet")
 
-    
+
     svg.append('path')
         .attr('class', 'horz-line-event')
         .attr('d', 'M 0 ' + state.xEventAxisLevel() + ' L 1200 ' + state.xEventAxisLevel());
@@ -887,7 +887,7 @@ function createTimelineFrameworkEvents() {
         .append('rect')
             .attr('x', d => d.dateNum + timelineStart - 2)
             .attr('class', 'lowerhalf-marker-event')
-            .attr('y', d => state.eventEventTickLevel()) 
+            .attr('y', d => state.eventEventTickLevel())
             .attr('width', 4)
             .attr('height', 30)
 }
@@ -903,7 +903,7 @@ function createTimelineBoxEvents() {
         years.push(year);
         eventYears.push(event.year);
         eventDescriptions.push(event.description);
-        
+
         state.speakerEvents.push(event);
         adjustEventTimelineFramework();
     });
@@ -918,7 +918,7 @@ function adjustEventTimelineFramework() {
     d3.selectAll('.lowerhalf-text-event').attr('y', state.eventEventLabelLevel());
     d3.selectAll('.lowerhalf-date-event').attr('y', state.eventEventDateLevel());
     d3.selectAll('.lowerhalf-marker-event').attr('y', state.eventEventTickLevel());
-    
+
     d3.selectAll('.date-event').attr('y', state.xEventTickLabelLevel());
     d3.selectAll(".tick-event").attr('d', function(d) { return getEventTickPath(d) });
 
@@ -1078,7 +1078,7 @@ function createGrid(eventYears, eventDescriptions, originalEventYears, years) {
                     break;
                 case 1:
                     incrementer = -35;
-                    shift = -35; 
+                    shift = -35;
                     textH = 17;
                     textW = 180;
                     break;
@@ -1137,9 +1137,9 @@ function createGrid(eventYears, eventDescriptions, originalEventYears, years) {
                     textH = 30;
                     break;
                 default:
-                    break;    
+                    break;
             }
-            
+
             drawAnchors(newX(year), i, incrementer, textW, textH, shift, newX);
         })
     }
@@ -1185,11 +1185,11 @@ function createGrid(eventYears, eventDescriptions, originalEventYears, years) {
             var transform = d3.zoomIdentity.translate(-averageYear + (averageYear /1.78) + (-218 * ((currentWidth / 564) - 1)) ,0);
             myRect.call(zoom.transform, transform);
         }
-        
+
         zoom.scaleTo(myRect.transition().duration(1000), 2);
 
     }
-    
+
     drawChart();
     state._eventDrawChart = drawChart;
     state._eventZoomState = { zoom, myRect };
@@ -1245,7 +1245,7 @@ function createGrid(eventYears, eventDescriptions, originalEventYears, years) {
                 .style("font-size", "11px")
                 .style("background-color", "#d6e6e6")
                 .html(anchorDescriptions[i])
- 
+
         if (i == 10) {
             xAxis.append("foreignObject")
             .attr("class", "yearsOfPeace")
