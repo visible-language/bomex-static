@@ -49,7 +49,12 @@
 
         if (!spotlightLink || !people.length) return;
 
-        var dayIndex = Math.floor(Date.now() / 86400000);
+        var today = new Date();
+        var dayIndex = Math.floor(new Date(
+          today.getFullYear(),
+          today.getMonth(),
+          today.getDate()
+        ).getTime() / 86400000);
         var person = people[dayIndex % people.length];
         spotlightLink.setAttribute('href', 'people/' + person.slug + '.html');
         spotlightLink.textContent = 'Meet ' + person.name + ' ';
