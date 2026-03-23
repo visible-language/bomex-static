@@ -97,6 +97,123 @@ header {
     z-index: 1001;
 }
 
+.header-links {
+    display: none;
+}
+
+.header-links a {
+    color: var(--primary-color);
+    font-size: 1rem;
+    text-decoration: none;
+}
+
+.spotlight-bar {
+    background-color: var(--primary-color);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.4rem 0.8rem;
+}
+
+.spotlight-bar-inner {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-width: 0;
+}
+
+.spotlight-bar-label {
+    font-size: 1rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.spotlight-bar-message {
+    font-size: 0.95rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.spotlight-bar-link {
+    background-color: #c58b52;
+    color: #1f2f35;
+    border-radius: 999px;
+    padding: 0.15rem 0.6rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+}
+
+.spotlight-bar-close {
+    background: transparent;
+    border: 0;
+    color: var(--white);
+    font-size: 1.25rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.home-hero {
+    background-color: #555;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url('../img/book_glasses_type.png');
+    background-size: cover;
+    background-position: center;
+    min-height: 320px;
+    display: flex;
+    align-items: center;
+}
+
+.home-hero-content {
+    width: 100%;
+    max-width: 64rem;
+    margin: 0 auto;
+    padding: 1.5rem 1rem;
+}
+
+.home-hero h1 {
+    color: var(--white);
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    line-height: 1.12;
+}
+
+.home-desktop-links {
+    display: none;
+}
+
+.home-desktop-tools {
+    display: none;
+}
+
+.home-desktop-card {
+    color: var(--primary-color);
+}
+
+.home-desktop-card-image {
+    width: 100%;
+    height: 170px;
+    object-fit: cover;
+    border-radius: 6px;
+    display: block;
+}
+
+.home-desktop-card-title {
+    margin-top: 0.7rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 2.2rem;
+    line-height: 1.05;
+}
+
+.home-desktop-card-subtitle {
+    margin-top: 0.35rem;
+    font-size: 1rem;
+    line-height: 1.35;
+    color: var(--primary-color);
+}
+
 .logo {
     display: flex;
     align-items: center;
@@ -129,6 +246,85 @@ header {
 .menu-icon .icon {
     width: 1.5rem;
     height: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+    header {
+        padding: 0.9rem 1.8rem;
+    }
+
+    .logo {
+        gap: 0.7rem;
+    }
+
+    .header-links {
+        display: flex;
+        align-items: center;
+        gap: 2.4rem;
+        margin-left: auto;
+        margin-right: 0.9rem;
+    }
+
+    .header-links a {
+        line-height: 1;
+    }
+
+    .menu-icon {
+        margin-left: 0.5rem;
+        padding-left: 0.2rem;
+    }
+
+    .mobile-menu .home-link {
+        display: none;
+    }
+
+    .mobile-menu {
+        left: auto;
+        right: 1.8rem;
+        width: 18.5rem;
+        margin-left: 0;
+        padding: 0.85rem;
+    }
+
+    .spotlight-bar {
+        padding-left: 1.6rem;
+        padding-right: 1.2rem;
+    }
+
+    .home-hero {
+        min-height: 460px;
+    }
+
+    .home-hero-content {
+        padding-left: 1.8rem;
+        padding-right: 1.8rem;
+    }
+
+    .home-desktop-links {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(260px, 300px));
+        justify-content: center;
+        gap: 2.5rem;
+        margin: 0;
+        padding: 2.2rem 3rem 1.5rem;
+        background-color: #ececec;
+    }
+
+    .home-desktop-tools {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(260px, 300px));
+        justify-content: center;
+        gap: 2.5rem;
+        margin: 0;
+        padding: 0 3rem 2.4rem;
+        background-color: #ececec;
+    }
+
+    .understand-section,
+    .explore-section,
+    .explore-tool-section {
+        display: none;
+    }
 }
 
 /* Simple inner pages */
@@ -1325,6 +1521,20 @@ button.list-row.svf-row {
     margin-bottom: 1rem;
     border-bottom: 1px solid rgba(0,0,0,0.1);
     padding-bottom: 0.5rem;
+}
+
+@media (min-width: 1024px) {
+    .mobile-menu {
+        left: auto;
+        right: 1.8rem;
+        width: 18.5rem;
+        margin-left: 0;
+        padding: 0.85rem;
+    }
+
+    .mobile-menu .home-link {
+        display: none;
+    }
 }
 
 /* Header adjustments */

@@ -29,6 +29,9 @@
   document.addEventListener('DOMContentLoaded', function () {
     var selectEl = document.getElementById('home-person-select');
     var spotlightLink = document.getElementById('spotlight-link');
+    var spotlightMessage = document.getElementById('spotlight-message');
+    var spotlightClose = document.getElementById('spotlight-close');
+    var spotlightBar = document.getElementById('spotlight-bar');
     if (!selectEl && !spotlightLink) return;
 
     fetchPeopleList()
@@ -57,18 +60,29 @@
         ).getTime() / 86400000);
         var person = people[dayIndex % people.length];
         spotlightLink.setAttribute('href', 'people/' + person.slug + '.html');
-        spotlightLink.textContent = 'Meet ' + person.name + ' ';
 
-        var icon = document.createElement('img');
-        icon.className = 'icon';
-        icon.src = './img/chevron-right.svg';
-        icon.alt = '';
-        icon.setAttribute('aria-hidden', 'true');
-        spotlightLink.appendChild(icon);
+        if (spotlightMessage) {
+          spotlightMessage.textContent = 'Meet ' + person.name;
+        } else {
+          spotlightLink.textContent = 'Meet ' + person.name + ' ';
+
+          var icon = document.createElement('img');
+          icon.className = 'icon';
+          icon.src = './img/chevron-right.svg';
+          icon.alt = '';
+          icon.setAttribute('aria-hidden', 'true');
+          spotlightLink.appendChild(icon);
+        }
       })
       .catch(function () {
         // Leave the default option if fetch fails.
       });
+
+    if (spotlightClose && spotlightBar) {
+      spotlightClose.addEventListener('click', function () {
+        spotlightBar.style.display = 'none';
+      });
+    }
 
     if (selectEl) {
       selectEl.addEventListener('change', function () {
