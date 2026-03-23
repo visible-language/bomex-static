@@ -864,6 +864,46 @@ footer {
     position: relative;
 }
 
+.content-detail-layout {
+    display: block;
+}
+
+.content-index-sidebar {
+    display: none;
+}
+
+.content-index-sidebar-title {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 2.5rem;
+    line-height: 1.05;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.content-index-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.content-index-link {
+    display: block;
+    color: var(--primary-color);
+    font-size: 1.05rem;
+    padding: 0.5rem 0.65rem;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+.content-index-link:hover {
+    background-color: var(--light-bg);
+}
+
+.content-index-link.is-active {
+    background-color: #d9d9d9;
+    font-weight: 600;
+}
+
 .detail-hero--people {
     background-image: url('../img/angel-moroni-statue.png');
 }
@@ -1194,6 +1234,34 @@ button.list-row.svf-row {
 @media (max-width: 340px) {
     .people-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (min-width: 1200px) {
+    .content-detail-layout {
+        display: grid;
+        grid-template-columns: 290px minmax(0, 1fr);
+        align-items: start;
+    }
+
+    .content-index-sidebar {
+        display: block;
+        position: sticky;
+        top: calc(var(--sticky-header-offset) + 0.25rem);
+        max-height: calc(100vh - var(--sticky-header-offset) - 0.5rem);
+        overflow-y: auto;
+        border-right: 1px solid rgba(44, 75, 85, 0.15);
+        padding: 1rem 1rem 1.5rem;
+        background-color: #f3f3f3;
+    }
+
+    .content-detail-main {
+        min-width: 0;
+    }
+
+    .content-detail-main .detail-hero-title,
+    .content-detail-main .content-title {
+        top: var(--sticky-header-offset);
     }
 }
 
