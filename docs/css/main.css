@@ -149,6 +149,10 @@ header {
     text-decoration: none;
 }
 
+a#spotlight-link {
+    text-align: center;
+}
+
 .spotlight-bar-close {
     position: absolute;
     right: 0.8rem;
