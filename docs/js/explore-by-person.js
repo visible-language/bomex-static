@@ -91,7 +91,7 @@
     var widgetsMessage = [
       {
         key: 'bubbles',
-        title: 'Words',
+        title: 'Word frequencies',
         subtitle: 'Uncover key words of this speaker and their impact',
         icon: 'words.svg',
         speaker: ids.bubbles,

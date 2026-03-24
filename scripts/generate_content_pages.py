@@ -58,7 +58,7 @@ PERSON_WIDGET_MAP: Dict[str, Dict[str, str]] = {
 _WIDGET_TOOLS = [
     {
         'key': 'bubbles',
-        'title': 'Words',
+        'title': 'Word frequencies',
         'subtitle': 'Uncover key words of this speaker and their impact',
         'icon': 'words.svg',
         'speaker_field': 'bubbles',

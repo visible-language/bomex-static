@@ -9,7 +9,7 @@
       tools: [
         { key: 'timeline', title: 'Timeline' },
         { key: 'connections', title: 'Connections' },
-        { key: 'words', title: 'Words' }
+        { key: 'words', title: 'Word frequencies' }
       ]
     },
     {

@@ -123,7 +123,7 @@
   var TOOLS = [
     { key: 'timeline', title: 'Timeline' },
     { key: 'connections', title: 'Connections' },
-    { key: 'words', title: 'Words' },
+    { key: 'words', title: 'Word frequencies' },
     { key: 'conversation-network', title: 'Conversation Network' },
     { key: 'similar-topic-diagram', title: 'Similar Topic Diagram' },
     { key: 'semantic-map', title: 'Semantic Map' },
