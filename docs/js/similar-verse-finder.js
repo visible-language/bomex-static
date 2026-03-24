@@ -126,6 +126,130 @@
     return out;
   }
 
+  function findBookByKey(bookKey) {
+    var books = getBooks();
+    for (var i = 0; i < books.length; i++) {
+      if (books[i].key === bookKey) return books[i];
+    }
+    return null;
+  }
+
+  function renderResultsVerseSidebar(state, navLevel, handlers) {
+    var sidebarEl = document.getElementById('svf-verse-sidebar');
+    var listEl = document.getElementById('svf-verse-list');
+    var rootCrumbEl = document.getElementById('svf-crumb-root');
+    var bookCrumbEl = document.getElementById('svf-crumb-book');
+    var chapterCrumbEl = document.getElementById('svf-crumb-chapter');
+
+    if (!sidebarEl || !listEl || !rootCrumbEl || !bookCrumbEl || !chapterCrumbEl) return;
+    if (!state || !state.bookKey || !state.chapter) {
+      sidebarEl.style.display = 'none';
+      return;
+    }
+
+    var book = findBookByKey(state.bookKey);
+    if (!book) {
+      sidebarEl.style.display = 'none';
+      return;
+    }
+
+    sidebarEl.style.removeProperty('display');
+  var bookLabel = titleCaseBookKey(state.bookKey);
+    rootCrumbEl.textContent = 'Book of Mormon';
+  bookCrumbEl.textContent = bookLabel;
+    chapterCrumbEl.textContent = 'Chap. ' + state.chapter;
+
+  var showBook = navLevel !== 'books';
+  var showChapter = navLevel === 'verses';
+  bookCrumbEl.classList.toggle('is-hidden', !showBook);
+  chapterCrumbEl.classList.toggle('is-hidden', !showChapter);
+
+    var rootIsCurrent = !showBook;
+    var bookIsCurrent = showBook && !showChapter;
+    var chapterIsCurrent = showChapter;
+
+    rootCrumbEl.classList.toggle('is-current', rootIsCurrent);
+    bookCrumbEl.classList.toggle('is-current', bookIsCurrent);
+    chapterCrumbEl.classList.toggle('is-current', chapterIsCurrent);
+
+    rootCrumbEl.onclick = function (e) {
+      e.preventDefault();
+      if (rootIsCurrent) return;
+      handlers.onChooseBooks();
+    };
+    bookCrumbEl.onclick = function (e) {
+      e.preventDefault();
+      if (bookIsCurrent) return;
+      handlers.onChooseChapters();
+    };
+    chapterCrumbEl.onclick = function (e) {
+      e.preventDefault();
+      if (chapterIsCurrent) return;
+      handlers.onChooseChapters();
+    };
+
+    var items = [];
+    var i;
+    if (navLevel === 'books') {
+      var books = getBooks();
+      for (i = 0; i < books.length; i++) {
+        var bookItemLabel = titleCaseBookKey(books[i].key);
+        var bookActiveClass = books[i].key === state.bookKey ? ' is-active' : '';
+        items.push(
+          '<button type="button" class="svf-verse-item' + bookActiveClass + '" data-book="' + escapeText(books[i].key) + '">' +
+            escapeText(bookItemLabel) +
+          '</button>'
+        );
+      }
+
+      listEl.innerHTML = items.join('');
+      var bookButtons = listEl.querySelectorAll('button[data-book]');
+      for (i = 0; i < bookButtons.length; i++) {
+        bookButtons[i].addEventListener('click', function () {
+          handlers.onSelectBook(this.getAttribute('data-book'));
+        });
+      }
+      return;
+    }
+
+    if (navLevel === 'chapters') {
+      var chapterCount = book.versesByChapter.length;
+      for (i = 1; i <= chapterCount; i++) {
+        var chapterActiveClass = i === state.chapter ? ' is-active' : '';
+        items.push(
+          '<button type="button" class="svf-verse-item' + chapterActiveClass + '" data-chapter="' + i + '">Chapter ' + i + '</button>'
+        );
+      }
+
+      listEl.innerHTML = items.join('');
+      var chapterButtons = listEl.querySelectorAll('button[data-chapter]');
+      for (i = 0; i < chapterButtons.length; i++) {
+        chapterButtons[i].addEventListener('click', function () {
+          handlers.onSelectChapter(parseInt(this.getAttribute('data-chapter'), 10));
+        });
+      }
+      return;
+    }
+
+    var verseCount = book.versesByChapter[state.chapter - 1] || 0;
+    for (i = 1; i <= verseCount; i++) {
+      var activeClass = (i === state.verse) ? ' is-active' : '';
+      items.push(
+        '<button type="button" class="svf-verse-item' + activeClass + '" data-verse="' + i + '">Verse ' + i + '</button>'
+      );
+    }
+
+    listEl.innerHTML = items.join('');
+    var verseButtons = listEl.querySelectorAll('button[data-verse]');
+    for (i = 0; i < verseButtons.length; i++) {
+      verseButtons[i].addEventListener('click', function () {
+        var verse = parseInt(this.getAttribute('data-verse'), 10);
+        if (!verse || verse === state.verse) return;
+        handlers.onSelectVerse(verse);
+      });
+    }
+  }
+
   function renderBooks(container, rootPrefix, onPick) {
     var books = getBooks();
     var chevronSrc = rootPrefix + 'img/chevron-right.svg';
@@ -204,7 +328,121 @@
     // Results page: no selector input, just render widget
     if (!inputEl || !submitEl) {
       var initialRef = getQueryParam('reference') || '';
-      renderWidget(panelEl, rootPrefix, initialRef);
+      var hasInitialRef = !!initialRef;
+      var current = clampState(parseReference(initialRef));
+      var navLevel = 'books';
+
+      var sidebarEl = document.getElementById('svf-verse-sidebar');
+      var sidebarToggleEl = document.getElementById('svf-sidebar-toggle');
+      var sidebarCloseEl = document.getElementById('svf-sidebar-close');
+      var sidebarBackdropEl = document.getElementById('svf-sidebar-backdrop');
+
+      function setSidebarOpen(isOpen) {
+        if (!sidebarEl) return;
+        sidebarEl.classList.toggle('is-open', !!isOpen);
+        if (sidebarBackdropEl) sidebarBackdropEl.classList.toggle('is-open', !!isOpen);
+        if (sidebarToggleEl) sidebarToggleEl.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      }
+
+      function isMobileViewport() {
+        return !!(window.matchMedia && window.matchMedia('(max-width: 1023px)').matches);
+      }
+
+      if (!current.bookKey) {
+        var books = getBooks();
+        if (books.length) {
+          current = {
+            bookKey: books[0].key,
+            chapter: 1,
+            verse: 1
+          };
+        }
+      } else if (!current.chapter) {
+        current = {
+          bookKey: current.bookKey,
+          chapter: 1,
+          verse: 1
+        };
+      } else if (!current.verse) {
+        current = {
+          bookKey: current.bookKey,
+          chapter: current.chapter,
+          verse: 1
+        };
+      }
+
+      if (hasInitialRef) {
+        var parsed = clampState(parseReference(initialRef));
+        if (parsed.bookKey && !parsed.chapter) navLevel = 'chapters';
+        else if (parsed.bookKey && parsed.chapter) navLevel = 'verses';
+      }
+
+      if (isMobileViewport()) {
+        setSidebarOpen(true);
+      }
+
+      if (sidebarToggleEl) {
+        sidebarToggleEl.addEventListener('click', function () {
+          var isOpen = sidebarEl && sidebarEl.classList.contains('is-open');
+          setSidebarOpen(!isOpen);
+        });
+      }
+
+      if (sidebarCloseEl) {
+        sidebarCloseEl.addEventListener('click', function () {
+          setSidebarOpen(false);
+        });
+      }
+
+      if (sidebarBackdropEl) {
+        sidebarBackdropEl.addEventListener('click', function () {
+          setSidebarOpen(false);
+        });
+      }
+
+      function renderSidebarOnly() {
+        renderResultsVerseSidebar(current, navLevel, {
+          onChooseBooks: function () {
+            navLevel = 'books';
+            renderSidebarOnly();
+          },
+          onChooseChapters: function () {
+            navLevel = 'chapters';
+            renderSidebarOnly();
+          },
+          onChooseVerses: function () {
+            navLevel = 'verses';
+            renderSidebarOnly();
+          },
+          onSelectBook: function (bookKey) {
+            current = clampState({ bookKey: bookKey, chapter: 1, verse: 1 });
+            navLevel = 'chapters';
+            applyCurrentState();
+          },
+          onSelectChapter: function (chapter) {
+            current = clampState({ bookKey: current.bookKey, chapter: chapter, verse: 1 });
+            navLevel = 'verses';
+            applyCurrentState();
+          },
+          onSelectVerse: function (verse) {
+            current = clampState({ bookKey: current.bookKey, chapter: current.chapter, verse: verse });
+            navLevel = 'verses';
+            applyCurrentState();
+            if (isMobileViewport()) {
+              setSidebarOpen(false);
+            }
+          }
+        });
+      }
+
+      function applyCurrentState() {
+        var ref = prettyRef(current);
+        setQueryParam('reference', ref);
+        renderWidget(panelEl, rootPrefix, ref);
+        renderSidebarOnly();
+      }
+
+      applyCurrentState();
       return;
     }
 
@@ -231,7 +469,7 @@
 
       if (state.bookKey && state.chapter && state.verse) {
         var ref = prettyRef(state);
-        window.location.href = 'results.html?reference=' + encodeURIComponent(ref);
+        window.location.href = 'index.html?reference=' + encodeURIComponent(ref);
         return;
       }
 

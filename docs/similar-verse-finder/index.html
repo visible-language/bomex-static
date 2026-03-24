@@ -17,12 +17,25 @@
   </section>
 
   <section class="page-content page-content--wide">
-    <div class="input-wrapper svf-search">
-      <input id="svf-input" type="text" class="text-input" placeholder="e.g. 1 Nephi 1:1" aria-label="Verse reference">
-      <button id="svf-submit" class="search-icon-btn" type="button" aria-label="Search"><img class="icon" src="../img/search.svg" alt="" aria-hidden="true"></button>
-    </div>
+    <div class="svf-results-layout">
+      <aside class="svf-verse-sidebar is-open" id="svf-verse-sidebar" aria-label="Verse picker">
+        <div class="svf-verse-sidebar-head">
+          <button id="svf-sidebar-close" class="svf-sidebar-close" type="button" aria-label="Close verse navigation">&times;</button>
+          <nav class="svf-breadcrumbs" aria-label="Verse navigation">
+            <a id="svf-crumb-root" class="svf-crumb" href="#">Book of Mormon</a>
+            <a id="svf-crumb-book" class="svf-crumb" href="#">Book</a>
+            <a id="svf-crumb-chapter" class="svf-crumb" href="#">Chapter</a>
+          </nav>
+        </div>
+        <div id="svf-verse-list" class="svf-verse-list" role="listbox" aria-label="Verse navigation list"></div>
+      </aside>
 
-    <div id="svf-panel" class="svf-panel"></div>
+      <div class="svf-results-main">
+        <button id="svf-sidebar-toggle" class="svf-sidebar-toggle" type="button" aria-controls="svf-verse-sidebar" aria-expanded="true">Browse Verses</button>
+        <div id="svf-panel" class="svf-panel"></div>
+      </div>
+    </div>
+    <div id="svf-sidebar-backdrop" class="svf-sidebar-backdrop is-open" aria-hidden="true"></div>
   </section>
 
   <footer></footer>

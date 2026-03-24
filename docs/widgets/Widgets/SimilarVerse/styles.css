@@ -157,7 +157,7 @@ h1{
     font-weight: 1000;
 }
 #search{
-    width:65%;
+    width:97%;
     max-width: 100%;
     min-width: 0;
     display: grid;
@@ -324,7 +324,6 @@ button:hover{
 
 @media screen and (max-width: 1000px) {
     #search{
-        width: 90%;
         border: none;
     }
 
@@ -335,7 +334,6 @@ button:hover{
 @media screen and (max-width: 550px) {
 
     #search{
-        width: 95%;
         grid-template-columns: 100%;
         grid-template-rows: min-content auto;
         grid-template-areas: "left"

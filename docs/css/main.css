@@ -1358,6 +1358,221 @@ button.list-row.svf-row {
     width: 100%;
 }
 
+.svf-results-layout {
+    display: block;
+}
+
+.svf-verse-sidebar {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(44, 75, 85, 0.2);
+    border-radius: 14px;
+    overflow: hidden;
+    background-color: #f2f3f4;
+    min-height: 720px;
+}
+
+.svf-verse-list {
+    max-height: 100%;
+}
+
+.svf-verse-item {
+    border: none;
+    background-color: transparent;
+    width: 100%;
+    text-align: left;
+    color: var(--primary-color);
+    padding: 0.65rem 0.75rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.02rem;
+}
+
+.svf-verse-item:hover {
+    background-color: rgba(44, 75, 85, 0.1);
+}
+
+.svf-verse-item.is-active {
+    background-color: rgba(44, 75, 85, 0.2);
+    font-weight: 600;
+}
+
+.svf-sidebar-toggle {
+    border: 1px solid rgba(44, 75, 85, 0.25);
+    background-color: #e8eef0;
+    color: var(--primary-color);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.svf-sidebar-close {
+    display: none;
+    position: absolute;
+    top: 0.2rem;
+    right: 0.45rem;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: var(--primary-color);
+    font-size: 2rem;
+    line-height: 1;
+    font-weight: 400;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.svf-sidebar-toggle {
+    display: none;
+    margin-bottom: 0.75rem;
+    padding: 0.55rem 0.8rem;
+}
+
+.svf-sidebar-backdrop {
+    display: none;
+}
+
+.svf-breadcrumbs {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 0.2rem;
+    margin: 0;
+    min-width: 0;
+}
+
+.svf-crumb {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.35rem;
+    padding: 0.3rem 0.72rem;
+    color: var(--primary-color);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    font-size: 0.79rem;
+    line-height: 1;
+    background-color: #aec1ca;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    clip-path: polygon(0 0, calc(100% - 0.5rem) 0, 100% 50%, calc(100% - 0.5rem) 100%, 0 100%, 0.5rem 50%);
+}
+
+#svf-crumb-root {
+    max-width: 9.8rem;
+}
+
+#svf-crumb-book {
+    max-width: 5.9rem;
+}
+
+#svf-crumb-chapter {
+    max-width: 5rem;
+}
+
+.svf-crumb.is-hidden {
+    display: none;
+}
+
+.svf-crumb.is-current {
+    text-decoration: none;
+    pointer-events: none;
+    cursor: default;
+}
+
+@media (max-width: 1023px) {
+    .svf-results-layout {
+        position: relative;
+    }
+
+    .svf-verse-sidebar {
+        position: fixed;
+        top: var(--header-height);
+        left: 0;
+        width: min(86vw, 24rem);
+        height: calc(100vh - var(--header-height));
+        min-height: 0;
+        border-radius: 0 14px 14px 0;
+        border-left: none;
+        transform: translateX(-105%);
+        transition: transform 0.25s ease;
+        z-index: 1200;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
+    }
+
+    .svf-verse-sidebar.is-open {
+        transform: translateX(0);
+    }
+
+    .svf-verse-sidebar-head {
+        position: relative;
+        padding: 0.65rem 2.2rem 0.55rem 0.8rem;
+    }
+
+    .svf-sidebar-toggle {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .svf-sidebar-close {
+        display: block;
+    }
+
+    .svf-sidebar-backdrop {
+        position: fixed;
+        inset: 0;
+        z-index: 1100;
+        background-color: rgba(0, 0, 0, 0.28);
+    }
+
+    .svf-sidebar-backdrop.is-open {
+        display: block;
+    }
+}
+
+@media (min-width: 1024px) {
+    .svf-results-layout {
+        display: grid;
+        grid-template-columns: 19rem minmax(0, 1fr);
+        gap: 1rem;
+        align-items: stretch;
+    }
+
+    .svf-verse-sidebar {
+        position: static;
+        transform: none;
+        box-shadow: none;
+        border-left: 1px solid rgba(44, 75, 85, 0.2);
+        height: auto;
+    }
+
+    .svf-verse-sidebar-head {
+        padding: 0.85rem 1rem;
+        border-bottom: 1px solid rgba(44, 75, 85, 0.14);
+        background-image: linear-gradient(to bottom, rgba(44, 75, 85, 0.07), rgba(44, 75, 85, 0.02));
+    }
+
+    .svf-sidebar-toggle,
+    .svf-sidebar-close,
+    .svf-sidebar-backdrop {
+        display: none !important;
+    }
+
+    .svf-verse-list {
+        padding: 0.75rem;
+        overflow-y: auto;
+        flex: 1;
+    }
+
+    .svf-results-main {
+        min-width: 0;
+    }
+}
+
 .svf-iframe {
     width: 100%;
     height: 720px;
