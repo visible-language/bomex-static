@@ -62,9 +62,9 @@
         spotlightLink.setAttribute('href', 'people/' + person.slug + '.html');
 
         if (spotlightMessage) {
-          spotlightMessage.textContent = 'Meet ' + person.name;
+          spotlightMessage.textContent = person.name;
         } else {
-          spotlightLink.textContent = 'Meet ' + person.name + ' ';
+          spotlightLink.textContent = person.name + ' ';
 
           var icon = document.createElement('img');
           icon.className = 'icon';

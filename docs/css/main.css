@@ -147,10 +147,14 @@ header {
     font-weight: 600;
     font-size: 0.9rem;
     text-decoration: none;
+    white-space: nowrap;
+    width: max-content;
+    flex-shrink: 0;
 }
 
 a#spotlight-link {
     text-align: center;
+    line-height: 0.9;
 }
 
 .spotlight-bar-close {

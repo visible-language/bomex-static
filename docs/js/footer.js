@@ -41,7 +41,7 @@
     const pageUrl = window.location.href;
     const payload = {
         title: `SUBMISSION: ${title}`,
-        body: `Submission from website form on: ${pageUrl}\n\n${details}`
+        body: `This issue was created directly from the website footer suggestion form on: ${pageUrl}\n\n${details}`
     };
     try {
       const res = await fetch('https://api.github.com/repos/visible-language/bomex-static/issues', {
