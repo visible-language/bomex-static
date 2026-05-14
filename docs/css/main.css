@@ -229,6 +229,217 @@ a#spotlight-link {
     color: var(--primary-color);
 }
 
+.scripture-search-section {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 1.4rem 1rem 1.7rem;
+}
+
+.scripture-search-form {
+    max-width: 46rem;
+    margin: 0 auto;
+}
+
+.scripture-search-label {
+    display: block;
+    margin-bottom: 0.55rem;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1.35rem;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.scripture-search-row {
+    position: relative;
+    display: block;
+}
+
+.scripture-search-input {
+    width: 100%;
+    min-width: 0;
+    border: 0;
+    border-radius: 999px;
+    padding: 0.72rem 3rem 0.72rem 1.1rem;
+    color: var(--primary-color);
+    font-size: 1rem;
+    background-color: #E8E8E8;
+    box-shadow: inset 0 0 0 1px rgba(44, 75, 85, 0.08);
+}
+
+.scripture-search-input:focus {
+    outline: 2px solid rgba(44, 75, 85, 0.35);
+    outline-offset: 2px;
+}
+
+.scripture-search-input::placeholder {
+    color: rgba(44, 75, 85, 0.55);
+}
+
+.scripture-search-submit {
+    position: absolute;
+    top: 50%;
+    right: 0.35rem;
+    transform: translateY(-50%);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 50%;
+    width: 2.05rem;
+    height: 2.05rem;
+    padding: 0;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.scripture-search-submit:hover,
+.scripture-search-submit:focus {
+    background-color: rgba(44, 75, 85, 0.1);
+}
+
+.scripture-search-submit .icon {
+    width: 1.05rem;
+    height: 1.05rem;
+}
+
+.scripture-search-submit span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+}
+
+.scripture-search-message {
+    min-height: 1.3rem;
+    margin: 0.45rem 0 0;
+    color: #4e0f00;
+    font-size: 0.9rem;
+    line-height: 1.3;
+}
+
+.scripture-results-page .scripture-search-form {
+    margin-bottom: 1.5rem;
+}
+
+.scripture-results-title {
+    color: var(--primary-color);
+    font-size: 1.6rem;
+    line-height: 1.2;
+    margin-bottom: 0.45rem;
+}
+
+.scripture-results-note {
+    color: #555;
+    margin-bottom: 1rem;
+}
+
+.scripture-result-list {
+    border-top: 1px solid rgba(44, 75, 85, 0.22);
+}
+
+.page-content a.scripture-result-link,
+.page-content a.scripture-result-link:hover,
+.page-content a.scripture-result-link:focus,
+.page-content a.scripture-broader-link,
+.page-content a.scripture-broader-link:hover,
+.page-content a.scripture-broader-link:focus {
+    text-decoration: none;
+}
+
+.scripture-result-row {
+    padding: 0.85rem 0;
+    border-bottom: 1px solid rgba(44, 75, 85, 0.22);
+}
+
+.scripture-result-link {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    color: var(--primary-color);
+}
+
+.scripture-result-link:hover .scripture-result-title {
+    text-decoration: underline;
+}
+
+.scripture-result-title {
+    display: block;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1.22rem;
+    line-height: 1.2;
+}
+
+.scripture-result-meta {
+    display: block;
+    color: #555;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+.scripture-kwic-list {
+    margin-top: 0.45rem;
+}
+
+.scripture-kwic-line {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    align-items: baseline;
+    gap: 0.4rem;
+    padding: 0.12rem 0;
+    color: #555;
+    font-size: 0.9rem;
+    line-height: 1.35;
+}
+
+.scripture-kwic-context {
+    min-width: 0;
+}
+
+.scripture-kwic-before {
+    text-align: right;
+}
+
+.scripture-kwic-hit {
+    color: var(--primary-color);
+    font-weight: 700;
+    margin: 0 0.1rem;
+    white-space: nowrap;
+}
+
+.scripture-broader-link {
+    display: inline-flex;
+    margin-top: 0.25rem;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+@media (max-width: 560px) {
+    .scripture-result-link {
+        display: block;
+    }
+
+    .scripture-result-meta {
+        margin-top: 0.15rem;
+        white-space: normal;
+    }
+
+    .scripture-kwic-line {
+        display: block;
+    }
+
+    .scripture-kwic-context,
+    .scripture-kwic-hit {
+        display: inline;
+    }
+
+    .scripture-kwic-before {
+        text-align: left;
+    }
+}
+
 .logo {
     display: flex;
     align-items: center;
@@ -333,6 +544,15 @@ a#spotlight-link {
         margin: 0;
         padding: 0 3rem 2.4rem;
         background-color: #ececec;
+    }
+
+    .scripture-search-section {
+        background-color: #ececec;
+        padding: 0 3rem 2.6rem;
+    }
+
+    .scripture-search-form {
+        max-width: 40rem;
     }
 
     .understand-section,

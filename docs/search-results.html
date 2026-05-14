@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="icon" href="favicon.ico" />
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scripture Search Results</title>
+    <link rel="stylesheet" href="css/main.css" />
+  </head>
+  <body>
+    <header></header>
+
+    <section class="page-titlebar">
+      <h1>Scripture Search Results</h1>
+    </section>
+
+    <section class="page-content scripture-results-page">
+      <form class="scripture-search-form" data-scripture-search-form novalidate>
+        <label class="scripture-search-label" for="results-scripture-search">Search by scripture reference</label>
+        <div class="scripture-search-row">
+          <input
+            class="scripture-search-input"
+            id="results-scripture-search"
+            name="q"
+            type="search"
+            placeholder="e.g. 1 Nephi 3:7"
+            autocomplete="off"
+          />
+          <button class="scripture-search-submit" type="submit" aria-label="Search">
+            <img class="icon" src="./img/search.svg" alt="" aria-hidden="true" />
+            <span>Search</span>
+          </button>
+        </div>
+        <p class="scripture-search-message" data-search-message role="status" aria-live="polite"></p>
+      </form>
+
+      <div id="scripture-search-results" class="scripture-results" aria-live="polite"></div>
+    </section>
+
+    <footer></footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/scripture-search-index.js"></script>
+    <script src="js/scripture-search.js"></script>
+  </body>
+</html>

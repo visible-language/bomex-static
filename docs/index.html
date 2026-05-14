@@ -60,6 +60,27 @@
       </a>
     </section>
 
+    <section class="scripture-search-section" aria-label="Search by scripture reference">
+      <form class="scripture-search-form" data-scripture-search-form novalidate>
+        <label class="scripture-search-label" for="home-scripture-search">Search by scripture reference</label>
+        <div class="scripture-search-row">
+          <input
+            class="scripture-search-input"
+            id="home-scripture-search"
+            name="q"
+            type="search"
+            placeholder="e.g. 1 Nephi 3:7"
+            autocomplete="off"
+          />
+          <button class="scripture-search-submit" type="submit" aria-label="Search">
+            <img class="icon" src="./img/search.svg" alt="" aria-hidden="true" />
+            <span>Search</span>
+          </button>
+        </div>
+        <p class="scripture-search-message" data-search-message role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
     <section class="understand-section">
       <h2>Discover the Unique Voices of<br />the Book of Mormon</h2>
 
@@ -169,6 +190,7 @@
     <footer></footer>
 
     <script src="js/main.js"></script>
+    <script src="js/scripture-search.js"></script>
     <script src="js/home-explore.js"></script>
   </body>
 </html>

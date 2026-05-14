@@ -325,7 +325,7 @@ document.addEventListener("DOMContentLoaded", function() {
             if (!node || !node.parentElement) return true;
             if (!node.nodeValue || !node.nodeValue.trim()) return true;
             const parent = node.parentElement;
-            if (parent.closest('a, script, style, textarea, input, select, button, code, pre, svg, .widget-shell, .tool-widget')) {
+            if (parent.closest('a, script, style, textarea, input, select, button, code, pre, svg, .widget-shell, .tool-widget, .scripture-search-form, .scripture-results')) {
                 return true;
             }
             return false;
